@@ -98,13 +98,13 @@ import TRANSLATE from '~/helpers/translate.json'
 }
 
 .slots__ttl {
-    font-size: 20px;
+    font-size: 26px;
     line-height: 1.358;
-    font-weight: 700;
+    font-weight: 900;
     margin-bottom: 0;
 
     @media (min-width: 992px) {
-        font-size: 28px;
+        font-size: 32px;
     }
 }
 
@@ -142,7 +142,6 @@ import TRANSLATE from '~/helpers/translate.json'
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 2px 14px rgba(#04001a, .15);
     color: currentColor;
     text-decoration: none;
 

@@ -1,9 +1,9 @@
 <template>
       <div>
-        <app_intro :value="data.body" />
+        <!--<app_intro :value="data.body" />
         <app_best_offer :value="data.body.bonuses" />
         <app_category_link :value="data.body.category_link" />
-        <app_casino_loop_downloads :value="data.body.casino" />
+        <app_casino_loop_downloads :value="data.body.casino" />-->
         <app_new_casino :value="data.body.new_casino" />
         <app_popular_slots :value="data.body.popular_slots" />
         <app_popular_offers :value="data.body.popular_bonus" />
@@ -29,16 +29,16 @@ export default {
             data: {}
         }
     },
-    components: {app_intro, app_best_offer, app_category_link, app_casino_loop_downloads, 
+    components: {app_intro, app_best_offer, app_category_link, app_casino_loop_downloads,
     app_content, app_new_casino, app_popular_slots, app_popular_offers},
     async asyncData({store, route}) {
         const request = {
             url: 'main'
-        }
-        const response = await DAL_Page.getData(request)
-        const body = response.data 
-        const data = body
-        data.body.currentUrl = config.BASE_URL + route.path
+        };
+        const response = await DAL_Page.getData(request);
+        const body = response.data;
+        const data = body;
+        data.body.currentUrl = config.BASE_URL + route.path;
         return {data}
     },
     head() {

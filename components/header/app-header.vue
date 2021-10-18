@@ -1,9 +1,9 @@
 <template>
     <header class="header">
         <div class="header__container container">
-           <app-logo />
-           <app_menu />
-           <app_search />
+            <app_menu/>
+            <app-logo/>
+            <app_search/>
         </div>
     </header>
 </template>
@@ -37,7 +37,6 @@
     width: 100%;
     max-width: calc(100vw - var(--scrollbar-width));
     z-index: 999;
-    background-color: var(--theme-cr-4);
 
     /*.scrolled & {
         background-color: rgba(#fff, .8);

@@ -19,7 +19,6 @@
 .cms {
     background-color: var(--theme-bg-1);
     padding-top: 45px;
-    font-family: var(--alt-font-family);
     display: flow-root;
 
     .slots + & {

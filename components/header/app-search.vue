@@ -56,19 +56,19 @@
                 this.$store.dispatch('common/setShowSearch', !this.$store.getters['common/getShowSearch'])
             },
             async search(){
-                if(this.searchWord === '') return
-                const request = new DAL_Builder()
+                if(this.searchWord === '') return;
+                const request = new DAL_Builder();
                 const response = await request.url('search')
                                               .setSearch(true)
                                               .searchWold(this.searchWord)
-                                              .get()
+                                              .get();
                 if(response.data.confirm !== 'error') {
                    this.posts = response.data.body.posts
                 }
             },
             goToSearch(){
-                this.$store.dispatch('common/setShowSearch', !this.$store.getters['common/getShowSearch'])
-                this.posts = []
+                this.$store.dispatch('common/setShowSearch', !this.$store.getters['common/getShowSearch']);
+                this.posts = [];
                 this.searchWord = ''
             }
         }
@@ -83,7 +83,7 @@
 }
 
 .search__cta {
-    color: #fff;
+    color: var(--theme-cr-2);
     margin-top: 4px;
     margin-right: 37px;
 }

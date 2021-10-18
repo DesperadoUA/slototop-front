@@ -6,7 +6,6 @@
                 <li v-for="(item, index) in settings" @click="closeMenu"
                   :key="index">
                     <NuxtLink no-prefetch :to="item.value_1" class="main-nav__link">
-                        <img :src="item.src"  class="main-nav__icon"/>
                         {{item.value_2}}
                     </NuxtLink>
                     <ul v-if="item.child.length !== 0" class="main-nav__drop">
@@ -48,7 +47,6 @@
                 this.$store.dispatch('common/setMobileMenu', !this.$store.getters['common/getMobileMenu'])
             },
             closeMenu(){
-                console.log('close menu')
                 this.$store.dispatch('common/setMobileMenu', false)
             }
         },
@@ -73,7 +71,6 @@
 
 .main-nav {
     @media (min-width: 992px) {
-        margin-left: auto;
         margin-right: 47px;
     }
 }
@@ -117,15 +114,14 @@
 }
 
 .main-nav__link {
-    color: var(--theme-cr-txt-alt);
+    color: var(--theme-cr-2);
     opacity: .5;
-    font-size: 12px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 500;
     text-decoration: none;
     display: inline-flex;
     vertical-align: middle;
     align-items: center;
-    text-transform: uppercase;
 
     @media (max-width: 991px) {
         font-size: 16px;
@@ -142,16 +138,6 @@
         &:hover {
             opacity: 1;
         }
-    }
-}
-
-.main-nav__icon {
-    margin-right: 7px;
-    max-width: 25px;
-
-    @media (min-width: 992px) {
-        margin-right: 5px;
-        max-width: 18px;
     }
 }
 

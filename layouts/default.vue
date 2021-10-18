@@ -24,15 +24,15 @@
     --container--cms: 960px;
 
     /* Theme color */
-    --theme-cr-1: #302552;
-    --theme-cr-2: #281c4c;
-    --theme-cr-3: #1f4fad;
+    --theme-cr-1: #101d30;
+    --theme-cr-2: #0d2342;
+    --theme-cr-3: #f63f6c;
     --theme-cr-4: #281c4b;
     --faq-cr: #0b0038b3;
     --theme-cr-txt: var(--theme-cr-2);
     --theme-cr-txt-alt: #fff;
     --cr-success: #00ff66;
-    --btn-primary: #0194ff;
+    --btn-primary: #3f7df6;
     --btn-secondary: #01b94a;
     --table-head: #5f63c0;
     --disabled-bg: #fafbfc;
@@ -41,8 +41,8 @@
     /* Fonts */
     --base-font-size: 16px;
     --base-line-height: 1.6;
-    --base-font-family: 'Open Sans', Arial, sans-serif;
-    --alt-font-family: 'Roboto', Arial, sans-serif;
+    --base-font-family: 'Roboto', Arial, sans-serif;
+    --alt-font-family: 'Montserrat', Arial, sans-serif;
 
     --side-gutters: 15px;
 
@@ -52,7 +52,7 @@
     }
 
     /* Theme bg-color */
-    --theme-bg-1: #f5f8ff;
+    --theme-bg-1: #e5e5e5;
 
     /* Theme images */
     --bg-main: url(/img/bg-main.jpg);
@@ -66,20 +66,6 @@
 }
 
 @font-face {
-    font-family: "Open Sans";
-    src: url("/fonts/opensans.woff2") format("woff2");
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "Open Sans";
-    src: url("/fonts/opensansbold.woff2") format("woff2");
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
     font-family: "Roboto";
     src: url("/fonts/roboto.woff2") format("woff2");
     font-weight: 400;
@@ -88,8 +74,29 @@
 
 @font-face {
     font-family: "Roboto";
+    src: url("/fonts/roboto-medium.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
     src: url("/fonts/robotobold.woff2") format("woff2");
     font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/fonts/roboto-black.woff2") format("woff2");
+    font-weight: 900;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Montserrat;
+    src: url("/fonts/montserrat.woff2") format("woff2");
+    font-weight: 900;
     font-display: swap;
 }
 
@@ -210,13 +217,11 @@ Common styles*/
     overflow: hidden;
     position: relative;
     padding-top: 111px;
-    background-color: var(--theme-cr-2);
     background-position: 50% 0;
     background-repeat: no-repeat;
 
     @media (min-width: 992px) {
         padding-top: 134px;
-        background-image: var(--bg-main);
     }
 }
 
@@ -387,12 +392,13 @@ Buttons */
 }
 
 .link-primary {
-    font-size: 16px;
-    font-weight: 700;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
 
     @media (min-width: 992px) {
         &:hover {
-            text-decoration: none;
+            text-decoration: underline;
         }
     }
 }
@@ -521,7 +527,7 @@ Casino Card*/
     @media (max-width: 768px) {
        max-width: none;
     }
-    
+
     img {
         border-radius: 10px;
       display: block;

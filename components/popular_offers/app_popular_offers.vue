@@ -7,25 +7,18 @@
             </div>
 
             <div class="slots__container">
-                <NuxtLink no-prefetch class="slot-item slot-item--gradient"
+                <NuxtLink no-prefetch class="slot-item"
                     :to="item.permalink"
                         v-for="(item, index) in value"
                         :key="index"
                     >
-                    <div class="slot-item__rating">
-                        <div class="circle-rating">
-                            <svg viewBox="0 0 36 36" class="circle-rating__chart" :style="item | classRating">
-                                <path class="circle-rating__circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                <path class="circle-rating__circle" :stroke-dasharray="item.rating + ', 100'" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            </svg>
-                            <img class="circle-rating__logo" :src="item.icon" alt="">
-                        </div>
-                        <span class="slot-item__casino-name">{{item.title}}</span>
+                    <div class="slot-item__logo">
+                        <img :src="item.thumbnail" loading="lazy" alt="" />
                     </div>
-
                     <div class="slot-item__content">
-                        <div class="slot-item__txt">{{welcomePackage}}: <br>
-                            <strong>{{item.bonus}}</strong>
+                        <div class="slot-item__name">{{item.title}}</div>
+                        <div class="slot-item__stats">
+                            <strong class="slot-item__stats-val">{{item.rating}}/10</strong>
                         </div>
                     </div>
 

@@ -17,9 +17,7 @@
                 <div class="slot-item__content">
                     <div class="slot-item__name">{{item.title}}</div>
                     <div class="slot-item__stats">
-                        {{rating}} <strong class="slot-item__stats-val">{{item.rating}}</strong>
-                        <span class="slot-item__divider"></span>
-                        RTP <strong class="slot-item__stats-val">{{item.rtp}}</strong>
+                        <strong class="slot-item__stats-val">{{item.rating}}/10</strong>
                     </div>
                 </div>
 

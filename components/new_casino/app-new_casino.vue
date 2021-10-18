@@ -8,22 +8,17 @@
 
             <div class="slots__container">
                 <NuxtLink no-prefetch :to="item.permalink"
-                          class="slot-item slot-item--gradient"
+                          class="slot-item"
                           v-for="(item, index) in value"
                           :key="index">
-                    <div class="slot-item__rating">
-                        <div class="circle-rating">
-                            <svg viewBox="0 0 36 36" class="circle-rating__chart" :style="item |classRating">
-                                <path class="circle-rating__circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                <path class="circle-rating__circle" :stroke-dasharray="item.rating + ', 100'" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            </svg>
-                            <img class="circle-rating__logo" loading="lazy" :src="item.icon" alt="">
-                        </div>
-                        <span class="slot-item__casino-name">{{ item.title }}</span>
+                    <div class="slot-item__logo">
+                        <img :src="item.thumbnail" loading="lazy" alt="" />
                     </div>
-
                     <div class="slot-item__content">
-                        {{rating}} <strong>{{ item.rating }}</strong>
+                        <div class="slot-item__name">{{item.title}}</div>
+                        <div class="slot-item__stats">
+                            <strong class="slot-item__stats-val">{{item.rating}}/10</strong>
+                        </div>
                     </div>
 
                     <div class="slot-item__btns">
@@ -70,8 +65,8 @@ import TRANSLATE from '~/helpers/translate.json'
 
 <style lang="scss">
 .slots {
-    --slots-width: 269px;
-    --slots-gutter: 14px;
+    --slots-width: 224px;
+    --slots-gutter: 20px;
     background-color: var(--theme-bg-1);
     padding-bottom: 15px;
 
@@ -98,13 +93,13 @@ import TRANSLATE from '~/helpers/translate.json'
 }
 
 .slots__ttl {
-    font-size: 26px;
+    font-size: 20px;
     line-height: 1.358;
     font-weight: 900;
     margin-bottom: 0;
 
     @media (min-width: 992px) {
-        font-size: 32px;
+        font-size: 24px;
     }
 }
 
@@ -116,7 +111,7 @@ import TRANSLATE from '~/helpers/translate.json'
     margin-right: calc(var(--slots-gutter) / -2);
     margin-bottom: 16px;
 
-    @media (max-width: 1150px) {
+    @media (max-width: 1229px) {
         margin-right: calc(var(--side-gutters) * -1);
     }
 
@@ -144,50 +139,16 @@ import TRANSLATE from '~/helpers/translate.json'
     flex-direction: column;
     color: currentColor;
     text-decoration: none;
-
-    &--gradient {
-        padding-top: 38px;
-        color: #fff;
-
-        &:nth-child(4n - 3) {
-            background-image: linear-gradient(0deg, #0d0121, #530323);
-        }
-
-        &:nth-child(4n - 2) {
-            background-image: linear-gradient(0deg, #011127, #026f4c);
-        }
-
-        &:nth-child(4n - 1) {
-            background-image: linear-gradient(0deg, #0d0121, #024278);
-        }
-
-        &:nth-child(4n) {
-            background-image: linear-gradient(0deg, #320082, #08002E);
-        }
-
-        // Всегда синий
-        .slots--new & {
-            background-image: linear-gradient(0deg, #0d0121, #024278);
-        }
-    }
-}
-
-.slot-item__rating {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
 }
 
 .slot-item__logo {
     overflow: hidden;
-    border-radius: 10px 10px 0 0;
     margin-bottom: 14px;
+    padding: 5px;
 
     img {
         width: 100%;
+        border-radius: 8px;
     }
 }
 
@@ -217,7 +178,7 @@ import TRANSLATE from '~/helpers/translate.json'
 
 .slot-item__name {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 1.389;
     margin-bottom: 1px;
 }

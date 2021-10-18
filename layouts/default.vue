@@ -20,7 +20,7 @@
 <style lang="scss">
 :root {
     /* container width */
-    --container-width: 1152px;
+    --container-width: 1230px;
     --container--cms: 960px;
 
     /* Theme color */
@@ -53,6 +53,7 @@
 
     /* Theme bg-color */
     --theme-bg-1: #e5e5e5;
+    --theme-bg-2: #fff;
 
     /* Theme images */
     --bg-main: url(/img/bg-main.jpg);
@@ -401,64 +402,6 @@ Buttons */
             text-decoration: underline;
         }
     }
-}
-
-/*
-Circle rating */
-
-.circle-rating {
-    position: relative;
-    flex-shrink: 0;
-    flex-basis: 76px;
-    width: 76px;
-    height: 76px;
-    margin-bottom: 5px;
-}
-
-.circle-rating__logo {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-    border-radius: 50%;
-    width: 62px;
-    height: 62px;
-}
-
-.circle-rating__chart {
-    display: block;
-}
-
-.circle-rating__circle-bg {
-    fill: none;
-    opacity: .23;
-    stroke: var(--cr-rating);
-    stroke-width: 2;
-}
-
-.circle-rating__circle {
-    fill: none;
-    stroke: var(--cr-rating);
-    stroke-width: 2;
-    stroke-linecap: round;
-    animation: progress 1s ease-out forwards;
-}
-
-@keyframes progress {
-    0% {
-        stroke-dasharray: 0 100;
-    }
-}
-
-.circle-rating__percentage {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    font-weight: 800;
-    font-size: 24px;
-    text-anchor: middle;
 }
 
 /*

@@ -15,8 +15,11 @@
                     <img :src="item.thumbnail" loading="lazy" alt="" />
                 </div>
                 <div class="slot-item__content">
-                    <div class="slot-item__name">{{item.title}}</div>
+                    <div class="slot-item__name">{{item.title}} <img src="/img/check.svg" alt=""></div>
                     <div class="slot-item__stats">
+                        <div class="star-rating">
+                            <span class="star-rating__val" style="width: 60%;"></span>
+                        </div>
                         <strong class="slot-item__stats-val">{{item.rating}}/10</strong>
                     </div>
                 </div>

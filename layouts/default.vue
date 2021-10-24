@@ -54,11 +54,10 @@
     /* Theme bg-color */
     --theme-bg-1: #e5e5e5;
     --theme-bg-2: #fff;
+    --theme-bg-3: #eef1f9;
+    --theme-bg-4: #fbfcff;
 
     /* Theme images */
-    --bg-main: url(/img/bg-main.jpg);
-    --bg-main-webp: url(/img/bg-main.webp);
-
     --transition-default: .27s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
@@ -110,7 +109,7 @@ body {
     font-family: var(--base-font-family);
     line-height: var(--base-line-height);
     color: var(--theme-cr-txt);
-    background-color: var(--theme-bg-1);
+    background-color: var(--theme-bg-4);
 }
 
 a {
@@ -217,12 +216,12 @@ Common styles*/
 .main {
     overflow: hidden;
     position: relative;
-    padding-top: 111px;
+    padding-top: 64px;
     background-position: 50% 0;
     background-repeat: no-repeat;
 
     @media (min-width: 992px) {
-        padding-top: 134px;
+        padding-top: 82px;
     }
 }
 

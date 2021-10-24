@@ -115,7 +115,6 @@
 
 .main-nav__link {
     color: var(--theme-cr-2);
-    opacity: .5;
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
@@ -127,11 +126,24 @@
         font-size: 16px;
     }
 
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        background-color: var(--theme-cr-3);
+        opacity: 0;
+    }
+
     .active > &,
     .is-active > &,
     &.nuxt-link-exact-active,
     &.is-active {
-        opacity: 1;
+        &:after {
+            opacity: 1;
+        }
     }
 
     @media (min-width: 992px) {

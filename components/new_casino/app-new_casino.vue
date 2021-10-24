@@ -15,8 +15,11 @@
                         <img :src="item.thumbnail" loading="lazy" alt="" />
                     </div>
                     <div class="slot-item__content">
-                        <div class="slot-item__name">{{item.title}}</div>
+                        <div class="slot-item__name">{{item.title}} <img src="/img/check.svg" alt=""></div>
                         <div class="slot-item__stats">
+                            <div class="star-rating">
+                                <span class="star-rating__val" style="width: 10%;"></span>
+                            </div>
                             <strong class="slot-item__stats-val">{{item.rating}}/10</strong>
                         </div>
                     </div>
@@ -55,9 +58,9 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.goTo = TRANSLATE.GO_TO.uk
-            this.rating = TRANSLATE.RATING.uk
-            this.newCasino = TRANSLATE.NEW_CASINO.uk
+            this.goTo = TRANSLATE.GO_TO.uk;
+            this.rating = TRANSLATE.RATING.uk;
+            this.newCasino = TRANSLATE.NEW_CASINO.uk;
             this.allCasino = TRANSLATE.ALL_CASINO.uk
         }
     }
@@ -67,8 +70,12 @@ import TRANSLATE from '~/helpers/translate.json'
 .slots {
     --slots-width: 224px;
     --slots-gutter: 20px;
-    background-color: var(--theme-bg-1);
-    padding-bottom: 15px;
+    background-color: var(--theme-bg-3);
+    padding-bottom: 11px;
+
+    &:first-child {
+        padding-top: 32px;
+    }
 
     .casinos + & {
         padding-top: 40px;
@@ -79,7 +86,7 @@ import TRANSLATE from '~/helpers/translate.json'
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    margin-bottom: 26px;
+    margin-bottom: 20px;
 
     @media (min-width: 768px) {
         justify-content: space-between;
@@ -104,12 +111,12 @@ import TRANSLATE from '~/helpers/translate.json'
 }
 
 .slots__container {
+    padding-top: 6px;
     overflow-x: auto;
     display: flex;
     justify-content: space-between;
     margin-left: calc(var(--slots-gutter) / -2);
     margin-right: calc(var(--slots-gutter) / -2);
-    margin-bottom: 16px;
 
     @media (max-width: 1229px) {
         margin-right: calc(var(--side-gutters) * -1);
@@ -139,6 +146,13 @@ import TRANSLATE from '~/helpers/translate.json'
     flex-direction: column;
     color: currentColor;
     text-decoration: none;
+    box-shadow: 0 8px 15px rgba(#02133e, .2);
+
+    @media (min-width: 992px) {
+        &:hover {
+            box-shadow: none;
+        }
+    }
 }
 
 .slot-item__logo {
@@ -181,10 +195,16 @@ import TRANSLATE from '~/helpers/translate.json'
     font-size: 15px;
     line-height: 1.389;
     margin-bottom: 1px;
+    display: inline-flex;
+    align-items: center;
+
+    img {
+        margin-left: 7px;
+    }
 }
 
 .slot-item__stats {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -200,7 +220,10 @@ import TRANSLATE from '~/helpers/translate.json'
 }
 
 .slot-item__stats-val {
-    margin-left: 4px;
+    color: #4a5767;
+    margin-left: 7px;
+    margin-bottom: -3px;
+    font-size: 12px;
 }
 
 .slot-item__btns {
@@ -239,5 +262,20 @@ import TRANSLATE from '~/helpers/translate.json'
             background-color: #0475dd;
         }
     }
+}
+
+.star-rating {
+    background-image: url(/img/stars.png);
+    background-repeat: no-repeat;
+    background-position: 0 -20px;
+    width: 90px;
+    height: 17px;
+}
+
+.star-rating__val {
+    background-image: url(/img/stars.png);
+    background-repeat: no-repeat;
+    height: 100%;
+    display: block;
 }
 </style>

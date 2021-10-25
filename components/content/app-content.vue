@@ -17,8 +17,9 @@
 </script>
 <style lang="scss" scope>
 .cms {
-    background-color: var(--theme-bg-1);
+    background-color: var(--theme-bg-4);
     padding-top: 45px;
+    color: var(--theme-cr-txt-cms);
     display: flow-root;
 
     .slots + & {
@@ -29,38 +30,59 @@
         margin-bottom: 32px;
     }
 
-    h2 {
-        font-size: 24px;
+    h1 {
+        font-size: 26px;
         line-height: 1.179;
-        margin-bottom: 21px;
+        font-weight: 900;
+        margin-bottom: 12px;
+        color: var(--theme-cr-txt);
 
         @media (min-width: 992px) {
-            font-size: 28px;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+    }
+
+    h2 {
+        font-size: 20px;
+        line-height: 1.179;
+        font-weight: 900;
+        margin-bottom: 12px;
+        color: var(--theme-cr-txt);
+
+        @media (min-width: 992px) {
+            font-size: 24px;
+            margin-bottom: 16px;
         }
     }
 
     h3 {
-        font-size: 20px;
+        font-size: 18px;
         line-height: 1.182;
-        margin-bottom: 16px;
+        margin-bottom: 12px;
+        color: var(--theme-cr-txt);
 
         @media (min-width: 992px) {
             font-size: 22px;
+            margin-bottom: 16px;
         }
     }
 
     h4 {
         font-size: 16px;
         line-height: var(--base-line-height);
-        margin-bottom: 25px;
+        margin-bottom: 12px;
+        color: var(--theme-cr-txt);
 
         @media (min-width: 992px) {
             font-size: 18px;
+            margin-bottom: 16px;
         }
     }
 
     ul, ol {
-        margin: 0 0 25px;
+        line-height: 1.8;
+        margin: 0 0 28px;
         padding: 0;
         list-style: none;
     }

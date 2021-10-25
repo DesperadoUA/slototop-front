@@ -129,6 +129,7 @@
     &:after {
         content: '';
         position: absolute;
+        transition: var(--transition-default);
         left: 0;
         right: 0;
         bottom: 0;
@@ -137,6 +138,7 @@
         opacity: 0;
     }
 
+    &:hover,
     .active > &,
     .is-active > &,
     &.nuxt-link-exact-active,
@@ -155,32 +157,29 @@
 
 .main-nav__drop {
     position: absolute;
-    min-width: 160px;
+    min-width: 276px;
     top: 100%;
-    left: 0;
-    background-color: #4e3986ea;
-    border-radius: 8px;
-    padding: 27px 20px 13px 23px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--theme-bg-4);
+    padding: 14px 30px 13px 24px;
     z-index: 999;
     transition: var(--transition-default);
     opacity: 0;
     visibility: hidden;
 
     > li {
-        text-transform: uppercase;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 1.333;
-        margin-bottom: 16px;
+        font-size: 15px;
+        line-height: 1.867;
     }
 
     a {
-        color: rgba(#fff, .7);
+        color: var(--theme-cr-txt-cms);
         text-decoration: none;
 
         @media (min-width: 992px) {
             &:hover {
-                color: #fff;
+                color: var(--theme-cr-txt);
             }
         }
     }

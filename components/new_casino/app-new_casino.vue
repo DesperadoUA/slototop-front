@@ -73,7 +73,7 @@ import TRANSLATE from '~/helpers/translate.json'
     background-color: var(--theme-bg-3);
     padding-bottom: 11px;
 
-    &:first-child {
+    .main-banner + & {
         padding-top: 32px;
     }
 
@@ -261,6 +261,12 @@ import TRANSLATE from '~/helpers/translate.json'
         &:hover {
             background-color: #0475dd;
         }
+    }
+
+    .disabled &,
+    &[disabled],
+    &.disabled {
+        opacity: .5;
     }
 }
 

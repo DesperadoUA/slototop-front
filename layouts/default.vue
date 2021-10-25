@@ -28,9 +28,12 @@
     --theme-cr-2: #0d2342;
     --theme-cr-3: #f63f6c;
     --theme-cr-4: #281c4b;
+    --theme-cr-5: hsl(334, 83%, 53%);
+    --theme-cr-5-darken: hsl(334, 83%, 43%);
     --faq-cr: #0b0038b3;
     --theme-cr-txt: var(--theme-cr-2);
     --theme-cr-txt-alt: #fff;
+    --theme-cr-txt-cms: #4a5767;
     --cr-success: #00ff66;
     --btn-primary: #3f7df6;
     --btn-secondary: #01b94a;
@@ -39,8 +42,8 @@
     --disabled-cr: #c7ccd8;
 
     /* Fonts */
-    --base-font-size: 16px;
-    --base-line-height: 1.6;
+    --base-font-size: 14px;
+    --base-line-height: 1.7;
     --base-font-family: 'Roboto', Arial, sans-serif;
     --alt-font-family: 'Montserrat', Arial, sans-serif;
 
@@ -95,7 +98,7 @@
 
 @font-face {
     font-family: Montserrat;
-    src: url("/fonts/montserrat.woff2") format("woff2");
+    src: url("/fonts/montserrat-black.woff2") format("woff2");
     font-weight: 900;
     font-display: swap;
 }
@@ -114,7 +117,7 @@ body {
 
 a {
     text-decoration: underline;
-    color: var(--theme-cr-3);
+    color: var(--btn-primary);
 
     &:not([class]) {
         @media (min-width: 992px) {
@@ -133,6 +136,7 @@ button {
 img {
     max-width: 100%;
     height: auto;
+    vertical-align: top;
 }
 
 video,
@@ -252,27 +256,28 @@ Buttons */
 
 .btn-primary {
     @extend %btn-general;
-    font-size: 16px;
-    background-color: rgba(#fff, .1);
-    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.286;
+    text-transform: uppercase;
     font-weight: 700;
-    line-height: 1.5;
+    background-color: var(--btn-primary);
+    border-radius: 12px;
     position: relative;
     z-index: 0;
     color: #fff;
-    min-height: 50px;
-    padding: 5px .9em;
+    min-height: 44px;
+    padding: 6px .9em 4px;
 
     @media (min-width: 992px) {
         &:hover {
-            background-color: rgba(#fff, .2);
+            background-color: #0475dd;
         }
     }
 
     /* hack for IE11 */
     @media all and (-ms-high-contrast:none) {
         *::-ms-backdrop, & {
-            height: 50px;
+            height: 44px;
         }
     }
 
@@ -289,21 +294,23 @@ Buttons */
 
 .btn-secondary {
     @extend %btn-general;
-    border: 1px solid var(--btn-primary);
-    font-size: 16px;
-    border-radius: 10px;
-    background-color: rgba(#fff,.1);
+    border: 1px solid var(--theme-cr-3);
+    font-size: 14px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    background-color: #fff;
     font-weight: 700;
     line-height: 1.5;
     position: relative;
     z-index: 0;
-    color: var(--theme-cr-4);
-    min-height: 50px;
-    padding: 5px .9em;
+    color: var(--theme-cr-2);
+    min-height: 44px;
+    padding: 6px .9em 4px;
 
     @media (min-width: 992px) {
         &:hover {
-            background-color: rgba(#0194ff, .1);
+            background-color: var(--theme-cr-3);
+            color: #fff;
         }
     }
 
@@ -322,35 +329,24 @@ Buttons */
 }
 
 .btn-tertiary {
+    min-width: 256px;
     @extend %btn-general;
-    font-size: 16px;
-    border-radius: 6px;
-    background-color: var(--btn-primary);
-    font-weight: 700;
+    font-size: 15px;
+    border-radius: 10px;
+    font-weight: 900;
     line-height: 1.5;
     position: relative;
     z-index: 0;
     color: #fff;
-    min-height: 50px;
+    min-height: 44px;
     padding: 5px .9em;
 
-    @media (max-width: 767px) {
-        padding: 0;
-    }
-
-    @media (min-width: 992px) {
-        &:hover {
-            background-color: #0475dd;
-        }
-
-    }
-
-    &.--green {
-        background-color: var(--btn-secondary);
+    &.--reel {
+        background-color: var(--theme-cr-5);
 
         @media (min-width: 992px) {
             &:hover {
-                background-color: #009c3e;
+                background-color: var(--theme-cr-5-darken);
             }
         }
     }
@@ -392,6 +388,7 @@ Buttons */
 }
 
 .link-primary {
+    color: var(--theme-cr-3);
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;

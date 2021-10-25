@@ -21,11 +21,13 @@
 
 <style lang="scss">
 .logo {
-    width: 177px;
+    width: 147px;
     margin-left: 10px;
+    margin-top: -8px;
 
     @media (min-width: 768px) {
-        width: 200px;
+        width: 176px;
+        margin-top: -10px;
         margin-left: 2px;
     }
 }

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <app_intro :value="data.body" />
     <app_bonus_card :value="data.body.card" />
     <app_content :value="data.body.content"  />
   </div>
@@ -10,11 +9,10 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
-    import app_intro from '~/components/intro/app-intro'
     import app_bonus_card from '~/components/bonus-card/app_bonus_card'
     export default {
         name: "app_single_casino",
-        components: {app_content, app_intro, app_bonus_card},
+        components: {app_content, app_bonus_card},
         data: () => {
             return {
                data: {},

@@ -1,0 +1,63 @@
+<template>
+    <div class="games">
+        <div class="container">
+            <div class="slots__heading">
+                <h2 class="slots__ttl" v-if="title">{{title}}</h2>
+                <NuxtLink no-prefetch :to="link" class="link-primary" v-if="link">
+                    {{linkText}}
+                </NuxtLink>
+            </div>
+
+            <div class="games__container">
+                <NuxtLink class="game-item" no-prefetch
+                          :to="item.permalink"
+                          v-for="(item, index) in value"
+                          :key="index" >
+                    <div class="game-item__logo">
+                        <img :src="item.thumbnail" loading="lazy" alt="" />
+                    </div>
+                </NuxtLink>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+    import TRANSLATE from '~/helpers/translate.json'
+    export default {
+        name: "app_slots",
+        props: {
+            value: {
+                type: Array,
+                default: []
+            },
+            title: {
+                type: String,
+                default: undefined
+            },
+            link: {
+                type: String,
+                default: undefined
+            },
+            linkText: {
+                type: String,
+                default: undefined
+            }
+        },
+        data() {
+            return {
+                play: '',
+                rating: ''
+            }
+        },
+        mounted() {
+            this.play = TRANSLATE.PLAY.uk
+            this.rating = TRANSLATE.RATING.uk
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    
+</style>
+

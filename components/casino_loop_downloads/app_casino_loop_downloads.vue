@@ -1,73 +1,31 @@
 <template>
 <div class="casinos">
-    <div class="container">
-        <div class="casinos__container">
-            <div class="casino-item" v-for="(item, index) in currentPosts" :key="index" >
-                <div class="casino-item__top">
-                    <div class="casino-item__logo">
-                        <img :src="item.thumbnail" loading="lazy" alt="">
-                    </div>
-
-                    <div class="casino-item__rating">
-                        <div class="circle-rating">
-                            <svg viewBox="0 0 36 36" class="circle-rating__chart" :style="item | classRating">
-                                <path class="circle-rating__circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                                <path class="circle-rating__circle"
-                                      :stroke-dasharray="item.rating + ', 100'"
-                                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            </svg>
-                            <div class="circle-rating__percentage">{{item.rating}}</div>
+        <div class="slots">
+            <div class="container">
+                <div class="slots__container">
+                    <div    class="slot-item"
+                            v-for="(item, index) in currentPosts"
+                            :key="index">
+                        <div class="slot-item__logo">
+                            <NuxtLink no-prefetch :to="item.permalink">
+                                <img :src="item.thumbnail" loading="lazy" alt="" />
+                            </NuxtLink>
                         </div>
-                        <span class="casinos-rating__txt">{{rating}}</span>
+                        <div class="slot-item__content">
+                            <div class="slot-item__name">{{item.title}} <img src="/img/check.svg" alt="" v-if="item.licenses.length !== 0"></div>
+                            <div class="slot-item__stats">
+                                <div class="star-rating">
+                                    <span class="star-rating__val" :style="item | widthRating"></span>
+                                </div>
+                                <strong class="slot-item__stats-val">{{item.rating}}/100</strong>
+                            </div>
+                        </div>
+
+                        <div class="slot-item__btns">
+                            <button class="slot-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
+                        </div>
                     </div>
                 </div>
-                <div class="casino-item__content">
-                    <div class="casino-param">
-                        <div :class="item.regular_offers == 1 ? 'casino-param__item': 'casino-param__item disabled'">
-                            <img class="casino-param__img" src="/img/fire.svg" loading="lazy" width="17" alt="">
-                            <span class="casino-param__txt">Regular Offers</span>
-                        </div>
-
-                        <div :class="item.live_chat == 1 ? 'casino-param__item': 'casino-param__item disabled'">
-                            <img class="casino-param__img" src="/img/chat.svg" loading="lazy" width="19" alt="">
-                            <span class="casino-param__txt">Live Chat</span>
-                        </div>
-
-                        <div :class="item.live_casino == 1 ? 'casino-param__item': 'casino-param__item disabled'">
-                            <img class="casino-param__img" src="/img/casino.svg" loading="lazy" width="19" alt="">
-                            <span class="casino-param__txt">Live Casino</span>
-                        </div>
-
-                        <div :class="item.vip_program == 1 ? 'casino-param__item': 'casino-param__item disabled'">
-                            <img class="casino-param__img" src="/img/star.svg" loading="lazy" width="17" alt="">
-                            <span class="casino-param__txt">Vip Program</span>
-                        </div>
-                    </div>
-
-                    <div class="casino-bonuses">
-                        <div class="casino-bonus">
-                            <span class="casino-bonus__value" style="color: #ffe600;">{{item.bonus}}</span>
-                            <span class="casino-bonus__ttl">{{welcomeBonus}}</span>
-
-                            <div class="casino-bonus__wager">{{item.bonus_wagering}}</div>
-                        </div>
-
-                        <div class="casino-bonus">
-                            <span class="casino-bonus__value" style="color: #12d4ff;">{{item.freespins}}</span>
-                            <span class="casino-bonus__ttl">{{freeSpins}}</span>
-
-                            <div class="casino-bonus__wager">{{item.freespins_wagering}}</div>
-                        </div>
-                    </div>
-
-                    <div class="casino-item__btns">
-                         <NuxtLink no-prefetch
-                                  :to="item.permalink"
-                                  class="casino-item__btn --green">{{casinoReview}}</NuxtLink>
-                        <button class="casino-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
-                    </div>
-                </div>
-            </div>
         </div>
         <div class="items-more">
             <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
@@ -92,7 +50,7 @@ import TRANSLATE from '~/helpers/translate.json'
         },
         data(){
             return {
-                numberPostOnQuery: 12,
+                numberPostOnQuery: 15,
                 postCurrentPage: 1,
                 showMore: '',
                 rating: '',
@@ -108,11 +66,11 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         filters:{
-            rating(item){
-                return Math.trunc(item/10)
-            },
             classRating(item) {
                return Helper.classRating(item)
+            },
+            widthRating(item){
+                return `width: ${item.rating}%`
             }
         },
         methods: {
@@ -124,15 +82,16 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE.uk
-            this.rating = TRANSLATE.RATING.uk
-            this.welcomeBonus = TRANSLATE.WELCOME_BONUS.uk
-            this.freeSpins = TRANSLATE.FREE_SPINS.uk
-            this.casinoReview = TRANSLATE.CASINO_REVIEW.uk
-            this.goTo = TRANSLATE.GO_TO.uk
+            this.showMore = TRANSLATE.SHOW_MORE.ru
+            this.rating = TRANSLATE.RATING.ru
+            this.welcomeBonus = TRANSLATE.WELCOME_BONUS.ru
+            this.freeSpins = TRANSLATE.FREE_SPINS.ru
+            this.casinoReview = TRANSLATE.CASINO_REVIEW.ru
+            this.goTo = TRANSLATE.GO_TO.ru
         }
     }
 </script>
 
 <style lang="scss" scoped>
+
 </style>

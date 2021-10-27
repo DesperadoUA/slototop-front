@@ -1,37 +1,40 @@
 <template>
-<div class="container container7">
-    <div class="casino-card" v-for="(item, index) in currentPosts" :key="index">
-        <div class="casino-card__logo">
-            <img :src="item.thumbnail" :alt="item.title">
-        </div>
-        <div class="casino-card__rating">
-            <div class="circle-rating">
-                <svg viewBox="0 0 36 36" class="circle-rating__chart" :style="item | classRating">
-                    <path class="circle-rating__circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                    <path class="circle-rating__circle" :stroke-dasharray="item.rating + ', 100'" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                </svg>
-                <div class="circle-rating__percentage">{{ item.rating }}</div>
+    <div class="bonuses-casino">
+        <div class="container">
+            <div class="bonuses__container">
+                <div class="bonuses-item"
+                     v-for="(item, index) in currentPosts"
+                     :key="index"
+                >
+                    <div class="bonuses-item__logo">
+                        <img :src="item.casino.thumbnail" :alt="item.title">
+                    </div>
+                    <div class="bonuses-item__name">{{item.title}}</div>
+                    <div class="bonuses-item__val">{{item.value}}</div>
+                    <div class="bonuses-tags">
+                        <NuxtLink class="bonuses-tag"
+                            v-for="(item_cat, index_cat) in item.type_bonus"
+                            :key="index_cat"
+                            :to="item_cat.permalink"
+                        >{{item_cat.title}}</NuxtLink>
+                    </div>
+
+                    <div class="bonuses-item__btns">
+                        <NuxtLink no-prefetch :to="item.permalink" class="bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
+                        <span class="bonuses-item__btn btn-primary" @click="refActivate(item)">{{getBonus}}</span>
+                    </div>
+                </div>
             </div>
-            <span class="casinos-rating__txt">{{rating}}</span>
         </div>
-        <div class="casino-card__txt" v-html="item.bonus_self"></div>
-        <div class="casino-card__cta">
-            <NuxtLink :to="item.permalink"
-                      no-prefetch
-                      type="button"
-                      class="casino-card__cta btn-tertiary --green">{{review}}
-            </NuxtLink>
-            <button type="button" class="casino-card__cta btn-tertiary" @click="refActivate(item)">{{play}}</button>
+        <div class="items-more casino-card__more">
+            <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
+                    class="btn-primary"
+                    @click="postShowMore"
+            >{{showMore}}
+            </button>
         </div>
     </div>
-    <div class="items-more casino-card__more">
-        <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
-                class="btn-primary"
-                @click="postShowMore"
-        >{{showMore}}
-        </button>
-    </div>
-</div>
+
 </template>
 
 <script>
@@ -60,11 +63,6 @@ import TRANSLATE from '~/helpers/translate.json'
                return this.value.slice(0, this.numberPostOnQuery * this.postCurrentPage)
             }
         },
-        filters:{
-            classRating(item) {
-                return Helper.classRating(item)
-            }
-        },
         methods: {
             refActivate(item) {
                 Helper.refActivate(item)
@@ -74,10 +72,9 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE.uk
-            this.rating = TRANSLATE.RATING.uk
-            this.play = TRANSLATE.PLAY.uk
-            this.review = TRANSLATE.REVIEW.uk
+            this.showMore = TRANSLATE.SHOW_MORE.ru
+            this.readMore = TRANSLATE.READ_MORE.ru
+            this.getBonus = TRANSLATE.GET_BONUS.ru
         }
     }
 </script>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <app_intro :value="data.body" />
     <app_vendor_card :value="data.body"/>
     <app_heading v-if="data.body.casino.length !== 0" :value="{
                           title: data.translate.casinosWith + data.body.title,
@@ -21,14 +20,12 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
     import TRANSLATE from '~/helpers/translate'
-    import app_intro from '~/components/intro/app-intro'
     import app_vendor_card from '~/components/vendor_card/app_vendor_card'
     import app_vendor_casino from '~/components/vendor_casino/app_vendor_casino'
     import app_slot_loop_card from '~/components/slot_loop_card/app_slot_loop_card'
-    import app_heading from '~/components/section-heading/app-section-heading'
     export default {
         name: "app_single_vendor",
-        components: {app_intro, app_vendor_card, app_vendor_casino, app_slot_loop_card, app_heading},
+        components: {app_vendor_card, app_vendor_casino, app_slot_loop_card},
         data: () => {
             return {
                 data: {

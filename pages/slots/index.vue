@@ -1,7 +1,6 @@
 <template>
   <div>
     <app_intro :value="data.body" />
-    <app_category_link :value="data.body.category_link" />
     <app_slot_card :value="data.body.slots" />
     <app_content :value="data.body.content"  />
   </div>
@@ -11,8 +10,6 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
-    import app_intro from '~/components/intro/app-intro'
-    import app_category_link from '~/components/category_link/app-category_link'
     import app_slot_card from '~/components/slot_loop_card/app_slot_loop_card'
 
 export default {
@@ -22,7 +19,7 @@ export default {
             data: null
         }
     },
-    components: {app_content, app_intro, app_category_link, app_slot_card},
+    components: {app_content, app_slot_card},
     async asyncData({route, error}) {
         const request = new DAL_Builder()
         const response = await request.postType('category')

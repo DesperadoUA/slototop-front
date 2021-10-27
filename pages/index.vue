@@ -1,15 +1,11 @@
 <template>
     <div>
-        <!--<app_intro :value="data.body" />
-        <app_best_offer :value="data.body.bonuses" />
-        <app_category_link :value="data.body.category_link" />
-        <app_casino_loop_downloads :value="data.body.casino" />-->
-        <app_main_banner />
-        <app_popular_offers :value="data.body.popular_bonus"/>
-        <app_new_casino :value="data.body.new_casino"/>
-        <app_popular_slots :value="data.body.popular_slots"/>
-        <app_new_games :value="data.body.popular_slots"/>
-        <app_bonuses_casino />
+        <app_banner :value="deafault" />
+        <app_casino :value="data.body.casino" :title="onlineCasino" link="casinos" :linkText="allCasino"/>
+        <app_casino :value="data.body.new_casino" :title="newCasino"/>
+        <app_slots :value="data.body.top_game" :title="games" link="games" :linkText="allGames"/>
+        <app_slots :value="data.body.new_game" :title="newGames" link="games" :linkText="allGames"/>
+        <app_bonuses_casino :value="data.body.bonuses" :title="bonusesCasino" link="bonuses" :linkText="allBonuses" />
         <app_content :value="data.body.content"/>
       </div>
 </template>
@@ -17,27 +13,28 @@
 <script>
    import DAL_Page from '~/DAL/static_pages'
    import config from '~/config/index'
-   import app_intro from '~/components/intro/app-intro'
-   import app_best_offer from '~/components/best-offer/app-best-offer'
-   import app_category_link from '~/components/category_link/app-category_link'
-   import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
-
-   import app_main_banner from '~/components/main-banner/app-main-banner'
-   import app_popular_offers from '~/components/popular_offers/app_popular_offers'
-   import app_new_casino from '~/components/new_casino/app-new_casino'
-   import app_popular_slots from '~/components/popular_slots/app-popular_slots'
-   import app_new_games from '~/components/new-games/app-new-games'
-   import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
+   import TRANSLATE from '~/helpers/translate.json'
+   import app_casino from '~/components/casino/app_casino'
+   import app_slots from '~/components/slots/app_slots'
    import app_content from '~/components/content/app-content'
+   import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
+   import app_banner from '~/components/main-banner/app_main_banner'
 export default {
     name: "main-page",
     data: () => {
         return {
-            data: {}
+            allCasino: "",
+            newCasino: "",
+            onlineCasino: "",
+            games: "",
+            newGames: "",
+            allGames: "",
+            bonusesCasino: "",
+            allBonuses: "",
+            deafault: []
         }
     },
-    components: {app_intro, app_best_offer, app_category_link, app_casino_loop_downloads,
-    app_content, app_new_casino, app_popular_slots, app_popular_offers, app_new_games, app_main_banner, app_bonuses_casino},
+    components: {app_content, app_casino, app_slots, app_bonuses_casino, app_banner},
     async asyncData({store, route}) {
         const request = {
             url: 'main'
@@ -48,6 +45,16 @@ export default {
         data.body.currentUrl = config.BASE_URL + route.path;
         return {data}
     },
+    mounted() {
+            this.allCasino = TRANSLATE.ALL_CASINO.ru
+            this.newCasino = TRANSLATE.NEW_CASINO.ru
+            this.onlineCasino = TRANSLATE.ONLINE_CASINO.ru
+            this.games = TRANSLATE.GAMES.ru
+            this.newGames = TRANSLATE.NEW_GAMES.ru
+            this.allGames = TRANSLATE.ALL_GAMES.ru
+            this.bonusesCasino = TRANSLATE.BONUSES_CASINO.ru
+            this.allBonuses = TRANSLATE.ALL_BONUSES.ru
+        },
     head() {
         return {
             title: this.data.body.meta_title,
@@ -65,3 +72,5 @@ export default {
     }
 }
 </script>
+
+<style lang="scss"></style>

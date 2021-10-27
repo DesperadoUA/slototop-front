@@ -1,6 +1,5 @@
 <template>
   <div>
-    <app_intro :value="data.body" />
     <app_slot_card :value="data.body" />
     <app_slot_detail :value="data.body" />
     <app_content :value="data.body.content" />
@@ -11,7 +10,6 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
-    import app_intro from '~/components/intro/app-intro'
     import app_slot_card from '~/components/slot_card/app_slot_card'
     import app_slot_detail from '~/components/slot-detail/app-slot-detail'
     export default {

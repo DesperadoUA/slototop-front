@@ -18,7 +18,8 @@
 <style lang="scss" scope>
 .cms {
     background-color: var(--theme-bg-4);
-    padding-top: 45px;
+    padding-top: 48px;
+    padding-bottom: 60px;
     color: var(--theme-cr-txt-cms);
     display: flow-root;
 
@@ -27,7 +28,7 @@
     }
 
     p {
-        margin-bottom: 32px;
+        margin-bottom: 25px;
     }
 
     h1 {
@@ -39,7 +40,7 @@
 
         @media (min-width: 992px) {
             font-size: 32px;
-            margin-bottom: 16px;
+            margin-bottom: 19px;
         }
     }
 
@@ -52,7 +53,7 @@
 
         @media (min-width: 992px) {
             font-size: 24px;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
     }
 
@@ -89,13 +90,13 @@
 
     ul {
         li {
-            padding-left: 25px;
+            padding-left: 20px;
             position: relative;
 
             &:before {
                 position: absolute;
-                top: 10px;
-                left: 5px;
+                top: 11px;
+                left: 8px;
                 content: '';
                 width: 3px;
                 height: 3px;

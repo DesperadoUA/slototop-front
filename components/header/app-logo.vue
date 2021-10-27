@@ -27,7 +27,7 @@
 
     @media (min-width: 768px) {
         width: 176px;
-        margin-top: -10px;
+        margin-top: -13px;
         margin-left: 2px;
     }
 }

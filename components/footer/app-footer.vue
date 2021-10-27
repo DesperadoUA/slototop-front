@@ -76,7 +76,7 @@
     color: #fff;
     border: 1px solid rgba(#fff, .1);
     border-radius: 8px;
-    padding: 4px 16px;
+    padding: 2px 16px 4px;
     text-decoration: none;
     margin-right: 4px;
 

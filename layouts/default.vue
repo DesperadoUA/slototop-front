@@ -22,6 +22,7 @@
     /* container width */
     --container-width: 1230px;
     --container--cms: 960px;
+
     /* Theme color */
     --theme-cr-1: #101d30;
     --theme-cr-2: #0d2342;
@@ -39,33 +40,41 @@
     --table-head: #5f63c0;
     --disabled-bg: #fafbfc;
     --disabled-cr: #c7ccd8;
+    --page-banner-txt-cr: var(--theme-cr-txt-alt);
+
     /* Fonts */
     --base-font-size: 14px;
     --base-line-height: 1.7;
     --base-font-family: 'Roboto', Arial, sans-serif;
     --alt-font-family: 'Montserrat', Arial, sans-serif;
     --side-gutters: 15px;
+
     @media (max-width: 767px) {
         --base-font-size: 15px;
         --side-gutters: 8px;
     }
+
     /* Theme bg-color */
     --theme-bg-1: #e5e5e5;
     --theme-bg-2: #fff;
     --theme-bg-3: #eef1f9;
     --theme-bg-4: #fbfcff;
+
     /* Theme images */
     --transition-default: .27s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
+
 * {
     box-sizing: border-box
 }
+
 @font-face {
     font-family: "Roboto";
     src: url("/fonts/roboto.woff2") format("woff2");
     font-weight: 400;
     font-display: swap;
 }
+
 @font-face {
     font-family: "Roboto";
     src: url("/fonts/roboto-medium.woff2") format("woff2");
@@ -159,11 +168,13 @@ Common styles*/
     padding-left: var(--side-gutters);
     padding-right: var(--side-gutters);
     max-width: var(--container-width);
+
     &--cms {
         @extend .container;
         max-width: var(--container--cms);
     }
 }
+
 .icon {
     display: inline-block;
     vertical-align: middle;
@@ -175,6 +186,7 @@ Common styles*/
     stroke: currentColor;
     fill: currentColor;
 }
+
 .full-width {
     width: 100% !important;
     flex-basis: 100% !important;
@@ -238,6 +250,7 @@ Buttons */
     color: #fff;
     min-height: 44px;
     padding: 6px .9em 4px;
+
     @media (min-width: 992px) {
         &:hover {
             background-color: #0475dd;

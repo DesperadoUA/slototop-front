@@ -46,11 +46,7 @@
     @media (max-width: 991px) {
         display: flex;
         align-items: center;
-        min-height: 80px;
-    }
-
-    @media (min-width: 768px) and (max-width: 991px) {
-        min-height: 112px;
+        min-height: 64px;
     }
 
     @media (min-width: 992px) {
@@ -63,6 +59,10 @@
 .header__container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+
+    @media (min-width: 992px) {
+        justify-content: space-between;
+    }
 }
 </style>

@@ -20,7 +20,7 @@
                     </div>
 
                     <div class="bonuses-item__btns">
-                        <NuxtLink no-prefetch :to="item.permalink" class="bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
+                        <NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
                         <span class="bonuses-item__btn btn-primary" @click="refActivate(item)">{{getBonus}}</span>
                     </div>
                 </div>

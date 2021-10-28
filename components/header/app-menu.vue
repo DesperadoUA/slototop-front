@@ -123,7 +123,8 @@
     align-items: center;
 
     @media (max-width: 991px) {
-        font-size: 16px;
+        color: #fff;
+        position: relative;
     }
 
     &:after {
@@ -188,9 +189,9 @@
 .navbar__btn {
     position: fixed;
     top: 0;
-    right: 0;
-    width: 92px;
-    height: 80px;
+    left: 0;
+    width: 64px;
+    height: 64px;
     border: 0;
     cursor: pointer;
     z-index: 1002;
@@ -212,26 +213,28 @@
         content: '';
         list-style: none;
         position: absolute;
-        background-color: #fff;
+        background-color: var(--theme-cr-2);
         margin-left: auto;
         margin-right: auto;
-        width: 28px;
-        height: 2px;
+        width: 20px;
+        height: 3px;
         transform: translateY(-50%);
         transition: var(--transition-default);
     }
 
     &:before {
         top: 36.25%;
+        border-radius: 2px;
     }
 
     &:after {
         top: 50%;
+        border-radius: 2px;
     }
 
     .bar:before,
     .bar:after {
-        width: 14px;
+        width: 10px;
         top: 63.75%;
     }
 
@@ -239,19 +242,21 @@
     &:after,
     .bar:before {
         left: 50%;
-        margin-left: -14px;
+        margin-left: -10px;
     }
 
     .bar:after {
         right: 50%;
-        margin-right: -14px;
+        margin-right: -10px;
     }
 
     .is-menu-open &:before {
+        background-color: #fff;
         top: 50%;
         transform: translateY(-50%) rotate(45deg);
     }
     .is-menu-open &:after {
+        background-color: #fff;
         top: 50%;
         transform: translateY(-50%) rotate(-45deg);
     }
@@ -275,15 +280,16 @@
         top: 0;
         left: 0;
         height: 100vh;
-        width: 100vw;
-        background-color: #281c4bcc;
-        backdrop-filter: blur(24px);
+        width: 293px;
+        background: rgba(16, 29, 48, 0.9);
+        box-shadow: 0 4px 20px rgba(2, 19, 62, 0.2);
+        backdrop-filter: blur(30px);
         padding: 132px 53px 30px;
         display: none;
         flex-direction: column;
 
         @-moz-document url-prefix() {
-            background-color: #281c4bfa;
+            background-color: rgba(16, 29, 48, .97);
         }
 
         .is-menu-open & {

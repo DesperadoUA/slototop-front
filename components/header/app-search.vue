@@ -78,9 +78,10 @@
 
 <style lang="scss">
 .search {
-    @media (max-width: 991px) {
-        display: none;
-    }
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .search__cta {

@@ -26,8 +26,8 @@
                     </div>
 
                     <div class="bonuses-item__btns">
-                        <NuxtLink no-prefetch :to="item.permalink" class="bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
-                        <span class="bonuses-item__btn btn-primary"  @click="refActivate(item)">{{getBonus}}</span>
+                        <NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
+                        <button type="button" class="bonuses-item__btn btn-primary" @click="refActivate(item)">{{getBonus}}</button>
                     </div>
                 </div>
             </div>

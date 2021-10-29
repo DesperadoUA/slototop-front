@@ -1,5 +1,12 @@
 <template>
 <footer class="footer">
+    <div class="container">
+        <div class="footer-nav">
+            <a href="" class="footer-nav-link">Казино</a>
+            <a href="" class="footer-nav-link">Платежные системы</a>
+        </div>
+    </div>
+
     <div class="partners-logos">
         <div class="container" v-if="changeMenu !== null">
             <ul class="partners-logos__list">
@@ -11,6 +18,7 @@
             </ul>
         </div>
     </div>
+
     <div class="footer__copyrights" v-if="changeText !== null">
         <div class="container">
             <p v-html="footer_text"></p>
@@ -55,15 +63,33 @@
     overflow: hidden;
 }
 
-.footer__container {
+.footer-nav {
+    padding-top: 43px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.footer-nav-link {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #fff;
+    border: 1px solid rgba(#fff, .1);
+    border-radius: 8px;
+    padding: 2px 16px 4px;
+    text-decoration: none;
+    margin-right: 4px;
+
+    @media (min-width: 992px) {
+        &:hover {
+            border: 1px solid rgba(#fff, .8);
+        }
+    }
 }
 
 .partners-logos {
-    padding-top: 41px;
-    padding-bottom: 38px;
-
-    @media (min-width: 992px) {
-    }
+    padding-top: 47px;
+    padding-bottom: 39px;
 }
 
 .partners-logos__list {
@@ -72,7 +98,6 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     margin-left: -25px;
     margin-right: -25px;
 }
@@ -83,15 +108,15 @@
 }
 
 .footer__copyrights {
+    border-top: 1px solid rgba(#fff, .1);
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: var(--theme-cr-2);
-    font-size: 15px;
-    text-align: center;
+    font-size: 14px;
+    color: rgba(#fff, .5);
 
     @media (min-width: 992px) {
-        padding-top: 20px;
-        padding-bottom: 20px;
+        padding-top: 40px;
+        padding-bottom: 40px;
     }
 }
 </style>

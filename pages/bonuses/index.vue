@@ -1,35 +1,37 @@
 <template>
       <div>
-        <app_bonuses_loop_downloads :value="data.body.bonuses" />
-        <app_content :value="data.body.content"  />
+          <app_page_banner />
+          <app_bonuses_loop_downloads :value="data.body.bonuses" />
+          <app_content :value="data.body.content"  />
       </div>
 </template>
 
 <script>
-   import DAL_Builder from '~/DAL/builder'
-   import config from '~/config/index'
+   import DAL_Builder from '~/DAL/builder';
+   import config from '~/config/index';
+   import app_page_banner from '~/components/page-banner/app_page_banner';
    import app_bonuses_loop_downloads from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'
    import app_content from '~/components/content/app-content'
 export default {
     name: "app_bonuses",
     data: () => {
         return {
-            
+
         }
     },
-    components: {app_content, app_bonuses_loop_downloads},
+    components: {app_page_banner, app_content, app_bonuses_loop_downloads},
     async asyncData({store, route, error}) {
-        const request = new DAL_Builder()
+        const request = new DAL_Builder();
         const response = await request.postType('pages')
                                           .url('bonuses')
-                                          .get()
+                                          .get();
         if(response.data.confirm === 'error') {
             error({ statusCode: 404, message: 'Post not found' })
         }
         else {
-            const body = response.data.body
-            const data = {body}
-            data.body.currentUrl = config.BASE_URL + route.path
+            const body = response.data.body;
+            const data = {body};
+            data.body.currentUrl = config.BASE_URL + route.path;
             return {data}
         }
     },
@@ -50,7 +52,3 @@ export default {
     }
 }
 </script>
-
-<style>
-
-</style>

@@ -78,9 +78,10 @@
 
 <style lang="scss">
 .search {
-    @media (max-width: 991px) {
-        display: none;
-    }
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .search__cta {
@@ -224,7 +225,7 @@
             right: 10px;
             top: 50%;
             transform: translateY(-50%);
-            background: url(/img/arrow.svg) no-repeat;
+            //background: url(/img/arrow.svg) no-repeat;
             opacity: .5;
             width: 8px;
             height: 14px;

@@ -24,36 +24,40 @@
 
 <script>
 export default {
-        name: "main_banner",
-        props: {
-            value: {
-                type: Array,
-                default: []
-            }
-        },
-        data() {
-            return {
-                
-            }
-        },
-       
-    }
+    name: "main_banner",
+    props: {
+        value: {
+            type: Array,
+            default: []
+        }
+    },
+    data() {
+        return {
+
+        }
+    },
+
+}
 </script>
 
 <style lang="scss" scoped>
 .main-banner {
-    padding-bottom: 21px;
     --banner-width: 1200px;
     --banner-gutter: 40px;
+    padding-bottom: 38px;
+
+    @media (min-width: 992px) {
+        padding-bottom: 50px;
+    }
 }
+
 .main-banner__container {
-    -webkit-overflow-scrolling: touch;
-    overflow-x: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     margin-left: calc(var(--slots-gutter) / -2);
     margin-right: calc(var(--slots-gutter) / -2);
 }
+
 .banner-item {
     flex-shrink: 0;
     flex-basis: var(--banner-width);

@@ -1,8 +1,9 @@
 <template>
     <header class="header">
         <div class="header__container container">
+            <!--<app-logo/>-->
+            <img class="logo" src="/img/logo.svg" alt="Casino Online">
             <app_menu/>
-            <app-logo/>
             <app_search/>
         </div>
     </header>
@@ -45,16 +46,12 @@
     @media (max-width: 991px) {
         display: flex;
         align-items: center;
-        min-height: 80px;
-    }
-
-    @media (min-width: 768px) and (max-width: 991px) {
-        min-height: 112px;
+        min-height: 64px;
     }
 
     @media (min-width: 992px) {
         position: absolute;
-        padding-top: 23px;
+        padding-top: 31px;
         padding-bottom: 23px;
     }
 }
@@ -62,6 +59,10 @@
 .header__container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+
+    @media (min-width: 992px) {
+        justify-content: space-between;
+    }
 }
 </style>

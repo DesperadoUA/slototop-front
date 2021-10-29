@@ -1,6 +1,5 @@
 <template>
   <div>
-    <app_bonus_card :value="data.body.posts" />
     <app_content :value="data.body.content"  />
   </div>
 </template>
@@ -9,30 +8,29 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
-    import app_bonuses_loop_downloads from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'
     export default {
-        name: "bonus-category",
-        components: {app_content, app_bonuses_loop_downloads},
+        name: "license-category",
+        components: {app_content},
         data: () => {
             return {
-               data: {},
+                data: {},
             }
         },
         async asyncData({route, error}) {
             const request = new DAL_Builder()
-            const response = await request.postType('bonuses')
-                                          .url(route.params.id)
-                                          .get()
-             if(response.data.confirm === 'error') {
-                 error({ statusCode: 404, message: 'Post not found' })
-             }
-             else {
-                 const body = response.data.body
-                 const data = {body}
-                 data.body.currentUrl = config.BASE_URL + route.path
-                 return {data}
-              }
-           },
+            const response = await request.postType('licenses')
+                .url(route.params.id)
+                .get()
+            if(response.data.confirm === 'error') {
+                error({ statusCode: 404, message: 'Post not found' })
+            }
+            else {
+                const body = response.data.body
+                const data = {body}
+                data.body.currentUrl = config.BASE_URL + route.path
+                return {data}
+            }
+        },
         head() {
             return {
                 title: this.data.body.meta_title,
@@ -47,7 +45,7 @@
                     { rel: 'canonical', href: this.data.body.currentUrl}
                 ]
             }
-    }
+        }
     }
 </script>
 

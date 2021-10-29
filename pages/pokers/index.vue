@@ -1,30 +1,28 @@
 <template>
-  <div>
-    <app_intro :value="data.body" />
-    <app_slot_card :value="data.body.slots" />
-    <app_content :value="data.body.content"  />
-  </div>
+    <div>
+        <app_poker_loop_downloads :value="data.body.poker" v-if="data.body.poker.length !== 0"/>
+        <app_content :value="data.body.content"/>
+      </div>
 </template>
 
 <script>
-    import DAL_Builder from '~/DAL/builder'
-    import config from '~/config/index'
-    import app_content from '~/components/content/app-content'
-    import app_slot_card from '~/components/slot_loop_card/app_slot_loop_card'
-
+   import DAL_Page from '~/DAL/static_pages'
+   import config from '~/config/index'
+   import app_poker_loop_downloads from '~/components/poker_loop_downloads/app_poker_loop_downloads'
+   import app_content from '~/components/content/app-content'
 export default {
-    name: "slots",
+    name: "poker-page",
     data: () => {
         return {
-            data: null
+           
         }
     },
-    components: {app_content, app_slot_card},
+    components: {app_poker_loop_downloads, app_content},
     async asyncData({route, error}) {
-        const request = new DAL_Builder()
-        const response = await request.postType('category')
-                                       .url('slots')
-                                       .get()
+        const request = {
+            url: 'pokers'
+        };
+        const response = await DAL_Page.getData(request);
         if(response.data.confirm === 'error') {
             error({ statusCode: 404, message: 'Post not found' })
         }
@@ -34,6 +32,9 @@ export default {
             data.body.currentUrl = config.BASE_URL + route.path
             return {data}
         }
+    },
+    mounted() {
+        console.log(this.data.body)
     },
     head() {
         return {
@@ -53,6 +54,4 @@ export default {
 }
 </script>
 
-<style>
-
-</style>
+<style lang="scss"></style>

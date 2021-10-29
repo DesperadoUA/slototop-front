@@ -1,9 +1,9 @@
 const redirects = [
-    { from: '/casino', to: '/' },
+   /* { from: '/casino', to: '/' },
     { from: '/payments', to: '/' },
     { from: '/vendors', to: '/' },
+    */
 ]
-
 module.exports = function (req, res, next) {
     const host = req.headers.host;
     const fullUrl = req.url;

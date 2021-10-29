@@ -1,35 +1,32 @@
 <template>
     <div>
-        <app_casino_loop_downloads :value="data.body.casino"/>
         <app_content :value="data.body.content"/>
-      </div>
+    </div>
 </template>
 
 <script>
    import DAL_Page from '~/DAL/static_pages'
    import config from '~/config/index'
-   import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
    import app_content from '~/components/content/app-content'
 export default {
-    name: "casino-page",
+    name: "type-bonuses-page",
     data: () => {
         return {
            
         }
     },
-    components: {app_casino_loop_downloads, app_content},
+    components: {app_content},
     async asyncData({route, error}) {
         const request = {
-            url: 'casinos'
+            url: 'type-bonuses'
         };
         const response = await DAL_Page.getData(request);
         if(response.data.confirm === 'error') {
             error({ statusCode: 404, message: 'Post not found' })
-        }
-        else {
-            const body = response.data.body
-            const data = {body}
-            data.body.currentUrl = config.BASE_URL + route.path
+        } else {
+            const body = response.data;
+            const data = body;
+            data.body.currentUrl = config.BASE_URL + route.path;
             return {data}
         }
     },

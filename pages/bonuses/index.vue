@@ -1,6 +1,6 @@
 <template>
       <div>
-        <app_bonuses_loop :value="data.body.bonuses" />
+        <app_bonuses_loop_downloads :value="data.body.bonuses" />
         <app_content :value="data.body.content"  />
       </div>
 </template>
@@ -8,7 +8,7 @@
 <script>
    import DAL_Builder from '~/DAL/builder'
    import config from '~/config/index'
-   import app_bonuses_loop from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'
+   import app_bonuses_loop_downloads from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'
    import app_content from '~/components/content/app-content'
 export default {
     name: "app_bonuses",
@@ -17,7 +17,7 @@ export default {
             
         }
     },
-    components: {app_content, app_bonuses_loop},
+    components: {app_content, app_bonuses_loop_downloads},
     async asyncData({store, route, error}) {
         const request = new DAL_Builder()
         const response = await request.postType('pages')

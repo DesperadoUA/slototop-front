@@ -18,15 +18,20 @@ export default {
         }
     },
     components: {app_slot_loop_downloads, app_content},
-    async asyncData({store, route}) {
+    async asyncData({route, error}) {
         const request = {
             url: 'games'
         };
         const response = await DAL_Page.getData(request);
-        const body = response.data;
-        const data = body;
-        data.body.currentUrl = config.BASE_URL + route.path;
-        return {data}
+        if(response.data.confirm === 'error') {
+            error({ statusCode: 404, message: 'Post not found' })
+        }
+        else {
+            const body = response.data.body
+            const data = {body}
+            data.body.currentUrl = config.BASE_URL + route.path
+            return {data}
+        }
     },
     mounted() {},
     head() {

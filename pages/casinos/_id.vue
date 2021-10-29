@@ -1,25 +1,27 @@
 <template>
   <div>
-    <app_content :value="data.body.content"  />
+    <app_slot_loop_downloads :value="data.body.posts"/>
+    <app_content :value="data.body.content"/>
   </div>
 </template>
 
 <script>
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
+    import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
     import app_content from '~/components/content/app-content'
     export default {
-        name: "app_single_casino",
-        components: {app_content},
+        name: "casino-category",
         data: () => {
             return {
-               data: {},
+
             }
         },
+        components: {app_casino_loop_downloads, app_content},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
-                const response = await request.postType('casino')
+                const response = await request.postType('casinos')
                     .url(route.params.id)
                     .get()
                 if(response.data.confirm === 'error') {
@@ -35,7 +37,7 @@
             else {
                 error({ statusCode: 404, message: 'Post not found' })
             }
-           },
+        },
         head() {
             return {
                 title: this.data.body.meta_title,
@@ -50,10 +52,8 @@
                     { rel: 'canonical', href: this.data.body.currentUrl}
                 ]
             }
-    }
+        }
     }
 </script>
 
-<style scoped>
-
-</style>
+<style lang="scss"></style>

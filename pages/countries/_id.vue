@@ -1,8 +1,6 @@
 <template>
   <div>
-    <app_slot_card :value="data.body" />
-    <app_slot_detail :value="data.body" />
-    <app_content :value="data.body.content" />
+    <app_content :value="data.body.content"  />
   </div>
 </template>
 
@@ -10,11 +8,9 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
-    import app_slot_card from '~/components/slot_card/app_slot_card'
-    import app_slot_detail from '~/components/slot-detail/app-slot-detail'
     export default {
-        name: "app_single_slot",
-        components: {app_slot_card, app_content, app_intro, app_slot_detail},
+        name: "country-category",
+        components: {app_content},
         data: () => {
             return {
                 data: {},
@@ -22,9 +18,9 @@
         },
         async asyncData({route, error}) {
             const request = new DAL_Builder()
-            const response = await request.postType('slots')
-                                          .url(route.params.id)
-                                          .get()
+            const response = await request.postType('countries')
+                .url(route.params.id)
+                .get()
             if(response.data.confirm === 'error') {
                 error({ statusCode: 404, message: 'Post not found' })
             }

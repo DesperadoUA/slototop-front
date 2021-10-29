@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <app_content :value="data.body.content"  />
-  </div>
+  <app_content :value="data.body.content"  />
 </template>
 
 <script>
@@ -9,26 +7,31 @@
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
     export default {
-        name: "payment-category",
-        components: {app_content},
+        name: "single-currency",
         data: () => {
             return {
                 data: {},
             }
         },
+        components: {app_content},
         async asyncData({route, error}) {
-            const request = new DAL_Builder()
-            const response = await request.postType('payments')
-                .url(route.params.id)
-                .get()
-            if(response.data.confirm === 'error') {
-                error({ statusCode: 404, message: 'Post not found' })
+            if(route.params.id) {
+                const request = new DAL_Builder()
+                const response = await request.postType('currency')
+                    .url(route.params.id)
+                    .get()
+                if(response.data.confirm === 'error') {
+                    error({ statusCode: 404, message: 'Post not found' })
+                }
+                else {
+                    const body = response.data.body
+                    const data = {body}
+                    data.body.currentUrl = config.BASE_URL + route.path
+                    return {data}
+                }
             }
             else {
-                const body = response.data.body
-                const data = {body}
-                data.body.currentUrl = config.BASE_URL + route.path
-                return {data}
+                error({ statusCode: 404, message: 'Post not found' })
             }
         },
         head() {

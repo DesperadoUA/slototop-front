@@ -7,7 +7,7 @@
         <app_slots :value="data.body.new_game" :title="newGames" link="games" :linkText="allGames"/>
         <app_bonuses_casino :value="data.body.bonuses" :title="bonusesCasino" link="bonuses" :linkText="allBonuses" />
         <app_content :value="data.body.content"/>
-      </div>
+    </div>
 </template>
 
 <script>

@@ -71,7 +71,8 @@
 
 .main-nav {
     @media (min-width: 992px) {
-        margin-right: 47px;
+        margin-right: 10px;
+        max-width: 33.333%;
     }
 }
 

@@ -12,8 +12,8 @@
             }
         },
         async mounted() {
-          await this.$store.dispatch('options/setOptions')
-          const options = this.$store.getters['options/getOptions']
+          await this.$store.dispatch('options/setOptions');
+          const options = this.$store.getters['options/getOptions'];
           this.options = options.filter(item => item.key === 'logo')[0]
         }
     }
@@ -22,13 +22,13 @@
 <style lang="scss">
 .logo {
     width: 147px;
-    margin-left: 10px;
-    margin-top: -8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 
     @media (min-width: 768px) {
         width: 176px;
-        margin-top: -13px;
-        margin-left: 2px;
     }
 }
 </style>

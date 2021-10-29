@@ -2,8 +2,8 @@
     <header class="header">
         <div class="header__container container">
             <!--<app-logo/>-->
-            <img class="logo" src="/img/logo.svg" alt="Casino Online">
             <app_menu/>
+            <img class="logo" src="/img/logo.svg" alt="Casino Online">
             <app_search/>
         </div>
     </header>
@@ -60,6 +60,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     @media (min-width: 992px) {
         justify-content: space-between;

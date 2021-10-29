@@ -78,16 +78,13 @@
 
 <style lang="scss">
 .search {
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    max-width: 33.3333%;
+    margin-left: auto;
 }
 
 .search__cta {
     color: var(--theme-cr-2);
     margin-top: 4px;
-    margin-right: 37px;
 }
 
 .search__icon {

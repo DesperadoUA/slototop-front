@@ -1,6 +1,6 @@
 <template>
     <div>
-        <app_banner :value="deafault" />
+        <app_banner :value="defaultValue" />
         <app_casino :value="data.body.casino" :title="onlineCasino" link="casinos" :linkText="allCasino"/>
         <app_casino :value="data.body.new_casino" :title="newCasino"/>
         <app_slots :value="data.body.top_game" :title="games" link="games" :linkText="allGames"/>
@@ -31,7 +31,7 @@ export default {
             allGames: "",
             bonusesCasino: "",
             allBonuses: "",
-            deafault: []
+            defaultValue: []
         }
     },
     components: {app_content, app_casino, app_slots, app_bonuses_casino, app_banner},

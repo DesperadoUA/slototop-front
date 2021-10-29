@@ -2,7 +2,7 @@
     <div class="bonuses-casino">
         <div class="container">
             <div class="bonuses-casino__heading">
-                <span class="badge-top">Топ 10</span>
+                <span class="badge-top" v-if="topTextShow">Топ 10</span>
                 <h2 class="bonuses-casino__ttl" v-if="title">{{title}}</h2>
                 <NuxtLink no-prefetch :to="link" class="link-primary" v-if="linkText">{{linkText}}</NuxtLink>
             </div>
@@ -55,6 +55,10 @@
             linkText: {
                 type: String,
                 default: undefined
+            },
+            topTextShow: {
+                type: Boolean,
+                default: true
             }
         },
         data() {

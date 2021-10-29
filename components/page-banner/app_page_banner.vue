@@ -1,13 +1,31 @@
 <template>
     <div class="page-banner">
         <div class="page-banner__container">
-            <h2 class="page-banner__ttl">Какие бонусы казино предлагают</h2>
-            <p class="page-banner__txt">Бонусы и акции в лучших онлайн казино, актуальные промокод и информация о бонусах украинских интернет клубов</p>
+            <h1 class="page-banner__ttl">{{title}}</h1>
+            <p class="page-banner__txt" v-if="shortDesc !== ''">{{shortDesc}}</p>
         </div>
     </div>
 </template>
 
 <script>
+    export default {
+        name: "app-page-banner",
+        props: {
+            title: {
+                type: String,
+                default: ''
+            },
+            shortDesc: {
+                type: String,
+                default: ''
+            }
+        },
+        data(){
+            return {
+
+            }
+        }
+    }
 </script>
 
 <style lang="scss" scoped>

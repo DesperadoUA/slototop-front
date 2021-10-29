@@ -1,15 +1,15 @@
 <template>
       <div>
-          <app_page_banner />
+          <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
           <app_bonuses_loop_downloads :value="data.body.bonuses" />
           <app_content :value="data.body.content"  />
       </div>
 </template>
 
 <script>
-   import DAL_Builder from '~/DAL/builder';
-   import config from '~/config/index';
-   import app_page_banner from '~/components/page-banner/app_page_banner';
+   import DAL_Builder from '~/DAL/builder'
+   import config from '~/config/index'
+   import app_page_banner from '~/components/page-banner/app_page_banner'
    import app_bonuses_loop_downloads from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'
    import app_content from '~/components/content/app-content'
 export default {

@@ -1,5 +1,6 @@
 <template>
     <div>
+        <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
         <app_poker_loop_downloads :value="data.body.poker" v-if="data.body.poker.length !== 0"/>
         <app_content :value="data.body.content"/>
       </div>
@@ -10,6 +11,7 @@
    import config from '~/config/index'
    import app_poker_loop_downloads from '~/components/poker_loop_downloads/app_poker_loop_downloads'
    import app_content from '~/components/content/app-content'
+   import app_page_banner from '~/components/page-banner/app_page_banner'
 export default {
     name: "poker-page",
     data: () => {
@@ -17,7 +19,7 @@ export default {
            
         }
     },
-    components: {app_poker_loop_downloads, app_content},
+    components: {app_poker_loop_downloads, app_content, app_page_banner},
     async asyncData({route, error}) {
         const request = {
             url: 'pokers'

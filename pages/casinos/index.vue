@@ -1,5 +1,6 @@
 <template>
     <div>
+        <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
         <app_casino_loop_downloads :value="data.body.casino"/>
         <app_content :value="data.body.content"/>
       </div>
@@ -10,6 +11,7 @@
    import config from '~/config/index'
    import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
    import app_content from '~/components/content/app-content'
+   import app_page_banner from '~/components/page-banner/app_page_banner'
 export default {
     name: "casino-page",
     data: () => {
@@ -17,7 +19,7 @@ export default {
            
         }
     },
-    components: {app_casino_loop_downloads, app_content},
+    components: {app_casino_loop_downloads, app_content, app_page_banner},
     async asyncData({route, error}) {
         const request = {
             url: 'casinos'

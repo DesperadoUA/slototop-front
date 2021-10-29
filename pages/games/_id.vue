@@ -1,5 +1,6 @@
 <template>
   <div>
+    <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_slot_loop_downloads :value="data.body.posts"/>
     <app_content :value="data.body.content"/>
   </div>
@@ -10,6 +11,7 @@
     import config from '~/config/index'
     import app_slot_loop_downloads from '~/components/slot_loop_download/'
     import app_content from '~/components/content/app-content'
+    import app_page_banner from '~/components/page-banner/app_page_banner'
     export default {
         name: "game-category",
         data: () => {
@@ -17,7 +19,7 @@
 
             }
         },
-        components: {app_slot_loop_downloads, app_content},
+        components: {app_slot_loop_downloads, app_content,  app_page_banner},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()

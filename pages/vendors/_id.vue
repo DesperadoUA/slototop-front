@@ -1,5 +1,6 @@
 <template>
   <div>
+    <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_content :value="data.body.content"  />
   </div>
 </template>
@@ -8,9 +9,10 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
+    import app_page_banner from '~/components/page-banner/app_page_banner'
     export default {
         name: "vendor-category",
-        components: {app_content},
+        components: {app_content, app_page_banner},
         data: () => {
             return {
                 data: {},

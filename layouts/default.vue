@@ -287,6 +287,7 @@ Buttons */
     color: var(--theme-cr-2);
     min-height: 44px;
     padding: 6px .9em 4px;
+
     @media (min-width: 992px) {
         &:hover {
             background-color: var(--theme-cr-3);
@@ -318,14 +319,17 @@ Buttons */
     color: #fff;
     min-height: 44px;
     padding: 5px .9em;
+
     &.--reel {
         background-color: var(--theme-cr-5);
+
         @media (min-width: 992px) {
             &:hover {
                 background-color: var(--theme-cr-5-darken);
             }
         }
     }
+
     /* hack for IE11 */
     @media all and (-ms-high-contrast:none) {
         *::-ms-backdrop, & {
@@ -337,6 +341,42 @@ Buttons */
 .btn-block {
     display: flex;
     width: 100%;
+}
+
+.btn-play {
+    @extend %btn-general;
+    z-index: 1;
+    min-width: 113px;
+    background-color: var(--theme-cr-3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    min-height: 42px;
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(102.49deg, #eb2757 14.95%, #e31949 84.16%), linear-gradient(92.08deg, #446dff 0%, #4200ff 98.48%), #3f7df6;
+        transition: var(--transition-default);
+        border-radius: 12px;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    @media (min-width: 992px) {
+        &:hover {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .btn-play-video {
@@ -1700,11 +1740,22 @@ Casinos */
     flex-direction: column;
     color: currentColor;
     text-decoration: none;
+    position: relative;
+
+    @media (min-width: 992px) {
+        &:hover {
+            .game-item__hover {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
 }
 
 .game-item__logo {
     overflow: hidden;
     border-radius: 10px;
+    background-color: #000;
 
     img {
         width: 100%;
@@ -1712,12 +1763,53 @@ Casinos */
     }
 }
 
+.game-item__hover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(#000, .6);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    padding: 14px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition-default);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.game-item__name {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 3px;
+}
+
+.game-item__category {
+    color: rgba(#fff, .78);
+    text-shadow: 0 1px 3px rgba(#000, .5);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 16px;
+}
+
+
+
 .bonuses-casino {
     --bonuses-width: 50%;
     --bonuses-gutter: 20px;
     background-color: var(--theme-bg-3);
     padding-top: 32px;
     padding-bottom: 33px;
+
     @media (min-width: 992px) {
         padding-top: 50px;
         padding-bottom: 44px;

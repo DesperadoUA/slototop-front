@@ -16,6 +16,13 @@
                     <div class="game-item__logo">
                         <img :src="item.thumbnail" loading="lazy" alt="" />
                     </div>
+
+                    <div class="game-item__hover">
+                        <span class="game-item__name">{{title}}</span>
+                        <span class="game-item__category">{{title}}</span>
+
+                        <span class="btn-play">Играть</span>
+                    </div>
                 </NuxtLink>
             </div>
         </div>
@@ -58,6 +65,6 @@
 </script>
 
 <style lang="scss" scoped>
-    
+
 </style>
 

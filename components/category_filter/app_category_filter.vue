@@ -36,13 +36,21 @@
 }
 
 .category-filter-item {
+    cursor: pointer;
     background-color: #fff;
     box-shadow: 0 4px 20px rgba(2, 19, 62, .2);
     border-radius: 8px;
     margin-right: 16px;
-    padding: 9px 24px;
+    padding: 8px 23px;
     font-size: 15px;
     line-height: 1.2;
     font-weight: 500;
+    border: 1px solid transparent;
+    transition: var(--transition-default);
+
+    &:hover,
+    &.is-active {
+        border-color: #f63f6c;
+    }
 }
 </style>

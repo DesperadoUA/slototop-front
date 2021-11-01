@@ -3,6 +3,7 @@
           <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
           <app_bonuses_loop_downloads :value="data.body.bonuses" />
           <app_content :value="data.body.content"  />
+          <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
       </div>
 </template>
 
@@ -12,14 +13,15 @@
    import app_page_banner from '~/components/page-banner/app_page_banner'
    import app_bonuses_loop_downloads from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'
    import app_content from '~/components/content/app-content'
+   import app_faq from '~/components/faq/app_faq'
 export default {
     name: "app_bonuses",
     data: () => {
         return {
-
+            faq: []
         }
     },
-    components: {app_page_banner, app_content, app_bonuses_loop_downloads},
+    components: {app_page_banner, app_content, app_bonuses_loop_downloads, app_faq},
     async asyncData({store, route, error}) {
         const request = new DAL_Builder();
         const response = await request.postType('pages')
@@ -34,6 +36,15 @@ export default {
             data.body.currentUrl = config.BASE_URL + route.path;
             return {data}
         }
+    },
+    computed: {
+        changeFaq(){
+            const settings = this.$store.getters['settings/getSettings']
+            if(settings) {
+                this.faq = settings.filter(item => item.key === 'bonus_page_faq')[0].value
+            }
+            return this.faq
+        },
     },
     head() {
         return {

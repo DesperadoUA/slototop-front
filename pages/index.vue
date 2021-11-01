@@ -7,6 +7,7 @@
         <app_slots :value="data.body.new_game" :title="newGames" link="games" :linkText="allGames"/>
         <app_bonuses_casino :value="data.body.bonuses" :title="bonusesCasino" link="bonuses" :linkText="allBonuses" />
         <app_content :value="data.body.content"/>
+        <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
     </div>
 </template>
 
@@ -19,6 +20,7 @@
    import app_content from '~/components/content/app-content'
    import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
    import app_banner from '~/components/main-banner/app_main_banner'
+   import app_faq from '~/components/faq/app_faq'
 export default {
     name: "main-page",
     data: () => {
@@ -31,10 +33,11 @@ export default {
             allGames: "",
             bonusesCasino: "",
             allBonuses: "",
-            defaultValue: []
+            defaultValue: [],
+            faq: []
         }
     },
-    components: {app_content, app_casino, app_slots, app_bonuses_casino, app_banner},
+    components: {app_content, app_casino, app_slots, app_bonuses_casino, app_banner, app_faq},
     async asyncData({store, route}) {
         const request = {
             url: 'main'
@@ -55,6 +58,15 @@ export default {
             this.bonusesCasino = TRANSLATE.BONUSES_CASINO.ru
             this.allBonuses = TRANSLATE.ALL_BONUSES.ru
         },
+    computed: {
+        changeFaq(){
+            const settings = this.$store.getters['settings/getSettings']
+            if(settings) {
+                this.faq = settings.filter(item => item.key === 'main_page_faq')[0].value
+            }
+            return this.faq
+        },
+    },
     head() {
         return {
             title: this.data.body.meta_title,

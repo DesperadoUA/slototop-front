@@ -34,8 +34,14 @@
     export default {
         name: "app_faq",
         props: {
-            'value': Array,
-            'title': String
+            value: {
+                type: Array,
+                default: []
+            },
+            title: {
+                type: String,
+                default: ''
+            }
         },
         data(){
             return {

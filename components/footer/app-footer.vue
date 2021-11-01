@@ -1,41 +1,25 @@
 <template>
 <footer class="footer">
-    <div class="container">
-        <div class="footer-nav">
-            <a href="" class="footer-nav-link">Казино</a>
-            <a href="" class="footer-nav-link">Платежные системы</a>
-        </div>
-    </div>
-
-    <div class="partners-logos">
-        <div class="container" v-if="changeMenu !== null">
-            <ul class="partners-logos__list">
-                <li class="partners-logos__item" v-for="(item, index) in changeMenu" :key="index">
-                    <a no-prefetch :href="item.value_1">
-                        <img :src="item.src" loading="lazy">
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="footer__copyrights" v-if="changeText !== null">
-        <div class="container">
-            <p v-html="footer_text"></p>
-        </div>
-    </div>
+    <app_menu :value="changeMenu" />
+    <app_partners_menu :value="changePartnersMenu" />
+    <app_footer_text :value="changeText" />
 </footer>
 </template>
 
 <script>
+    import app_menu from './app-footer-menu'
+    import app_footer_text from './app-footer-text'
+    import app_partners_menu from './app-partners-menu'
     export default {
         name: "app-footer",
         data(){
             return {
-              footer_text: null,
-              footer_menu: null
+                footer_text: null,
+                footer_menu: null,
+                partners_menu: null
             }
         },
+        components: {app_menu, app_footer_text, app_partners_menu},
         computed: {
           changeText(){
             const settings = this.$store.getters['settings/getSettings']
@@ -50,7 +34,14 @@
               this.footer_menu = settings.filter(item => item.key === 'footer_menu')[0].value
             }
             return this.footer_menu
-          }
+          },
+            changePartnersMenu(){
+                const settings = this.$store.getters['settings/getSettings']
+                if(settings) {
+                    this.partners_menu = settings.filter(item => item.key === 'partners_menu')[0].value
+                }
+                return this.partners_menu
+            }
         }
     }
 </script>

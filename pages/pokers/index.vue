@@ -3,6 +3,7 @@
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
         <app_poker_loop_downloads :value="data.body.poker" v-if="data.body.poker.length !== 0"/>
         <app_content :value="data.body.content"/>
+        <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
       </div>
 </template>
 
@@ -12,14 +13,15 @@
    import app_poker_loop_downloads from '~/components/poker_loop_downloads/app_poker_loop_downloads'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
+   import app_faq from '~/components/faq/app_faq'
 export default {
     name: "poker-page",
     data: () => {
         return {
-           
+            faq: []
         }
     },
-    components: {app_poker_loop_downloads, app_content, app_page_banner},
+    components: {app_poker_loop_downloads, app_content, app_page_banner, app_faq},
     async asyncData({route, error}) {
         const request = {
             url: 'pokers'
@@ -35,8 +37,14 @@ export default {
             return {data}
         }
     },
-    mounted() {
-        console.log(this.data.body)
+    computed: {
+        changeFaq(){
+            const settings = this.$store.getters['settings/getSettings']
+            if(settings) {
+                this.faq = settings.filter(item => item.key === 'poker_page_faq')[0].value
+            }
+            return this.faq
+        },
     },
     head() {
         return {

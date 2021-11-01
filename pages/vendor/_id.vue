@@ -1,7 +1,9 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+    <app_slot_loop_downloads :value="data.body.games" />
     <app_content :value="data.body.content"  />
+    <app_casino_loop_downloads :value="data.body.casino" />
   </div>
 </template>
 
@@ -10,6 +12,8 @@
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
+    import app_slot_loop_downloads from '~/components/slot_loop_download/'
+    import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
     export default {
         name: "single-vendor",
         data: () => {
@@ -17,7 +21,7 @@
                 data: {},
             }
         },
-        components: {app_content, app_page_banner},
+        components: {app_content, app_page_banner, app_slot_loop_downloads, app_casino_loop_downloads},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()

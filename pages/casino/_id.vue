@@ -1,7 +1,7 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-    <app_bonuses :value="data.body.bonuses" :topTextShow="false" :title="data.body.title | createTitle" />
+    <app_bonuses :value="data.body.bonuses" :topTextShow="false" :title="data.body.title | createTitle" v-if="data.body.bonuses.length !== 0" />
     <app_content :value="data.body.content" />
     <app_faq :value="data.body.faq" />
   </div>

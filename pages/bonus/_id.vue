@@ -2,22 +2,25 @@
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_content :value="data.body.content"  />
+    <app_bonuses_casino :value="data.body.bonuses" :title="data.body.otherBonuses" :topTextShow="false"/>
   </div>
 </template>
 
 <script>
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
+    import TRANSLATE from '~/helpers/translate.json'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
+    import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
     export default {
         name: "single-bonus",
         data: () => {
             return {
-                data: {},
+
             }
         },
-        components: {app_content, app_page_banner},
+        components: {app_content, app_page_banner, app_bonuses_casino},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -31,6 +34,7 @@
                     const body = response.data.body
                     const data = {body}
                     data.body.currentUrl = config.BASE_URL + route.path
+                    data.body.otherBonuses =  TRANSLATE.OTHER_BONUSES.ru + body.casino?.[0].title
                     return {data}
                 }
             }

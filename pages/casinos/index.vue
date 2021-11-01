@@ -3,6 +3,7 @@
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
         <app_casino_loop_downloads :value="data.body.casino"/>
         <app_content :value="data.body.content"/>
+        <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
       </div>
 </template>
 
@@ -12,14 +13,16 @@
    import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
+   import app_faq from '~/components/faq/app_faq'
+
 export default {
     name: "casino-page",
     data: () => {
         return {
-           
+            faq: []
         }
     },
-    components: {app_casino_loop_downloads, app_content, app_page_banner},
+    components: {app_casino_loop_downloads, app_content, app_page_banner, app_faq},
     async asyncData({route, error}) {
         const request = {
             url: 'casinos'
@@ -35,7 +38,15 @@ export default {
             return {data}
         }
     },
-    mounted() {},
+    computed: {
+        changeFaq(){
+            const settings = this.$store.getters['settings/getSettings']
+            if(settings) {
+                this.faq = settings.filter(item => item.key === 'casino_page_faq')[0].value
+            }
+            return this.faq
+        },
+    },
     head() {
         return {
             title: this.data.body.meta_title,

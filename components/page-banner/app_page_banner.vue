@@ -36,19 +36,22 @@
     background-position: 50% 0;
     background-size: cover;
     color: var(--page-banner-txt-cr);
-    min-height: 370px;
+    min-height: 395px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: 15px;
     line-height: 1.5;
+    padding-left: 16px;
+    padding-right: 16px;
 
     @media (min-width: 720px) {
         background-image: url(/img/bg-banner.jpg);
     }
 
     @media (min-width: 992px) {
+        min-height: 370px;
         font-size: 16px;
     }
 }

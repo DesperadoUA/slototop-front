@@ -105,12 +105,12 @@
     left: 0;
     width: 100%;
     position: fixed;
-    background-color: #281c4bcc;
-    backdrop-filter: blur(24px);
+    background-color: rgba(16, 29, 48, .9);
+    backdrop-filter: blur(30px);
     animation: expand .4s ease-in-out;
 
     @-moz-document url-prefix() {
-        background-color: #281c4bfa;
+        background-color: rgba(16, 29, 48, .9);
     }
 }
 
@@ -132,7 +132,7 @@
     font-family: var(--base-font-family);
     width: 100%;
     display: flex;
-    border-bottom: 2px solid rgba(#fff, .2);
+    border-bottom: 1px solid #fff;
     padding-bottom: 7px;
     position: relative;
 }
@@ -142,7 +142,7 @@
     background-color: transparent;
     font-family: inherit;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 500;
     color: #fff;
     height: 43px;
     flex: 0 0 91.163%;

@@ -22,7 +22,7 @@
 
 <style lang="scss" scoped>
 .category-filter {
-    background-color: #eef1f9;
+    background-color: var(--theme-bg-3);
     padding-top: 40px;
 
     @media (min-width: 992px) {

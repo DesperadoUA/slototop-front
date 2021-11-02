@@ -414,6 +414,89 @@ Buttons */
 }
 
 /*
+Circle rating */
+
+.circle-rating {
+    position: relative;
+    flex-shrink: 0;
+    flex-basis: 94px;
+    width: 94px;
+    height: 94px;
+    margin-bottom: 5px;
+    z-index: 0;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        right: 4px;
+        top: 4px;
+        bottom: 4px;
+        border-radius: 50%;
+        background-color: #fff;
+        z-index: -1;
+    }
+}
+
+.circle-rating__logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 50%;
+    width: 62px;
+    height: 62px;
+}
+
+.circle-rating__chart {
+    display: block;
+    border-radius: 50%;
+}
+
+.circle-rating__circle-bg {
+    fill: none;
+    opacity: .23;
+    stroke: var(--cr-rating);
+    stroke-width: 2;
+}
+
+.circle-rating__circle {
+    fill: none;
+    stroke: var(--cr-rating);
+    stroke-width: 2;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.circle-rating__percentage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 800;
+    font-size: 32px;
+    text-anchor: middle;
+    color: var(--theme-cr-2);
+}
+
+.circle-rating__txt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateY(10px);
+    font-size: 10px;
+    color: #4d5a6a;
+    font-weight: 500;
+}
+
+/*
 Casino Card*/
 .casino-cards-container {
     @media (max-width: 1279px) {
@@ -443,14 +526,15 @@ Casino Card*/
 }
 
 .casino-card {
-    background: rgba(#000, .2);
-    border: 1px solid rgba(#fff, .1);
-    border-radius: 14px;
-    padding: 8px 18px 8px 8px;
+    padding-top: 10px;
+    padding-bottom: 46px;
+    background-color: var(--theme-bg-3);
+}
+
+.casino-card__container {
     display: flex;
     align-items: center;
-    color: #fff;
-    margin-bottom: 11px;
+
     @media (max-width: 1279px) {
         flex-wrap: wrap;
         padding: 0;
@@ -459,11 +543,11 @@ Casino Card*/
 
 .casino-card__logo {
     align-self: flex-start;
-    flex: 0 0 244px;
-    max-width: 244px;
+    flex: 0 0 214px;
+    max-width: 214px;
     overflow: hidden;
     border-radius: 10px;
-    margin-right: 8px;
+    margin-right: 32px;
 
     @media (max-width: 1279px) {
         flex-shrink: 0;
@@ -477,6 +561,7 @@ Casino Card*/
     }
 
     img {
+        width: 100%;
         border-radius: 10px;
         display: block;
 
@@ -493,6 +578,34 @@ Casino Card*/
     }
 }
 
+.casino-card__name {
+    font-size: 24px;
+    line-height: 1.167;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--theme-cr-2);
+    display: flex;
+    align-items: baseline;
+}
+
+.license {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    color: #4d5a6a;
+}
+
+.casino-card__company {
+    font-size: 15px;
+    line-height: 1.2;
+    color: var(--theme-cr-txt-cms);
+    margin-bottom: 20px;
+
+    @media (min-width: 992px) {
+        margin-bottom: 33px;
+    }
+}
+
 .casino-card__rating {
     flex: 0 0 112px;
     max-width: 112px;
@@ -501,9 +614,9 @@ Casino Card*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(#1c0e27, .75);
     border-radius: 10px;
     margin-right: 16px;
+
     @media (max-width: 1279px) {
         width: 112px;
         border-radius: 0 14px 0 0;
@@ -519,6 +632,7 @@ Casino Card*/
     justify-content: space-between;
     flex: 0 0 188px;
     max-width: 188px;
+
     @media (max-width: 1279px) {
         width: 100%;
         max-width: none;
@@ -585,6 +699,7 @@ Casino Card*/
     min-width: 130px;
     border-radius: 6px;
     text-align: center;
+
     @media (max-width: 1279px) {
         max-width: calc(50% - 8px);
         flex-basis: calc(50% - 8px);
@@ -626,12 +741,11 @@ Casino Card*/
 .casino-card__cta {
     flex-shrink: 0;
     width: 100%;
-    max-width: 215px;
-    margin-left: auto;
-    padding-left: 15px;
+    max-width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     @media (max-width: 1279px) {
         max-width: none;
         padding-left: 0;

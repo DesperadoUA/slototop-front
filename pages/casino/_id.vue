@@ -3,6 +3,7 @@
       <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
       <app_breadcrumbs />
       <app_casino_card />
+      <app_casino_detail />
       <app_bonuses :value="data.body.bonuses" :topTextShow="false" :title="data.body.title | createTitle" />
       <app_content :value="data.body.content" />
       <app_faq :value="data.body.faq" />
@@ -18,10 +19,11 @@
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import app_casino_card from '~/components/casino_card/app-casino-card'
+    import app_casino_detail from '~/components/casino-detail/app-casino-detail'
 
     export default {
         name: "app_single_casino",
-        components: {app_content, app_breadcrumbs, app_casino_card, app_faq, app_bonuses, app_page_banner},
+        components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner},
         data: () => {
             return {
                titleBonus: ''
@@ -34,17 +36,17 @@
         },
         async asyncData({route, error}) {
             if(route.params.id) {
-                const request = new DAL_Builder()
+                const request = new DAL_Builder();
                 const response = await request.postType('casino')
                     .url(route.params.id)
-                    .get()
+                    .get();
                 if(response.data.confirm === 'error') {
                     error({ statusCode: 404, message: 'Post not found' })
                 }
                 else {
-                    const body = response.data.body
-                    const data = {body}
-                    data.body.currentUrl = config.BASE_URL + route.path
+                    const body = response.data.body;
+                    const data = {body};
+                    data.body.currentUrl = config.BASE_URL + route.path;
                     return {data}
                 }
             }
@@ -69,7 +71,3 @@
     }
     }
 </script>
-
-<style scoped>
-
-</style>

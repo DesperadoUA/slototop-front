@@ -982,15 +982,24 @@ Casino Detail*/
     }
 }
 
+.detail-table {
+    display: block;
+}
+
 .detail-row {
     display: flex;
     flex-wrap: wrap;
+    text-align: left;
 }
 
 .detail-row__heading {
     margin-bottom: 20px;
     padding-top: 5px;
     padding-right: 10px;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
 
     @media (min-width: 768px) {
         flex: 0 0 var(--heading-col-width);
@@ -1006,15 +1015,8 @@ Casino Detail*/
     margin-bottom: 12px;
 }
 
-.detail-row__sub-ttl {
-    font-size: 12px;
-    line-height: 14px;
-    text-transform: uppercase;
-    font-weight: 400;
-    margin-bottom: 0;
-}
-
 .detail-row__content {
+    padding: 0;
     margin-bottom: 16px;
     width: 100%;
 

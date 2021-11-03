@@ -1,8 +1,12 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-    <app_content :value="data.body.content"  />
-    <app_bonuses_casino :value="data.body.bonuses" :title="data.body.otherBonuses" :topTextShow="false"/>
+    <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+    <app_bonuses_casino :value="data.body.bonuses"
+                        :title="data.body.otherBonuses"
+                        :topTextShow="false"
+                        v-if="data.body.bonuses.length !== 0"
+    />
   </div>
 </template>
 

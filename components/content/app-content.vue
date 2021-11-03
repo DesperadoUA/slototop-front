@@ -1,7 +1,7 @@
 <template>
-<div class="cms" v-if="value!==''">
-    <div class="container" v-html="value"></div>
-</div>
+    <div class="cms" v-if="value!==''">
+        <div class="container" v-html="value"></div>
+    </div>
 </template>
 
 <script>

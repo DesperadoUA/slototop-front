@@ -2,7 +2,7 @@
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_poker_loop_downloads :value="data.body.posts" v-if="data.body.posts.length !== 0"/>
-    <app_content :value="data.body.content"/>
+    <app_content :value="data.body.content" v-if="data.body.content !== ''"/>
   </div>
 </template>
 

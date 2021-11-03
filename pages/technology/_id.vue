@@ -1,7 +1,8 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-    <app_content :value="data.body.content"  />
+    <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+    <app_casino_loop_downloads :value="data.body.casino" v-if="data.body.casino.length !== 0" />
   </div>
 </template>
 
@@ -10,6 +11,7 @@
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
+    import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
     export default {
         name: "single-technology",
         data: () => {
@@ -17,7 +19,7 @@
                 data: {},
             }
         },
-        components: {app_content, app_page_banner},
+        components: {app_content, app_page_banner, app_casino_loop_downloads},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()

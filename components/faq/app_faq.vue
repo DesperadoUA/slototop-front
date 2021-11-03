@@ -69,27 +69,28 @@
 <style lang="scss">
 .faq {
     padding: 30px 0;
-    background-color: var(--theme-bg-1);
 }
+
 .faq_title {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 11px;
     color: var(--theme-cr-4);
 }
+
 .faq_question {
     transition: var(--transition-default);
     background-color: var(--faq-cr);
     border-radius: 10px;
-    padding: 5px 75px 5px 25px;
+    padding: 16px 57px 16px 20px;
     margin-top: 2px;
     font-style: normal;
     font-weight: bold;
-    line-height: 36px;
-    color: #fff;
+    color: var(--theme-cr-2);
     position: relative;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.2;
 
     @media (min-width: 992px) {
         &:hover {
@@ -97,15 +98,19 @@
         }
     }
 }
+
 .faq_answer {
     font: inherit;
-    line-height: 22px;
+    font-size: 14px;
+    line-height: 25px;
+    color: var(--theme-cr-txt-cms);
     vertical-align: baseline;
-    padding: 45px 65px;
+    padding: 25px 20px;
     display: none;
     opacity: 0;
     transition: 0.7s;
 }
+
 .faq_answer span {
     font-family: var(--font);
 }

@@ -1,8 +1,8 @@
 <template>
       <div>
           <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-          <app_bonuses_loop_downloads :value="data.body.bonuses" />
-          <app_content :value="data.body.content"  />
+          <app_bonuses_loop_downloads :value="data.body.bonuses" v-if="data.body.bonuses.length !== 0" />
+          <app_content :value="data.body.content" v-if="data.body.content !== ''" />
           <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
       </div>
 </template>

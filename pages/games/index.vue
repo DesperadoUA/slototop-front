@@ -1,8 +1,8 @@
 <template>
     <div>
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-        <app_slot_loop_downloads :value="data.body.games"/>
-        <app_content :value="data.body.content"/>
+        <app_slot_loop_downloads :value="data.body.games" v-if="data.body.games.length !== 0" />
+        <app_content :value="data.body.content" v-if="data.body.content !== ''" />
       </div>
 </template>
 
@@ -35,7 +35,6 @@ export default {
             return {data}
         }
     },
-    mounted() {},
     head() {
         return {
             title: this.data.body.meta_title,

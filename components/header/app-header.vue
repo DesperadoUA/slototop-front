@@ -1,9 +1,8 @@
 <template>
     <header class="header">
         <div class="header__container container">
-            <!--<app-logo/>-->
             <app_menu/>
-            <img class="logo" src="/img/logo.svg" alt="Casino Online">
+            <app-logo/>
             <app_search/>
         </div>
     </header>

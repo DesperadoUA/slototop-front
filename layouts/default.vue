@@ -30,7 +30,7 @@
     --theme-cr-4: #281c4b;
     --theme-cr-5: hsl(334, 83%, 53%);
     --theme-cr-5-darken: hsl(334, 83%, 43%);
-    --faq-cr: #0b0038b3;
+    --faq-cr: #e1e6ed;
     --theme-cr-txt: var(--theme-cr-2);
     --theme-cr-txt-alt: #fff;
     --theme-cr-txt-cms: #4a5767;
@@ -1437,12 +1437,16 @@ Casinos */
 }
 
 .slots__container {
-    padding-top: 6px;
+    padding-top: 50px;
     overflow-x: auto;
     display: flex;
     justify-content: space-between;
     margin-left: calc(var(--slots-gutter) / -2);
     margin-right: calc(var(--slots-gutter) / -2);
+
+    .slots__heading + & {
+        padding-top: 6px;
+    }
 
     @media (max-width: 1229px) {
         margin-right: calc(var(--side-gutters) * -1);
@@ -1550,7 +1554,7 @@ Casinos */
 }
 
 .slot-item__stats-val {
-    color: #4a5767;
+    color: var(--theme-cr-txt-cms);
     margin-left: 7px;
     margin-bottom: -3px;
     font-size: 12px;
@@ -1564,6 +1568,8 @@ Casinos */
 }
 
 .slot-item__btn {
+    position: relative;
+    z-index: 1;
     color: #fff;
     font-family: var(--base-font-family);
     font-size: 14px;
@@ -1591,8 +1597,27 @@ Casinos */
     &.--blue {
         background-color: var(--btn-primary);
 
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            transition: var(--transition-default);
+            border-radius: 0 0 9px 9px;
+            background:
+                linear-gradient(0deg, rgba(#000, .1), rgba(#000, .1)),
+                linear-gradient(92.08deg, #446dff 0%, #4200ff 98.48%), #3f7df6;
+            z-index: -1;
+            opacity: 0;
+        }
+
         &:hover {
-            background-color: #0475dd;
+            &:after {
+                content: '';
+                opacity: 1;
+            }
         }
     }
 }

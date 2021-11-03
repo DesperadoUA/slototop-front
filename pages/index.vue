@@ -1,12 +1,12 @@
 <template>
     <div>
-        <app_banner :value="defaultValue" />
+        <app_banner :value="changeBanner" v-if="changeBanner.length !== 0 && device" />
         <app_casino :value="data.body.casino" :title="onlineCasino" link="casinos" :linkText="allCasino"/>
         <app_casino :value="data.body.new_casino" :title="newCasino"/>
         <app_slots :value="data.body.top_game" :title="games" link="games" :linkText="allGames"/>
         <app_slots :value="data.body.new_game" :title="newGames" link="games" :linkText="allGames"/>
         <app_bonuses_casino :value="data.body.bonuses" :title="bonusesCasino" link="bonuses" :linkText="allBonuses" />
-        <app_content :value="data.body.content"/>
+        <app_content :value="data.body.content" v-if="data.body.content !== ''"/>
         <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
     </div>
 </template>
@@ -34,7 +34,9 @@ export default {
             bonusesCasino: "",
             allBonuses: "",
             defaultValue: [],
-            faq: []
+            faq: [],
+            banner: [],
+            device: false
         }
     },
     components: {app_content, app_casino, app_slots, app_bonuses_casino, app_banner, app_faq},
@@ -42,10 +44,10 @@ export default {
         const request = {
             url: 'main'
         };
-        const response = await DAL_Page.getData(request);
-        const body = response.data;
-        const data = body;
-        data.body.currentUrl = config.BASE_URL + route.path;
+        const response = await DAL_Page.getData(request)
+        const body = response.data
+        const data = body
+        data.body.currentUrl = config.BASE_URL + route.path
         return {data}
     },
     mounted() {
@@ -57,6 +59,7 @@ export default {
             this.allGames = TRANSLATE.ALL_GAMES.ru
             this.bonusesCasino = TRANSLATE.BONUSES_CASINO.ru
             this.allBonuses = TRANSLATE.ALL_BONUSES.ru
+            this.device = window.screen.width < 1200 ? false : true
         },
     computed: {
         changeFaq(){
@@ -65,6 +68,13 @@ export default {
                 this.faq = settings.filter(item => item.key === 'main_page_faq')[0].value
             }
             return this.faq
+        },
+        changeBanner(){
+            const settings = this.$store.getters['settings/getSettings']
+            if(settings) {
+                this.banner = settings.filter(item => item.key === 'banner')[0].value
+            }
+            return this.banner
         },
     },
     head() {

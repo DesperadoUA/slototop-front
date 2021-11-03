@@ -1,7 +1,7 @@
 <template>
     <div>
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-        <app_content :value="data.body.content"/>
+        <app_content :value="data.body.content" v-if="data.body.content !== ''"/>
     </div>
 </template>
 

@@ -1,7 +1,8 @@
 <template>
     <div>
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-        <app_content :value="data.body.content"/>
+        <app_payment_loop_download :value="data.body.posts" v-if="data.body.posts.length !== 0" />
+        <app_content :value="data.body.content" v-if="data.body.content !== ''"/>
     </div>
 </template>
 
@@ -10,6 +11,7 @@
    import config from '~/config/index'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
+   import app_payment_loop_download from '~/components/payment_loop_download'
 export default {
     name: "type-payments-page",
     data: () => {
@@ -17,7 +19,7 @@ export default {
            
         }
     },
-    components: {app_content, app_page_banner},
+    components: {app_content, app_page_banner, app_payment_loop_download},
     async asyncData({route, error}) {
         const request = {
             url: 'type-payments'
@@ -32,7 +34,6 @@ export default {
             return {data}
         }
     },
-    mounted() {},
     head() {
         return {
             title: this.data.body.meta_title,

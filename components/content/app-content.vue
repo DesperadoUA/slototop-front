@@ -174,7 +174,7 @@
     }
 }
 
-table {
+table:not(.detail-table) {
     font-family: var(--base-font-family);
     line-height: 1.6;
     box-shadow: 0 2px 14px rgba(#04001a, .15);
@@ -223,7 +223,7 @@ table {
         }
     }
 
-    &--no-border {
+    /*&--no-border {
         tr {
             &:not(:last-child) {
                 td {
@@ -231,7 +231,7 @@ table {
                 }
             }
         }
-    }
+    }*/
 
     td {
         font-size: 18px;

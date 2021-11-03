@@ -287,6 +287,7 @@ Buttons */
     color: var(--theme-cr-2);
     min-height: 44px;
     padding: 6px .9em 4px;
+
     @media (min-width: 992px) {
         &:hover {
             background-color: var(--theme-cr-3);
@@ -318,14 +319,17 @@ Buttons */
     color: #fff;
     min-height: 44px;
     padding: 5px .9em;
+
     &.--reel {
         background-color: var(--theme-cr-5);
+
         @media (min-width: 992px) {
             &:hover {
                 background-color: var(--theme-cr-5-darken);
             }
         }
     }
+
     /* hack for IE11 */
     @media all and (-ms-high-contrast:none) {
         *::-ms-backdrop, & {
@@ -337,6 +341,42 @@ Buttons */
 .btn-block {
     display: flex;
     width: 100%;
+}
+
+.btn-play {
+    @extend %btn-general;
+    z-index: 1;
+    min-width: 113px;
+    background-color: var(--theme-cr-3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    min-height: 42px;
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(0deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)), linear-gradient(102.49deg, #eb2757 14.95%, #e31949 84.16%), linear-gradient(92.08deg, #446dff 0%, #4200ff 98.48%), #3f7df6;
+        transition: var(--transition-default);
+        border-radius: 12px;
+        opacity: 0;
+        z-index: -1;
+    }
+
+    @media (min-width: 992px) {
+        &:hover {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
 }
 
 .btn-play-video {
@@ -366,11 +406,96 @@ Buttons */
     font-size: 15px;
     font-weight: 500;
     text-decoration: none;
+
     @media (min-width: 992px) {
         &:hover {
             text-decoration: underline;
         }
     }
+}
+
+/*
+Circle rating */
+
+.circle-rating {
+    position: relative;
+    flex-shrink: 0;
+    flex-basis: 106px;
+    width: 106px;
+    height: 106px;
+    margin-bottom: 5px;
+    z-index: 0;
+
+    &:after {
+        content: '';
+        position: absolute;
+        left: 4px;
+        right: 4px;
+        top: 4px;
+        bottom: 4px;
+        border-radius: 50%;
+        background-color: #fff;
+        z-index: -1;
+    }
+}
+
+.circle-rating__logo {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    border-radius: 50%;
+    width: 62px;
+    height: 62px;
+}
+
+.circle-rating__chart {
+    display: block;
+    border-radius: 50%;
+}
+
+.circle-rating__circle-bg {
+    fill: none;
+    opacity: .23;
+    stroke: var(--cr-rating);
+    stroke-width: 2;
+}
+
+.circle-rating__circle {
+    fill: none;
+    stroke: var(--cr-rating);
+    stroke-width: 2;
+    stroke-linecap: round;
+    animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+    0% {
+        stroke-dasharray: 0 100;
+    }
+}
+
+.circle-rating__percentage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateY(-6px);
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 1;
+    text-anchor: middle;
+    color: var(--theme-cr-2);
+}
+
+.circle-rating__txt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) translateY(14px);
+    font-size: 10px;
+    color: #4d5a6a;
+    font-weight: 500;
 }
 
 /*
@@ -403,47 +528,52 @@ Casino Card*/
 }
 
 .casino-card {
-    background: rgba(#000, .2);
-    border: 1px solid rgba(#fff, .1);
-    border-radius: 14px;
-    padding: 8px 18px 8px 8px;
+    padding-top: 10px;
+    padding-bottom: 46px;
+    background-color: var(--theme-bg-3);
+}
+
+.casino-card__container {
     display: flex;
     align-items: center;
-    color: #fff;
-    margin-bottom: 11px;
+
     @media (max-width: 1279px) {
         flex-wrap: wrap;
-        padding: 0;
     }
 }
 
 .casino-card__logo {
     align-self: flex-start;
-    flex: 0 0 244px;
-    max-width: 244px;
     overflow: hidden;
-    border-radius: 10px;
-    margin-right: 8px;
+    border-radius: 8px;
+    margin-right: 19px;
+    width: 100%;
 
     @media (max-width: 1279px) {
         flex-shrink: 0;
-        flex-basis: calc(100% - 112px);
-        border-radius: 14px 0 0 0;
         margin-right: 0;
         position: relative;
     }
-    @media (max-width: 768px) {
-       max-width: none;
+
+    @media (max-width: 991px) {
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 992px) {
+        flex: 0 0 214px;
+        max-width: 214px;
     }
 
     img {
-        border-radius: 10px;
+        width: 100%;
+        max-width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 8px;
         display: block;
 
         @media (max-width: 1279px) {
-            width: 100%;
             height: auto;
-            max-width: none;
             object-fit: cover;
         }
 
@@ -453,23 +583,62 @@ Casino Card*/
     }
 }
 
+.casino-card__name {
+    font-size: 24px;
+    line-height: 1.167;
+    font-weight: 700;
+    margin-top: 8px;
+    margin-bottom: 9px;
+    color: var(--theme-cr-2);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    img {
+        margin-left: 7px;
+    }
+}
+
+.casino-card__license {
+    margin-left: 19px !important;
+    margin-right: 11px;
+}
+
+.casino-card__license-txt {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    color: #4d5a6a;
+    margin-left: 5px;
+}
+
+.casino-card__company {
+    font-size: 15px;
+    line-height: 1.2;
+    color: var(--theme-cr-txt-cms);
+    margin-bottom: 20px;
+
+    @media (min-width: 992px) {
+        margin-bottom: 33px;
+    }
+}
+
 .casino-card__rating {
-    flex: 0 0 112px;
-    max-width: 112px;
+    flex: 0 0 106px;
+    max-width: 106px;
     align-self: stretch;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(#1c0e27, .75);
-    border-radius: 10px;
-    margin-right: 16px;
+    margin-top: -32px;
+
     @media (max-width: 1279px) {
         width: 112px;
         border-radius: 0 14px 0 0;
-        margin-right: 0;
         padding-top: 15px;
         max-width: 112px;
+        margin-top: 0;
     }
 }
 
@@ -479,6 +648,7 @@ Casino Card*/
     justify-content: space-between;
     flex: 0 0 188px;
     max-width: 188px;
+
     @media (max-width: 1279px) {
         width: 100%;
         max-width: none;
@@ -545,6 +715,7 @@ Casino Card*/
     min-width: 130px;
     border-radius: 6px;
     text-align: center;
+
     @media (max-width: 1279px) {
         max-width: calc(50% - 8px);
         flex-basis: calc(50% - 8px);
@@ -586,19 +757,18 @@ Casino Card*/
 .casino-card__cta {
     flex-shrink: 0;
     width: 100%;
-    max-width: 215px;
-    margin-left: auto;
-    padding-left: 15px;
+    max-width: 200px;
     display: flex;
     flex-direction: column;
     justify-content: center;
+
     @media (max-width: 1279px) {
-        max-width: none;
         padding-left: 0;
     }
 
     [class*="btn"] + [class*="btn"] {
         margin-top: 6px;
+
         @media (max-width: 1279px) {
             margin-top: 0;
             border-radius: 0 0 15px 15px;
@@ -614,13 +784,13 @@ Casino Card*/
 
 .casino-card__txt {
     line-height: 1.8125;
-    margin-left: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     flex-grow: 1;
-    @media (max-width: 1279px) {
-        margin: 16px;
+
+    @media (min-width: 992px) {
+        margin-left: 16px;
     }
 
     ul {
@@ -799,27 +969,38 @@ Blog */
 /*
 Casino Detail*/
 .casino-detail {
-    --heading-col-width: 228px;
+    --heading-col-width: 246px;
     --detail-ttl-width: 139px;
-    padding-top: 59px;
-    padding-bottom: 17px;
-    margin-top: 45px;
+    padding-top: 30px;
+    padding-bottom: 15px;
     background-color: #fff;
     display: flow-root;
+
+    @media (min-width: 992px) {
+        padding-top: 50px;
+        padding-bottom: 30px;
+    }
+}
+
+.detail-table {
+    display: block;
 }
 
 .detail-row {
     display: flex;
     flex-wrap: wrap;
-    margin-bottom: 20px;
-    @media (min-width: 768px) {
-        margin-bottom: 9px;
-    }
+    text-align: left;
 }
 
 .detail-row__heading {
     margin-bottom: 20px;
-    padding-top: 8px;
+    padding-top: 5px;
+    padding-right: 10px;
+    font-size: 12px;
+    line-height: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+
     @media (min-width: 768px) {
         flex: 0 0 var(--heading-col-width);
         max-width: var(--heading-col-width);
@@ -834,16 +1015,14 @@ Casino Detail*/
     margin-bottom: 12px;
 }
 
-.detail-row__sub-ttl {
-    font-weight: 400;
-    margin-bottom: 0;
-}
-
 .detail-row__content {
-    margin-bottom: 12px;
+    padding: 0;
+    margin-bottom: 16px;
     width: 100%;
+
     @media (min-width: 768px) {
         display: flex;
+        align-items: center;
         flex-wrap: wrap;
         margin-left: auto;
         width: calc(100% - var(--heading-col-width));
@@ -873,6 +1052,7 @@ Casino Detail*/
     padding-right: 10px;
     display: flex;
     margin-bottom: 12px;
+
     @media (min-width: 992px) {
         flex: 0 0 43%;
         max-width: 43%;
@@ -888,6 +1068,54 @@ Casino Detail*/
     flex-shrink: 0;
     font-weight: 700;
     flex-basis: calc(100% - var(--detail-ttl-width));
+}
+
+.detail-item {
+    display: inline-flex;
+    align-items: center;
+    color: var(--theme-cr-2);
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 14px;
+    padding: 5px 8px;
+    margin-bottom: 4px;
+    margin-right: 4px;
+    min-height: 24px;
+    border-radius: 8px;
+    box-shadow: inset 0 0 0 1px rgba(13, 35, 66, .1);
+    text-decoration: none;
+
+    &.--flag {
+        padding: 0;
+        border-radius: 5px;
+        min-height: 18px;
+        box-shadow: none;
+        border: 1px solid #cfd5e1;
+
+        img {
+            max-height: 18px;
+        }
+    }
+
+    &.--payment {
+        box-shadow: inset 0 0 0 1px #3ff6bf;
+    }
+}
+
+button.detail-item,
+a.detail-item {
+    color: var(--btn-primary);
+
+    @media screen and (min-width: 992px) {
+        &:hover {
+            box-shadow: inset 0 0 0 1px var(--btn-primary);
+        }
+    }
+}
+
+.detail-item__icon {
+    margin-right: 10px;
+    margin-left: 4px;
 }
 
 .game-type {
@@ -912,36 +1140,6 @@ Casino Detail*/
     path {
         fill: currentColor;
     }
-}
-
-.detail-item {
-    display: inline-flex;
-    align-items: center;
-    color: var(--theme-cr-4);
-    font-weight: 600;
-    font-size: 14px;
-    padding: 6px 12px;
-    margin-bottom: 8px;
-    margin-right: 8px;
-    min-height: 40px;
-    background-color: rgba(#281c4b, .08);
-    border-radius: 6px;
-    box-shadow: inset 0 0 0 1px transparent;
-    text-decoration: none;
-}
-
-button.detail-item,
-a.detail-item {
-    @media screen and (min-width: 992px) {
-        &:hover {
-            box-shadow: inset 0 0 0 1px var(--btn-primary);
-        }
-    }
-}
-
-.detail-item__icon {
-    margin-right: 10px;
-    margin-left: 4px;
 }
 
 /*
@@ -1700,11 +1898,22 @@ Casinos */
     flex-direction: column;
     color: currentColor;
     text-decoration: none;
+    position: relative;
+
+    @media (min-width: 992px) {
+        &:hover {
+            .game-item__hover {
+                opacity: 1;
+                pointer-events: auto;
+            }
+        }
+    }
 }
 
 .game-item__logo {
     overflow: hidden;
     border-radius: 10px;
+    background-color: #000;
 
     img {
         width: 100%;
@@ -1712,12 +1921,53 @@ Casinos */
     }
 }
 
+.game-item__hover {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(#000, .6);
+    backdrop-filter: blur(4px);
+    border-radius: 10px;
+    padding: 14px 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--transition-default);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.game-item__name {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: 3px;
+}
+
+.game-item__category {
+    color: rgba(#fff, .78);
+    text-shadow: 0 1px 3px rgba(#000, .5);
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 16px;
+}
+
+
+
 .bonuses-casino {
     --bonuses-width: 50%;
     --bonuses-gutter: 20px;
     background-color: var(--theme-bg-3);
     padding-top: 32px;
     padding-bottom: 33px;
+
     @media (min-width: 992px) {
         padding-top: 50px;
         padding-bottom: 44px;

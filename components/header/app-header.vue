@@ -32,6 +32,7 @@
     padding-top: 14px;
     padding-bottom: 14px;
     position: fixed;
+    background-color: #fff;
     top: 0;
     left: 0;
     width: 100%;

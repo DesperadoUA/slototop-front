@@ -164,7 +164,8 @@
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--theme-bg-4);
-    padding: 14px 30px 13px 24px;
+    padding: 14px 24px 13px;
+    border-radius: 0 0 8px 8px;
     z-index: 999;
     transition: var(--transition-default);
     opacity: 0;

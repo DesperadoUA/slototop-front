@@ -14,9 +14,9 @@
         </NuxtLink>
       </div>
 
-      <div class="items-more casino-card__more">
+      <div class="items-more">
         <button v-if="value.length > (numberPostOnQuery*postCurrentPage)"
-                class="btn-primary"
+                class="btn-secondary"
                 @click="postShowMore"
         >{{showMore}}
         </button>

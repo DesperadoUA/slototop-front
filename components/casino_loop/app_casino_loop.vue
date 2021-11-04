@@ -73,7 +73,7 @@
 
             <div class="items-more">
                 <NuxtLink no-prefetch
-                        to="/reviews" class="btn-primary">{{showMore}}</NuxtLink>
+                        to="/reviews" class="btn-secondary">{{showMore}}</NuxtLink>
             </div>
         </div>
     </div>

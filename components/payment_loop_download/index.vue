@@ -1,5 +1,5 @@
 <template>
-    <div class="games">
+    <div class="games --alt-bg">
         <div class="container">
             <div class="games__container flex-wrap">
                 <NuxtLink class="game-item" no-prefetch
@@ -12,9 +12,10 @@
                 </NuxtLink>
             </div>
         </div>
-        <div class="items-more">
+
+        <div class="games__more items-more">
             <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
-                    class="btn-primary"
+                    class="btn-secondary"
                     @click="postShowMore"
             >{{showMore}}</button>
         </div>

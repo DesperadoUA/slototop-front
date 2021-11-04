@@ -28,7 +28,7 @@
                </div>
 
                <button type="button" class="btn-default form-search__close" @click="searchActivate">
-                   <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 22 22">
+                   <svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 22 22">
                        <path d="M1.1,19.5L19.5,1.1c0.4-0.4,1-0.4,1.4,0l0,0c0.4,0.4,0.4,1,0,1.4L2.5,20.9c-0.4,0.4-1,0.4-1.4,0l0,0 C0.7,20.5,0.7,19.9,1.1,19.5z"/>
                        <path d="M2.5,1.1l18.4,18.4c0.4,0.4,0.4,1,0,1.4l0,0c-0.4,0.4-1,0.4-1.4,0L1.1,2.5c-0.4-0.4-0.4-1,0-1.4l0,0 C1.5,0.7,2.1,0.7,2.5,1.1z"/>
                    </svg>
@@ -106,7 +106,7 @@
     width: 100%;
     position: fixed;
     background-color: rgba(16, 29, 48, .9);
-    backdrop-filter: blur(30px);
+    backdrop-filter: blur(15px);
     animation: expand .4s ease-in-out;
 
     @-moz-document url-prefix() {
@@ -171,8 +171,9 @@
 .form-search__close.form-search__close {
     position: absolute;
     top: 12.144vh;
-    right: 0;
+    right: 10px;
     fill: rgba(#fff, .5);
+    padding: 10px;
 
     @media (min-width: 992px) {
         &:hover {

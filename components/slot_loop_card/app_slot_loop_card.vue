@@ -56,9 +56,9 @@
                 <button type="button" class="casino-card__cta btn-tertiary" @click="refActivate(item)">{{play}}</button>
             </div>
         </div>
-        <div class="items-more casino-card__more">
+        <div class="items-more">
             <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
-                    class="btn-primary"
+                    class="btn-secondary"
                     @click="postShowMore"
             >{{showMore}}
             </button>

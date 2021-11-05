@@ -1844,10 +1844,14 @@ Casinos */
     --games-gutter: 20px;
     background-color: var(--theme-bg-2);
     padding-top: 47px;
-    padding-bottom: 17px;
+    display: flow-root;
 
     @media (max-width: 1229px) {
         padding-top: 32px;
+    }
+
+    &.--alt-bg {
+        background-color: #eef1f9;
     }
 
     & + & {
@@ -1893,12 +1897,13 @@ Casinos */
 .game-item {
     background-color: #fff;
     width: var(--games-width);
-    margin-bottom: 10px;
+    margin-bottom: 28px;
     display: flex;
     flex-direction: column;
     color: currentColor;
     text-decoration: none;
     position: relative;
+    border-radius: 10px;
 
     @media (min-width: 992px) {
         &:hover {
@@ -1911,13 +1916,10 @@ Casinos */
 }
 
 .game-item__logo {
-    overflow: hidden;
-    border-radius: 10px;
-    background-color: #000;
-
     img {
         width: 100%;
         vertical-align: top;
+        border-radius: 10px;
     }
 }
 
@@ -1958,6 +1960,12 @@ Casinos */
     line-height: 14px;
     margin-bottom: 16px;
 }
+
+.games__more {
+    margin-top: 40px;
+    margin-bottom: 60px;
+}
+
 
 
 

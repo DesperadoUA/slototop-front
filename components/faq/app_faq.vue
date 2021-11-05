@@ -115,21 +115,27 @@
     font-family: var(--font);
 }
 .faq_close {
-    width: 12px;
-    height: 6px;
+    width: 10px;
+    height: 10px;
     position: absolute;
-    background: var(--faq_close);
-    top: 20px;
-    right: 25px;
-    transition: 0.7s;
+    top: 50%;
+    right: 34px;
+    transition: var(--transition-default);
+    border: solid var(--theme-cr-2);
+    border-width: 0 2px 2px 0;
+    border-radius: 2px;
+    transform: rotate(45deg) translateY(-50%) translateY(-3px);
 }
+
 .fadeIn {
     display: block;
     opacity: 1;
 }
+
 .faq_active .faq_close {
-    transform: rotate(180deg);
+    transform: rotate(45deg) translateY(-50%) translate(2px, -1px) scale(-1);
 }
+
 @media (min-width: 320px) and (max-width: 767px) {
     .faq_answer {
         padding: 15px;

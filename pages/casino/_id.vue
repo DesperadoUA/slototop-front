@@ -1,9 +1,9 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-    <app_breadcrumbs />
-    <app_casino_card />
-    <app_casino_detail />
+    <app_breadcrumbs :value="data.body.breadcrumbs" />
+    <app_casino_card :value="data.body" />
+    <app_casino_detail :value="data.body" />
     <app_bonuses :value="data.body.bonuses"
                  :topTextShow="false"
                  :title="data.body.title | createTitle"
@@ -50,6 +50,11 @@
                     const body = response.data.body;
                     const data = {body};
                     data.body.currentUrl = config.BASE_URL + route.path;
+                    data.body.breadcrumbs = [
+                        {title:'Sloto.top', permalink: '/'},
+                        {title:'Казино', permalink: '/casinos'},
+                        {title:data.body.title, permalink: ''},
+                    ]
                     return {data}
                 }
             }

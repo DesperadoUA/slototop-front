@@ -4,22 +4,11 @@
         <div class="casino-card__logo">
             <img :src="value.thumbnail" :alt="value.title">
         </div>
-
         <div class="casino-card__txt">
             <div class="casino-card__name">
                 {{value.title}}
             </div>
-        </div>
-
-        <div class="casino-card__rating">
-            <div class="circle-rating">
-                <svg viewBox="0 0 36 36" class="circle-rating__chart" :style="value | classRating">
-                    <path class="circle-rating__circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                    <path class="circle-rating__circle" :stroke-dasharray="value.rating + ', 100'" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                </svg>
-                <div class="circle-rating__percentage">{{value.rating}}</div>
-                <span class="circle-rating__txt">{{rating}}</span>
-            </div>
+            <span class="casino-card__company" v-if="value.site">{{value.site}}</span>
         </div>
     </div>
 </div>

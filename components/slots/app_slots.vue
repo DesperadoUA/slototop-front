@@ -18,10 +18,10 @@
                     </div>
 
                     <div class="game-item__hover">
-                        <span class="game-item__name">{{title}}</span>
-                        <span class="game-item__category">{{title}}</span>
+                        <span class="game-item__name">{{item.title}}</span>
+                        <span class="game-item__category">{{item.vendor.title}}</span>
 
-                        <span class="btn-play">Играть</span>
+                        <NuxtLink class="btn-play" :to="item.permalink">Играть</NuxtLink>
                     </div>
                 </NuxtLink>
             </div>

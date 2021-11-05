@@ -8,24 +8,14 @@
         <div class="casino-card__txt">
             <div class="casino-card__name">
                 {{value.title}}
-                <img class="casino-card__license"
-                     src="/img/check.svg"
-                     alt="" v-if="value.licenses.length !== 0">
-                <img v-for="(item, index) in value.licenses"
-                     :src="item.thumbnail"
-                     :key="index"
-                     :alt="item.title"
-                >
-                <span class="casino-card__license-txt" v-if="value.licenses.length !== 0">{{license}}</span>
             </div>
 
-            <!--<span class="casino-card__company">(Кинг, Слотокинг Украина)</span> -->
+            <span class="casino-card__company" v-if="value.vendor.length !== 0">{{value.vendor[0].title}}</span>
 
             <div class="casino-card__cta">
                 <button type="button"
                         class="casino-card__cta btn-primary"
-                        @click="refActivate(value)"
-                >{{goToCasino}}</button>
+                >{{play}}</button>
             </div>
         </div>
 
@@ -47,21 +37,18 @@
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
     export default {
-        name: "app-casino-card",
+        name: "app-game-card",
         props: ['value'],
         data(){
             return {
-                license: '',
-                goToCasino: '',
+                play: '',
                 rating: ''
             }
         },
         filters: {
         },
         methods: {
-            refActivate(item) {
-                Helper.refActivate(item)
-            },
+
         },
         filters: {
             classRating(item) {
@@ -69,8 +56,7 @@
             }
         },
         mounted() {
-            this.license = TRANSLATE.LICENSE.ru
-            this.goToCasino = TRANSLATE.GO_TO_CASINO.ru
+            this.play = TRANSLATE.PLAY.ru
             this.rating = TRANSLATE.RATING.ru
         }
 

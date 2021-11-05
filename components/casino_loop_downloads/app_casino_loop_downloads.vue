@@ -2,8 +2,12 @@
 <div class="casinos">
         <div class="slots">
             <div class="container">
+                <div class="slots__heading" v-if="title">
+                    <h2 class="slots__ttl">{{title}}</h2>
+                    <NuxtLink no-prefetch :to="link" class="link-primary" v-if="linkText">{{linkText}}</NuxtLink>
+                </div>
                 <div class="slots__container">
-                    <div    class="slot-item"
+                    <div class="slot-item"
                             v-for="(item, index) in currentPosts"
                             :key="index">
                         <div class="slot-item__logo">
@@ -47,6 +51,18 @@ import TRANSLATE from '~/helpers/translate.json'
                 type: Array,
                 default: []
             },
+            title: {
+                type: String,
+                default: undefined
+            },
+            link: {
+                type: String,
+                default: undefined
+            },
+            linkText: {
+                type: String,
+                default: undefined
+            }
         },
         data(){
             return {

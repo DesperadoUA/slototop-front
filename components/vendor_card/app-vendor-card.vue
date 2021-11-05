@@ -9,14 +9,6 @@
             <div class="casino-card__name">
                 {{value.title}}
             </div>
-
-            <span class="casino-card__company" v-if="value.vendor.length !== 0">{{value.vendor[0].title}}</span>
-
-            <div class="casino-card__cta">
-                <button type="button"
-                        class="casino-card__cta btn-primary"
-                >{{play}}</button>
-            </div>
         </div>
 
         <div class="casino-card__rating">
@@ -37,11 +29,10 @@
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
     export default {
-        name: "app-game-card",
+        name: "app-vendor-card",
         props: ['value'],
         data(){
             return {
-                play: '',
                 rating: ''
             }
         },
@@ -56,7 +47,6 @@
             }
         },
         mounted() {
-            this.play = TRANSLATE.PLAY.ru
             this.rating = TRANSLATE.RATING.ru
         }
 

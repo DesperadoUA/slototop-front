@@ -2,19 +2,26 @@
     <div class="breadcrumbs">
         <div class="container">
             <ul itemscope="itemscope" itemtype="https://schema.org/BreadcrumbList" class="breadcrumb-list">
-                <li itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem" class="breadcrumb-item">
-                    <a href="/"
-                       itemtype="https://schema.org/Thing"
-                       itemscope="itemscope" itemprop="item" id="homePage"
-                       class="nuxt-link-active"><span itemprop="name">Sloto.top</span></a>
-                    /
-                    <meta itemprop="position" content="1">
-                </li>
-                <li itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem" class="breadcrumb-item">
-                    <span itemtype="https://schema.org/Thing" itemscope="itemscope" itemprop="item" id="single">
-                        <span itemprop="name">SlotoKing</span>
+                <li itemprop="itemListElement"
+                    itemscope="itemscope"
+                    itemtype="https://schema.org/ListItem"
+                    class="breadcrumb-item"
+                    v-for="(item, index) in value"
+                    :key="index"
+                >
+                    <span itemtype="https://schema.org/Thing" v-if="item.permalink === ''"
+                          itemscope="itemscope" itemprop="item" :id="index === 0 ? 'homePage' : 'single' "
+                          class="nuxt-link-active">
+                          <span itemprop="name">{{item.title}}</span>
                     </span>
-                    <meta itemprop="position" content="2">
+                    <NuxtLink v-else :to="item.permalink"
+                       itemtype="https://schema.org/Thing"
+                       itemscope="itemscope" itemprop="item" :id="index === 0 ? 'homePage' : 'single' "
+                       class="nuxt-link-active"><span itemprop="name">{{item.title}}
+                    </span>
+                    </NuxtLink>
+                    <span v-if="value.length !== (index+1)">/</span>
+                    <meta itemprop="position" :content="++index">
                 </li>
             </ul>
         </div>
@@ -22,10 +29,13 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate.json'
     export default {
         name: "app_breadcrumbs",
         props: {
+            value: {
+                type: Array,
+                default: []
+            },
         },
         data() {
             return {

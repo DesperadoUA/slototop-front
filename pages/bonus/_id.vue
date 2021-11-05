@@ -1,6 +1,7 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+    <app_breadcrumbs :value="data.body.breadcrumbs" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
     <app_bonuses_casino :value="data.body.bonuses"
                         :title="data.body.otherBonuses"
@@ -17,6 +18,7 @@
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
+    import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     export default {
         name: "single-bonus",
         data: () => {
@@ -24,7 +26,7 @@
 
             }
         },
-        components: {app_content, app_page_banner, app_bonuses_casino},
+        components: {app_content, app_page_banner, app_bonuses_casino, app_breadcrumbs},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -39,6 +41,11 @@
                     const data = {body}
                     data.body.currentUrl = config.BASE_URL + route.path
                     data.body.otherBonuses =  TRANSLATE.OTHER_BONUSES.ru + body.casino?.[0].title
+                    data.body.breadcrumbs = [
+                        {title:'Sloto.top', permalink: '/'},
+                        {title:'Бонусы', permalink: '/bonuses'},
+                        {title:data.body.title, permalink: ''},
+                    ]
                     return {data}
                 }
             }

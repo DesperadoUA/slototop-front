@@ -6,35 +6,31 @@
                 <th class="detail-row__heading">{{currency}}</th>
 
                 <td class="detail-row__content">
-                    <NuxtLink class="detail-item"
+                    <span class="detail-item"
                               v-for="(item, index) in value.currency"
                               :key="index"
-                              :to="item.permalink"
-                    >{{item.sub_title}}</NuxtLink>
+                    >{{item.sub_title}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.payments.length !== 0">
                 <th class="detail-row__heading">{{paymentMethods}}</th>
 
                 <td class="detail-row__content">
-                    <NuxtLink class="detail-item"
+                    <span class="detail-item"
                               v-for="(item, index) in value.payments"
                               :key="index"
-                              :to="item.permalink"
-                    >{{item.title}}</NuxtLink>
+                    >{{item.title}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.country.length !== 0">
                 <th class="detail-row__heading">{{acceptPlayers}}</th>
 
                 <td class="detail-row__content">
-                    <NuxtLink class="detail-item --flag"
+                    <span class="detail-item --flag"
                               v-for="(item, index) in value.country"
-                              :key="index"
-                              :to="item.permalink"
-                    >
+                              :key="index">
                         <img :src="item.thumbnail" :alt="item.title">
-                    </NuxtLink>
+                    </span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.min_payments !== ''">
@@ -51,13 +47,6 @@
                     <span class="detail-item">{{value.min_deposit}}</span>
                 </td>
             </tr>
-            <tr class="detail-row" v-if="value.chat !== ''">
-                <th class="detail-row__heading">{{chat}}</th>
-
-                <td class="detail-row__content">
-                    <span class="detail-item">{{value.chat}}</span>
-                </td>
-            </tr>
             <tr class="detail-row" v-if="value.withdrawal !== ''">
                 <th class="detail-row__heading">{{withdrawal}}</th>
 
@@ -72,22 +61,14 @@
                     <span class="detail-item">{{value.year}}</span>
                 </td>
             </tr>
-            <tr class="detail-row" v-if="value.number_games !== ''">
-                <th class="detail-row__heading">{{numberGames}}</th>
-
-                <td class="detail-row__content">
-                    <span class="detail-item">{{value.number_games}}</span>
-                </td>
-            </tr>
             <tr class="detail-row" v-if="value.licenses.length !== 0">
                 <th class="detail-row__heading">{{license}}</th>
 
                 <td class="detail-row__content">
-                    <NuxtLink class="detail-item"
+                    <span class="detail-item"
                        v-for="(item, index) in value.licenses"
                        :key="index"
-                       :to="item.permalink"
-                    >{{item.title}}</NuxtLink>
+                    >{{item.title}}</span>
                 </td>
             </tr>
             <tr class="detail-row">
@@ -99,37 +80,24 @@
                     <span class="detail-item" v-if="value.email !== ''">{{value.email}}</span>
                 </td>
             </tr>
-            <tr class="detail-row" v-if="value.vendors.length !== 0">
-                <th class="detail-row__heading">{{platforms}}</th>
-
-                <td class="detail-row__content">
-                    <NuxtLink class="detail-item"
-                              v-for="(item, index) in value.vendors"
-                              :key="index"
-                              :to="item.permalink"
-                    >{{item.title}}</NuxtLink>
-                </td>
-            </tr>
             <tr class="detail-row" v-if="value.technology.length !== 0">
                 <th class="detail-row__heading">{{technology}}</th>
 
                 <td class="detail-row__content">
-                    <NuxtLink class="detail-item"
+                    <span class="detail-item"
                               v-for="(item, index) in value.technology"
                               :key="index"
-                              :to="item.permalink"
-                    >{{item.title}}</NuxtLink>
+                    >{{item.title}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.language.length !== 0">
                 <th class="detail-row__heading">{{languages}}</th>
 
                 <td class="detail-row__content">
-                    <NuxtLink class="detail-item"
+                    <span class="detail-item"
                               v-for="(item, index) in value.language"
                               :key="index"
-                              :to="item.permalink"
-                    >{{item.title}}</NuxtLink>
+                    >{{item.title}}</span>
                 </td>
             </tr>
         </table>
@@ -154,7 +122,6 @@
                 acceptPlayers: '',
                 minPayment: '',
                 minDeposit: '',
-                chat: '',
                 withdrawal: '',
                 yearFoundation: '',
                 numberGames: '',
@@ -171,7 +138,6 @@
             this.acceptPlayers = TRANSLATE.ACCEPTS_PLAYERS.ru
             this.minPayment = TRANSLATE.MIN_PAYMENT.ru
             this.minDeposit = TRANSLATE.MIN_DEPOSIT.ru
-            this.chat = TRANSLATE.CHAT.ru
             this.withdrawal = TRANSLATE.WITHDRAWAL.ru
             this.yearFoundation = TRANSLATE.YEAR_FOUNDATION.ru
             this.numberGames = TRANSLATE.NUMBER_GAMES.ru

@@ -1,6 +1,9 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+    <app_breadcrumbs :value="data.body.breadcrumbs" />
+    <app_poker_card :value="data.body" />
+    <app_poker_detail :value="data.body" />
     <app_content :value="data.body.content"  v-if="data.body.content !== ''" />
   </div>
 </template>
@@ -10,6 +13,9 @@
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
+    import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
+    import app_poker_card from '~/components/poker_card/app-poker-card'
+    import app_poker_detail from '~/components/poker-detail/app-poker-detail'
     export default {
         name: "single-poker",
         data: () => {
@@ -17,7 +23,7 @@
                 data: {},
             }
         },
-        components: {app_content, app_page_banner},
+        components: {app_content, app_page_banner, app_breadcrumbs, app_poker_card, app_poker_detail},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -31,6 +37,11 @@
                     const body = response.data.body
                     const data = {body}
                     data.body.currentUrl = config.BASE_URL + route.path
+                    data.body.breadcrumbs = [
+                        {title:'Sloto.top', permalink: '/'},
+                        {title:'Покер-румы', permalink: '/pokers'},
+                        {title:data.body.title, permalink: ''},
+                    ]
                     return {data}
                 }
             }

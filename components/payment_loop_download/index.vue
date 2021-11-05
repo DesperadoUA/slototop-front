@@ -1,5 +1,5 @@
 <template>
-    <div class="games --alt-bg">
+    <div class="games --bg-gray">
         <div class="container">
             <div class="games__container flex-wrap">
                 <NuxtLink class="game-item" no-prefetch

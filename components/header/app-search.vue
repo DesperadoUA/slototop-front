@@ -166,6 +166,10 @@
             color: rgba(#fff, .5);
         }
     }
+
+    .search__icon {
+        fill: currentColor;
+    }
 }
 
 .form-search__close.form-search__close {

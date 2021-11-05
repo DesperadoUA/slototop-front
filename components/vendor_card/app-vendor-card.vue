@@ -1,8 +1,22 @@
 <template>
-<div class="container container3">
-    <div class="casino-card">
+<div class="casino-card">
+    <div class="container casino-card__container">
         <div class="casino-card__logo">
             <img :src="value.thumbnail" :alt="value.title">
+        </div>
+
+        <div class="casino-card__txt">
+            <div class="casino-card__name">
+                {{value.title}}
+            </div>
+
+            <span class="casino-card__company" v-if="value.vendor.length !== 0">{{value.vendor[0].title}}</span>
+
+            <div class="casino-card__cta">
+                <button type="button"
+                        class="casino-card__cta btn-primary"
+                >{{play}}</button>
+            </div>
         </div>
 
         <div class="casino-card__rating">
@@ -12,25 +26,29 @@
                     <path class="circle-rating__circle" :stroke-dasharray="value.rating + ', 100'" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 </svg>
                 <div class="circle-rating__percentage">{{value.rating}}</div>
+                <span class="circle-rating__txt">{{rating}}</span>
             </div>
-            <span class="casinos-rating__txt">{{rating}}</span>
         </div>
-
-       <div class="casino-card__txt" v-html="value.short_text"></div>
     </div>
 </div>
 </template>
 
 <script>
-import Helper from '~/helpers/helpers.js'
-import TRANSLATE from '~/helpers/translate.json'
+    import TRANSLATE from '~/helpers/translate.json'
+    import Helper from '~/helpers/helpers.js'
     export default {
-        name: "app-casino-card",
+        name: "app-game-card",
         props: ['value'],
         data(){
             return {
+                play: '',
                 rating: ''
             }
+        },
+        filters: {
+        },
+        methods: {
+
         },
         filters: {
             classRating(item) {
@@ -38,9 +56,13 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.rating = TRANSLATE.RATING.uk
+            this.play = TRANSLATE.PLAY.ru
+            this.rating = TRANSLATE.RATING.ru
         }
+
     }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>

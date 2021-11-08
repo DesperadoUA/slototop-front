@@ -1,5 +1,5 @@
 <template>
-    <div class="games --alt-bg">
+    <div class="games --bg-gray">
         <div class="container">
             <div class="slots__heading" v-if="title">
                 <h2 class="slots__ttl">{{title}}</h2>
@@ -13,7 +13,7 @@
                           v-for="(item, index) in currentPosts"
                           :key="index" >
                     <div class="game-item__logo">
-                        <img :src="item.thumbnail" loading="lazy" alt="" />
+                        <img :src="item.thumbnail" loading="lazy" width="224" alt="" />
                     </div>
 
                     <div class="game-item__hover">
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="games__more items-more">
+        <div class="items-more">
             <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
                     class="btn-secondary"
                     @click="postShowMore"

@@ -27,10 +27,10 @@
         padding-bottom: 60px;
     }
 
-    .games + &,
+    /*.games + &,
     .slots + & {
         padding-top: 0;
-    }
+    }*/
 
     p {
         margin-bottom: 25px;

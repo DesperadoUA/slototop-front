@@ -13,7 +13,7 @@
             <span class="casino-card__company" v-if="value.vendor.length !== 0">{{value.vendor[0].title}}</span>
 
             <button type="button"
-                    class="casino-card__cta btn-primary"
+                    class="casino-card__cta btn-play"
             >{{play}}</button>
         </div>
 
@@ -44,11 +44,6 @@
             }
         },
         filters: {
-        },
-        methods: {
-
-        },
-        filters: {
             classRating(item) {
                 return Helper.classRating(item)
             }
@@ -60,7 +55,3 @@
 
     }
 </script>
-
-<style lang="scss">
-
-</style>

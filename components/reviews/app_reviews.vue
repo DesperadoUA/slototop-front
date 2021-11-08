@@ -65,18 +65,6 @@
     }
 }
 
-.reviews__title {
-    font-weight: 900;
-    font-size: 20px;
-    line-height: 1.167;
-    color: var(--theme-cr-2);
-    margin-bottom: 20px;
-
-    @media (min-width: 992px) {
-        font-size: 24px;
-    }
-}
-
 .review-item {
     background-color: var(--review-bg);
     box-shadow: 0 4px 20px rgba(#02133e, .2);

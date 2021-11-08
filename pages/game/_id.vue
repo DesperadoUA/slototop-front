@@ -3,8 +3,11 @@
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_breadcrumbs :value="data.body.breadcrumbs" />
     <app_game_card :value="data.body" />
+    <app_game_details />
     <app_casino :value="data.body.casino" :title="casinoWithThisGame" :linkText="allCasino" link="/casinos" />
     <app_slots :value="data.body.games" :title="similarGames" :linkText="allGames" link="/games" />
+    <app_game_screenshots />
+    <app_game_symbols />
     <app_content :value="data.body.content"  v-if="data.body.content !== ''" />
   </div>
 </template>
@@ -13,12 +16,15 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config/index'
     import TRANSLATE from '~/helpers/translate.json'
-    import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import app_game_card from '~/components/game_card/app-game-card'
+    import app_game_details from '~/components/game-details/app-game-details'
     import app_casino from '~/components/casino/app_casino'
     import app_slots from '~/components/slots/app_slots'
+    import app_game_screenshots from '~/components/game-screenshots/app-game-screenshots'
+    import app_game_symbols from '~/components/game-symbols/app-game-symbols'
+    import app_content from '~/components/content/app-content'
     export default {
         name: "single-game",
         data: () => {
@@ -29,25 +35,25 @@
                 allGames: ''
             }
         },
-        components: {app_content, app_page_banner, app_breadcrumbs, app_game_card, app_casino, app_slots},
+        components: {app_content, app_page_banner, app_breadcrumbs, app_game_card, app_casino, app_slots, app_game_details, app_game_screenshots, app_game_symbols},
         async asyncData({route, error}) {
             if(route.params.id) {
-                const request = new DAL_Builder()
+                const request = new DAL_Builder();
                 const response = await request.postType('game')
                     .url(route.params.id)
-                    .get()
+                    .get();
                 if(response.data.confirm === 'error') {
                     error({ statusCode: 404, message: 'Post not found' })
                 }
                 else {
-                    const body = response.data.body
-                    const data = {body}
-                    data.body.currentUrl = config.BASE_URL + route.path
+                    const body = response.data.body;
+                    const data = {body};
+                    data.body.currentUrl = config.BASE_URL + route.path;
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
                         {title:'Игры', permalink: '/games'},
                         {title:data.body.title, permalink: ''},
-                    ]
+                    ];
                     return {data}
                 }
             }
@@ -78,7 +84,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

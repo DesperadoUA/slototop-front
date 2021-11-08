@@ -65,7 +65,3 @@ import TRANSLATE from '~/helpers/translate.json'
         }
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

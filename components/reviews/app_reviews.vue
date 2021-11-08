@@ -1,5 +1,5 @@
 <template>
-    <section class="reviews" v-if="value.length !== 0"
+    <section class="reviews"
              itemprop="review"
              itemscope itemtype="http://schema.org/Review">
         <div itemprop="itemReviewed"
@@ -7,28 +7,26 @@
              itemtype="https://schema.org/Organization">
             <meta itemprop="name" :content="title"/>
         </div>
+
         <div class="container">
-            <div class="reviews_title" itemprop="name">Отзывы игроков о казино {{ title }}</div>
-            <div class="review_item" v-for="(item, index) in currentReviews" :key="index">
-                <div class="review_item_title">
-                    <span itemprop='author'>{{ item.review_name }}</span>
-                    <span itemprop='datePublished'>{{ item.review_date }}</span>
-                </div>
-                <div class="review_item_rating">
-                    <div class="casino_item_rating_box">
-                        <div class="casino_item_rating_empty"></div>
-                        <div class="casino_item_rating_full" v-bind:style="{ width: item.review_rating+'%'}"></div>
+            <h2 class="reviews__title" itemprop="name">Отзывы</h2>
+
+            <div class="review-item">
+                <div class="review-item__author" itemprop='author'>Dron05649</div>
+
+                <div class="review-item__rating">
+                    <div class="star-rating">
+                        <div class="star-rating__val" style="width: 90%;"></div>
                     </div>
-                    <div class="revie_item_box_value">
-                        <span class="casino_item_ratin_value">{{ item.review_rating|rating }}</span>/10
-                    </div>
+                    <strong class="slot-item__stats-val">9,5/10</strong>
                 </div>
-                <div class="review_item_desc" itemprop='reviewBody'>
-                    {{ item.review_text }}
+                <div class="review-item__desc" itemprop='reviewBody'>
+                    Хочу отметить удобство пользования с мобильного. Регистрация по номеру прошла быстро. Удобный интерфейс, выгодные акции, много автоматов дают возможность побороться за джекпот. Навязчивая реклама отсуствует. Большой выбор автоматов, процентный кешбэк, бонусы. Выводил деньги через ту систему, которой внес депозит. Минимальную сумму 50 грн при первичном выведении получил на карту быстро.
                 </div>
             </div>
-            <div class="reviews_show_more" v-if="value.length > (numberReviewOnQuery*reviewCurrentPage)">
-                <span class="review_btn_show" @click="reviewShowMore">Показать еще</span>
+
+            <div class=""> <!-- v-if="value.length > (numberReviewOnQuery*reviewCurrentPage)"-->
+                <button type="button" class="reviews__show-more btn-secondary" @click="reviewShowMore">Загрузить еще</button>
             </div>
         </div>
     </section>
@@ -40,132 +38,83 @@
         props: ['value', 'title'],
         data(){
             return {
-                numberReviewOnQuery: 4,
-                reviewCurrentPage: 1
             }
         },
         computed: {
-            currentReviews() {
-               return this.value.slice(0, this.numberReviewOnQuery * this.reviewCurrentPage)
-            }
         },
         methods: {
-            reviewShowMore(){
-                this.reviewCurrentPage += 1
-            }
         },
         filters:{
-            rating(item){
-                return Math.trunc(item/10)
-            }
         }
     }
 </script>
-<style>
-.casino_item_ratin_value {
-    font-family: var(--font);
-    font-style: normal;
-    font-weight: 800;
-    font-size: 22px;
-    line-height: 30px;
-    color: var(--middle-black);
+
+<style lang="scss">
+.reviews {
+    background-color: var(--theme-bg-3);
+    padding-top: 30px;
+    padding-bottom: 40px;
+
+    @media (min-width: 992px) {
+        padding-top: 50px;
+        padding-bottom: 70px;
+    }
+
+    .faq + & {
+        margin-top: 20px;
+    }
 }
-.casino_item_rating_full {
-    position: absolute;
-    top:0;
-    left:0;
-    height: 100%;
-    background: var(--star_full);
+
+.reviews__title {
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 1.167;
+    color: var(--theme-cr-2);
+    margin-bottom: 20px;
+
+    @media (min-width: 992px) {
+        font-size: 24px;
+    }
 }
-.casino_item_rating_empty {
-    height: 100%;
-    width: 100%;
-    background: var(--star_empty);
+
+.review-item {
+    background-color: var(--review-bg);
+    box-shadow: 0 4px 20px rgba(#02133e, .2);
+    border-radius: 10px;
+    color: var(--theme-cr-txt-cms);
+    padding: 15px 35px 15px 15px;
+    margin-bottom: 18px;
+
+    @media (min-width: 992px) {
+        padding: 22px 55px 22px 20px;
+    }
 }
-.casino_item_rating_container {
+
+.review-item__author {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--theme-cr-2);
+    margin-bottom: 6px;
+}
+
+.review-item__rating {
     display: flex;
-    padding: 2px 10px;
-    box-sizing: border-box;
-    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    margin-left: -2px;
 }
-.casino_item_rating_box {
-    width: 120px;
-    height: 24px;
-    position: relative;
+
+.reviews__show-more {
+    margin-top: 30px;
+    width: 200px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+
+    @media (min-width: 992px) {
+        margin-top: 40px;
+    }
 }
-    .review_btn_show {
-        font-family: var(--font);
-        font-style: normal;
-        font-weight: bold;
-        font-size: 15px;
-        line-height: 175%;
-        color: var(--blue);
-        background: transparent;
-        border: none;
-        cursor: pointer;
-    }
-    .reviews_show_more {
-        text-align: center;
-        padding: 20px 0px;
-        width: 915px;
-    }
-    .review_item_desc {
-      font-family: var(--font);
-      font-style: normal;
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 175%;
-      color: var(--middle-black);
-    }
-   .review_item_rating {
-       display: flex;
-       width: 168px;
-       justify-content: space-between;
-       margin-bottom: 10px;
-   }
-   .revie_item_box_value {
-       transform:translateY(-2px);
-   }
-   .review_item_title {
-       display: flex;
-       justify-content: space-between;
-       margin-bottom: 15px;
-   }
-   .review_item_title span:nth-child(1) {
-       font-family: var(--font);
-       font-style: normal;
-       font-weight: bold;
-       font-size: 18px;
-       color: var(--middle-black);
-   }
-   .review_item_title span:nth-child(2) {
-       font-family: var(--font);
-       font-weight: normal;
-       font-size: 12px;
-       color: var(--middle-black);
-   }
-   .review_item {
-       width: 915px;
-       background: var(--white-gradient);
-       border: 1px solid var(--gray);
-       box-sizing: border-box;
-       box-shadow: 0px 2px 10px rgba(77, 92, 129, 0.25);
-       border-radius: 15px;
-       padding: 30px;
-       margin-top: 10px;
-       margin-bottom: 10px;
-   }
-   .reviews {
-       padding: 25px 0px;
-   }
-   .reviews_title {
-       font-family: var(--font);
-       font-style: normal;
-       font-weight: bold;
-       font-size: 18px;
-       line-height: 25px;
-       color: var(--middle-black);
-       margin-bottom: 25px;
-   }
 </style>

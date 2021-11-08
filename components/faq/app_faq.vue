@@ -61,7 +61,7 @@
                     answer: element.value_2,
                     question: element.value_1
                 })
-            })
+            });
             this.currentValue = faq
         }
     }
@@ -69,6 +69,12 @@
 <style lang="scss">
 .faq {
     padding: 30px 0;
+
+    &:last-child {
+        @media (min-width: 992px) {
+            padding-bottom: 50px;
+        }
+    }
 }
 
 .faq_title {

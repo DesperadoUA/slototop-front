@@ -21,12 +21,10 @@
 
             <!--<span class="casino-card__company">(Кинг, Слотокинг Украина)</span> -->
 
-            <div class="casino-card__cta">
-                <button type="button"
-                        class="casino-card__cta btn-primary"
-                        @click="refActivate(value)"
-                >{{goToCasino}}</button>
-            </div>
+            <button type="button"
+                    class="casino-card__cta btn-primary"
+                    @click="refActivate(value)"
+            >{{goToCasino}}</button>
         </div>
 
         <div class="casino-card__rating">

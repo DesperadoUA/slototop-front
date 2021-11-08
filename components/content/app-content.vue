@@ -19,10 +19,15 @@
 .cms {
     background-color: var(--theme-bg-4);
     padding-top: 48px;
-    padding-bottom: 60px;
+    padding-bottom: 0;
     color: var(--theme-cr-txt-cms);
     display: flow-root;
 
+    &:last-child {
+        padding-bottom: 60px;
+    }
+
+    .games + &,
     .slots + & {
         padding-top: 0;
     }

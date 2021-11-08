@@ -42,6 +42,8 @@
     --disabled-cr: #c7ccd8;
     --page-banner-txt-cr: var(--theme-cr-txt-alt);
 
+    --review-bg: #fff;
+
     /* Fonts */
     --base-font-size: 14px;
     --base-line-height: 1.7;
@@ -535,7 +537,6 @@ Casino Card*/
 
 .casino-card__container {
     display: flex;
-    align-items: center;
 
     @media (max-width: 1279px) {
         flex-wrap: wrap;
@@ -587,7 +588,6 @@ Casino Card*/
     font-size: 24px;
     line-height: 1.167;
     font-weight: 700;
-    margin-top: 8px;
     margin-bottom: 9px;
     color: var(--theme-cr-2);
     display: flex;
@@ -616,11 +616,7 @@ Casino Card*/
     font-size: 15px;
     line-height: 1.2;
     color: var(--theme-cr-txt-cms);
-    margin-bottom: 20px;
-
-    @media (min-width: 992px) {
-        margin-bottom: 33px;
-    }
+    margin-bottom: 10px;
 }
 
 .casino-card__rating {
@@ -761,6 +757,7 @@ Casino Card*/
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: auto;
 
     @media (max-width: 1279px) {
         padding-left: 0;
@@ -786,7 +783,6 @@ Casino Card*/
     line-height: 1.8125;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     flex-grow: 1;
 
     @media (min-width: 992px) {
@@ -1587,7 +1583,11 @@ Casinos */
     --slots-width: 224px;
     --slots-gutter: 20px;
     background-color: var(--theme-bg-3);
-    padding-bottom: 6px;
+    padding-bottom: 20px;
+
+    @media (min-width: 992px) {
+        padding-bottom: 40px;
+    }
 
     .main-banner + & {
         padding-top: 28px;
@@ -1603,6 +1603,14 @@ Casinos */
 
     .casinos + & {
         padding-top: 40px;
+    }
+
+    & + & {
+        margin-top: -20px;
+
+        @media (min-width: 992px) {
+            margin-top: -40px;
+        }
     }
 }
 
@@ -1842,24 +1850,28 @@ Casinos */
 .games {
     --games-width: 224px;
     --games-gutter: 20px;
-    background-color: var(--theme-bg-2);
+    background-color: var(--theme-bg-4);
     padding-top: 47px;
+    padding-bottom: 40px;
     display: flow-root;
 
     @media (max-width: 1229px) {
         padding-top: 32px;
     }
 
-    &.--alt-bg {
-        background-color: #eef1f9;
+    @media (min-width: 992px) {
+        padding-bottom: 61px;
+    }
+
+    &.--bg-gray {
+        background-color: var(--theme-bg-3);
     }
 
     & + & {
-        padding-top: 10px;
-        padding-bottom: 40px;
+        margin-top: -60px;
 
         @media (min-width: 992px) {
-            padding-bottom: 61px;
+            margin-top: -97px;
         }
     }
 

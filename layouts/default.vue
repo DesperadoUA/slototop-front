@@ -42,6 +42,8 @@
     --disabled-cr: #c7ccd8;
     --page-banner-txt-cr: var(--theme-cr-txt-alt);
 
+    --review-bg: #fff;
+
     /* Fonts */
     --base-font-size: 14px;
     --base-line-height: 1.7;

@@ -10,6 +10,7 @@
                  v-if="data.body.bonuses.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
     <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
+    <app_reviews />
   </div>
 </template>
 
@@ -23,10 +24,11 @@
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import app_casino_card from '~/components/casino_card/app-casino-card'
     import app_casino_detail from '~/components/casino-detail/app-casino-detail'
+    import app_reviews from '~/components/reviews/app_reviews'
 
     export default {
         name: "app_single_casino",
-        components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner},
+        components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner, app_reviews},
         data: () => {
             return {
                titleBonus: ''
@@ -54,7 +56,7 @@
                         {title:'Sloto.top', permalink: '/'},
                         {title:'Казино', permalink: '/casinos'},
                         {title:data.body.title, permalink: ''},
-                    ]
+                    ];
                     return {data}
                 }
             }
@@ -76,6 +78,6 @@
                     { rel: 'canonical', href: this.data.body.currentUrl}
                 ]
             }
-    }
+        }
     }
 </script>

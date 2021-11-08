@@ -61,7 +61,7 @@
                     answer: element.value_2,
                     question: element.value_1
                 })
-            })
+            });
             this.currentValue = faq
         }
     }

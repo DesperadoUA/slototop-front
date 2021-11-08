@@ -4,13 +4,11 @@
         <div class="casino-card__logo">
             <img :src="value.thumbnail" :alt="value.title">
         </div>
-
         <div class="casino-card__txt">
             <div class="casino-card__name">
                 {{value.title}}
             </div>
         </div>
-
         <div class="casino-card__rating">
             <div class="circle-rating">
                 <svg viewBox="0 0 36 36" class="circle-rating__chart" :style="value | classRating">

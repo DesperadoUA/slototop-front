@@ -1,9 +1,11 @@
 <template>
     <div class="category-filter">
         <div class="category-filter__container container">
-            <span class="category-filter-item">🧨 Все казино</span>
-            <span class="category-filter-item">🧨 Новые казино</span>
-            <span class="category-filter-item">🧨 Все казино</span>
+            <NuxtLink class="category-filter-item"
+                  v-for="(item, index) in value"
+                  :key="index"
+                      :to="item.permalink"
+            >{{item.title}}</NuxtLink>
         </div>
     </div>
 </template>
@@ -12,6 +14,10 @@
     export default {
         name: "app-category-filter",
         props: {
+            value: {
+                type: Array,
+                default: []
+            },
         },
         data(){
             return {
@@ -25,6 +31,9 @@
     background-color: var(--theme-bg-3);
     padding-top: 40px;
 
+    a {
+        text-decoration: none;
+    }
     @media (min-width: 992px) {
         padding-top: 50px;
     }

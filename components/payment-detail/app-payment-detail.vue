@@ -33,6 +33,22 @@
                     >{{item.sub_title}}</NuxtLink>
                 </td>
             </tr>
+            <tr class="detail-row" v-if="value.site !== ''">
+                <th class="detail-row__heading">{{site}}</th>
+                <td class="detail-row__content">
+                  <span class="detail-item">{{value.site}}</span>
+                </td>
+          </tr>
+            <tr class="detail-row" v-if="value.type_payment.length !== 0">
+                <th class="detail-row__heading">{{type}}</th>
+                <td class="detail-row__content">
+                    <NuxtLink class="detail-item"
+                              v-for="(item, index) in value.type_payment"
+                              :key="index"
+                              :to="item.permalink"
+                    >{{item.title}}</NuxtLink>
+                </td>
+            </tr>
         </table>
     </div>
 </div>
@@ -53,7 +69,9 @@
                 withdrawal: '',
                 commission: '',
                 withdrawalPossibility: '',
-                currency: ''
+                currency: '',
+                site: '',
+                type: ''
             }
         },
         mounted() {
@@ -61,6 +79,8 @@
             this.commission = TRANSLATE.COMMISSION.ru
             this.withdrawalPossibility = TRANSLATE.WITHDRAWAL_POSSIBILITY.ru
             this.currency = TRANSLATE.CURRENCY.ru
+            this.site = TRANSLATE.SITE.ru
+            this.type = TRANSLATE.TYPE.ru
         }
     }
 </script>

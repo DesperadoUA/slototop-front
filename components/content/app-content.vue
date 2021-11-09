@@ -127,6 +127,43 @@
             }
         }
     }
+
+    blockquote {
+        background-color: #fff;
+        box-shadow: 0 4px 20px rgba(2, 19, 62, 0.2);
+        border-radius: 8px;
+        border-left: 4px solid #f33b68;
+        padding: 15px 36px 15px 28px;
+        position: relative;
+        font-weight: 500;
+        font-size: 16px;
+        font-style: italic;
+        line-height: 170%;
+        margin-bottom: 30px;
+        margin-top: 30px;
+
+        @media (min-width: 992px) {
+            padding: 20px 56px 20px 42px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        &:before {
+            content: '“';
+            font-family: var(--base-font-family);
+            font-size: 40px;
+            font-style: italic;
+            line-height: 170%;
+            color: #f33b68;
+            position: absolute;
+            left: 5px;
+            top: 4px;
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+    }
 }
 
 .cms-banner {

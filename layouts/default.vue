@@ -1174,15 +1174,22 @@ Casinos */
 .casinos {
     --casino-item-width: 100%;
     --casino-item-gutter: 0px;
+
     @media (min-width: 600px) {
         --casino-item-width: 50%;
         --casino-item-gutter: 20px;
     }
+
     @media (min-width: 992px) {
         --casino-item-width: 33.333%;
     }
+
     @media (min-width: 1280px) {
         --casino-item-gutter: 46px;
+    }
+
+    &.--bg-gray {
+        background-color: var(--theme-bg-3);
     }
 }
 

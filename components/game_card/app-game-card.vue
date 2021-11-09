@@ -29,8 +29,16 @@
             </div>
         </div>
     </div>
-    <div class="game_pop_up" v-if="showGame">
-        <button @click="closePopUp">x<button>
+
+    <div class="game-popup" v-if="showGame">
+        <div class="game-popup__container container">
+            <button type="button" class="btn-close" @click="closePopUp">x</button>
+
+            <h4 class="game-popup__ttl">Razor Shark</h4>
+            <div class="game-popup__iframe-area">
+                <iframe class="game-popup__iframe" src="https://redirector3.valueactive.eu/Casino/Default.aspx?applicationid=1023&theme=quickfiressl&usertype=5&sext1=demo&sext2=demo&csid=1866&serverid=1866&variant=MIT-Demo&gameid=CandyDreams&ul=EN" frameborder="0"></iframe>
+            </div>
+        </div>
     </div>
 </div>
 </template>
@@ -69,14 +77,93 @@
 
     }
 </script>
-<style scoped>
-    .game_pop_up {
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        z-index: 10;
-        background: red;
-        top:0;
-        left: 0;
+<style lang="scss" scoped>
+.game-popup {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    top:0;
+    left: 0;
+    background-color: rgba(16, 29, 48, .9);
+    backdrop-filter: blur(15px);
+    animation: expand .4s ease-in-out;
+    padding: 10.5vh 10px 20px;
+    overflow-y: auto;
+
+    @-moz-document url-prefix() {
+        background-color: rgba(16, 29, 48, .9);
     }
+
+    .btn-close {
+        position: absolute;
+        right: 10px;
+        top: 0;
+        text-indent: -9999px;
+        border: 0;
+        background-color: transparent;
+        padding: 0;
+        width: 46px;
+        height: 46px;
+        cursor: pointer;
+
+        &:hover {
+            &:before,
+            &:after {
+                background-color: rgba(#fff, 1);
+            }
+        }
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 20px;
+            height: 3px;
+            transition: var(--transition-default);
+            border-radius: 2px;
+            transform: rotate(45deg);
+            background-color: rgba(#fff, .5);
+            margin: 7px 0 0 -10px;
+        }
+
+        &:before {
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+.game-popup__ttl {
+    font-size: 32px;
+    line-height: 1.15625;
+    letter-spacing: 0.015em;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 27px;
+}
+
+.game-popup__container {
+    position: relative;
+}
+
+.game-popup__iframe-area {
+    background-color: #000;
+    box-shadow: 0 4px 20px rgba(2, 19, 62, 0.2);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding-top: 56.25%;
+}
+
+.game-popup__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
 </style>

@@ -2,6 +2,7 @@
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_breadcrumbs :value="data.body.breadcrumbs" />
+    <app_bonus_card />
     <app_bonus_details :value="data.body" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
     <app_bonuses_casino :value="data.body.bonuses"
@@ -20,6 +21,7 @@
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
+    import app_bonus_card from '~/components/bonus-card/app_bonus_card'
     import app_bonus_details from '~/components/bonus-detail/app-bonus-detail'
     export default {
         name: "single-bonus",
@@ -28,26 +30,26 @@
 
             }
         },
-        components: {app_content, app_page_banner, app_bonuses_casino, app_breadcrumbs, app_bonus_details},
+        components: {app_content, app_page_banner, app_bonuses_casino, app_breadcrumbs, app_bonus_details, app_bonus_card},
         async asyncData({route, error}) {
             if(route.params.id) {
-                const request = new DAL_Builder()
+                const request = new DAL_Builder();
                 const response = await request.postType('bonus')
                     .url(route.params.id)
-                    .get()
+                    .get();
                 if(response.data.confirm === 'error') {
                     error({ statusCode: 404, message: 'Post not found' })
                 }
                 else {
-                    const body = response.data.body
-                    const data = {body}
-                    data.body.currentUrl = config.BASE_URL + route.path
-                    data.body.otherBonuses =  TRANSLATE.OTHER_BONUSES.ru + body.casino?.[0].title
+                    const body = response.data.body;
+                    const data = {body};
+                    data.body.currentUrl = config.BASE_URL + route.path;
+                    data.body.otherBonuses =  TRANSLATE.OTHER_BONUSES.ru + body.casino?.[0].title;
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
                         {title:'Бонусы', permalink: '/bonuses'},
                         {title:data.body.title, permalink: ''},
-                    ]
+                    ];
                     return {data}
                 }
             }
@@ -72,7 +74,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

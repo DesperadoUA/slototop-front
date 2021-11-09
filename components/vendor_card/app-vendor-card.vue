@@ -4,11 +4,41 @@
         <div class="casino-card__logo">
             <img :src="value.thumbnail" :alt="value.title">
         </div>
+
         <div class="casino-card__txt">
             <div class="casino-card__name">
                 {{value.title}}
             </div>
+
+            <div class="detail-table detail-table--2-col">
+                <div class="detail-row">
+                    <div class="detail-row-item">
+                        <div class="detail-row__heading">Страна представитель</div>
+
+                        <div class="detail-row__content">
+                            <span class="detail-item">2019</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-row-item">
+                        <div class="detail-row__heading">Страна представитель</div>
+
+                        <div class="detail-row__content">
+                            <span class="detail-item">2019</span>
+                        </div>
+                    </div>
+
+                    <div class="detail-row-item">
+                        <div class="detail-row__heading">Страна представитель</div>
+
+                        <div class="detail-row__content">
+                            <span class="detail-item">2019</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="casino-card__rating">
             <div class="circle-rating">
                 <svg viewBox="0 0 36 36" class="circle-rating__chart" :style="value | classRating">

@@ -42,6 +42,8 @@
     }
 </script>
 
-<style lang="scss">
-
+<style lang="scss" scoped>
+.casino-card__company {
+    color: var(--theme-cr-3);
+}
 </style>

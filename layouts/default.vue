@@ -147,6 +147,20 @@ h4, .h4,
 h5, .h5 {
     margin-top: 0;
 }
+
+h2 {
+    font-size: 20px;
+    line-height: 1.167;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: var(--theme-cr-txt);
+
+    @media (min-width: 992px) {
+        font-size: 24px;
+        margin-bottom: 18px;
+    }
+}
+
 p {
     margin-top: 0;
     margin-bottom: 0;
@@ -198,6 +212,7 @@ Common styles*/
 .items-more {
     width: 100%;
     text-align: center;
+
     [class*="btn"] {
         min-width: 230px;
     }
@@ -245,6 +260,7 @@ Buttons */
     line-height: 1.286;
     text-transform: uppercase;
     font-weight: 700;
+    font-family: var(--base-font-family);
     background-color: var(--btn-primary);
     border-radius: 12px;
     position: relative;
@@ -296,12 +312,14 @@ Buttons */
             color: #fff;
         }
     }
+
     /* hack for IE11 */
     @media all and (-ms-high-contrast:none) {
         *::-ms-backdrop, & {
             height: 50px;
         }
     }
+
     &.is-disabled,
     &[disabled] {
         background-color: var(--disabled-bg);
@@ -310,8 +328,8 @@ Buttons */
 }
 
 .btn-tertiary {
-    min-width: 256px;
     @extend %btn-general;
+    min-width: 256px;
     font-size: 15px;
     border-radius: 10px;
     font-weight: 900;
@@ -350,7 +368,7 @@ Buttons */
     z-index: 1;
     min-width: 113px;
     background-color: var(--theme-cr-3);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
     border-radius: 12px;
     font-size: 14px;
     font-weight: 700;
@@ -986,8 +1004,12 @@ Casino Detail*/
     display: flex;
     flex-wrap: wrap;
     text-align: left;
+    width: 100%;
 }
-
+.detail-row-item {
+    width: 50%;
+    display: flex;
+}
 .detail-row__heading {
     margin-bottom: 20px;
     padding-top: 5px;
@@ -1020,8 +1042,16 @@ Casino Detail*/
         display: flex;
         align-items: center;
         flex-wrap: wrap;
-        margin-left: auto;
-        width: calc(100% - var(--heading-col-width));
+    }
+
+    .detail-table:not(.detail-table--2-col) & {
+        @media (min-width: 768px) {
+            width: calc(100% - var(--heading-col-width));
+        }
+    }
+
+    .detail-table--2-col & {
+        width: calc(50% - var(--heading-col-width));
     }
 }
 
@@ -1080,6 +1110,7 @@ Casino Detail*/
     border-radius: 8px;
     box-shadow: inset 0 0 0 1px rgba(13, 35, 66, .1);
     text-decoration: none;
+    white-space: nowrap;
 
     &.--flag {
         padding: 0;
@@ -1152,10 +1183,6 @@ Casinos */
     }
     @media (min-width: 1280px) {
         --casino-item-gutter: 46px;
-    }
-
-    .items-more {
-        margin-bottom: 56px;
     }
 }
 
@@ -1582,16 +1609,18 @@ Casinos */
 .slots {
     --slots-width: 224px;
     --slots-gutter: 20px;
-    background-color: var(--theme-bg-3);
+    padding-top: 28px;
     padding-bottom: 20px;
 
     @media (min-width: 992px) {
         padding-bottom: 40px;
     }
 
-    .main-banner + & {
-        padding-top: 28px;
+    &.--bg-gray {
+        background-color: var(--theme-bg-3);
+    }
 
+    .main-banner + & {
         .slots__ttl {
             font-size: 26px;
 
@@ -1606,6 +1635,7 @@ Casinos */
     }
 
     & + & {
+        padding-top: 0;
         margin-top: -20px;
 
         @media (min-width: 992px) {
@@ -1632,14 +1662,7 @@ Casinos */
 }
 
 .slots__ttl {
-    font-size: 20px;
-    line-height: 1.358;
-    font-weight: 900;
     margin-bottom: 0;
-
-    @media (min-width: 992px) {
-        font-size: 24px;
-    }
 }
 
 .slots__container {
@@ -1852,26 +1875,31 @@ Casinos */
     --games-gutter: 20px;
     background-color: var(--theme-bg-4);
     padding-top: 47px;
-    padding-bottom: 40px;
+    padding-bottom: 32px;
     display: flow-root;
 
     @media (max-width: 1229px) {
         padding-top: 32px;
     }
 
-    @media (min-width: 992px) {
-        padding-bottom: 61px;
-    }
-
     &.--bg-gray {
         background-color: var(--theme-bg-3);
+
+        .--bg-gray + & {
+            padding-top: 0;
+            margin-top: -20px;
+
+            @media (max-width: 1229px) {
+                padding-top: 0;
+            }
+        }
     }
 
     & + & {
-        margin-top: -60px;
+        margin-top: -52px;
 
         @media (min-width: 992px) {
-            margin-top: -97px;
+            margin-top: -70px;
         }
     }
 
@@ -1881,16 +1909,17 @@ Casinos */
 }
 
 .games__container {
-    overflow-x: auto;
     display: flex;
     justify-content: space-between;
     margin-left: calc(var(--games-gutter) / -2);
     margin-right: calc(var(--games-gutter) / -2);
 
-    @media (max-width: 1229px) {
-        margin-right: calc(var(--side-gutters) * -1);
+    &:not(.flex-wrap) {
+        @media (max-width: 1229px) {
+            overflow-x: auto;
+            margin-right: calc(var(--side-gutters) * -1);
+        }
     }
-
 
     &:after {
         content: '';
@@ -1973,12 +2002,10 @@ Casinos */
     margin-bottom: 16px;
 }
 
-.games__more {
-    margin-top: 40px;
-    margin-bottom: 60px;
+.items-more {
+    margin-top: 12px;
+    margin-bottom: 28px;
 }
-
-
 
 
 .bonuses-casino {
@@ -2019,14 +2046,8 @@ Casinos */
 }
 
 .bonuses-casino__ttl {
-    font-size: 20px;
-    line-height: 1.5;
-    font-weight: 900;
     margin-bottom: 0;
     padding-bottom: 3px;
-    @media (min-width: 992px) {
-        font-size: 24px;
-    }
 }
 
 .bonuses__container {
@@ -2093,7 +2114,8 @@ Casinos */
     letter-spacing: 0.015em;
 
     @media (min-width: 992px) {
-        align-self: end;
+        align-self: auto;
+        margin-top: 10px;
         margin-bottom: 7px;
         font-size: 18px;
     }
@@ -2101,7 +2123,6 @@ Casinos */
 
 .bonuses-item__val {
     grid-area: bonuses-val;
-    align-self: center;
     font-family: var(--alt-font-family);
     font-weight: 900;
     font-size: 28px;

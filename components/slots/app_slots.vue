@@ -14,7 +14,7 @@
                           v-for="(item, index) in value"
                           :key="index" >
                     <div class="game-item__logo">
-                        <img :src="item.thumbnail" loading="lazy" alt="" />
+                        <img :src="item.thumbnail" loading="lazy" width="224" alt="" />
                     </div>
 
                     <div class="game-item__hover">
@@ -63,8 +63,3 @@
         }
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>
-

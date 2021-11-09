@@ -55,7 +55,9 @@ import TRANSLATE from '~/helpers/translate.json'
                 showMore: '',
                 rating: '',
                 play: '',
-                review: ''
+                review: '',
+                readMore: '',
+                getBonus: ''
             }
         },
         computed: {

@@ -97,14 +97,7 @@ export default {
 .banner-item__logo {
     margin-bottom: 10px;
 }
-.banner-item__ttl {
-    font-size: 15px;
-    line-height: 1.2;
-    font-weight: 700;
-    @media (min-width: 992px) {
-        font-size: 24px;
-    }
-}
+
 .banner-item__bonus {
     line-height: 1.2;
     font-size: 25px;

@@ -7,13 +7,13 @@
                           v-for="(item, index) in currentPosts"
                           :key="index" >
                     <div class="game-item__logo">
-                        <img :src="item.thumbnail" loading="lazy" alt="" />
+                        <img :src="item.thumbnail" loading="lazy" width="224" alt="" />
                     </div>
                 </NuxtLink>
             </div>
         </div>
 
-        <div class="games__more items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
+        <div class="items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
             <button no-prefetch
                     class="btn-secondary"
                     @click="postShowMore"

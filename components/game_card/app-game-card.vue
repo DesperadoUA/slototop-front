@@ -14,6 +14,7 @@
 
             <button type="button"
                     class="casino-card__cta btn-play"
+                    @click="popUpActivate"
             >{{play}}</button>
         </div>
 
@@ -28,6 +29,9 @@
             </div>
         </div>
     </div>
+    <div class="game_pop_up" v-if="showGame">
+        <button @click="closePopUp">x<button>
+    </div>
 </div>
 </template>
 
@@ -40,7 +44,8 @@
         data(){
             return {
                 play: '',
-                rating: ''
+                rating: '',
+                showGame: false
             }
         },
         filters: {
@@ -51,7 +56,27 @@
         mounted() {
             this.play = TRANSLATE.PLAY.ru
             this.rating = TRANSLATE.RATING.ru
+        },
+        methods: {
+            popUpActivate(){
+                console.log('Good game')
+                this.showGame = true
+            },
+            closePopUp(){
+                this.showGame = false
+            }
         }
 
     }
 </script>
+<style scoped>
+    .game_pop_up {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+        background: red;
+        top:0;
+        left: 0;
+    }
+</style>

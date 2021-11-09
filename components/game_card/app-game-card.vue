@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="game_pop_up" v-if="showGame">
-        <button @click="closePopUp">x<button>
+        <button @click="closePopUp">x</button>
     </div>
 </div>
 </template>

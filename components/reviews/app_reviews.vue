@@ -9,42 +9,58 @@
         </div>
 
         <div class="container">
-            <h2 class="reviews__title" itemprop="name">Отзывы</h2>
+            <h2 class="reviews__title" itemprop="name">{{title}}</h2>
 
-            <div class="review-item">
-                <div class="review-item__author" itemprop='author'>Dron05649</div>
+            <div class="review-item" v-for="(item, index) in currentPosts"
+                 :key="index">
+                <div class="review-item__author" itemprop='author'>{{item.review_name}}</div>
 
                 <div class="review-item__rating">
                     <div class="star-rating">
-                        <div class="star-rating__val" style="width: 90%;"></div>
+                        <div class="star-rating__val" :style="'width: '+item.review_rating+'%;'">
+
+                        </div>
                     </div>
-                    <strong class="slot-item__stats-val">9,5/10</strong>
+                    <strong class="slot-item__stats-val">{{(item.review_rating/10).toFixed(1)}}/10</strong>
                 </div>
                 <div class="review-item__desc" itemprop='reviewBody'>
-                    Хочу отметить удобство пользования с мобильного. Регистрация по номеру прошла быстро. Удобный интерфейс, выгодные акции, много автоматов дают возможность побороться за джекпот. Навязчивая реклама отсуствует. Большой выбор автоматов, процентный кешбэк, бонусы. Выводил деньги через ту систему, которой внес депозит. Минимальную сумму 50 грн при первичном выведении получил на карту быстро.
+                    {{item.review_text}}
                 </div>
             </div>
 
-            <div class=""> <!-- v-if="value.length > (numberReviewOnQuery*reviewCurrentPage)"-->
-                <button type="button" class="reviews__show-more btn-secondary" @click="reviewShowMore">Загрузить еще</button>
+            <div class="" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
+                <button type="button" class="reviews__show-more btn-secondary"  @click="postShowMore">
+                    {{showMore}}
+                </button>
             </div>
         </div>
     </section>
 </template>
 
 <script>
+    import TRANSLATE from '~/helpers/translate.json'
     export default {
         name: "app_reviews",
         props: ['value', 'title'],
         data(){
             return {
+                numberPostOnQuery: 5,
+                postCurrentPage: 1,
+                showMore: '',
             }
         },
         computed: {
+            currentPosts() {
+                return this.value.slice(0, this.numberPostOnQuery * this.postCurrentPage)
+            }
         },
         methods: {
+            postShowMore(){
+                this.postCurrentPage += 1
+            }
         },
-        filters:{
+        mounted() {
+            this.showMore = TRANSLATE.SHOW_MORE.ru
         }
     }
 </script>

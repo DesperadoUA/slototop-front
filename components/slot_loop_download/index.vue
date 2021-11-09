@@ -1,5 +1,5 @@
 <template>
-    <div class="games --alt-bg">
+    <div :class="'games --alt-bg '+bg">
         <div class="container">
             <div class="slots__heading" v-if="title">
                 <h2 class="slots__ttl">{{title}}</h2>
@@ -26,8 +26,8 @@
             </div>
         </div>
 
-        <div class="games__more items-more">
-            <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
+        <div class="games__more items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
+            <button no-prefetch
                     class="btn-secondary"
                     @click="postShowMore"
             >{{showMore}}</button>
@@ -55,6 +55,10 @@ import TRANSLATE from '~/helpers/translate.json'
             linkText: {
                 type: String,
                 default: undefined
+            },
+            bg: {
+                type: String,
+                default: ''
             }
         },
         data(){

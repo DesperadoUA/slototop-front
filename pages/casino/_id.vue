@@ -10,7 +10,7 @@
                  v-if="data.body.bonuses.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
     <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
-    <app_reviews />
+    <app_reviews :title="'Отзывы'" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
   </div>
 </template>
 

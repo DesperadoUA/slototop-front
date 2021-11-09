@@ -13,8 +13,8 @@
             </div>
         </div>
 
-        <div class="games__more items-more">
-            <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
+        <div class="games__more items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
+            <button no-prefetch
                     class="btn-secondary"
                     @click="postShowMore"
             >{{showMore}}</button>

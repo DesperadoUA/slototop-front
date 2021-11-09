@@ -2,7 +2,11 @@
     <div>
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
         <app_category_filter :value="data.body.category" v-if="data.body.category.length !== 0" />
-        <app_slot_loop_downloads :value="data.body.games" v-if="data.body.games.length !== 0" />
+        <app_slot_loop_downloads
+                :value="data.body.games"
+                bg="--bg-gray"
+                v-if="data.body.games.length !== 0"
+        />
         <app_content :value="data.body.content" v-if="data.body.content !== ''" />
       </div>
 </template>

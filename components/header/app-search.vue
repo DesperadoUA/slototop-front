@@ -24,7 +24,10 @@
 
                    <ul class="search-suggest" v-if="posts.length !== 0">
                        <li v-for="(item, index) in posts" :key="index" @click="goToSearch">
-                         <NuxtLink :to="item.permalink">{{item.title}}</NuxtLink>
+                         <NuxtLink :to="item.permalink">
+                             <img src="/img/slotoking.png" alt="">
+                             {{item.title}}
+                         </NuxtLink>
                        </li>
                    </ul>
                </div>
@@ -119,8 +122,10 @@
 .search-box__container {
     margin-left: auto;
     margin-right: auto;
+    padding-left: var(--side-gutters);
+    padding-right: var(--side-gutters);
     width: 100%;
-    max-width: 872px;
+    max-width: 1218px;
     display: flex;
     align-items: center;
     height: 100vh;
@@ -128,7 +133,7 @@
 }
 
 .form-search {
-    max-width: 430px;
+    max-width: 590px;
     margin-left: auto;
     margin-right: auto;
     font-family: var(--base-font-family);
@@ -194,51 +199,42 @@
     left: 0;
     width: 100%;
     margin: 0;
-    padding: 21px 0 0;
+    padding: 23px 0 0;
     list-style: none;
-    color: #fff;
-    font-size: 14px;
-    line-height: 1.286;
-    font-weight: 600;
-    max-height: 210px;
+    color: var(--theme-cr-2);
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    max-height: 222px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
     li {
         transition: var(--transition-default);
-        margin-bottom: 2px;
-        background-color: rgba(#fff, .1);
-        border-radius: 8px;
-        padding: 9px 30px 9px 12px;
+        background: rgba(#fff, .9);
+        border-radius: 10px;
+        margin-bottom: 4px;
         position: relative;
 
         @media (min-width: 992px) {
             &:hover {
-                background-color: rgba(#000, .1);
-
-                &:after {
-                    opacity: 1;
-                }
+                background: rgba(#fff, 1);
             }
-        }
-
-        &:after {
-            transition: var(--transition-default);
-            content: '';
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            //background: url(/img/arrow.svg) no-repeat;
-            opacity: .5;
-            width: 8px;
-            height: 14px;
         }
     }
 
+    img {
+        margin-right: 12px;
+        border-radius: 8px;
+        width: 49px;
+    }
+
     a {
+        min-height: 46px;
+        padding: 4px 20px 4px 4px;
         color: currentColor;
-        display: block;
+        display: flex;
+        align-items: center;
         text-decoration: none;
     }
 }

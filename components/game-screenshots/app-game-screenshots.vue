@@ -44,7 +44,11 @@
     padding-top: 50px;
     padding-bottom: 30px;
     --screenshots-width: 33.333%;
-    --screenshots-gutter: 20px;
+    --screenshots-gutter: 10px;
+
+    @media (min-width: 992px) {
+        --screenshots-gutter: 20px;
+    }
 }
 
 .game-screenshots__container {

@@ -145,6 +145,14 @@
 
 .game-popup__container {
     position: relative;
+
+    @media (max-width: 1400px) {
+        max-width: 75vw;
+    }
+
+    @media (max-width: 767px) {
+        max-width: 90vw;
+    }
 }
 
 .game-popup__iframe-area {

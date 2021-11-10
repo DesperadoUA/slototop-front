@@ -53,7 +53,7 @@
 
     @media (max-width: 767px) {
         --base-font-size: 15px;
-        --side-gutters: 8px;
+        --side-gutters: 20px;
     }
 
     /* Theme bg-color */
@@ -86,6 +86,15 @@
     font-weight: 500;
     font-display: swap;
 }
+
+@font-face {
+    font-family: "Roboto";
+    src: url("/fonts/roboto-medium-italic.woff2") format("woff2");
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
 @font-face {
     font-family: "Roboto";
     src: url("/fonts/robotobold.woff2") format("woff2");
@@ -1000,7 +1009,7 @@ Blog */
         left: 8px;
         right: 8px;
         top: 100%;
-        background-color: rgba(#fff, 0.1);
+        background-color: rgba(#fff, .1);
     }
 }
 
@@ -1009,7 +1018,6 @@ Casino Detail*/
 .casino-detail {
     padding-top: 30px;
     padding-bottom: 15px;
-    background-color: #fff;
     display: flow-root;
 
     @media (min-width: 992px) {
@@ -2120,10 +2128,12 @@ Casinos */
 }
 
 .bonuses-item {
+    --b-side-gutters: 16px;
+
     background-color: #fff;
     box-shadow: 0 4px 20px rgba(#02133e, .2);
     border-radius: 10px;
-    padding: 10px 10px 16px;
+    padding: 16px var(--b-side-gutters) 1px;
     display: grid;
     grid-template-areas:"bonuses-logo bonuses-name"
                         "bonuses-val bonuses-val"
@@ -2132,11 +2142,15 @@ Casinos */
     grid-template-columns: 152px 1fr;
 
     @media (min-width: 992px) {
+        --b-side-gutters: 10px;
+
         grid-template-areas:"bonuses-logo bonuses-name"
                             "bonuses-logo bonuses-val"
                             "bonuses-tags bonuses-tags"
                             "bonuses-btns bonuses-btns";
         grid-template-columns: 158px 1fr;
+        padding-top: 10px;
+        padding-bottom: 16px;
     }
 }
 
@@ -2145,6 +2159,11 @@ Casinos */
     margin-bottom: 16px;
     overflow: hidden;
     padding-right: 18px;
+
+    @media (max-width: 991px) {
+        margin-top: -12px;
+        margin-left: -12px;
+    }
 
     img {
         border-radius: 8px;
@@ -2211,9 +2230,15 @@ Casinos */
 .bonuses-item__btns {
     grid-area: bonuses-btns;
 
+    @media (max-width: 991px) {
+        margin-left: calc(var(--b-side-gutters) * -1 + 1px);
+        margin-right: calc(var(--b-side-gutters) * -1 + 1px);
+    }
+
     @media (min-width: 992px) {
         --btn-width: 50%;
         --btn-gutter: 10px;
+
         display: flex;
         margin-left: calc(var(--btn-gutter) / -2);
         margin-right: calc(var(--btn-gutter) / -2);
@@ -2221,6 +2246,10 @@ Casinos */
 
     .bonuses-item__btn {
         width: 100%;
+
+        @media (max-width: 991px) {
+            border-radius: 0 0 9px 9px;
+        }
 
         @media (min-width: 992px) {
             box-sizing: border-box;

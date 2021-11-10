@@ -1927,7 +1927,7 @@ Casinos */
 
 .games {
     --games-width: 224px;
-    --games-gutter: 20px;
+    --games-gutter: 15px;
     background-color: var(--theme-bg-4);
     padding-top: 47px;
     padding-bottom: 32px;
@@ -1935,6 +1935,14 @@ Casinos */
 
     @media (max-width: 1229px) {
         padding-top: 32px;
+    }
+
+    @media (min-width: 768px) {
+        --games-gutter: 20px;
+    }
+
+    .category-filter + & {
+        padding-top: 28px;
     }
 
     &.--bg-gray {
@@ -1976,6 +1984,14 @@ Casinos */
         }
     }
 
+    &.flex-wrap {
+        .game-item {
+            @media (max-width: 767px) {
+                flex-basis: calc(50% - var(--games-gutter));
+            }
+        }
+    }
+
     &:after {
         content: '';
         flex: auto;
@@ -1993,7 +2009,7 @@ Casinos */
 .game-item {
     background-color: #fff;
     width: var(--games-width);
-    margin-bottom: 28px;
+    margin-bottom: 15px;
     display: flex;
     flex-direction: column;
     color: currentColor;
@@ -2002,6 +2018,8 @@ Casinos */
     border-radius: 10px;
 
     @media (min-width: 992px) {
+        margin-bottom: 28px;
+
         &:hover {
             .game-item__hover {
                 opacity: 1;

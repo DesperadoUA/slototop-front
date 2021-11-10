@@ -31,11 +31,12 @@
     background-color: var(--theme-bg-3);
     padding-top: 40px;
 
-    a {
-        text-decoration: none;
-    }
     @media (min-width: 992px) {
         padding-top: 50px;
+    }
+
+    a {
+        text-decoration: none;
     }
 }
 
@@ -54,12 +55,14 @@
     font-size: 15px;
     line-height: 1.2;
     font-weight: 500;
+    color: currentColor;
     border: 1px solid transparent;
     transition: var(--transition-default);
 
     &:hover,
     &.is-active {
         border-color: #f63f6c;
+        box-shadow: none;
     }
 }
 </style>

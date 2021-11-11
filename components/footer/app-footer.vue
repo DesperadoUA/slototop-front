@@ -67,11 +67,14 @@
     color: #fff;
     border: 1px solid rgba(#fff, .1);
     border-radius: 8px;
-    padding: 2px 16px 4px;
+    padding: 4px 16px 6px;
     text-decoration: none;
     margin-right: 4px;
+    margin-bottom: 12px;
 
     @media (min-width: 992px) {
+        padding: 2px 16px 4px;
+
         &:hover {
             border: 1px solid rgba(#fff, .8);
         }
@@ -79,7 +82,7 @@
 }
 
 .partners-logos {
-    padding-top: 47px;
+    padding-top: 35px;
     padding-bottom: 39px;
 }
 
@@ -104,10 +107,12 @@
     padding-bottom: 20px;
     font-size: 14px;
     color: rgba(#fff, .5);
+    text-align: center;
 
     @media (min-width: 992px) {
         padding-top: 40px;
         padding-bottom: 40px;
+        text-align: left;
     }
 }
 </style>

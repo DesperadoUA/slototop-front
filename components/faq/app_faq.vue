@@ -68,11 +68,12 @@
 </script>
 <style lang="scss">
 .faq {
-    padding: 30px 0;
+    margin-top: 30px;
+    margin-bottom: 30px;
 
     &:last-child {
         @media (min-width: 992px) {
-            padding-bottom: 50px;
+            margin-bottom: 50px;
         }
     }
 }

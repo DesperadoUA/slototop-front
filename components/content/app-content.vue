@@ -15,16 +15,15 @@
         }
     }
 </script>
-<style lang="scss" scope>
+<style lang="scss">
 .cms {
-    background-color: var(--theme-bg-4);
     padding-top: 48px;
-    padding-bottom: 0;
+    margin-bottom: 50px;
     color: var(--theme-cr-txt-cms);
     display: flow-root;
 
-    &:last-child {
-        padding-bottom: 60px;
+    .game-screenshots + & {
+        padding-top: 20px;
     }
 
     /*.games + &,
@@ -33,7 +32,9 @@
     }*/
 
     p {
-        margin-bottom: 25px;
+        &:not(:last-child) {
+            margin-bottom: 25px;
+        }
     }
 
     h1 {
@@ -91,6 +92,10 @@
         margin: 0 0 28px;
         padding: 0;
         list-style: none;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
 
     ul {
@@ -139,8 +144,7 @@
         font-size: 16px;
         font-style: italic;
         line-height: 170%;
-        margin-bottom: 30px;
-        margin-top: 30px;
+        margin: 30px 0;
 
         @media (min-width: 992px) {
             padding: 20px 56px 20px 42px;
@@ -156,7 +160,7 @@
             line-height: 170%;
             color: #f33b68;
             position: absolute;
-            left: 5px;
+            left: 10px;
             top: 4px;
         }
 

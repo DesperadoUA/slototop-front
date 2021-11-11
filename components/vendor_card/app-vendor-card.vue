@@ -12,27 +12,27 @@
 
             <div class="detail-table detail-table--2-col">
                 <div class="detail-row">
-                    <div class="detail-row-item">
-                        <div class="detail-row__heading">Страна представитель</div>
+                    <div class="detail-row-item" v-if="value.country.length !== 0">
+                        <div class="detail-row__heading">{{countryRepresentative}}</div>
 
                         <div class="detail-row__content">
-                            <span class="detail-item">2019</span>
+                            <NuxtLink class="detail-item" :to="value.country[0].permalink">{{value.country[0].title}}</NuxtLink>
                         </div>
                     </div>
 
-                    <div class="detail-row-item">
-                        <div class="detail-row__heading">Страна представитель</div>
+                    <div class="detail-row-item" v-if="value.year !== ''">
+                        <div class="detail-row__heading">{{yearFoundation}}</div>
 
                         <div class="detail-row__content">
-                            <span class="detail-item">2019</span>
+                            <span class="detail-item">{{value.year}}</span>
                         </div>
                     </div>
 
-                    <div class="detail-row-item">
-                        <div class="detail-row__heading">Страна представитель</div>
+                    <div class="detail-row-item" v-if="value.number_games !== ''">
+                        <div class="detail-row__heading">{{numberGames}}</div>
 
                         <div class="detail-row__content">
-                            <span class="detail-item">2019</span>
+                            <span class="detail-item">{{value.number_games}}</span>
                         </div>
                     </div>
                 </div>
@@ -61,7 +61,10 @@
         props: ['value'],
         data(){
             return {
-                rating: ''
+                rating: '',
+                countryRepresentative: '',
+                yearFoundation: '',
+                numberGames: ''
             }
         },
         filters: {
@@ -76,6 +79,9 @@
         },
         mounted() {
             this.rating = TRANSLATE.RATING.ru
+            this.countryRepresentative = TRANSLATE.COUNTRY_REPRESENTATIVE.ru
+            this.yearFoundation = TRANSLATE.YEAR_FOUNDATION.ru
+            this.numberGames = TRANSLATE.NUMBER_GAMES.ru
         }
 
     }

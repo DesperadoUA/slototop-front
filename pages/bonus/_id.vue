@@ -2,7 +2,7 @@
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_breadcrumbs :value="data.body.breadcrumbs" />
-    <app_bonus_card />
+    <app_bonus_card  :value="data.body" />
     <app_bonus_details :value="data.body" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
     <app_bonuses_casino :value="data.body.bonuses"

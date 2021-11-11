@@ -2,18 +2,20 @@
 <div class="casino-card">
     <div class="container casino-card__container">
         <div class="casino-card__logo">
-            <img src="/img/slotoking.png" alt="">
+            <img :src="value.casino[0].thumbnail" :alt="value.casino[0].title">
         </div>
 
         <div class="casino-card__txt">
-            <div class="casino-card__name">
-                Бонус от 777 Original
-            </div>
-            <strong class="casino-card__bonus">125000 ₽</strong>
+            <div class="casino-card__name">{{value.title}}</div>
+            <strong class="casino-card__bonus" v-if="value.value_bonus !== ''">
+                {{value.value_bonus}}
+            </strong>
         </div>
 
         <div class="casino-card__cta">
-            <button type="button" class="casino-card__cta btn-primary">Получить бонус</button>
+            <button type="button" class="casino-card__cta btn-primary"
+            @click="refActivate(value)"
+            >{{getBonus}}</button>
         </div>
     </div>
 </div>
@@ -28,20 +30,11 @@ import TRANSLATE from '~/helpers/translate.json'
             value: {
                 type: Object,
                 default: {}
-            },
-            goTo: '',
-            rating: '',
-            casino_review: ''
+            }
         },
         data(){
             return {
-                numberPostOnQuery: 10,
-                postCurrentPage: 1
-            }
-        },
-        filters:{
-            classRating(item) {
-                return Helper.classRating(item)
+                getBonus: ''      
             }
         },
         methods: {
@@ -50,9 +43,7 @@ import TRANSLATE from '~/helpers/translate.json'
             },
         },
         mounted() {
-            this.rating = TRANSLATE.RATING.uk
-            this.goTo = TRANSLATE.GO_TO.uk
-            this.casino_review = TRANSLATE.CASINO_REVIEW.uk
+            this.getBonus = TRANSLATE.GET_BONUS.ru
         }
     }
 </script>

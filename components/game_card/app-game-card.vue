@@ -15,6 +15,7 @@
             <button type="button"
                     class="casino-card__cta btn-play"
                     @click="popUpActivate"
+                    v-if="value.iframe !== ''"
             >{{play}}</button>
         </div>
 
@@ -34,9 +35,10 @@
         <div class="game-popup__container container">
             <button type="button" class="btn-close" @click="closePopUp">x</button>
 
-            <h4 class="game-popup__ttl">Razor Shark</h4>
+            <h4 class="game-popup__ttl">{{value.title}}</h4>
             <div class="game-popup__iframe-area">
-                <iframe class="game-popup__iframe" src="https://redirector3.valueactive.eu/Casino/Default.aspx?applicationid=1023&theme=quickfiressl&usertype=5&sext1=demo&sext2=demo&csid=1866&serverid=1866&variant=MIT-Demo&gameid=CandyDreams&ul=EN" frameborder="0"></iframe>
+                <iframe class="game-popup__iframe" 
+                :src="value.iframe" frameborder="0"></iframe>
             </div>
         </div>
     </div>
@@ -48,7 +50,12 @@
     import Helper from '~/helpers/helpers.js'
     export default {
         name: "app-game-card",
-        props: ['value'],
+        props: {
+            value: {
+                type: Object,
+                default: {}
+            }
+        },
         data(){
             return {
                 play: '',
@@ -67,7 +74,6 @@
         },
         methods: {
             popUpActivate(){
-                console.log('Good game')
                 this.showGame = true
             },
             closePopUp(){

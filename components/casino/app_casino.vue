@@ -1,5 +1,5 @@
 <template>
-    <div class="slots">
+    <div :class="'slots '+bg">
         <div class="container">
             <div class="slots__heading">
                 <h2 class="slots__ttl">{{title}}</h2>
@@ -56,6 +56,10 @@ import TRANSLATE from '~/helpers/translate.json'
             linkText: {
                 type: String,
                 default: undefined
+            },
+            bg: {
+                type: String,
+                default: ''
             }
         },
         data() {

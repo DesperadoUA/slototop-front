@@ -4,6 +4,7 @@
     <app_breadcrumbs :value="data.body.breadcrumbs" />
     <app_poker_card :value="data.body" />
     <app_poker_detail :value="data.body" />
+    <app_poker_loop_downloads :value="data.body.pokers" bg="--bg-gray" :title="otherPokerRooms"/>
     <app_content :value="data.body.content"  v-if="data.body.content !== ''" />
     <app_reviews :title="'Отзывы'" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
   </div>
@@ -11,6 +12,7 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
+    import TRANSLATE from '~/helpers/translate.json'
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
@@ -18,14 +20,15 @@
     import app_poker_card from '~/components/poker_card/app-poker-card'
     import app_poker_detail from '~/components/poker-detail/app-poker-detail'
     import app_reviews from '~/components/reviews/app_reviews'
+    import app_poker_loop_downloads from '~/components/poker_loop_downloads/app_poker_loop_downloads'
     export default {
         name: "single-poker",
         data: () => {
             return {
-                data: {},
+                otherPokerRooms: ''
             }
         },
-        components: {app_content, app_page_banner, app_breadcrumbs, app_poker_card, app_poker_detail, app_reviews},
+        components: {app_content, app_page_banner, app_breadcrumbs, app_poker_card, app_poker_detail, app_reviews, app_poker_loop_downloads},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -50,6 +53,9 @@
             else {
                 error({ statusCode: 404, message: 'Post not found' })
             }
+        },
+        mounted(){
+            this.otherPokerRooms = TRANSLATE.OTHER_POKER_ROOMS.ru
         },
         head() {
             return {

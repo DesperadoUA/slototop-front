@@ -1,8 +1,16 @@
 <template>
     <div>
         <app_banner :value="changeBanner" v-if="changeBanner.length !== 0 && device" />
-        <app_casino :value="data.body.casino" :title="onlineCasino" link="casinos" :linkText="allCasino"/>
-        <app_casino :value="data.body.new_casino" :title="newCasino"/>
+        <app_casino :value="data.body.casino"
+                    :title="onlineCasino"
+                    link="casinos"
+                    :linkText="allCasino"
+                    bg="--bg-gray"
+        />
+        <app_casino :value="data.body.new_casino"
+                    :title="newCasino"
+                    bg="--bg-gray"
+        />
         <app_slots :value="data.body.top_game" :title="games" link="games" :linkText="allGames"/>
         <app_slots :value="data.body.new_game" :title="newGames" link="games" :linkText="allGames"/>
         <app_bonuses_casino :value="data.body.bonuses" :title="bonusesCasino" link="bonuses" :linkText="allBonuses" />

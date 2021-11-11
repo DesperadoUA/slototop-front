@@ -1,7 +1,9 @@
 <template>
     <div>
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-        <app_casino_loop_downloads :value="data.body.casino" v-if="data.body.casino.length !== 0" />
+        <app_casino_loop_downloads :value="data.body.casino"
+                                   bg="--bg-gray"
+                                   v-if="data.body.casino.length !== 0" />
         <app_content :value="data.body.content" v-if="data.body.content !== ''"/>
         <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
       </div>

@@ -1,7 +1,10 @@
 <template>
     <div>
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-        <app_vendor_loop_download :value="data.body.vendors" v-if="data.body.vendors.length !== 0" />
+        <app_vendor_loop_download
+                :value="data.body.vendors"
+                bg="--bg-gray"
+                v-if="data.body.vendors.length !== 0" />
         <app_content :value="data.body.content" v-if="data.body.content !== ''" />
     </div>
 </template>

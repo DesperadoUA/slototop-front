@@ -1,5 +1,5 @@
 <template>
-<div class="casinos">
+<div :class="'casinos '+bg">
         <div class="slots">
             <div class="container">
                 <div class="slots__heading" v-if="title">
@@ -62,6 +62,10 @@ import TRANSLATE from '~/helpers/translate.json'
             linkText: {
                 type: String,
                 default: undefined
+            },
+            bg: {
+                type: String,
+                default: ''
             }
         },
         data(){

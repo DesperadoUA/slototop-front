@@ -25,7 +25,7 @@
                    <ul class="search-suggest" v-if="posts.length !== 0">
                        <li v-for="(item, index) in posts" :key="index" @click="goToSearch">
                          <NuxtLink :to="item.permalink">
-                             <img src="/img/slotoking.png" alt="">
+                             <img :src="item.thumbnail" alt="">
                              {{item.title}}
                          </NuxtLink>
                        </li>

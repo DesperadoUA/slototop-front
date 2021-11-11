@@ -9,6 +9,7 @@
     />
     <app_casino_loop_downloads :value="data.body.casino"
                                v-if="data.body.casino.length !== 0"
+                               bg="--bg-gray"
                                :title="data.body.title | createTitleCasino"
 
     />

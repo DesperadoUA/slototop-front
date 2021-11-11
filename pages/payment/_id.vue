@@ -6,6 +6,7 @@
     <app_payment_detail :value="data.body" />
     <app_casino_loop_downloads :value="data.body.casino"
                                :title="'Оплату принимают'"
+                               bg="--bg-gray"
                                v-if="data.body.casino.length !== 0"
     />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />

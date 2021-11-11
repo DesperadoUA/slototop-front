@@ -1,5 +1,5 @@
 <template>
-    <div class="games">
+    <div :class="'games '+bg">
         <div class="container">
             <div class="slots__heading">
                 <h2 class="slots__ttl" v-if="title">{{title}}</h2>
@@ -49,6 +49,10 @@
             linkText: {
                 type: String,
                 default: undefined
+            },
+            bg: {
+                type: String,
+                default: ''
             }
         },
         data() {

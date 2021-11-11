@@ -1,7 +1,10 @@
 <template>
-<div class="casinos">
+<div :class="'casinos '+bg">
         <div class="slots">
             <div class="container">
+                <div class="slots__heading" v-if="title">
+                    <h2 class="slots__ttl">{{title}}</h2>
+                </div>
                 <div class="slots__container">
                     <div    class="slot-item"
                             v-for="(item, index) in currentPosts"
@@ -27,9 +30,8 @@
                     </div>
                 </div>
         </div>
-        <div class="items-more">
-            <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
-                    class="btn-secondary"
+        <div class="items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
+            <button class="btn-secondary"
                     @click="postShowMore"
             >{{showMore}}</button>
         </div>
@@ -47,6 +49,14 @@ import TRANSLATE from '~/helpers/translate.json'
                 type: Array,
                 default: []
             },
+            bg: {
+                type: String,
+                default: ''
+            },
+            title: {
+                type: String,
+                default: undefined
+            }
         },
         data(){
             return {

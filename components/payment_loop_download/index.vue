@@ -1,5 +1,5 @@
 <template>
-    <div class="games --bg-gray">
+    <div :class="'games '+bg">
         <div class="container">
             <div class="games__container flex-wrap">
                 <NuxtLink class="game-item" no-prefetch
@@ -31,6 +31,10 @@ import TRANSLATE from '~/helpers/translate.json'
                 type: Array,
                 default: []
             },
+            bg: {
+                type: String,
+                default: ''
+            }
         },
         data(){
             return {

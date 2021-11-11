@@ -1,7 +1,9 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
-    <app_payment_loop_download :value="data.body.posts" v-if="data.body.posts.length !== 0" />
+    <app_payment_loop_download :value="data.body.posts"
+                               bg="--bg-gray"
+                               v-if="data.body.posts.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
   </div>
 </template>

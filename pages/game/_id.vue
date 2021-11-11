@@ -4,8 +4,13 @@
     <app_breadcrumbs :value="data.body.breadcrumbs" />
     <app_game_card :value="data.body" />
     <app_game_details :value="data.body.details" />
-    <app_casino :value="data.body.casino" :title="casinoWithThisGame" :linkText="allCasino" link="/casinos" />
-    <app_slots :value="data.body.games" :title="similarGames" :linkText="allGames" link="/games" />
+    <app_casino :value="data.body.casino"
+                bg="--bg-gray"
+                :title="casinoWithThisGame" :linkText="allCasino" link="/casinos" />
+    <app_slots :value="data.body.games"
+               bg="--bg-gray"
+               :title="similarGames"
+               :linkText="allGames" link="/games" />
     <app_game_screenshots 
         :value="data.body.gallery" 
         :title="data.body.screenshots"

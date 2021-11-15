@@ -7,6 +7,7 @@
             bg="--bg-gray"
             v-if="data.body.posts.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+    <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
   </div>
 </template>
 
@@ -17,6 +18,7 @@
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_category_filter from '~/components/category_filter/app_category_filter'
+    import app_faq from '~/components/faq/app_faq'
     export default {
         name: "game-category",
         data: () => {
@@ -24,7 +26,7 @@
 
             }
         },
-        components: {app_slot_loop_downloads, app_content,  app_page_banner, app_category_filter},
+        components: {app_slot_loop_downloads, app_content,  app_page_banner, app_category_filter, app_faq},
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()

@@ -3,6 +3,7 @@
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_bonus_card :value="data.body.posts"  v-if="data.body.posts.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+    <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
   </div>
 </template>
 
@@ -12,9 +13,10 @@
     import app_content from '~/components/content/app-content'
     import app_bonuses_loop_downloads from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'
     import app_page_banner from '~/components/page-banner/app_page_banner'
+    import app_faq from '~/components/faq/app_faq'
     export default {
         name: "bonus-category",
-        components: {app_content, app_bonuses_loop_downloads, app_page_banner},
+        components: {app_content, app_bonuses_loop_downloads, app_page_banner, app_faq},
         data: () => {
             return {
                data: {},

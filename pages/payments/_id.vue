@@ -2,6 +2,7 @@
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+    <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
   </div>
 </template>
 
@@ -10,9 +11,10 @@
     import config from '~/config/index'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
+    import app_faq from '~/components/faq/app_faq'
     export default {
         name: "payment-category",
-        components: {app_content, app_page_banner},
+        components: {app_content, app_page_banner, app_faq},
         data: () => {
             return {
                 data: {},

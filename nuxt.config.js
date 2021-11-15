@@ -55,18 +55,13 @@ export default {
   },
   sitemap: {
     exclude: [
-      '/useful',
-      '/best-for-payout',
-      '/bonus-pay',
-      '/free-bonus-casino',
-      '/licensed-casino',
-      '/max-payout-casino',
-      '/megaways',
-      '/min-deposit-casino',
-      '/new-slots',
-      '/popular-casino',
-      '/progressive',
-      '/slots'
+        '/countries',
+        '/currencies',
+        '/languages',
+        '/licenses',
+        '/technologies',
+        '/type-bonuses',
+        '/type-payments'
     ],
     routes: async () => {
       const request = new DAL_Builder()

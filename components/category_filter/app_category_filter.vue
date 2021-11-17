@@ -61,7 +61,7 @@
 
     &:hover,
     &.is-active {
-        border-color: #f63f6c;
+        border-color: var(--theme-cr-3);
         box-shadow: none;
     }
 }

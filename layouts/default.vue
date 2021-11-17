@@ -67,6 +67,10 @@
 
     --detail-col-width: 246px;
     --detail-ttl-width: 139px;
+
+    @media (max-width: 767px) {
+        --detail-col-width: 180px;
+    }
 }
 
 * {
@@ -1905,6 +1909,29 @@ Casinos */
         }
     }
 }
+
+.ribbon-closed {
+    position: absolute;
+    z-index: 2;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    background-color: #fff;
+    text-align: center;
+    letter-spacing: 0.11em;
+    font-family: var(--alt-font-family);
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--theme-cr-3);
+    text-transform: uppercase;
+    border-radius: 10px 10px 0 0;
+}
+
+
 
 .star-rating {
     background-image: url(/img/stars.png);

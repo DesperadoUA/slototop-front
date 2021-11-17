@@ -61,11 +61,10 @@
 </script>
 
 <style lang="scss">
-@keyframes expand {
+@keyframes expand-menu {
     from {
-        transform: scale(0);
-        opacity: 0;
-        background: #5470B0;
+        transform: translateX(-100%);
+        opacity: .5;
     }
 }
 
@@ -295,7 +294,7 @@
 
         .is-menu-open & {
             display: flex;
-            animation: expand .4s ease-in-out;
+            animation: expand-menu .4s ease-in-out;
         }
     }
 }

@@ -42,7 +42,18 @@
 
 .category-filter__container {
     display: flex;
-    flex-wrap: wrap;
+
+    @media (max-width: 991px) {
+        margin-left: 0;
+        margin-right: calc(var(--side-gutters) * -1);
+        overflow-x: auto;
+        margin-top: -12px;
+        padding-top: 12px;
+    }
+
+    @media (min-width: 992px) {
+        flex-wrap: wrap;
+    }
 }
 
 .category-filter-item {
@@ -50,14 +61,19 @@
     background-color: #fff;
     box-shadow: 0 4px 20px rgba(2, 19, 62, .2);
     border-radius: 8px;
-    margin-right: 16px;
     padding: 8px 23px;
+    margin-bottom: 20px;
     font-size: 15px;
     line-height: 1.2;
     font-weight: 500;
+    white-space: nowrap;
     color: currentColor;
     border: 1px solid transparent;
     transition: var(--transition-default);
+
+    &:not(:last-child) {
+        margin-right: 16px;
+    }
 
     &:hover,
     &.is-active {

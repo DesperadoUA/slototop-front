@@ -343,6 +343,13 @@ Buttons */
     }
 }
 
+.fake-btn-secondary {
+    @extend .btn-secondary;
+    color: var(--theme-cr-3);
+    cursor: default;
+    pointer-events: none;
+}
+
 .btn-tertiary {
     @extend %btn-general;
     min-width: 256px;
@@ -1726,26 +1733,38 @@ Casinos */
 
 .slots__container {
     padding-top: 50px;
-    overflow-x: auto;
     display: flex;
     justify-content: space-between;
     margin-left: calc(var(--slots-gutter) / -2);
     margin-right: calc(var(--slots-gutter) / -2);
 
-    .slots__heading + & {
-        padding-top: 6px;
-    }
-
     @media (max-width: 1229px) {
         margin-right: calc(var(--side-gutters) * -1);
     }
-    @media (min-width: 1366px) {
+
+    &.items-wrap {
         flex-wrap: wrap;
+
+        @media (max-width: 499px) {
+            justify-content: center;
+        }
     }
 
-    &:after {
-        content: '';
-        flex: auto;
+    &:not(.items-wrap) {
+        overflow-x: auto;
+
+        @media (min-width: 1366px) {
+            flex-wrap: wrap;
+        }
+
+        &:after {
+            content: '';
+            flex: auto;
+        }
+    }
+
+    .slots__heading + & {
+        padding-top: 6px;
     }
 
     .slot-item {
@@ -1969,7 +1988,7 @@ Casinos */
     }
 
     .category-filter + & {
-        padding-top: 28px;
+        padding-top: 8px;
     }
 
     &.--bg-gray {

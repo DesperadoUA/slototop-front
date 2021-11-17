@@ -21,7 +21,8 @@
 
                     <div class="bonuses-item__btns">
                         <NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
-                        <span class="bonuses-item__btn btn-primary" @click="refActivate(item)">{{getBonus}}</span>
+                        <button type="button" class="bonuses-item__btn btn-primary" @click="refActivate(item)">{{getBonus}}</button>
+                        <span class="bonuses-item__btn fake-btn-secondary">Бонус недействительный</span>
                     </div>
                 </div>
             </div>
@@ -80,7 +81,3 @@ import TRANSLATE from '~/helpers/translate.json'
         }
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

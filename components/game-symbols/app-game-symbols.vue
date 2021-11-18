@@ -11,11 +11,11 @@
                     <img class="symbols-item__img" :src="item.src" alt="">
 
                     <ul class="symbols-item__txt" v-if="item.value_2.length !== 0">
-                        <li 
+                        <li
                         v-for="(item_1, index_1) in item.value_2"
                         :key="index_1"
                         >
-                        <strong class="mark">{{currentValue[index].value_2[index_1]}}</strong> 
+                        <strong class="mark">{{currentValue[index].value_2[index_1]}}</strong>
                         <span class="dot">&#183;</span> {{currentValue[index].value_3[index_1]}}</li>
                     </ul>
                 </div>
@@ -62,12 +62,18 @@
     }
 </script>
 
-<style lang="scss" scope>
+<style lang="scss">
 .game-symbols {
     padding-top: 30px;
-    --symbols-width: 33.333%;
-    --symbols-gutter: 20px;
-    --symbols-bottom-gutter: 22px;
+    --symbols-width: 50%;
+    --symbols-gutter: 15px;
+    --symbols-bottom-gutter: 15px;
+
+    @media (min-width: 768px) {
+        --symbols-gutter: 20px;
+        --symbols-width: 33.333%;
+        --symbols-bottom-gutter: 22px;
+    }
 }
 
 .game-symbols__container {
@@ -104,9 +110,14 @@
 }
 
 .symbols-item__img {
-    width: 100px;
+    width: 60px;
+    margin-right: 10px;
     border-radius: 8px;
-    margin-right: 16px;
+
+    @media (min-width: 768px) {
+        width: 100px;
+        margin-right: 16px;
+    }
 }
 
 .symbols-item__txt {

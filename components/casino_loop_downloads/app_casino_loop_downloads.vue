@@ -28,6 +28,8 @@
                         <div class="slot-item__btns">
                             <button class="slot-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
                         </div>
+
+                        <span class="ribbon-closed">Закрыто</span>
                     </div>
                 </div>
         </div>
@@ -111,7 +113,3 @@ import TRANSLATE from '~/helpers/translate.json'
         }
     }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

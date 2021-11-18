@@ -67,6 +67,10 @@
 
     --detail-col-width: 246px;
     --detail-ttl-width: 139px;
+
+    @media (max-width: 767px) {
+        --detail-col-width: 180px;
+    }
 }
 
 * {
@@ -337,6 +341,13 @@ Buttons */
         background-color: var(--disabled-bg);
         color: var(--disabled-cr);
     }
+}
+
+.fake-btn-secondary {
+    @extend .btn-secondary;
+    color: var(--theme-cr-3);
+    cursor: default;
+    pointer-events: none;
 }
 
 .btn-tertiary {
@@ -1722,26 +1733,38 @@ Casinos */
 
 .slots__container {
     padding-top: 50px;
-    overflow-x: auto;
     display: flex;
     justify-content: space-between;
     margin-left: calc(var(--slots-gutter) / -2);
     margin-right: calc(var(--slots-gutter) / -2);
 
-    .slots__heading + & {
-        padding-top: 6px;
-    }
-
     @media (max-width: 1229px) {
         margin-right: calc(var(--side-gutters) * -1);
     }
-    @media (min-width: 1366px) {
+
+    &.items-wrap {
         flex-wrap: wrap;
+
+        @media (max-width: 499px) {
+            justify-content: center;
+        }
     }
 
-    &:after {
-        content: '';
-        flex: auto;
+    &:not(.items-wrap) {
+        overflow-x: auto;
+
+        @media (min-width: 1366px) {
+            flex-wrap: wrap;
+        }
+
+        &:after {
+            content: '';
+            flex: auto;
+        }
+    }
+
+    .slots__heading + & {
+        padding-top: 6px;
     }
 
     .slot-item {
@@ -1906,6 +1929,29 @@ Casinos */
     }
 }
 
+.ribbon-closed {
+    position: absolute;
+    z-index: 2;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 42px;
+    background-color: #fff;
+    text-align: center;
+    letter-spacing: 0.11em;
+    font-family: var(--alt-font-family);
+    font-size: 15px;
+    font-weight: 900;
+    color: var(--theme-cr-3);
+    text-transform: uppercase;
+    border-radius: 10px 10px 0 0;
+}
+
+
+
 .star-rating {
     background-image: url(/img/stars.png);
     background-repeat: no-repeat;
@@ -1942,7 +1988,7 @@ Casinos */
     }
 
     .category-filter + & {
-        padding-top: 28px;
+        padding-top: 8px;
     }
 
     &.--bg-gray {

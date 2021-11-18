@@ -24,7 +24,7 @@
             <button type="button"
                     class="casino-card__cta btn-primary"
                     @click="refActivate(value)"
-            >{{goToCasino}}</button>
+            >{{goToSite}}</button>
         </div>
 
         <div class="casino-card__rating">
@@ -50,7 +50,7 @@
         data(){
             return {
                 license: '',
-                goToCasino: '',
+                goToSite: '',
                 rating: ''
             }
         },
@@ -68,7 +68,7 @@
         },
         mounted() {
             this.license = TRANSLATE.LICENSE.ru
-            this.goToCasino = TRANSLATE.GO_TO_CASINO.ru
+            this.goToSite = TRANSLATE.G0_TO_SITE.ru
             this.rating = TRANSLATE.RATING.ru
         }
 

@@ -26,8 +26,7 @@ export default {
     },
     components: {app_casino_loop_downloads, app_content, app_page_banner, app_faq},
     async asyncData({route, error}) {
-        error({ statusCode: 404, message: 'Post not found' })
-       /* const request = {
+        const request = {
             url: 'casinos'
         };
         const response = await DAL_Page.getData(request);
@@ -40,7 +39,6 @@ export default {
             data.body.currentUrl = config.BASE_URL + route.path
             return {data}
         }
-        */
     },
     computed: {
         changeFaq(){

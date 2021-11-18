@@ -54,7 +54,7 @@
                     data.body.currentUrl = config.BASE_URL + route.path;
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
-                        {title:'Казино', permalink: '/casinos'},
+                        {title:'Казино', permalink: '/casino'},
                         {title:data.body.title, permalink: ''},
                     ];
                     return {data}

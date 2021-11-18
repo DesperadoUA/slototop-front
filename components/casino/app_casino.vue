@@ -29,6 +29,7 @@
                     <div class="slot-item__btns">
                         <button class="slot-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
                     </div>
+                    <span class="ribbon-closed" v-if="item.close !== 0">{{close}}</span>
                 </div>
             </div>
         </div>
@@ -65,7 +66,8 @@ import TRANSLATE from '~/helpers/translate.json'
         data() {
             return {
                 goTo: '',
-                rating: ''
+                rating: '',
+                close: ''
             }
         },
         filters: {
@@ -79,8 +81,9 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.goTo = TRANSLATE.GO_TO.uk;
-            this.rating = TRANSLATE.RATING.uk;
+            this.goTo = TRANSLATE.GO_TO.ru
+            this.rating = TRANSLATE.RATING.ru
+            this.close = TRANSLATE.CLOSE.ru
         }
     }
 </script>

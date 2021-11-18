@@ -29,7 +29,7 @@
                             <button class="slot-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
                         </div>
 
-                        <span class="ribbon-closed">Закрыто</span>
+                        <span class="ribbon-closed" v-if="item.close !== 0">{{close}}</span>
                     </div>
                 </div>
         </div>
@@ -79,7 +79,8 @@ import TRANSLATE from '~/helpers/translate.json'
                 welcomeBonus: '',
                 freeSpins: '',
                 casinoReview: '',
-                goTo: ''
+                goTo: '',
+                close: ''
             }
         },
         computed: {
@@ -110,6 +111,7 @@ import TRANSLATE from '~/helpers/translate.json'
             this.freeSpins = TRANSLATE.FREE_SPINS.ru
             this.casinoReview = TRANSLATE.CASINO_REVIEW.ru
             this.goTo = TRANSLATE.GO_TO.ru
+            this.close = TRANSLATE.CLOSE.ru
         }
     }
 </script>

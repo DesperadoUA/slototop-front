@@ -15,7 +15,11 @@
         <div class="casino-card__cta">
             <button type="button" class="casino-card__cta btn-primary"
             @click="refActivate(value)"
+                    v-if="value.close === 0"
             >{{getBonus}}</button>
+            <button type="button" class="casino-card__cta fake-btn-secondary"
+                    v-else
+            >{{bonusInvalid}}</button>
         </div>
     </div>
 </div>
@@ -34,7 +38,8 @@ import TRANSLATE from '~/helpers/translate.json'
         },
         data(){
             return {
-                getBonus: ''      
+                getBonus: '',
+                bonusInvalid: ''
             }
         },
         methods: {
@@ -44,6 +49,7 @@ import TRANSLATE from '~/helpers/translate.json'
         },
         mounted() {
             this.getBonus = TRANSLATE.GET_BONUS.ru
+            this.bonusInvalid = TRANSLATE.BONUS_INVALID.ru
         }
     }
 </script>

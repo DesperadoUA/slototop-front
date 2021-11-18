@@ -27,7 +27,11 @@
 
                     <div class="bonuses-item__btns">
                         <NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
-                        <button type="button" class="bonuses-item__btn btn-primary" @click="refActivate(item)">{{getBonus}}</button>
+                        <button type="button" class="bonuses-item__btn btn-primary"
+                                @click="refActivate(item)"
+                                v-if="item.close === 0"
+                        >{{getBonus}}</button>
+                        <span class="bonuses-item__btn fake-btn-secondary" v-else>Бонус недействительный</span>
                     </div>
                 </div>
             </div>

@@ -1,3 +1,3 @@
 export default {
-    BASE_URL: 'https://onlinecasino.ua'
+    BASE_URL: 'https://sloto.top'
 }

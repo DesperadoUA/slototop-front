@@ -41,6 +41,7 @@
 
 <script>
     import TRANSLATE from '~/helpers/translate.json'
+    import Helper from '~/helpers/helpers.js'
     export default {
         name: "app_bonuses",
         props: {
@@ -74,7 +75,12 @@
         mounted() {
             this.readMore = TRANSLATE.READ_MORE.ru
             this.getBonus = TRANSLATE.GET_BONUS.ru
-        }
+        },
+        methods: {
+            refActivate(item) {
+                Helper.refActivate(item)
+            }
+        },
     }
 </script>
 

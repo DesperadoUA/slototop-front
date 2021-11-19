@@ -12,9 +12,55 @@
             return {
 
             }
+        },
+        mounted(){
+            const main = document.querySelector('.cms')
+            const menu = main.querySelector('.nav')
+            if(menu) {
+                const arrH = []
+                const h2 = main.querySelectorAll('h2')
+                h2.forEach(item => {
+                    arrH.push(item)
+                })
+                const h3 = main.querySelectorAll('h3')
+                h3.forEach(item => {
+                    arrH.push(item)
+                })
+                const h4 = main.querySelectorAll('h4')
+                h4.forEach(item => {
+                    arrH.push(item)
+                })
+                const h5 = main.querySelectorAll('h5')
+                h5.forEach(item => {
+                    arrH.push(item)
+                })
+                const h6 = main.querySelectorAll('h6')
+                h6.forEach(item => {
+                    arrH.push(item)
+                })
+                let str = '<div class="article_menu_heading">Содержание</div>' +
+                          '<ol class="article_menu">'
+                if(arrH.length === 0) {
+                    menu.remove()
+                } else {
+                    arrH.forEach( (item, index) => {
+                        str += `<li><b>${index +1}.</b>
+                      <a href="#heading_${index}">
+                        ${item.innerHTML}
+                      </a>
+                    </li>`
+                    })
+                    str += '</ol>'
+
+                    menu.insertAdjacentHTML('afterBegin', str)
+                    arrH.forEach((item, index) => {
+                        item.setAttribute('id', `heading_${index}`)
+                    })
+                }
+            }
         }
     }
-</script>
+   </script>
 <style lang="scss">
 .cms {
     padding-top: 48px;
@@ -36,8 +82,17 @@
             margin-bottom: 25px;
         }
     }
-
-    h1 {
+  .article_menu a {
+    text-decoration: none;
+    color: var(--theme-cr-txt-cms);
+  }
+  .article_menu {
+    list-style-type: none;
+  }
+  .article_menu li:before {
+    display: none;
+  }
+  h1 {
         font-size: 26px;
         line-height: 1.179;
         font-weight: 900;
@@ -169,7 +224,15 @@
         }
     }
 }
-
+.cms .nav {
+  border-radius: 10px;
+  padding: 15px 15px 15px 0px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgb(2 19 62 / 20%);
+  border-radius: 8px;
+  border-left: 4px solid #f33b68;
+}
 .cms-banner {
     position: relative;
     margin-bottom: 30px;
@@ -182,7 +245,11 @@
         border-radius: 15px;
     }
 }
-
+.article_menu_heading {
+  margin-left: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
 .cms-banner__ttl {
     position: absolute;
     left: 50%;

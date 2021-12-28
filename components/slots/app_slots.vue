@@ -1,5 +1,5 @@
 <template>
-    <div :class="'games '+bg">
+    <section :class="'games '+bg">
         <div class="container">
             <div class="slots__heading">
                 <h2 class="slots__ttl" v-if="title">{{title}}</h2>
@@ -26,7 +26,7 @@
                 </NuxtLink>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

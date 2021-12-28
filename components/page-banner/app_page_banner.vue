@@ -31,7 +31,6 @@
 <style lang="scss" scoped>
 .page-banner {
     background-color: #0b1556;
-    background-image: url(/img/bg-banner-mob.jpg);
     background-repeat: no-repeat;
     background-position: 50% 0;
     background-size: cover;
@@ -53,6 +52,9 @@
     @media (min-width: 992px) {
         min-height: 370px;
         font-size: 16px;
+    }
+    @media (max-width: 720px) {
+        background: linear-gradient(180deg, #590A7D 0%, #370A74 22.4%, #0B0A5A 82.81%, #0D0953 100%);
     }
 }
 

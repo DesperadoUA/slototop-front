@@ -3,7 +3,7 @@
         <app_banner :value="changeBanner" v-if="changeBanner.length !== 0 && device" />
         <app_casino :value="data.body.casino"
                     :title="onlineCasino"
-                    link="casinos"
+                    link="casino"
                     :linkText="allCasino"
                     bg="--bg-gray"
         />

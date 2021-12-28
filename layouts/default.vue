@@ -176,6 +176,20 @@ h2 {
         margin-bottom: 18px;
     }
 }
+.alignLeft {
+   @media (min-width: 992px) {
+     float:left;
+     margin-right: 25px;
+     margin-bottom: 20px;
+   }
+ }
+.alignRight {
+  @media (min-width: 992px) {
+    float:right;
+    margin-left: 25px;
+    margin-bottom: 20px;
+  }
+}
 
 p {
     margin-top: 0;
@@ -1838,6 +1852,10 @@ Casinos */
     margin-bottom: 3px;
     display: inline-flex;
     align-items: center;
+    a{
+      text-decoration: none;
+      color: var(--theme-cr-2);
+    }
 
     img {
         margin-left: 7px;
@@ -2250,7 +2268,10 @@ Casinos */
         font-size: 18px;
     }
 }
-
+.bonuses-item__name a {
+  text-decoration: none;
+  color: var(--theme-cr-2);
+}
 .bonuses-item__val {
     grid-area: bonuses-val;
     font-family: var(--alt-font-family);
@@ -2283,6 +2304,8 @@ Casinos */
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
+    margin-left: 2px;
+    margin-right: 2px;
 
     @media (min-width: 992px) {
         &:hover {
@@ -2310,6 +2333,7 @@ Casinos */
 
     .bonuses-item__btn {
         width: 100%;
+        height: 45px;
 
         @media (max-width: 991px) {
             border-radius: 0 0 9px 9px;

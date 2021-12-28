@@ -1,5 +1,5 @@
 <template>
-    <div :class="'slots '+bg">
+    <section :class="'slots '+bg">
         <div class="container">
             <div class="slots__heading">
                 <h2 class="slots__ttl">{{title}}</h2>
@@ -7,8 +7,7 @@
             </div>
 
             <div class="slots__container">
-                <div no-prefetch :to="item.permalink"
-                          class="slot-item"
+                <article class="slot-item"
                           v-for="(item, index) in value"
                           :key="index">
                     <div class="slot-item__logo">
@@ -17,7 +16,11 @@
                        </NuxtLink>
                     </div>
                     <div class="slot-item__content">
-                        <div class="slot-item__name">{{item.title}} <img src="/img/check.svg" alt="" v-if="item.licenses.length !== 0"></div>
+                        <div class="slot-item__name">
+                            <NuxtLink no-prefetch :to="item.permalink">
+                            {{item.title}}
+                            </NuxtLink>
+                            <img src="/img/check.svg" alt="" v-if="item.licenses.length !== 0"></div>
                         <div class="slot-item__stats">
                             <div class="star-rating">
                                 <span class="star-rating__val" :style="item | widthRating"></span>
@@ -30,10 +33,10 @@
                         <button class="slot-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
                     </div>
                     <span class="ribbon-closed" v-if="item.close !== 0">{{close}}</span>
-                </div>
+                </article>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

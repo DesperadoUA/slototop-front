@@ -6,8 +6,8 @@
                     <h2 class="slots__ttl">{{title}}</h2>
                     <NuxtLink no-prefetch :to="link" class="link-primary" v-if="linkText">{{linkText}}</NuxtLink>
                 </div>
-                <div class="slots__container">
-                    <div class="slot-item"
+                <div class="slots__container items-wrap">
+                    <article class="slot-item"
                             v-for="(item, index) in currentPosts"
                             :key="index">
                         <div class="slot-item__logo">
@@ -16,7 +16,11 @@
                             </NuxtLink>
                         </div>
                         <div class="slot-item__content">
-                            <div class="slot-item__name">{{item.title}} <img src="/img/check.svg" alt="" v-if="item.licenses.length !== 0"></div>
+                            <div class="slot-item__name">
+                                <NuxtLink no-prefetch :to="item.permalink">
+                                    {{item.title}}
+                                </NuxtLink>
+                                <img src="/img/check.svg" alt="" v-if="item.licenses.length !== 0"></div>
                             <div class="slot-item__stats">
                                 <div class="star-rating">
                                     <span class="star-rating__val" :style="item | widthRating"></span>
@@ -30,7 +34,7 @@
                         </div>
 
                         <span class="ribbon-closed" v-if="item.close !== 0">{{close}}</span>
-                    </div>
+                    </article>
                 </div>
         </div>
         <div class="items-more">

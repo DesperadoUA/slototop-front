@@ -8,6 +8,7 @@
                 v-if="data.body.games.length !== 0"
         />
         <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+        <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
       </div>
 </template>
 
@@ -18,14 +19,15 @@
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
    import app_category_filter from '~/components/category_filter/app_category_filter'
+   import app_faq from '~/components/faq/app_faq'
 export default {
     name: "game-page",
     data: () => {
         return {
-           
+            faq: []
         }
     },
-    components: {app_slot_loop_downloads, app_content, app_page_banner, app_category_filter},
+    components: {app_slot_loop_downloads, app_content, app_page_banner, app_category_filter, app_faq},
     async asyncData({route, error}) {
         const request = {
             url: 'games'
@@ -40,6 +42,15 @@ export default {
             data.body.currentUrl = config.BASE_URL + route.path
             return {data}
         }
+    },
+    computed: {
+        changeFaq(){
+            const settings = this.$store.getters['settings/getSettings']
+            if(settings) {
+                this.faq = settings.filter(item => item.key === 'game_page_faq')[0].value
+            }
+            return this.faq
+        },
     },
     head() {
         return {

@@ -5,7 +5,7 @@
                 <div class="slots__heading" v-if="title">
                     <h2 class="slots__ttl">{{title}}</h2>
                 </div>
-                <div class="slots__container">
+                <div class="slots__container items-wrap">
                     <div    class="slot-item"
                             v-for="(item, index) in currentPosts"
                             :key="index">

@@ -2,7 +2,10 @@
 <div class="casino-card">
     <div class="container casino-card__container">
         <div class="casino-card__logo">
-            <img :src="value.thumbnail" :alt="value.title">
+            <img :src="value.thumbnail"
+                 width="250"
+                 height="160"
+                 :alt="value.title">
         </div>
 
         <div class="casino-card__txt">
@@ -10,7 +13,7 @@
                 {{value.title}}
                 <img class="casino-card__license"
                      src="/img/check.svg"
-                     alt="" v-if="value.licenses.length !== 0">
+                     alt="" v-if="value.licenses.length !== 0" width="15" height="15">
                 <img v-for="(item, index) in value.licenses"
                      :src="item.thumbnail"
                      :key="index"

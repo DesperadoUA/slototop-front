@@ -1,5 +1,5 @@
 <template>
-    <div class="bonuses-casino">
+    <section class="bonuses-casino">
         <div class="container">
             <div class="bonuses-casino__heading">
                 <span class="badge-top" v-if="topTextShow">Топ 10</span>
@@ -8,14 +8,20 @@
             </div>
 
             <div class="bonuses__container">
-                <div class="bonuses-item"
+                <article class="bonuses-item"
                      v-for="(item, index) in value"
                      :key="index"
                 >
                     <div class="bonuses-item__logo">
-                        <img :src="item.casino.thumbnail" :alt="item.title">
+                        <NuxtLink no-prefetch :to="item.permalink" >
+                           <img :src="item.casino.thumbnail" :alt="item.title">
+                        </NuxtLink>
                     </div>
-                    <div class="bonuses-item__name">{{item.title}}</div>
+                    <div class="bonuses-item__name">
+                        <NuxtLink no-prefetch :to="item.permalink" >
+                            {{item.title}}
+                        </NuxtLink>
+                    </div>
                     <div class="bonuses-item__val">{{item.value}}</div>
                     <div class="bonuses-tags">
                         <NuxtLink class="bonuses-tag"
@@ -33,10 +39,10 @@
                         >{{getBonus}}</button>
                         <span class="bonuses-item__btn fake-btn-secondary" v-else>Бонус недействительный</span>
                     </div>
-                </div>
+                </article>
             </div>
         </div>
-    </div>
+    </section>
 </template>
 
 <script>

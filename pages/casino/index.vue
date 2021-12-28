@@ -27,7 +27,7 @@ export default {
     components: {app_casino_loop_downloads, app_content, app_page_banner, app_faq},
     async asyncData({route, error}) {
         const request = {
-            url: 'casinos'
+            url: 'casino'
         };
         const response = await DAL_Page.getData(request);
         if(response.data.confirm === 'error') {

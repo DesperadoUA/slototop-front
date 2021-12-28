@@ -6,7 +6,7 @@
     <app_game_details :value="data.body.details" />
     <app_casino :value="data.body.casino"
                 bg="--bg-gray"
-                :title="casinoWithThisGame" :linkText="allCasino" link="/casinos" />
+                :title="casinoWithThisGame" :linkText="allCasino" link="/casino" />
     <app_slots :value="data.body.games"
                bg="--bg-gray"
                :title="similarGames"

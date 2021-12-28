@@ -33,7 +33,7 @@
                               :key="index"
                               :to="item.permalink"
                     >
-                        <img :src="item.thumbnail" :alt="item.title">
+                        <img :src="item.thumbnail" :alt="item.title" width="25" height="18">
                     </NuxtLink>
                 </td>
             </tr>

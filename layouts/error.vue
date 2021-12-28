@@ -1,9 +1,15 @@
 <template>
   <div>
     <section>
-        <div class="container blog_section home_link">
-            <h1>{{data.body.h1}}</h1>
-            <NuxtLink to="/">Home page</NuxtLink>
+        <div class="container error_section">
+            <img src="/img/404.png" class="error_img"/>
+            <div class="error_desc">
+              <b>Извините, страница не найдена</b><br>
+              Возможно, эта страница была удалена либо допущена ошибка в адресе.
+            </div>
+            <div class="home_link_wrapper">
+                <NuxtLink to="/" class="home_link">Home page</NuxtLink>
+            </div>
         </div>
     </section>
   </div>
@@ -26,18 +32,38 @@
   }
 </script>
 <style scoped>
-.home_link {
+.error_section {
     text-align: center;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-transform: uppercase;
-    min-height: 30vh;
-  color: #fff;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
 }
-.home_link a {
+.home_link_wrapper {
     text-decoration: none;
-    font-family: var(--font-bold);
-    color: #fff;
-    font-size: 35px;
+    width: 100%;
 }
+  .home_link {
+      margin-top: 50px;
+      display: inline-block;
+      width: 280px;
+      height: 45px;
+      background: #3F7DF6;
+      border-radius: 12px;
+      color: white;
+      font-family: var(--base-font-family);
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: none;
+      line-height: 45px;
+  }
+  .error_desc {
+    width: 100%;
+    margin-top: 30px;
+    font-family: var(--base-font-family);
+    margin-bottom: 30px;
+    color: #4A5767;
+    font-size: 24px;
+  }
 </style>

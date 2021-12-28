@@ -9,9 +9,9 @@
                         <div class="banner-item__bonus">400 EUR + 250 FS</div>
                         <a href="" class="btn-tertiary &#45;&#45;reel">ПОЛУЧИТЬ БОНУС</a>
                     </div>-->
-                    <NuxtLink :to="item.value_1" >
+                    <a :href="item.value_1" >
                         <img :src="item.src" alt="">
-                    </NuxtLink>
+                    </a>
                 </div>
             </div>
         </div>
@@ -82,6 +82,9 @@ export default {
     position: relative;
     margin-left: calc(var(--banner-gutter) / 2);
     margin-right: calc(var(--banner-gutter) / 2);
+}
+.banner-item img {
+    border-radius: 10px;
 }
 .main-banner__wrapper {
     margin: 0 auto;

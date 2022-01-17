@@ -37,7 +37,7 @@
     --cr-success: #00ff66;
     --btn-primary: #3f7df6;
     --btn-secondary: #01b94a;
-    --table-head: #5f63c0;
+    --table-head: #3f7df6;
     --disabled-bg: #fafbfc;
     --disabled-cr: #c7ccd8;
     --page-banner-txt-cr: var(--theme-cr-txt-alt);
@@ -662,7 +662,23 @@ Casino Card*/
     margin-left: 19px !important;
     margin-right: 11px;
 }
-
+.casino-card__cta_permalink {
+  display: inline-block;
+  padding: 6px;
+  text-align: center;
+  color: #fff;
+  font-family:  var(--base-font-family);
+  background: var(--theme-cr-3);
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 12px!important;
+  margin-top: 15px;
+  line-height: 35px;
+  box-sizing: border-box;
+  font-size: 14px;
+  max-height: 44px;
+}
 .casino-card__license-txt {
     text-transform: uppercase;
     font-size: 12px;

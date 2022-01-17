@@ -2,8 +2,9 @@
 <div class="casino-detail">
     <div class="container">
         <table class="detail-table">
+            <tbody>
             <tr class="detail-row" v-if="value.currency.length !== 0">
-                <th class="detail-row__heading">{{currency}}</th>
+                <td class="detail-row__heading">{{currency}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -14,7 +15,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.payments.length !== 0">
-                <th class="detail-row__heading">{{paymentMethods}}</th>
+                <td class="detail-row__heading">{{paymentMethods}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -38,49 +39,49 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.min_payments !== ''">
-                <th class="detail-row__heading">{{minPayment}}</th>
+                <td class="detail-row__heading">{{minPayment}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.min_payments}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.min_deposit !== ''">
-                <th class="detail-row__heading">{{minDeposit}}</th>
+                <td class="detail-row__heading">{{minDeposit}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.min_deposit}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.chat !== ''">
-                <th class="detail-row__heading">{{chat}}</th>
+                <td class="detail-row__heading">{{chat}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.chat}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.withdrawal !== ''">
-                <th class="detail-row__heading">{{withdrawal}}</th>
+                <td class="detail-row__heading">{{withdrawal}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.withdrawal}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.year !== ''">
-                <th class="detail-row__heading">{{yearFoundation}}</th>
+                <td class="detail-row__heading">{{yearFoundation}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.year}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.number_games !== ''">
-                <th class="detail-row__heading">{{numberGames}}</th>
+                <td class="detail-row__heading">{{numberGames}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.number_games}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.licenses.length !== 0">
-                <th class="detail-row__heading">{{license}}</th>
+                <td class="detail-row__heading">{{license}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -91,7 +92,7 @@
                 </td>
             </tr>
             <tr class="detail-row">
-                <th class="detail-row__heading">{{contacts}}</th>
+                <td class="detail-row__heading">{{contacts}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item" v-if="value.phone !== ''">{{value.phone}}</span>
@@ -100,7 +101,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.vendors.length !== 0">
-                <th class="detail-row__heading">{{platforms}}</th>
+                <td class="detail-row__heading">{{platforms}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -111,7 +112,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.technology.length !== 0">
-                <th class="detail-row__heading">{{technology}}</th>
+                <td class="detail-row__heading">{{technology}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -122,7 +123,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.language.length !== 0">
-                <th class="detail-row__heading">{{languages}}</th>
+                <td class="detail-row__heading">{{languages}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -132,6 +133,7 @@
                     >{{item.title}}</NuxtLink>
                 </td>
             </tr>
+            </tbody>
         </table>
     </div>
 </div>

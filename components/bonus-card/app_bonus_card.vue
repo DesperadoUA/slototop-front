@@ -20,6 +20,7 @@
             <button type="button" class="casino-card__cta fake-btn-secondary"
                     v-else
             >{{bonusInvalid}}</button>
+            <NuxtLink :to="this.value.casino[0].permalink" class="casino-card__cta_permalink">Обзор казино</NuxtLink>
         </div>
     </div>
 </div>

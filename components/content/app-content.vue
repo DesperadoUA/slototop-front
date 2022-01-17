@@ -264,7 +264,6 @@
         font-size: 64px;
     }
 }
-
 .two-cols {
     margin-bottom: 10px;
 
@@ -275,18 +274,15 @@
         margin-bottom: 25px;
     }
 }
-
 .two-cols__ttl {
     width: 100%;
 }
-
 .two-cols__col {
     @media (min-width: 992px) {
         flex: 0 0 49%;
         max-width: 49%;
     }
 }
-
 table:not(.detail-table) {
     font-family: var(--base-font-family);
     line-height: 1.6;
@@ -367,7 +363,6 @@ table:not(.detail-table) {
         color: var(--btn-secondary);
     }
 }
-
 .table__btn {
     text-align: center;
     margin-top: 32px;
@@ -376,4 +371,80 @@ table:not(.detail-table) {
         min-width: 230px;
     }
 }
+  .cms .pluses {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .cms .pluses_left, .cms .pluses_right {
+    width: 50%;
+    @media (max-width: 767px) {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+  .cms .pluses_title {
+    background: var(--btn-primary);
+    font-family: var(--base-font-family);
+    color: #fff;
+    display: block;
+    height: 43px;
+    padding: 5px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 18px;
+  }
+  .pluses_left .pluses_title {
+    border-top-left-radius: 6px;
+    @media (max-width: 767px) {
+      border-top-right-radius: 6px;
+    }
+  }
+  .pluses_right .pluses_title {
+    border-top-right-radius: 6px;
+    @media (max-width: 767px) {
+      border-top-left-radius: 6px;
+    }
+  }
+  .pluses_left ul li:before {
+    content: '✔';
+    width: 0px;
+    top: 1px;
+    left: 3px;
+    color: green;
+  }
+  .pluses_right ul li:before {
+    content: '❌';
+    width: 0px;
+    top: 1px;
+    left: 0px;
+    color: red;
+  }
+  .pluses_content {
+    padding: 10px;
+  }
+  .pluses_left  {
+      border-left:1px solid var(--btn-primary);
+      border-right:1px solid var(--btn-primary);
+      border-bottom:1px solid var(--btn-primary);
+      border-top-left-radius: 6px;
+      border-bottom-left-radius: 6px;
+      @media (max-width: 767px) {
+        border-left:1px solid var(--btn-primary);
+        border-bottom-right-radius: 6px;
+        border-top-right-radius: 6px;
+      }
+  }
+  .pluses_right {
+    border-right:1px solid var(--btn-primary);
+    border-bottom:1px solid var(--btn-primary);
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    @media (max-width: 767px) {
+      border-left:1px solid var(--btn-primary);
+      border-bottom-left-radius: 6px;
+      border-top-left-radius: 6px;
+    }
+  }
 </style>

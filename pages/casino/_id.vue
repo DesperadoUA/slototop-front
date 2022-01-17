@@ -9,8 +9,10 @@
                  :title="data.body.title | createTitle"
                  v-if="data.body.bonuses.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+    <app_casino_rating :value="data.body.casinoRating" :title="data.body.title" />
     <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
     <app_reviews :title="'Отзывы'" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
+    <app_slick_button :referal="data.body.ref"></app_slick_button>
   </div>
 </template>
 
@@ -25,10 +27,12 @@
     import app_casino_card from '~/components/casino_card/app-casino-card'
     import app_casino_detail from '~/components/casino-detail/app-casino-detail'
     import app_reviews from '~/components/reviews/app_reviews'
+    import app_slick_button from '~/components/slick_button/app_slick_button'
+    import app_casino_rating from '~/components/casino_rating/app-casino-rating'
 
     export default {
         name: "app_single_casino",
-        components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner, app_reviews},
+        components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner, app_reviews, app_slick_button, app_casino_rating},
         data: () => {
             return {
                titleBonus: ''
@@ -51,7 +55,15 @@
                 else {
                     const body = response.data.body;
                     const data = {body};
-                    data.body.currentUrl = config.BASE_URL + route.path;
+                    data.body.currentUrl = config.BASE_URL + route.path
+                    data.body.casinoRating = {
+                        reliability: data.body.reliability,
+                        conveniencePayments: data.body.convenience_payments,
+                        interface: data.body.interface,
+                        support: data.body.support,
+                        popularity: data.body.popularity,
+                        shares: data.body.shares,
+                    }
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
                         {title:'Казино', permalink: '/casino'},

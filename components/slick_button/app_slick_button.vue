@@ -5,7 +5,7 @@
       <div class="container slick_button_container">
         <div class="slick_button_left">
             <img src='/img/arrow.png' class="slick_button_arrow left_arrow" loading="lazy" width="8" height='12'>
-            <NuxtLink no-prefetch :to="'/'" >
+            <NuxtLink no-prefetch :to="'/casino'" >
                         {{title_1}}
             </NuxtLink>
         </div>
@@ -42,7 +42,7 @@
                 } 
             },
             goHome() {
-                this.$router.push('/')
+                this.$router.push('/casino')
             }
         }
 

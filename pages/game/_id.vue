@@ -2,7 +2,7 @@
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
     <app_breadcrumbs :value="data.body.breadcrumbs" />
-    <app_game_card :value="data.body" />
+    <app_game_card :value="data.body" :globalRef="globalRef" />
     <app_game_details :value="data.body.details" />
     <app_casino :value="data.body.casino"
                 bg="--bg-gray"
@@ -45,7 +45,10 @@
                 allCasino: '',
                 similarGames: '',
                 allGames: '',
-                screenshots: ''
+                screenshots: '',
+                globalRef: {
+                    ref: []
+                }
             }
         },
         components: {app_content, app_page_banner, app_breadcrumbs, app_game_card, app_casino, app_slots, app_game_details, app_game_screenshots, app_game_symbols},
@@ -76,11 +79,16 @@
                 error({ statusCode: 404, message: 'Post not found' })
             }
         },
-        mounted(){
+        async mounted(){
             this.casinoWithThisGame = TRANSLATE.CASINO_WITH_THIS_GAME.ru
             this.allCasino = TRANSLATE.ALL_CASINO.ru
             this.similarGames = TRANSLATE.SIMILAR_GAME.ru
             this.allGames = TRANSLATE.ALL_GAMES.ru
+
+            await this.$store.dispatch('options/setOptions')
+            const options = this.$store.getters['options/getOptions']
+            const ref = options.filter(item => item.key === 'global-ref')
+            ref.forEach(element => {this.globalRef.ref.push(element.value)})
         },
         head() {
             return {

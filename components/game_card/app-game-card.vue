@@ -11,12 +11,18 @@
             </div>
 
             <span class="casino-card__company" v-if="value.vendor.length !== 0">{{value.vendor[0].title}}</span>
-
-            <button type="button"
-                    class="casino-card__cta btn-play"
-                    @click="popUpActivate"
-                    v-if="value.iframe !== ''"
-            >{{play}}</button>
+            <div class="game_card_btn_wrapper">
+                <button type="button"
+                        class="casino-card__cta btn-play"
+                        @click="popUpActivate"
+                        v-if="value.iframe !== ''"
+                >{{demo}}</button>
+                <button type="button"
+                        class="casino-card__cta btn-primary game_card_btn"
+                        @click="refActivate(globalRef)"
+                        v-if="globalRef"
+                >{{play}}</button>
+            </div>
         </div>
 
         <div class="casino-card__rating">
@@ -54,11 +60,18 @@
             value: {
                 type: Object,
                 default: {}
+            },
+            globalRef: {
+                type: Object,
+                default: {
+                    ref: []
+                }
             }
         },
         data(){
             return {
                 play: '',
+                demo: '',
                 rating: '',
                 showGame: false
             }
@@ -70,6 +83,7 @@
         },
         mounted() {
             this.play = TRANSLATE.PLAY.ru
+            this.demo = TRANSLATE.DEMO.ru
             this.rating = TRANSLATE.RATING.ru
         },
         methods: {
@@ -78,7 +92,11 @@
             },
             closePopUp(){
                 this.showGame = false
-            }
+            },
+            refActivate(item) {
+                console.log(item)
+                Helper.refActivate(item)
+            },
         }
 
     }
@@ -179,5 +197,20 @@
     right: 0;
     width: 100%;
     height: 100%;
+}
+.game_card_btn_wrapper {
+    display: flex;
+    margin-top: 30px;
+    @media (max-width: 767px) {
+     flex-wrap: wrap;
+     margin-top: 0px;
+   }
+}
+.game_card_btn {
+    margin-left: 15px;
+     @media (max-width: 767px) {
+     margin-left: 0px;
+     margin-top: 15px;
+   }
 }
 </style>

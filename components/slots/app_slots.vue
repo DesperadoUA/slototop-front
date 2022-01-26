@@ -8,7 +8,7 @@
                 </NuxtLink>
             </div>
 
-            <div class="games__container">
+            <div class="games__container flex-wrap">
                 <NuxtLink class="game-item" no-prefetch
                           :to="item.permalink"
                           v-for="(item, index) in value"

@@ -69,6 +69,7 @@
     background-color: var(--theme-bg-3);
     border-radius: 10px;
     overflow: hidden;
+    margin-bottom: 10px;
 
     img {
         width: 100%;

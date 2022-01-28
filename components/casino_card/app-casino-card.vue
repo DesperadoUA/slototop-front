@@ -24,7 +24,8 @@
 
             <!--<span class="casino-card__company">(Кинг, Слотокинг Украина)</span> -->
 
-            <button type="button"
+            <button v-if="value.close !== 1"
+                    type="button"
                     class="casino-card__cta btn-primary"
                     @click="refActivate(value)"
             >{{goToCasino}}</button>
@@ -73,6 +74,7 @@
             this.license = TRANSLATE.LICENSE.ru
             this.goToCasino = TRANSLATE.GO_TO_CASINO.ru
             this.rating = TRANSLATE.RATING.ru
+            console.log(this.value)
         }
 
     }

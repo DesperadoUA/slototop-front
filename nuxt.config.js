@@ -19,6 +19,7 @@ export default {
   },
   serverMiddleware: [
     '~/serverMiddleware/redirects',
+    '~/serverMiddleware/error'
   ],
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [

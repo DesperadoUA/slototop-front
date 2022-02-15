@@ -13,7 +13,14 @@
                  :topTextShow="false"
                  :title="data.body.title | createTitle"
                  v-if="data.body.bonuses.length !== 0" />
-    <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+    <div class="casino_content container">
+        <div class="casino_content_left">
+          <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+        </div>
+        <div class="casino_content_right">
+            <app_casino_aside :value="data.body.sidebar" />
+        </div>
+    </div>
     <app_casino_rating :value="data.body.casinoRating" :title="data.body.title" />
     <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
     <app_reviews :title="'Отзывы'" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
@@ -37,10 +44,12 @@
     import app_casino_rating from '~/components/casino_rating/app-casino-rating'
     import app_close_disclaimer from '~/components/close-disclaimer/close-disclaimer'
     import app_casino from '~/components/casino/app_casino'
+    import app_casino_aside from '~/components/casino-aside/app_casino_aside'
 
     export default {
         name: "app_single_casino",
-        components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner, app_reviews, app_slick_button, app_casino_rating, app_close_disclaimer, app_casino},
+        components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner, app_reviews, app_slick_button, 
+        app_casino_rating, app_close_disclaimer, app_casino, app_casino_aside},
         data: () => {
             return {
                 recommendedCasinos: '',
@@ -77,7 +86,7 @@
                         {title:'Sloto.top', permalink: '/'},
                         {title:'Казино', permalink: '/casino'},
                         {title:data.body.title, permalink: ''},
-                    ];
+                    ]
                     return {data}
                 }
             }
@@ -85,7 +94,7 @@
                 error({ statusCode: 404, message: 'Post not found' })
             }
            },
-        mounted(){
+        async mounted(){
             this.recommendedCasinos = TRANSLATE.RECOMMENDED_CASINOS.ru
             this.allCasino = TRANSLATE.ALL_CASINO.ru
         },
@@ -106,3 +115,22 @@
         }
     }
 </script>
+<style scoped>
+    .casino_content {
+        display: flex;
+    }
+    .casino_content_left {
+        width: 70%;
+    }
+    .casino_content_right {
+        width: 30%;
+    }
+    @media (min-width:319px) and (max-width:768px) {
+        .casino_content {
+           flex-wrap: wrap;
+        }
+        .casino_content_left, .casino_content_right {
+          width: 100%;
+        }
+    }
+</style>

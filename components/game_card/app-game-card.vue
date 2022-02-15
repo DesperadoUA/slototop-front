@@ -94,7 +94,6 @@
                 this.showGame = false
             },
             refActivate(item) {
-                console.log(item)
                 Helper.refActivate(item)
             },
         }

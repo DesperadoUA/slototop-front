@@ -176,6 +176,12 @@ h2 {
         margin-bottom: 18px;
     }
 }
+.mt-15 {
+    margin-top: 15px;
+}
+.pt-3 {
+    padding-top: 3px!important;
+}
 .alignLeft {
    @media (min-width: 992px) {
      float:left;

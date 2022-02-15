@@ -74,7 +74,6 @@
             this.license = TRANSLATE.LICENSE.ru
             this.goToCasino = TRANSLATE.GO_TO_CASINO.ru
             this.rating = TRANSLATE.RATING.ru
-            console.log(this.value)
         }
 
     }

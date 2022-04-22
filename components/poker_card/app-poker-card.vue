@@ -44,6 +44,7 @@
 <script>
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
+    import config from '~/config'
     export default {
         name: "app-casino-card",
         props: ['value'],
@@ -53,8 +54,6 @@
                 goToSite: '',
                 rating: ''
             }
-        },
-        filters: {
         },
         methods: {
             refActivate(item) {
@@ -67,9 +66,9 @@
             }
         },
         mounted() {
-            this.license = TRANSLATE.LICENSE.ru
-            this.goToSite = TRANSLATE.G0_TO_SITE.ru
-            this.rating = TRANSLATE.RATING.ru
+            this.license = TRANSLATE.LICENSE[config.LANG]
+            this.goToSite = TRANSLATE.G0_TO_SITE[config.LANG]
+            this.rating = TRANSLATE.RATING[config.LANG]
         }
 
     }

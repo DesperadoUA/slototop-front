@@ -1,3 +1,4 @@
+import config from  '~/config'
 export default class Helper {
     static refActivate(item){
         if(item.ref.length !== 0) {
@@ -11,5 +12,24 @@ export default class Helper {
         if(item.rating <= 33) return '--cr-rating: #f00'
         if(item.rating > 33 && item.rating <= 67) return '--cr-rating: #ffc700'
         if(item.rating > 67) return '--cr-rating: #0f6'
+    }
+    static hreflang(arr) {
+        let newArr = []
+        const defaultItem = arr.filter(item => item.lang === config.DEFAULT_LANG)
+        if(defaultItem.length !== 0) {
+            newArr =  arr.map(item => {
+                return {
+                    hreflang: item.lang,
+                    rel: 'alternate',
+                    href: item.link
+                }
+            })
+                .concat([{
+                hreflang: 'x-default',
+                rel: 'alternate',
+                href: defaultItem[0].link
+            }])
+        }
+        return newArr
     }
 }

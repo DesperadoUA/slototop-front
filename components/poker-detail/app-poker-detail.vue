@@ -107,6 +107,7 @@
 
 <script>
     import TRANSLATE from '~/helpers/translate'
+    import config from '~/config'
     export default {
         name: "app-casino-detail",
         props: {
@@ -133,19 +134,19 @@
             }
         },
         mounted() {
-            this.currency = TRANSLATE.CURRENCY.ru
-            this.paymentMethods = TRANSLATE.PAYMENT_METHODS.ru
-            this.acceptPlayers = TRANSLATE.ACCEPTS_PLAYERS.ru
-            this.minPayment = TRANSLATE.MIN_PAYMENT.ru
-            this.minDeposit = TRANSLATE.MIN_DEPOSIT.ru
-            this.withdrawal = TRANSLATE.WITHDRAWAL.ru
-            this.yearFoundation = TRANSLATE.YEAR_FOUNDATION.ru
-            this.numberGames = TRANSLATE.NUMBER_GAMES.ru
-            this.license = TRANSLATE.LICENSE.ru
-            this.contacts = TRANSLATE.CONTACTS.ru
-            this.platforms = TRANSLATE.PLATFORMS.ru
-            this.technology = TRANSLATE.TECHNOLOGY.ru
-            this.languages = TRANSLATE.LANGUAGES.ru
+            this.currency = TRANSLATE.CURRENCY[config.LANG]
+            this.paymentMethods = TRANSLATE.PAYMENT_METHODS[config.LANG]
+            this.acceptPlayers = TRANSLATE.ACCEPTS_PLAYERS[config.LANG]
+            this.minPayment = TRANSLATE.MIN_PAYMENT[config.LANG]
+            this.minDeposit = TRANSLATE.MIN_DEPOSIT[config.LANG]
+            this.withdrawal = TRANSLATE.WITHDRAWAL[config.LANG]
+            this.yearFoundation = TRANSLATE.YEAR_FOUNDATION[config.LANG]
+            this.numberGames = TRANSLATE.NUMBER_GAMES[config.LANG]
+            this.license = TRANSLATE.LICENSE[config.LANG]
+            this.contacts = TRANSLATE.CONTACTS[config.LANG]
+            this.platforms = TRANSLATE.PLATFORMS[config.LANG]
+            this.technology = TRANSLATE.TECHNOLOGY[config.LANG]
+            this.languages = TRANSLATE.LANGUAGES[config.LANG]
         }
     }
 </script>

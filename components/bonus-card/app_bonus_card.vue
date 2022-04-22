@@ -20,7 +20,7 @@
             <button type="button" class="casino-card__cta fake-btn-secondary"
                     v-else
             >{{bonusInvalid}}</button>
-            <NuxtLink :to="this.value.casino[0].permalink" class="casino-card__cta_permalink">Обзор казино</NuxtLink>
+            <NuxtLink :to="this.value.casino[0].permalink" class="casino-card__cta_permalink">{{casinoReview}}</NuxtLink>
         </div>
     </div>
 </div>
@@ -29,6 +29,7 @@
 <script>
 import Helper from '~/helpers/helpers.js'
 import TRANSLATE from '~/helpers/translate.json'
+import config from '~/config'
     export default {
         name: "app_bonus_card",
         props: {
@@ -40,7 +41,8 @@ import TRANSLATE from '~/helpers/translate.json'
         data(){
             return {
                 getBonus: '',
-                bonusInvalid: ''
+                bonusInvalid: '',
+                casinoReview: ''
             }
         },
         methods: {
@@ -49,8 +51,9 @@ import TRANSLATE from '~/helpers/translate.json'
             },
         },
         mounted() {
-            this.getBonus = TRANSLATE.GET_BONUS.ru
-            this.bonusInvalid = TRANSLATE.BONUS_INVALID.ru
+            this.getBonus = TRANSLATE.GET_BONUS[config.LANG]
+            this.bonusInvalid = TRANSLATE.BONUS_INVALID[config.LANG]
+            this.casinoReview = TRANSLATE.CASINO_REVIEW[config.LANG]
         }
     }
 </script>

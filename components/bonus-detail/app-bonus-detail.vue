@@ -54,6 +54,7 @@
 
 <script>
     import TRANSLATE from '~/helpers/translate'
+    import config from '~/config'
     export default {
         name: "app-bonus-detail",
         props: {
@@ -72,11 +73,11 @@
             }
         },
         mounted() {
-            this.typeBonus = TRANSLATE.TYPE_BONUS.ru
-            this.wager = TRANSLATE.WAGER.ru
-            this.numberUse = TRANSLATE.NUMBER_USE.ru
-            this.availablePlayers = TRANSLATE.AVAILABLE_PLAYERS.ru
-            this.valueBonus = TRANSLATE.VALUE_BONUS.ru
+            this.typeBonus = TRANSLATE.TYPE_BONUS[config.LANG]
+            this.wager = TRANSLATE.WAGER[config.LANG]
+            this.numberUse = TRANSLATE.NUMBER_USE[config.LANG]
+            this.availablePlayers = TRANSLATE.AVAILABLE_PLAYERS[config.LANG]
+            this.valueBonus = TRANSLATE.VALUE_BONUS[config.LANG]
         }
     }
 </script>

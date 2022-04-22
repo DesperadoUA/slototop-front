@@ -11,7 +11,8 @@
 
 <script>
    import DAL_Page from '~/DAL/static_pages'
-   import config from '~/config/index'
+   import config from '~/config'
+   import helper from '~/helpers/helpers'
    import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
@@ -37,6 +38,7 @@ export default {
             const body = response.data.body
             const data = {body}
             data.body.currentUrl = config.BASE_URL + route.path
+            data.body.headerLinks = helper.hreflang(data.body.hreflang)
             return {data}
         }
     },
@@ -60,7 +62,8 @@ export default {
                 },
             ],
             link: [
-                { rel: 'canonical', href: this.data.body.currentUrl}
+                { rel: 'canonical', href: this.data.body.currentUrl},
+                ...this.data.body.headerLinks
             ]
         }
     }

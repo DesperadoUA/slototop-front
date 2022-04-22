@@ -15,7 +15,8 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import config from '~/config/index'
+    import config from '~/config'
+    import helper from '~/helpers/helpers'
     import TRANSLATE from '~/helpers/translate.json'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
@@ -44,10 +45,11 @@
                     const body = response.data.body;
                     const data = {body};
                     data.body.currentUrl = config.BASE_URL + route.path;
-                    data.body.otherBonuses =  TRANSLATE.OTHER_BONUSES.ru + body.casino?.[0].title;
+                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
+                    data.body.otherBonuses =  TRANSLATE.OTHER_BONUSES[config.LANG] + body.casino?.[0].title;
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
-                        {title:'Бонусы', permalink: '/bonuses'},
+                        {title:TRANSLATE.BONUSES[config.LANG], permalink: '/bonuses'},
                         {title:data.body.title, permalink: ''},
                     ];
                     return {data}
@@ -68,7 +70,8 @@
                     },
                 ],
                 link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
+                    { rel: 'canonical', href: this.data.body.currentUrl},
+                    ...this.data.body.headerLinks
                 ]
             }
         }

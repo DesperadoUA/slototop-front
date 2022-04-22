@@ -5,6 +5,8 @@
 </template>
 
 <script>
+    import config from '~/config'
+    import TRANSLATE from '~/helpers/translate.json'
     export default {
         name: "app-content",
         props: ['value'],
@@ -38,7 +40,7 @@
                 h6.forEach(item => {
                     arrH.push(item)
                 })
-                let str = '<div class="article_menu_heading">Содержание</div>' +
+                let str = `<div class="article_menu_heading">${TRANSLATE.CONTENT[config.LANG]}</div>` +
                           '<ol class="article_menu">'
                 if(arrH.length === 0) {
                     menu.remove()

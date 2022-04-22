@@ -23,14 +23,15 @@
     </div>
     <app_casino_rating :value="data.body.casinoRating" :title="data.body.title" />
     <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
-    <app_reviews :title="'Отзывы'" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
+    <app_reviews :title="reviews" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
     <app_slick_button :referal="data.body.ref"></app_slick_button>
   </div>
 </template>
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import config from '~/config/index'
+    import config from '~/config'
+    import helper from '~/helpers/helpers'
     import TRANSLATE from '~/helpers/translate.json'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
@@ -53,12 +54,13 @@
         data: () => {
             return {
                 recommendedCasinos: '',
-                allCasino: ''
+                allCasino: '',
+                reviews: ''
             }
         },
         filters: {
             createTitle(title){
-                return 'Бонусы от ' + title
+                return TRANSLATE.BONUSES_FROM[config.LANG] + title
             }
         },
         async asyncData({route, error}) {
@@ -74,6 +76,7 @@
                     const body = response.data.body;
                     const data = {body};
                     data.body.currentUrl = config.BASE_URL + route.path
+                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
                     data.body.casinoRating = {
                         reliability: data.body.reliability,
                         conveniencePayments: data.body.convenience_payments,
@@ -84,7 +87,7 @@
                     }
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
-                        {title:'Казино', permalink: '/casino'},
+                        {title: TRANSLATE.CASINO[config.LANG], permalink: '/casino'},
                         {title:data.body.title, permalink: ''},
                     ]
                     return {data}
@@ -95,8 +98,9 @@
             }
            },
         async mounted(){
-            this.recommendedCasinos = TRANSLATE.RECOMMENDED_CASINOS.ru
-            this.allCasino = TRANSLATE.ALL_CASINO.ru
+            this.recommendedCasinos = TRANSLATE.RECOMMENDED_CASINOS[config.LANG]
+            this.allCasino = TRANSLATE.ALL_CASINO[config.LANG]
+            this.reviews = TRANSLATE.REVIEWS[config.LANG]
         },
         head() {
             return {
@@ -109,7 +113,8 @@
                     },
                 ],
                 link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
+                    { rel: 'canonical', href: this.data.body.currentUrl},
+                    ...this.data.body.headerLinks
                 ]
             }
         }

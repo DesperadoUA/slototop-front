@@ -56,6 +56,7 @@
 
 <script>
     import TRANSLATE from '~/helpers/translate'
+    import config from '~/config'
     export default {
         name: "app-payment-detail",
         props: {
@@ -75,12 +76,12 @@
             }
         },
         mounted() {
-            this.withdrawal = TRANSLATE.WITHDRAWAL.ru
-            this.commission = TRANSLATE.COMMISSION.ru
-            this.withdrawalPossibility = TRANSLATE.WITHDRAWAL_POSSIBILITY.ru
-            this.currency = TRANSLATE.CURRENCY.ru
-            this.site = TRANSLATE.SITE.ru
-            this.type = TRANSLATE.TYPE.ru
+            this.withdrawal = TRANSLATE.WITHDRAWAL[config.LANG]
+            this.commission = TRANSLATE.COMMISSION[config.LANG]
+            this.withdrawalPossibility = TRANSLATE.WITHDRAWAL_POSSIBILITY[config.LANG]
+            this.currency = TRANSLATE.CURRENCY[config.LANG]
+            this.site = TRANSLATE.SITE[config.LANG]
+            this.type = TRANSLATE.TYPE[config.LANG]
         }
     }
 </script>

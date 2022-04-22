@@ -6,7 +6,8 @@
     <app_game_details :value="data.body.details" />
     <app_casino :value="data.body.casino"
                 bg="--bg-gray"
-                :title="casinoWithThisGame" :linkText="allCasino" link="/casino" />
+                :title="casinoWithThisGame"
+                :linkText="allCasino" link="/casino" />
     <app_slots :value="data.body.games"
                bg="--bg-gray"
                :title="similarGames"
@@ -26,7 +27,8 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import config from '~/config/index'
+    import config from '~/config'
+    import helper from '~/helpers/helpers'
     import TRANSLATE from '~/helpers/translate.json'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
@@ -62,16 +64,16 @@
                     error({ statusCode: 404, message: 'Post not found' })
                 }
                 else {
-                    const body = response.data.body;
-                    const data = {body};
+                    const data = response.data
                     data.body.currentUrl = config.BASE_URL + route.path;
+                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
-                        {title:'Игры', permalink: '/games'},
+                        {title: TRANSLATE.GAMES[config.LANG], permalink: '/games'},
                         {title:data.body.title, permalink: ''},
                     ];
-                    data.body.screenshots = TRANSLATE.SCREENSHOTS.ru +' '+ data.body.title 
-                    data.body.slotMachineSymbols = TRANSLATE.SLOT_MACHINE_SYMBOLS.ru +' '+ data.body.title 
+                    data.body.screenshots = TRANSLATE.SCREENSHOTS[config.LANG] +' '+ data.body.title
+                    data.body.slotMachineSymbols = TRANSLATE.SLOT_MACHINE_SYMBOLS[config.LANG] +' '+ data.body.title
                     return {data}
                 }
             }
@@ -80,10 +82,10 @@
             }
         },
         async mounted(){
-            this.casinoWithThisGame = TRANSLATE.CASINO_WITH_THIS_GAME.ru
-            this.allCasino = TRANSLATE.ALL_CASINO.ru
-            this.similarGames = TRANSLATE.SIMILAR_GAME.ru
-            this.allGames = TRANSLATE.ALL_GAMES.ru
+            this.casinoWithThisGame = TRANSLATE.CASINO_WITH_THIS_GAME[config.LANG]
+            this.allCasino = TRANSLATE.ALL_CASINO[config.LANG]
+            this.similarGames = TRANSLATE.SIMILAR_GAME[config.LANG]
+            this.allGames = TRANSLATE.ALL_GAMES[config.LANG]
 
             await this.$store.dispatch('options/setOptions')
             const options = this.$store.getters['options/getOptions']
@@ -101,7 +103,8 @@
                     },
                 ],
                 link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
+                    { rel: 'canonical', href: this.data.body.currentUrl},
+                    ...this.data.body.headerLinks
                 ]
             }
         }

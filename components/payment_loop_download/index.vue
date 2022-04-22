@@ -22,8 +22,8 @@
     </div>
 </template>
 <script>
-import Helper from '~/helpers/helpers.js'
 import TRANSLATE from '~/helpers/translate.json'
+import config from '~/config'
     export default {
         name: "app_payment_loop_downloads",
         props: {
@@ -54,7 +54,7 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE.ru
+            this.showMore = TRANSLATE.SHOW_MORE[config.LANG]
         }
     }
 </script>

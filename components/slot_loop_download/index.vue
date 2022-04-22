@@ -20,7 +20,7 @@
                         <span class="game-item__name">{{item.title}}</span>
                         <span class="game-item__category">{{item.vendor.title}}</span>
 
-                        <NuxtLink class="btn-play" :to="item.permalink">Играть</NuxtLink>
+                        <NuxtLink class="btn-play" :to="item.permalink">{{play}}</NuxtLink>
                     </div>
                 </NuxtLink>
             </div>
@@ -35,8 +35,8 @@
     </div>
 </template>
 <script>
-import Helper from '~/helpers/helpers.js'
 import TRANSLATE from '~/helpers/translate.json'
+import config from '~/config'
     export default {
         name: "app_slot_loop_downloads",
         props: {
@@ -66,6 +66,7 @@ import TRANSLATE from '~/helpers/translate.json'
                 numberPostOnQuery: 15,
                 postCurrentPage: 1,
                 showMore: '',
+                play: ''
             }
         },
         computed: {
@@ -79,7 +80,8 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE.ru
+            this.showMore = TRANSLATE.SHOW_MORE[config.LANG]
+            this.play = TRANSLATE.PLAY[config.LANG]
         }
     }
 </script>

@@ -12,6 +12,7 @@
 <script>
    import DAL_Page from '~/DAL/static_pages'
    import config from '~/config/index'
+   import helper from '~/helpers/helpers'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
    import app_vendor_loop_download from '~/components/vendor_loop_download'
@@ -34,6 +35,7 @@ export default {
             const body = response.data;
             const data = body;
             data.body.currentUrl = config.BASE_URL + route.path;
+            data.body.headerLinks = helper.hreflang(data.body.hreflang)
             return {data}
         }
     },
@@ -49,7 +51,8 @@ export default {
                 },
             ],
             link: [
-                { rel: 'canonical', href: this.data.body.currentUrl}
+                { rel: 'canonical', href: this.data.body.currentUrl},
+                ...this.data.body.headerLinks
             ]
         }
     }

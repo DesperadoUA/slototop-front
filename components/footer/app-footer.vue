@@ -3,6 +3,7 @@
     <app_menu :value="changeMenu" />
     <app_partners_menu :value="changePartnersMenu" />
     <app_footer_text :value="changeText" />
+    <a href="#top" class="go_top">▲</a>
 </footer>
 </template>
 
@@ -114,5 +115,20 @@
         padding-bottom: 40px;
         text-align: left;
     }
+}
+.go_top {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: 3px solid var(--table-head);
+    position: fixed;
+    right: 0px;
+    bottom: 100px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    z-index: 5;
 }
 </style>

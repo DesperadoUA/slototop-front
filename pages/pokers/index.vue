@@ -37,6 +37,7 @@ export default {
             const body = response.data.body
             const data = {body}
             data.body.currentUrl = config.BASE_URL + route.path
+            data.body.headerLinks = helper.hreflang(data.body.hreflang)
             return {data}
         }
 

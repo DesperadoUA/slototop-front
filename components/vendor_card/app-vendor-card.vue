@@ -56,6 +56,7 @@
 <script>
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
+    import config from '~/config'
     export default {
         name: "app-vendor-card",
         props: ['value'],
@@ -67,8 +68,6 @@
                 numberGames: ''
             }
         },
-        filters: {
-        },
         methods: {
 
         },
@@ -78,10 +77,10 @@
             }
         },
         mounted() {
-            this.rating = TRANSLATE.RATING.ru
-            this.countryRepresentative = TRANSLATE.COUNTRY_REPRESENTATIVE.ru
-            this.yearFoundation = TRANSLATE.YEAR_FOUNDATION.ru
-            this.numberGames = TRANSLATE.NUMBER_GAMES.ru
+            this.rating = TRANSLATE.RATING[config.LANG]
+            this.countryRepresentative = TRANSLATE.COUNTRY_REPRESENTATIVE[config.LANG]
+            this.yearFoundation = TRANSLATE.YEAR_FOUNDATION[config.LANG]
+            this.numberGames = TRANSLATE.NUMBER_GAMES[config.LANG]
         }
 
     }

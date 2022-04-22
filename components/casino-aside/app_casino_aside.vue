@@ -95,6 +95,7 @@
 <script>
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
+    import config from '~/config'
     export default {
         name: "app-aside-casino",
         props: {
@@ -119,12 +120,12 @@
             const options = this.$store.getters['options/getOptions']
             const ref = options.filter(item => item.key === 'global-ref')
             if(ref.length !== 0) this.globalRef.ref = ref[0].value
-            this.ratingCasino = TRANSLATE.RATING_CASINO['ru']
-            this.ratingGames = TRANSLATE.RATING_GAME['ru']
-            this.topBonuses = TRANSLATE.TOP_BONUSES['ru']
-            this.goTo = TRANSLATE.GO_TO['ru']
-            this.getBonus = TRANSLATE.GET_BONUS['ru']
-            this.play = TRANSLATE.PLAY['ru']
+            this.ratingCasino = TRANSLATE.RATING_CASINO[config.LANG]
+            this.ratingGames = TRANSLATE.RATING_GAME[config.LANG]
+            this.topBonuses = TRANSLATE.TOP_BONUSES[config.LANG]
+            this.goTo = TRANSLATE.GO_TO[config.LANG]
+            this.getBonus = TRANSLATE.GET_BONUS[config.LANG]
+            this.play = TRANSLATE.PLAY[config.LANG]
         },
         methods: {
             refActivate(item) {

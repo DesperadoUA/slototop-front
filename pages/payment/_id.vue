@@ -5,7 +5,7 @@
     <app_payment_card :value="data.body" />
     <app_payment_detail :value="data.body" />
     <app_casino_loop_downloads :value="data.body.casino"
-                               :title="'Оплату принимают'"
+                               :title="getPayment"
                                bg="--bg-gray"
                                v-if="data.body.casino.length !== 0"
     />
@@ -15,7 +15,9 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import config from '~/config/index'
+    import TRANSLATE from '~/helpers/translate.json'
+    import config from '~/config'
+    import helper from '~/helpers/helpers'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
@@ -27,7 +29,11 @@
         data: () => {
             return {
                 data: {},
+                getPayment: ''
             }
+        },
+        mounted(){
+            this.getPayment = TRANSLATE.GET_PAYMENTS[config.LANG]
         },
         components: {app_content, app_page_banner, app_casino_loop_downloads, app_breadcrumbs, app_payment_card, app_payment_detail},
         async asyncData({route, error}) {
@@ -43,10 +49,11 @@
                     const body = response.data.body
                     const data = {body}
                     data.body.currentUrl = config.BASE_URL + route.path
+                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
                     data.body.breadcrumbs = [
-                        {title:'Sloto.top', permalink: '/'},
-                        {title:'Платежные системы', permalink: '/payments'},
-                        {title:data.body.title, permalink: ''},
+                        {title: 'Sloto.top', permalink: '/'},
+                        {title: TRANSLATE.PAYMENTS_SYSTEM[config.LANG], permalink: '/payments'},
+                        {title: data.body.title, permalink: ''},
                     ]
                     return {data}
                 }
@@ -66,7 +73,8 @@
                     },
                 ],
                 link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
+                    { rel: 'canonical', href: this.data.body.currentUrl},
+                    ...this.data.body.headerLinks
                 ]
             }
         }

@@ -21,7 +21,7 @@
                         <span class="game-item__name">{{item.title}}</span>
                         <span class="game-item__category">{{item.vendor.title}}</span>
 
-                        <NuxtLink class="btn-play" :to="item.permalink">Играть</NuxtLink>
+                        <NuxtLink class="btn-play" :to="item.permalink">{{play}}</NuxtLink>
                     </div>
                 </NuxtLink>
             </div>
@@ -31,6 +31,7 @@
 
 <script>
     import TRANSLATE from '~/helpers/translate.json'
+    import config from '~/config'
     export default {
         name: "app_slots",
         props: {
@@ -62,8 +63,8 @@
             }
         },
         mounted() {
-            this.play = TRANSLATE.PLAY.uk
-            this.rating = TRANSLATE.RATING.uk
+            this.play = TRANSLATE.PLAY[config.LANG]
+            this.rating = TRANSLATE.RATING[config.LANG]
         }
     }
 </script>

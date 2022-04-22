@@ -13,8 +13,9 @@
 
             <div class="review-item" v-for="(item, index) in currentPosts"
                  :key="index">
-                <div class="review-item__author" itemprop='author'>{{item.review_name}}</div>
-
+                <div class="review-item__author" itemprop='author' itemscope='' itemtype='http://schema.org/Person'>
+                    <span itemprop='name'>{{item.review_name}}</span>
+                </div>
                 <div class="review-item__rating">
                     <div class="star-rating">
                         <div class="star-rating__val" :style="'width: '+item.review_rating+'%;'">
@@ -39,6 +40,7 @@
 
 <script>
     import TRANSLATE from '~/helpers/translate.json'
+    import config from '~/config'
     export default {
         name: "app_reviews",
         props: ['value', 'title'],
@@ -46,7 +48,7 @@
             return {
                 numberPostOnQuery: 5,
                 postCurrentPage: 1,
-                showMore: '',
+                showMore: ''
             }
         },
         computed: {
@@ -60,7 +62,7 @@
             }
         },
         mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE.ru
+            this.showMore = TRANSLATE.SHOW_MORE[config.LANG]
         }
     }
 </script>

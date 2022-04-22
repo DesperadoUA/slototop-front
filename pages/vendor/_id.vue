@@ -19,7 +19,9 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import config from '~/config/index'
+    import config from '~/config'
+    import helper from '~/helpers/helpers'
+    import TRANSLATE from '~/helpers/translate.json'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_slot_loop_downloads from '~/components/slot_loop_download/'
@@ -47,9 +49,10 @@
                     const body = response.data.body
                     const data = {body}
                     data.body.currentUrl = config.BASE_URL + route.path
+                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
-                        {title:'Производители', permalink: '/vendors'},
+                        {title: TRANSLATE.VENDORS[config.LANG], permalink: '/vendors'},
                         {title:data.body.title, permalink: ''},
                     ]
                     return {data}
@@ -61,10 +64,10 @@
         },
         filters: {
             createTitle(title){
-                return 'Игры от ' + title
+                return TRANSLATE.GAME_FROM[config.LANG] + title
             },
             createTitleCasino(title){
-                return 'Казино, работающие с ' + title
+                return TRANSLATE.CASINO_WORK_WITH[config.LANG] + title
             }
         },
         head() {
@@ -78,7 +81,8 @@
                     },
                 ],
                 link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
+                    { rel: 'canonical', href: this.data.body.currentUrl},
+                    ...this.data.body.headerLinks
                 ]
             }
         }

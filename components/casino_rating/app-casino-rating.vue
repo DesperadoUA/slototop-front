@@ -1,7 +1,7 @@
 <template>
     <section class="casino-rating">
         <div class="container">
-        <h3 class="casino-rating_ttl">Рейтинг онлайн казино {{title}}: оценки игроков</h3>
+        <h3 class="casino-rating_ttl">{{onlineCasinoRating}}{{title}}:{{playerRatings}}</h3>
         </div>
         <div class="container casino_rating_row">
             <div class="casino_rating_item" v-if="value.reliability">
@@ -83,6 +83,7 @@
 <script>
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
+    import config from '~/config'
     export default {
         name: "app-casino-rating",
         props: {
@@ -103,16 +104,20 @@
                 support: '',
                 popularity: '',
                 shares: '',
+                onlineCasinoRating: '',
+                playerRatings: '',
                 rating: 5
             }
         },
         mounted(){
-            this.reliability = TRANSLATE['RELIABILITY'].ru
-            this.conveniencePayments = TRANSLATE['CONVENIENCE_PAYMENTS'].ru
-            this.interfaceApp = TRANSLATE['INTERFACE'].ru
-            this.support = TRANSLATE['SUPPORT'].ru
-            this.popularity = TRANSLATE['POPULARITY'].ru
-            this.shares = TRANSLATE['SHARES'].ru
+            this.reliability = TRANSLATE.RELIABILITY[config.LANG]
+            this.conveniencePayments = TRANSLATE.CONVENIENCE_PAYMENTS[config.LANG]
+            this.interfaceApp = TRANSLATE.INTERFACE[config.LANG]
+            this.support = TRANSLATE.SUPPORT[config.LANG]
+            this.popularity = TRANSLATE.POPULARITY[config.LANG]
+            this.shares = TRANSLATE.SHARES[config.LANG]
+            this.onlineCasinoRating = TRANSLATE.ONLINE_CASINO_RATING[config.LANG]
+            this.playerRatings = TRANSLATE.PLAYER_RATINGS[config.LANG]
         },
         filters: {
             classRating(item) {

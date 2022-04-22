@@ -42,6 +42,7 @@
 <script>
 import Helper from '~/helpers/helpers.js'
 import TRANSLATE from '~/helpers/translate.json'
+import config from '~/config'
     export default {
         name: "app_casino",
         props: {
@@ -84,9 +85,9 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.goTo = TRANSLATE.GO_TO.ru
-            this.rating = TRANSLATE.RATING.ru
-            this.close = TRANSLATE.CLOSE.ru
+            this.goTo = TRANSLATE.GO_TO[config.LANG]
+            this.rating = TRANSLATE.RATING[config.LANG]
+            this.close = TRANSLATE.CLOSE[config.LANG]
         }
     }
 </script>

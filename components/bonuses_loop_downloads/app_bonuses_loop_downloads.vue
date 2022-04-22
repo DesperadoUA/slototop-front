@@ -31,7 +31,7 @@
                                 @click="refActivate(item)"
                                 v-if="item.close === 0"
                         >{{getBonus}}</button>
-                        <span class="bonuses-item__btn fake-btn-secondary" v-else>Бонус недействительный</span>
+                        <span class="bonuses-item__btn fake-btn-secondary" v-else>{{bonusInvalid}}</span>
                     </div>
                 </article>
             </div>
@@ -50,6 +50,7 @@
 <script>
 import Helper from '~/helpers/helpers.js'
 import TRANSLATE from '~/helpers/translate.json'
+import config from '~/config'
     export default {
         name: "app_bonuses",
         props: {
@@ -67,7 +68,8 @@ import TRANSLATE from '~/helpers/translate.json'
                 play: '',
                 review: '',
                 readMore: '',
-                getBonus: ''
+                getBonus: '',
+                bonusInvalid: ''
             }
         },
         computed: {
@@ -84,9 +86,10 @@ import TRANSLATE from '~/helpers/translate.json'
             }
         },
         mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE.ru
-            this.readMore = TRANSLATE.READ_MORE.ru
-            this.getBonus = TRANSLATE.GET_BONUS.ru
+            this.showMore = TRANSLATE.SHOW_MORE[config.LANG]
+            this.readMore = TRANSLATE.READ_MORE[config.LANG]
+            this.getBonus = TRANSLATE.GET_BONUS[config.LANG]
+            this.bonusInvalid = TRANSLATE.BONUS_INVALID[config.LANG]
         }
     }
 </script>

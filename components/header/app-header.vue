@@ -1,5 +1,5 @@
 <template>
-    <header class="header">
+    <header class="header" name="top">
         <div class="header__container container">
             <app_menu/>
             <app-logo/>

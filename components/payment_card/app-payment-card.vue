@@ -17,6 +17,7 @@
 <script>
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
+    import config from '~/config'
     export default {
         name: "app-vendor-card",
         props: ['value'],
@@ -24,8 +25,6 @@
             return {
                 rating: ''
             }
-        },
-        filters: {
         },
         methods: {
 
@@ -36,7 +35,7 @@
             }
         },
         mounted() {
-            this.rating = TRANSLATE.RATING.ru
+            this.rating = TRANSLATE.RATING[config.LANG]
         }
 
     }

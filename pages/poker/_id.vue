@@ -14,7 +14,8 @@
 <script>
     import DAL_Builder from '~/DAL/builder'
     import TRANSLATE from '~/helpers/translate.json'
-    import config from '~/config/index'
+    import config from '~/config'
+    import helper from '~/helpers/helpers'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
@@ -44,9 +45,10 @@
                     const body = response.data.body
                     const data = {body}
                     data.body.currentUrl = config.BASE_URL + route.path
+                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
                     data.body.breadcrumbs = [
                         {title:'Sloto.top', permalink: '/'},
-                        {title:'Покер-румы', permalink: '/poker'},
+                        {title:TRANSLATE.POKER_ROOMS[config.LANG], permalink: '/poker'},
                         {title:data.body.title, permalink: ''},
                     ]
                     return {data}
@@ -57,7 +59,7 @@
             }
         },
         mounted(){
-            this.otherPokerRooms = TRANSLATE.OTHER_POKER_ROOMS.ru
+            this.otherPokerRooms = TRANSLATE.OTHER_POKER_ROOMS[config.LANG]
         },
         head() {
             return {
@@ -70,7 +72,8 @@
                     },
                 ],
                 link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
+                    { rel: 'canonical', href: this.data.body.currentUrl},
+                    ...this.data.body.headerLinks
                 ]
             }
         }
@@ -80,3 +83,4 @@
 <style scoped>
 
 </style>
+

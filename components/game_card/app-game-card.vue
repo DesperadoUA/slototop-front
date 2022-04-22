@@ -54,6 +54,7 @@
 <script>
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
+    import config from '~/config'
     export default {
         name: "app-game-card",
         props: {
@@ -82,9 +83,9 @@
             }
         },
         mounted() {
-            this.play = TRANSLATE.PLAY.ru
-            this.demo = TRANSLATE.DEMO.ru
-            this.rating = TRANSLATE.RATING.ru
+            this.play = TRANSLATE.PLAY[config.LANG]
+            this.demo = TRANSLATE.DEMO[config.LANG]
+            this.rating = TRANSLATE.RATING[config.LANG]
         },
         methods: {
             popUpActivate(){

@@ -21,7 +21,8 @@
 
 <script>
    import DAL_Page from '~/DAL/static_pages'
-   import config from '~/config/index'
+   import config from '~/config'
+   import helper from '~/helpers/helpers'
    import TRANSLATE from '~/helpers/translate.json'
    import app_casino from '~/components/casino/app_casino'
    import app_slots from '~/components/slots/app_slots'
@@ -53,20 +54,20 @@ export default {
             url: 'main'
         };
         const response = await DAL_Page.getData(request)
-        const body = response.data
-        const data = body
+        const data = response.data
         data.body.currentUrl = config.BASE_URL + route.path
+        data.body.headerLinks = helper.hreflang(data.body.hreflang)
         return {data}
     },
     mounted() {
-            this.allCasino = TRANSLATE.ALL_CASINO.ru
-            this.newCasino = TRANSLATE.NEW_CASINO.ru
-            this.onlineCasino = TRANSLATE.ONLINE_CASINO.ru
-            this.games = TRANSLATE.GAMES.ru
-            this.newGames = TRANSLATE.NEW_GAMES.ru
-            this.allGames = TRANSLATE.ALL_GAMES.ru
-            this.bonusesCasino = TRANSLATE.BONUSES_CASINO.ru
-            this.allBonuses = TRANSLATE.ALL_BONUSES.ru
+            this.allCasino = TRANSLATE.ALL_CASINO[config.LANG]
+            this.newCasino = TRANSLATE.NEW_CASINO[config.LANG]
+            this.onlineCasino = TRANSLATE.ONLINE_CASINO[config.LANG]
+            this.games = TRANSLATE.GAMES[config.LANG]
+            this.newGames = TRANSLATE.NEW_GAMES[config.LANG]
+            this.allGames = TRANSLATE.ALL_GAMES[config.LANG]
+            this.bonusesCasino = TRANSLATE.BONUSES_CASINO[config.LANG]
+            this.allBonuses = TRANSLATE.ALL_BONUSES[config.LANG]
             this.device = window.screen.width < 1200 ? false : true
         },
     computed: {
@@ -96,7 +97,8 @@ export default {
                 },
             ],
             link: [
-                { rel: 'canonical', href: this.data.body.currentUrl}
+                { rel: 'canonical', href: this.data.body.currentUrl},
+                    ...this.data.body.headerLinks
             ]
         }
     }

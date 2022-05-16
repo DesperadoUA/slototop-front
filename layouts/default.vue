@@ -13,7 +13,8 @@
     import Footer from '~/components/footer/app-footer'
     export default {
         name: "app-main",
-        components: {Header, Footer}
+        components: {Header, Footer},
+        middleware: ['getHeaders']
     }
 </script>
 

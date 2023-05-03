@@ -1,6 +1,16 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+    <div class="container">
+      <div class="contentEnd">
+        <app_author_link 
+          :link="$options.authorPageLink"
+          :text="$options.reviewAuthor"
+          :dataTime="data.body.created_at.slice(0, 10)"
+          :name="data.body.author_name"
+        />
+      </div>
+    </div>
     <app_category_filter :value="data.body.bonus_type" v-if="data.body.bonus_type.length !== 0" />
     <app_bonuses_loop_downloads :value="data.body.posts" v-if="data.body.posts.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
@@ -15,6 +25,8 @@
     import app_bonuses_loop_downloads from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_category_filter from '~/components/category_filter/app_category_filter'
+    import head from '~/mixins/head'
+    import author from '~/mixins/author'
     export default {
         name: "single-type-bonus",
         data: () => {
@@ -23,6 +35,7 @@
             }
         },
         components: {app_content, app_bonuses_loop_downloads, app_page_banner, app_category_filter},
+        mixins: [head, author],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -33,31 +46,12 @@
                     error({ statusCode: 404, message: 'Post not found' })
                 }
                 else {
-                    const body = response.data.body
-                    const data = {body}
-                    data.body.currentUrl = config.BASE_URL + route.path
-                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
+                    const data = helper.headDataMixin(response.data, route)
                     return {data}
                 }
             }
             else {
                 error({ statusCode: 404, message: 'Post not found' })
-            }
-        },
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.data.body.description
-                    },
-                ],
-                link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl},
-                    ...this.data.body.headerLinks
-                ]
             }
         }
     }

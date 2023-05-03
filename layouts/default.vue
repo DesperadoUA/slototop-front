@@ -2377,5 +2377,9 @@ Casinos */
         display: none;
     }
 }
+.contentEnd {
+    display: flex;
+    justify-content: flex-end;
+}
 
 </style>

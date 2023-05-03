@@ -5,6 +5,13 @@ module.exports = function (req, res, next) {
     const fullUrl = req.url;
     let url = req.url.split('?')[0];
     let urlParams = null;
+    if(host.startsWith('www.')) {
+        const to = 'https://' + host.replaceAll('www.', '') + req.url
+        res.writeHead(301, {
+            Location: to
+        });
+        res.end()
+    }
     if (req.url.includes("?")) {
         urlParams = '?' + req.url.split('?')[1]
     }

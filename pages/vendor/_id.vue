@@ -1,6 +1,16 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+    <div class="container">
+      <div class="contentEnd">
+        <app_author_link 
+          :link="$options.authorPageLink"
+          :text="$options.reviewAuthor"
+          :dataTime="data.body.created_at.slice(0, 10)"
+          :name="data.body.author_name"
+        />
+      </div>
+    </div>
     <app_breadcrumbs :value="data.body.breadcrumbs" />
     <app_vendor_card :value="data.body" />
     <app_slot_loop_downloads :value="data.body.games"
@@ -28,6 +38,8 @@
     import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import app_vendor_card from '~/components/vendor_card/app-vendor-card'
+    import head from '~/mixins/head'
+    import author from '~/mixins/author'
     export default {
         name: "single-vendor",
         data: () => {
@@ -36,6 +48,7 @@
             }
         },
         components: {app_content, app_page_banner, app_slot_loop_downloads, app_casino_loop_downloads, app_breadcrumbs, app_vendor_card},
+        mixins: [head, author],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -46,13 +59,10 @@
                     error({ statusCode: 404, message: 'Post not found' })
                 }
                 else {
-                    const body = response.data.body
-                    const data = {body}
-                    data.body.currentUrl = config.BASE_URL + route.path
-                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
+                    const data = helper.headDataMixin(response.data, route)
                     data.body.breadcrumbs = [
-                        {title:'Sloto.top', permalink: '/'},
-                        {title: TRANSLATE.VENDORS[config.LANG], permalink: '/vendors'},
+                        {...config.BREADCRUMBS_ROOT[config.LANG]},
+                        {...config.BREADCRUMBS_VENDORS[config.LANG]},
                         {title:data.body.title, permalink: ''},
                     ]
                     return {data}
@@ -68,22 +78,6 @@
             },
             createTitleCasino(title){
                 return TRANSLATE.CASINO_WORK_WITH[config.LANG] + title
-            }
-        },
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.data.body.description
-                    },
-                ],
-                link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl},
-                    ...this.data.body.headerLinks
-                ]
             }
         }
     }

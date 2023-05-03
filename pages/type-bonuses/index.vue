@@ -11,6 +11,8 @@
    import helper from '~/helpers/helpers'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
+   import head from '~/mixins/head'
+   import author from '~/mixins/author'
 export default {
     name: "type-bonuses-page",
     data: () => {
@@ -19,6 +21,7 @@ export default {
         }
     },
     components: {app_content, app_page_banner},
+    mixins: [head, author],
     async asyncData({route, error}) {
         const request = {
             url: 'type-bonuses'
@@ -27,27 +30,8 @@ export default {
         if(response.data.confirm === 'error') {
             error({ statusCode: 404, message: 'Post not found' })
         } else {
-            const data = response.data
-            data.body.currentUrl = config.BASE_URL + route.path
-            data.body.headerLinks = helper.hreflang(data.body.hreflang)
+            const data = helper.headDataMixin(response.data, route)
             return {data}
-        }
-    },
-    mounted() {},
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: this.data.body.description
-                },
-            ],
-            link: [
-                { rel: 'canonical', href: this.data.body.currentUrl},
-                ...this.data.body.headerLinks
-            ]
         }
     }
 }

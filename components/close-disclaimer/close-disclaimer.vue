@@ -1,19 +1,30 @@
 <template>
   <section class="disclaimer_close">
     <div class="container disclaimer_wrapper">
-      <div class="close_ttl">Закрыто!</div>
-      <div class="close_text">Казино {{value}} закрыто. ТОП-5 доступных в вашем регионе лицензионных казино:</div>
+      <div class="close_ttl">{{title}}</div>
+      <div class="close_text">{{msg}}</div>
     </div>
   </section>
 </template>
 
 <script>
+import config from '~/config'
+import TRANSLATE from '~/helpers/translate.json'
     export default {
         name: "close-disclaimer",
         props: {
             value: {
                 type: String
             }
+        },
+        data: () => {
+            return {
+                title: TRANSLATE.CLOSE[config.LANG],
+                msg: TRANSLATE.CLOSE_MSG[config.LANG]
+            }
+        },
+        mounted() {
+          this.msg = this.msg.replace('$value$', this.value)
         }
     }
 </script>

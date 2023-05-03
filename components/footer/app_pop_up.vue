@@ -1,21 +1,21 @@
 <template>
-  <aside class="pop_up" v-if="show">
-    <div class="pop_up_container">
-      <div class="pop_up_title">{{title}}</div>
-      <div class="pop_up_content" v-html="text"></div>
-      <div class="pop_up_btn_wrapper">
-        <button class="pop_up_btn" @click="closePopUp">{{btnText}}</button>
-      </div>
-    </div>
-  </aside>
+    <aside class="pop_up" v-if="show">
+        <div class="pop_up_container">
+            <div class="pop_up_title">{{title}}</div>
+            <div class="pop_up_content" v-html="text"></div>
+            <div class="pop_up_btn_wrapper">
+                <button class="pop_up_btn" @click="closePopUp">{{btnText}}</button>
+            </div>
+        </div>
+    </aside>
 </template>
 <script>
-    export default {
+ export default {
         name: "app-alert_pop_up",
         data(){
             return {
-                text: `że Serwisu nie deklaruje legalności korzystania z usług zgodnie z ustawami i przepisami obowiązującymi w jurysdykcji Twojego kraju.
-                       Korzystasz z Serwisu zgodnie według uznania, a także bierzesz na siebie odpowiedzialność za ustalenie,
+                text: `że Serwisu nie deklaruje legalności korzystania z usług zgodnie z ustawami i przepisami obowiązującymi w jurysdykcji Twojego kraju. 
+                       Korzystasz z Serwisu zgodnie według uznania, a także bierzesz na siebie odpowiedzialność za ustalenie, 
                        czy korzystanie z usług oferowanych przez Serwis jest zgodne z ustawami i aktami prawnymi jurysdykcji Twojego kraju.
                        Serwisu nie ma zamiaru świadczyć wobec Ciebie usług, które wykraczają poza zakres ustaw i aktów prawnych jurysdykcji obowiązujących w Twoim kraju.`,
                 title: 'Należy pamiętać,',
@@ -38,10 +38,10 @@
                 localStorage.setItem('alertPopUp', true)
             }
         }
-    }
+ }
 </script>
 <style lang="scss">
-  .pop_up {
+.pop_up {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -49,8 +49,8 @@
     left: 0;
     background: #e5e5e59f;
     z-index: 1000;
-  }
-  .pop_up_container {
+}
+.pop_up_container {
     width: 476px;
     background: white;
     max-width: 90%;
@@ -62,13 +62,13 @@
     padding: 25px 20px;
     text-align: center;
     color: #4A5767;
-  }
-  .pop_up_title {
+}
+.pop_up_title {
     font-weight: 900;
     font-size: 20px;
     margin-bottom: 15px;
-  }
-  .pop_up_btn {
+}
+.pop_up_btn {
     width: 280px;
     height: 44px;
     font-style: normal;
@@ -82,8 +82,8 @@
     border-radius: 12px;
     border: 0px solid red;
     cursor: pointer;
-  }
-  .pop_up_btn_wrapper {
+}
+.pop_up_btn_wrapper {
     margin-top: 20px;
-  }
+}
 </style>

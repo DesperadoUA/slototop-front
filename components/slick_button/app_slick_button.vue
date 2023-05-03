@@ -18,12 +18,14 @@
 </template>
 
 <script>
+import config from '~/config'
+import TRANSLATE from '~/helpers/translate.json'
     export default {
         name: "app_slick_button",
         props:['referal'],
         data() {
             return {
-               title_1: 'Обзоры казино',
+               title_1: TRANSLATE.CASINO_REVIEWS[config.LANG],
                title_2: 'Перейти на сайт казино'
             }
         },

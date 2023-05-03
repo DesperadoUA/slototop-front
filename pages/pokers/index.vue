@@ -1,6 +1,16 @@
 <template>
     <div>
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+        <div class="container">
+          <div class="contentEnd">
+            <app_author_link 
+              :link="$options.authorPageLink"
+              :text="$options.reviewAuthor"
+              :dataTime="data.body.created_at.slice(0, 10)"
+              :name="data.body.author_name"
+            />
+          </div>
+        </div>
         <app_poker_loop_downloads :value="data.body.poker"
                                   bg="--bg-gray"
                                   v-if="data.body.poker.length !== 0"/>
@@ -12,10 +22,13 @@
 <script>
    import DAL_Page from '~/DAL/static_pages'
    import config from '~/config/index'
+   import helper from '~/helpers/helpers'
    import app_poker_loop_downloads from '~/components/poker_loop_downloads/app_poker_loop_downloads'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
    import app_faq from '~/components/faq/app_faq'
+   import head from '~/mixins/head'
+   import author from '~/mixins/author'
 export default {
     name: "poker-page",
     data: () => {
@@ -24,6 +37,7 @@ export default {
         }
     },
     components: {app_poker_loop_downloads, app_content, app_page_banner, app_faq},
+    mixins: [head, author],
     async asyncData({route, error}) {
         error({ statusCode: 404, message: 'Post not found' })
        /* const request = {
@@ -34,10 +48,7 @@ export default {
             error({ statusCode: 404, message: 'Post not found' })
         }
         else {
-            const body = response.data.body
-            const data = {body}
-            data.body.currentUrl = config.BASE_URL + route.path
-            data.body.headerLinks = helper.hreflang(data.body.hreflang)
+            const data = helper.headDataMixin(response.data, route)
             return {data}
         }
 
@@ -51,21 +62,6 @@ export default {
             }
             return this.faq
         },
-    },
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: this.data.body.description
-                },
-            ],
-            link: [
-                { rel: 'canonical', href: this.data.body.currentUrl}
-            ]
-        }
     }
 }
 </script>

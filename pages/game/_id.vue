@@ -39,6 +39,7 @@
     import app_game_screenshots from '~/components/game-screenshots/app-game-screenshots'
     import app_game_symbols from '~/components/game-symbols/app-game-symbols'
     import app_content from '~/components/content/app-content'
+    import head from '~/mixins/head'
     export default {
         name: "single-game",
         data: () => {
@@ -54,6 +55,7 @@
             }
         },
         components: {app_content, app_page_banner, app_breadcrumbs, app_game_card, app_casino, app_slots, app_game_details, app_game_screenshots, app_game_symbols},
+        mixins: [head],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder();
@@ -64,12 +66,10 @@
                     error({ statusCode: 404, message: 'Post not found' })
                 }
                 else {
-                    const data = response.data
-                    data.body.currentUrl = config.BASE_URL + route.path;
-                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
+                    const data = helper.headDataMixin(response.data, route)
                     data.body.breadcrumbs = [
-                        {title:'Sloto.top', permalink: '/'},
-                        {title: TRANSLATE.GAMES[config.LANG], permalink: '/games'},
+                        {...config.BREADCRUMBS_ROOT[config.LANG]},
+                        {...config.BREADCRUMBS_GAMES[config.LANG]},
                         {title:data.body.title, permalink: ''},
                     ];
                     data.body.screenshots = TRANSLATE.SCREENSHOTS[config.LANG] +' '+ data.body.title
@@ -91,22 +91,6 @@
             const options = this.$store.getters['options/getOptions']
             const ref = options.filter(item => item.key === 'global-ref')
             ref.forEach(element => {this.globalRef.ref.push(element.value)})
-        },
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.data.body.description
-                    },
-                ],
-                link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl},
-                    ...this.data.body.headerLinks
-                ]
-            }
         }
     }
 </script>

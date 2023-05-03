@@ -1,6 +1,16 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+    <div class="container">
+      <div class="contentEnd">
+        <app_author_link 
+          :link="$options.authorPageLink"
+          :text="$options.reviewAuthor"
+          :dataTime="data.body.created_at.slice(0, 10)"
+          :name="data.body.author_name"
+        />
+      </div>
+    </div>
     <app_breadcrumbs :value="data.body.breadcrumbs" />
     <app_casino_card :value="data.body" />
     <app_close_disclaimer v-if="data.body.close === 1" :value="data.body.title" />
@@ -46,11 +56,14 @@
     import app_close_disclaimer from '~/components/close-disclaimer/close-disclaimer'
     import app_casino from '~/components/casino/app_casino'
     import app_casino_aside from '~/components/casino-aside/app_casino_aside'
+    import head from '~/mixins/head'
+    import author from '~/mixins/author'
 
     export default {
         name: "app_single_casino",
         components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner, app_reviews, app_slick_button, 
         app_casino_rating, app_close_disclaimer, app_casino, app_casino_aside},
+        mixins: [head, author],
         data: () => {
             return {
                 recommendedCasinos: '',
@@ -73,10 +86,7 @@
                     error({ statusCode: 404, message: 'Post not found' })
                 }
                 else {
-                    const body = response.data.body;
-                    const data = {body};
-                    data.body.currentUrl = config.BASE_URL + route.path
-                    data.body.headerLinks = helper.hreflang(data.body.hreflang)
+                    const data = helper.headDataMixin(response.data, route)
                     data.body.casinoRating = {
                         reliability: data.body.reliability,
                         conveniencePayments: data.body.convenience_payments,
@@ -86,8 +96,8 @@
                         shares: data.body.shares,
                     }
                     data.body.breadcrumbs = [
-                        {title:'Sloto.top', permalink: '/'},
-                        {title: TRANSLATE.CASINO[config.LANG], permalink: '/casino'},
+                        {...config.BREADCRUMBS_ROOT[config.LANG]},
+                        {...config.BREADCRUMBS_CASINOS[config.LANG]},
                         {title:data.body.title, permalink: ''},
                     ]
                     return {data}
@@ -101,22 +111,6 @@
             this.recommendedCasinos = TRANSLATE.RECOMMENDED_CASINOS[config.LANG]
             this.allCasino = TRANSLATE.ALL_CASINO[config.LANG]
             this.reviews = TRANSLATE.REVIEWS[config.LANG]
-        },
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.data.body.description
-                    },
-                ],
-                link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl},
-                    ...this.data.body.headerLinks
-                ]
-            }
         }
     }
 </script>

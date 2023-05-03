@@ -1,6 +1,16 @@
 <template>
     <div>
         <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+        <div class="container">
+            <div class="contentEnd">
+              <app_author_link 
+                :link="$options.authorPageLink"
+                :text="$options.reviewAuthor"
+                :dataTime="data.body.created_at.slice(0, 10)"
+                :name="data.body.author_name"
+              />
+            </div>
+        </div>
         <app_payment_loop_download
                 :value="data.body.payments"
                 bg="--bg-gray"
@@ -11,11 +21,12 @@
 
 <script>
    import DAL_Page from '~/DAL/static_pages'
-   import config from '~/config'
    import helper from '~/helpers/helpers'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
    import app_payment_loop_download from '~/components/payment_loop_download'
+   import head from '~/mixins/head'
+   import author from '~/mixins/author'
 export default {
     name: "payments-page",
     data: () => {
@@ -24,6 +35,7 @@ export default {
         }
     },
     components: {app_content, app_page_banner, app_payment_loop_download},
+    mixins: [head, author],
     async asyncData({route, error}) {
         const request = {
             url: 'payments'
@@ -32,27 +44,8 @@ export default {
         if(response.data.confirm === 'error') {
             error({ statusCode: 404, message: 'Post not found' })
         } else {
-            const data = response.data
-            data.body.currentUrl = config.BASE_URL + route.path
-            data.body.headerLinks = helper.hreflang(data.body.hreflang)
+            const data = helper.headDataMixin(response.data, route)
             return {data}
-        }
-    },
-    mounted() {},
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: this.data.body.description
-                },
-            ],
-            link: [
-                { rel: 'canonical', href: this.data.body.currentUrl},
-                ...this.data.body.headerLinks
-            ]
         }
     }
 }

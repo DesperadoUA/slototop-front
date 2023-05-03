@@ -1,6 +1,16 @@
 <template>
     <div>
         <app_banner :value="changeBanner" v-if="changeBanner.length !== 0 && device" />
+        <div class="container">
+            <div class="contentEnd">
+               <app_author_link 
+                :link="$options.authorPageLink"
+                :text="$options.reviewAuthor"
+                :dataTime="data.body.created_at.slice(0, 10)"
+                :name="data.body.author_name"
+               />
+            </div>
+        </div>
         <app_casino :value="data.body.casino"
                     :title="onlineCasino"
                     link="casino"
@@ -30,6 +40,8 @@
    import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
    import app_banner from '~/components/main-banner/app_main_banner'
    import app_faq from '~/components/faq/app_faq'
+   import head from '~/mixins/head'
+   import author from '~/mixins/author'
 export default {
     name: "main-page",
     data: () => {
@@ -49,14 +61,13 @@ export default {
         }
     },
     components: {app_content, app_casino, app_slots, app_bonuses_casino, app_banner, app_faq},
+    mixins: [head, author],
     async asyncData({store, route}) {
         const request = {
             url: 'main'
         };
         const response = await DAL_Page.getData(request)
-        const data = response.data
-        data.body.currentUrl = config.BASE_URL + route.path
-        data.body.headerLinks = helper.hreflang(data.body.hreflang)
+        const data = helper.headDataMixin(response.data, route)
         return {data}
     },
     mounted() {
@@ -85,22 +96,6 @@ export default {
             }
             return this.banner
         },
-    },
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: this.data.body.description
-                },
-            ],
-            link: [
-                { rel: 'canonical', href: this.data.body.currentUrl},
-                    ...this.data.body.headerLinks
-            ]
-        }
     }
 }
 </script>

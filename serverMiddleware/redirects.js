@@ -6,10 +6,8 @@ module.exports = function (req, res, next) {
     let url = req.url.split('?')[0];
     let urlParams = null;
     if(host.startsWith('www.')) {
-        const to = 'https://' + host.replaceAll('www.', '') + req.url
-        res.writeHead(301, {
-            Location: to
-        });
+        const to = 'https://' + 'new.slototop.ua' + req.url
+        res.writeHead(301, { Location: to });
         res.end()
     }
     if (req.url.includes("?")) {

@@ -1,4 +1,5 @@
 module.exports.redirects = [
+    { from: '/casino/sloto-top', to: '/' },
     { from: '/casino/pm-casino', to: '/casino/parimatch' },
     { from: '/zapret-na-popolnenie-igornyh-sajtov', to: '' },
     { from: '/vendors/zeus', to: '/vendor/zeus-play' },

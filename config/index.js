@@ -1,11 +1,11 @@
 export default {
-    BASE_URL: 'https://sloto-top.com',
+    BASE_URL: 'https://new.slototop.ua',
     AUTHOR_PAGE_LINK: '/author',
     LANG: 'ru',
     DEFAULT_LANG: 'ru-UA',
     BREADCRUMBS_ROOT: {
-        ru: {title: 'Sloto-top.com', permalink: '/'},
-        uk: {title: 'Slototop.com.ua', permalink: '/'}
+        ru: {title: 'new.slototop.ua', permalink: '/'},
+        uk: {title: 'slototop.ua', permalink: '/'}
     },
     BREADCRUMBS_BONUSES: {
         ru: {title: 'Бонусы', permalink: '/bonuses'},

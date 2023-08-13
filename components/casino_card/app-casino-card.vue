@@ -19,16 +19,22 @@
                      :key="index"
                      :alt="item.title"
                 >
-                <span class="casino-card__license-txt" v-if="value.licenses.length !== 0">{{license}}</span>
+                <span class="casino-card__license-txt" v-if="value.licenses.length !== 0">{{$options.license}}</span>
             </div>
 
             <!--<span class="casino-card__company">(Кинг, Слотокинг Украина)</span> -->
-
-            <button v-if="value.close !== 1"
+            <div class="casino-card__button_wrapper">
+                <button v-if="value.close !== 1"
                     type="button"
                     class="casino-card__cta btn-primary"
                     @click="refActivate(value)"
-            >{{goToCasino}}</button>
+                >{{$options.goToCasino}}</button>
+                <PromoBtn 
+                    v-if="value.promocod"
+                    :text="value.promocod"
+                    :subTitle="$options.promoTitle"
+                />
+            </div>
         </div>
 
         <div class="casino-card__rating">
@@ -38,7 +44,7 @@
                     <path class="circle-rating__circle" :stroke-dasharray="value.rating + ', 100'" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 </svg>
                 <div class="circle-rating__percentage">{{value.rating}}</div>
-                <span class="circle-rating__txt">{{rating}}</span>
+                <span class="circle-rating__txt">{{$options.rating}}</span>
             </div>
         </div>
     </div>
@@ -48,10 +54,12 @@
 <script>
     import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
+    import PromoBtn from '~/components/casino_card/parts/PromoBtn'
     import config from '~/config'
     export default {
         name: "app-casino-card",
         props: ['value'],
+        components: {PromoBtn},
         data(){
             return {
                 license: '',
@@ -69,15 +77,27 @@
                 return Helper.classRating(item)
             }
         },
-        mounted() {
-            this.license = TRANSLATE.LICENSE[config.LANG]
-            this.goToCasino = TRANSLATE.GO_TO_CASINO[config.LANG]
-            this.rating = TRANSLATE.RATING[config.LANG]
+         created() {
+            this.$options.license = TRANSLATE.LICENSE[config.LANG]
+            this.$options.goToCasino = TRANSLATE.GO_TO_CASINO[config.LANG]
+            this.$options.rating = TRANSLATE.RATING[config.LANG]
+            this.$options.promoTitle = TRANSLATE.PROMO_TITLE[config.LANG]
         }
-
     }
 </script>
 
 <style lang="scss">
-
+.casino-card__button_wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-top: 40px;
+}
+ @media (max-width: 767px) {
+    .casino-card__button_wrapper {
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+ }
 </style>

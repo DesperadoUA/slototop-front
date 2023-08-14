@@ -50,8 +50,8 @@
    import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
    import app_banner from '~/components/main-banner/app_main_banner'
    import app_faq from '~/components/faq/app_faq'
+   import app_author_link from '~/components/author/app-author-link'
    import head from '~/mixins/head'
-   import author from '~/mixins/author'
    import translateMixin from '~/mixins/translate'
 export default {
     name: "main-page",
@@ -63,8 +63,8 @@ export default {
             device: false
         }
     },
-    components: {app_content, app_casino, app_slots, app_bonuses_casino, app_banner, app_faq},
-    mixins: [head, author, translateMixin],
+    components: {app_content, app_casino, app_slots, app_bonuses_casino, app_banner, app_faq, app_author_link},
+    mixins: [head, translateMixin],
     async asyncData({store, route}) {
         const request = {
             url: 'main'

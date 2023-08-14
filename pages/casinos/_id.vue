@@ -1,6 +1,16 @@
 <template>
   <div>
     <app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+    <div class="container">
+        <div class="contentEnd">
+            <app_author_link 
+            :link="config.AUTHOR_PAGE_LINK"
+            :text="translates.REVIEW_AUTHOR[config.LANG]"
+            :dataTime="data.body.created_at.slice(0, 10)"
+            :name="data.body.author_name"
+            />
+        </div>
+    </div>
     <app_slot_loop_downloads :value="data.body.posts" v-if="data.body.posts.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''"/>
     <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
@@ -14,8 +24,9 @@
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_faq from '~/components/faq/app_faq'
+    import app_author_link from '~/components/author/app-author-link'
     import head from '~/mixins/head'
-    import author from '~/mixins/author'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "casino-category",
         data: () => {
@@ -23,8 +34,8 @@
 
             }
         },
-        components: {app_casino_loop_downloads, app_content, app_page_banner, app_faq},
-        mixins: [head, author],
+        components: {app_casino_loop_downloads, app_content, app_page_banner, app_faq, app_author_link},
+        mixins: [head, translateMixin],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()

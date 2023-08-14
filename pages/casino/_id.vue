@@ -4,8 +4,8 @@
     <div class="container">
       <div class="contentEnd">
         <app_author_link 
-          :link="$options.authorPageLink"
-          :text="$options.reviewAuthor"
+          :link="config.AUTHOR_PAGE_LINK"
+          :text="translates.REVIEW_AUTHOR[config.LANG]"
           :dataTime="data.body.created_at.slice(0, 10)"
           :name="data.body.author_name"
         />
@@ -56,14 +56,15 @@
     import app_close_disclaimer from '~/components/close-disclaimer/close-disclaimer'
     import app_casino from '~/components/casino/app_casino'
     import app_casino_aside from '~/components/casino-aside/app_casino_aside'
+    import app_author_link from '~/components/author/app-author-link'
     import head from '~/mixins/head'
-    import author from '~/mixins/author'
+    import translateMixin from '~/mixins/translate'
 
     export default {
         name: "app_single_casino",
         components: {app_content, app_breadcrumbs, app_casino_card, app_casino_detail, app_faq, app_bonuses, app_page_banner, app_reviews, app_slick_button, 
-        app_casino_rating, app_close_disclaimer, app_casino, app_casino_aside},
-        mixins: [head, author],
+        app_casino_rating, app_close_disclaimer, app_casino, app_casino_aside, app_author_link},
+        mixins: [head, translateMixin],
         data: () => {
             return {
                 recommendedCasinos: '',

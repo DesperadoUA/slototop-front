@@ -4,13 +4,12 @@
         {{text}}: <NuxtLink no-prefetch :to="link">{{ name }}</NuxtLink>
     </div>
     <div class="rightPart">
-      {{$options.publicData}}: <span>{{dataTime}}</span>
+      {{translates.PUBLICATION_DATE[config.LANG]}}: <span>{{dataTime}}</span>
     </div>
   </div>
 </template>
 <script>
-import config from '~/config'
-import TRANSLATE from '~/helpers/translate.json'
+import translateMixin from '~/mixins/translate'
 export default {
   name: "app_author_link",
   props: {
@@ -31,9 +30,7 @@ export default {
       default: ''
     }
   },
-  created() {
-    this.$options.publicData = TRANSLATE.PUBLICATION_DATE[config.LANG]
-  }
+  mixins: [translateMixin]
 }
 </script>
 <style scoped>

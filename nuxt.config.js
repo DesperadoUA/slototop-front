@@ -1,11 +1,12 @@
 import DAL_Builder from './DAL/builder'
+import config from './config'
 export default {
   mode: 'universal',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'nuxt-slot',
     htmlAttrs: {
-      lang: 'ru'
+      lang: config.HTML_ATTRS[config.LANG]
     },
     meta: [
       { charset: 'utf-8' },

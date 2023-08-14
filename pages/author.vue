@@ -4,7 +4,6 @@
             :img="data.body.thumbnail"
             :name="data.body.h1"
             :specialty="translates.AUTHOR_SPECIALIZATION[config.LANG]"
-            :link="$options.fbLink"
             :shortDesc="data.body.short_desc"
             :socialLinks="authorSocialLinks"
         />

@@ -36,10 +36,6 @@
               type: String,
               default: ''
             },
-            link: {
-              type: String,
-              default: ''
-            },
             shortDesc: {
               type: String,
               default: ''

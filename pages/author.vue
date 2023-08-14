@@ -3,7 +3,7 @@
         <app_author_top v-if="data.body.h1 !== ''"
             :img="data.body.thumbnail"
             :name="data.body.h1"
-            :specialty="$options.specialty"
+            :specialty="translates.AUTHOR_SPECIALIZATION[config.LANG]"
             :link="$options.fbLink"
             :shortDesc="data.body.short_desc"
             :socialLinks="authorSocialLinks"
@@ -18,12 +18,11 @@
    import app_content from '~/components/content/app-content'
    import app_author_top from '~/components/author/app-author-top'
    import head from '~/mixins/head'
-   import TRANSLATE from '~/helpers/translate.json'
-   import config from '~/config'
+   import translateMixin from '~/mixins/translate'
 export default {
     name: "author-page",
     components: {app_content, app_author_top},
-    mixins: [head],
+    mixins: [head, translateMixin],
     async asyncData({store, route}) {
         const request = {
             url: 'author'
@@ -41,10 +40,6 @@ export default {
             } 
             return []
         }
-    },
-    created() {
-        this.$options.specialty = TRANSLATE.AUTHOR_SPECIALIZATION[config.LANG]
-        this.$options.fbLink = config.AUTHOR_FB_URL
     }
 }
 </script>

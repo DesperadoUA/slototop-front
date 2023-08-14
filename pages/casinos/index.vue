@@ -21,7 +21,6 @@
 
 <script>
    import DAL_Page from '~/DAL/static_pages'
-   import config from '~/config'
    import helper from '~/helpers/helpers'
    import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
    import app_content from '~/components/content/app-content'

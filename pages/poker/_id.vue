@@ -14,7 +14,7 @@
     <app_breadcrumbs :value="data.body.breadcrumbs" />
     <app_poker_card :value="data.body" />
     <app_poker_detail :value="data.body" />
-    <app_poker_loop_downloads :value="data.body.pokers" bg="--bg-gray" :title="otherPokerRooms"/>
+    <app_poker_loop_downloads :value="data.body.pokers" bg="--bg-gray" :title="translates.OTHER_POKER_ROOMS[config.LANG]"/>
     <app_content :value="data.body.content"  v-if="data.body.content !== ''" />
     <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
     <app_reviews :title="'Отзывы'" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
@@ -40,9 +40,7 @@
     export default {
         name: "single-poker",
         data: () => {
-            return {
-                otherPokerRooms: ''
-            }
+            return {}
         },
         components: {app_content, app_page_banner, app_breadcrumbs, app_poker_card, app_poker_detail, app_reviews, app_poker_loop_downloads, app_faq, app_author_link},
         mixins: [head, translateMixin],
@@ -68,9 +66,6 @@
             else {
                 error({ statusCode: 404, message: 'Post not found' })
             }
-        },
-        mounted(){
-            this.otherPokerRooms = TRANSLATE.OTHER_POKER_ROOMS[config.LANG]
         }
     }
 </script>

@@ -19,7 +19,6 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import config from '~/config'
     import helper from '~/helpers/helpers'
     import app_content from '~/components/content/app-content'
     import app_bonuses_loop_downloads from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads'

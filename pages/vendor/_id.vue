@@ -15,12 +15,12 @@
     <app_vendor_card :value="data.body" />
     <app_slot_loop_downloads :value="data.body.games"
                              v-if="data.body.games.length !== 0"
-                             :title="data.body.title | createTitle"
+                             :title="`${translates.GAME_FROM[config.LANG]} ${data.body.title}`"
     />
     <app_casino_loop_downloads :value="data.body.casino"
                                v-if="data.body.casino.length !== 0"
                                bg="--bg-gray"
-                               :title="data.body.title | createTitleCasino"
+                               :title="`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`"
 
     />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
@@ -31,7 +31,6 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
     import helper from '~/helpers/helpers'
-    import TRANSLATE from '~/helpers/translate.json'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_slot_loop_downloads from '~/components/slot_loop_download/'
@@ -71,14 +70,6 @@
             }
             else {
                 error({ statusCode: 404, message: 'Post not found' })
-            }
-        },
-        filters: {
-            createTitle(title){
-                return TRANSLATE.GAME_FROM[config.LANG] + title
-            },
-            createTitleCasino(title){
-                return TRANSLATE.CASINO_WORK_WITH[config.LANG] + title
             }
         }
     }

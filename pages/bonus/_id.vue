@@ -15,10 +15,10 @@
     <app_bonus_card  :value="data.body" />
     <app_bonus_details :value="data.body" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
-    <app_bonuses_casino :value="data.body.bonuses"
-                        :title="data.body.otherBonuses"
-                        :topTextShow="false"
-                        v-if="data.body.bonuses.length !== 0"
+    <app_bonuses_casino v-if="data.body.bonuses.length !== 0"
+        :value="data.body.bonuses"
+        :title="`${translates.OTHER_BONUSES[config.LANG]} ${data.body.casino[0].title}`"
+        :topTextShow="false"
     />
   </div>
 </template>
@@ -57,7 +57,6 @@
                 }
                 else {
                     const data = helper.headDataMixin(response.data, route)
-                    data.body.otherBonuses =  TRANSLATE.OTHER_BONUSES[config.LANG] + data.body.casino?.[0].title;
                     data.body.breadcrumbs = [
                         {...config.BREADCRUMBS_ROOT[config.LANG]},
                         {...config.BREADCRUMBS_BONUSES[config.LANG]},

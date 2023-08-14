@@ -18,7 +18,6 @@
 
 <script>
    import DAL_Page from '~/DAL/static_pages'
-   import config from '~/config/index'
    import helper from '~/helpers/helpers'
    import app_content from '~/components/content/app-content'
    import app_page_banner from '~/components/page-banner/app_page_banner'
@@ -49,5 +48,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss"></style>

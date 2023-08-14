@@ -6,19 +6,19 @@
     <app_game_details :value="data.body.details" />
     <app_casino :value="data.body.casino"
                 bg="--bg-gray"
-                :title="casinoWithThisGame"
-                :linkText="allCasino" link="/casino" />
+                :title="translates.CASINO_WITH_THIS_GAME[config.LANG]"
+                :linkText="translates.ALL_CASINO[config.LANG]" link="/casino" />
     <app_slots :value="data.body.games"
                bg="--bg-gray"
-               :title="similarGames"
-               :linkText="allGames" link="/games" />
+               :title="translates.SIMILAR_GAME[config.LANG]"
+               :linkText="translates.ALL_GAMES[config.LANG]" link="/games" />
     <app_game_screenshots 
         :value="data.body.gallery" 
-        :title="data.body.screenshots"
+        :title="`${translates.SCREENSHOTS[config.LANG]} ${data.body.title}`"
         v-if="data.body.gallery.length !== 0" />
     <app_game_symbols
         :value="data.body.characters" 
-        :title="data.body.slotMachineSymbols"
+        :title="`${translates.SLOT_MACHINE_SYMBOLS[config.LANG]} ${data.body.title}`"
         v-if="data.body.characters.length !== 0"
      />
     <app_content :value="data.body.content"  v-if="data.body.content !== ''" />
@@ -40,22 +40,18 @@
     import app_game_symbols from '~/components/game-symbols/app-game-symbols'
     import app_content from '~/components/content/app-content'
     import head from '~/mixins/head'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "single-game",
         data: () => {
             return {
-                casinoWithThisGame: '',
-                allCasino: '',
-                similarGames: '',
-                allGames: '',
-                screenshots: '',
                 globalRef: {
                     ref: []
                 }
             }
         },
         components: {app_content, app_page_banner, app_breadcrumbs, app_game_card, app_casino, app_slots, app_game_details, app_game_screenshots, app_game_symbols},
-        mixins: [head],
+        mixins: [head, translateMixin],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder();
@@ -71,9 +67,7 @@
                         {...config.BREADCRUMBS_ROOT[config.LANG]},
                         {...config.BREADCRUMBS_GAMES[config.LANG]},
                         {title:data.body.title, permalink: ''},
-                    ];
-                    data.body.screenshots = TRANSLATE.SCREENSHOTS[config.LANG] +' '+ data.body.title
-                    data.body.slotMachineSymbols = TRANSLATE.SLOT_MACHINE_SYMBOLS[config.LANG] +' '+ data.body.title
+                    ]
                     return {data}
                 }
             }
@@ -82,11 +76,6 @@
             }
         },
         async mounted(){
-            this.casinoWithThisGame = TRANSLATE.CASINO_WITH_THIS_GAME[config.LANG]
-            this.allCasino = TRANSLATE.ALL_CASINO[config.LANG]
-            this.similarGames = TRANSLATE.SIMILAR_GAME[config.LANG]
-            this.allGames = TRANSLATE.ALL_GAMES[config.LANG]
-
             await this.$store.dispatch('options/setOptions')
             const options = this.$store.getters['options/getOptions']
             const ref = options.filter(item => item.key === 'global-ref')

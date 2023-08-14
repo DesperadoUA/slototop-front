@@ -17,11 +17,13 @@
     <app_casino  v-if="data.body.close === 1"
                 :value="data.body.casino"
                 bg="--bg-gray"
-                :title="recommendedCasinos" :linkText="allCasino" link="/casino" />
+                :title="translates.RECOMMENDED_CASINOS[config.LANG]" 
+                :linkText="translates.ALL_CASINO[config.LANG]" 
+                link="/casino" />
     <app_casino_detail :value="data.body" />
     <app_bonuses :value="data.body.bonuses"
                  :topTextShow="false"
-                 :title="data.body.title | createTitle"
+                 :title="`${translates.BONUSES_FROM[config.LANG]} ${data.body.title}`"
                  v-if="data.body.bonuses.length !== 0" />
     <div class="casino_content container">
         <div class="casino_content_left">
@@ -33,7 +35,7 @@
     </div>
     <app_casino_rating :value="data.body.casinoRating" :title="data.body.title" />
     <app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
-    <app_reviews :title="reviews" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
+    <app_reviews :title="translates.REVIEWS[config.LANG]" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
     <app_slick_button :referal="data.body.ref"></app_slick_button>
   </div>
 </template>
@@ -42,7 +44,6 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
     import helper from '~/helpers/helpers'
-    import TRANSLATE from '~/helpers/translate.json'
     import app_content from '~/components/content/app-content'
     import app_faq from '~/components/faq/app_faq'
     import app_bonuses from '~/components/bonuses-casino/app_bonuses_casino'
@@ -67,14 +68,6 @@
         mixins: [head, translateMixin],
         data: () => {
             return {
-                recommendedCasinos: '',
-                allCasino: '',
-                reviews: ''
-            }
-        },
-        filters: {
-            createTitle(title){
-                return TRANSLATE.BONUSES_FROM[config.LANG] + title
             }
         },
         async asyncData({route, error}) {
@@ -107,12 +100,7 @@
             else {
                 error({ statusCode: 404, message: 'Post not found' })
             }
-           },
-        async mounted(){
-            this.recommendedCasinos = TRANSLATE.RECOMMENDED_CASINOS[config.LANG]
-            this.allCasino = TRANSLATE.ALL_CASINO[config.LANG]
-            this.reviews = TRANSLATE.REVIEWS[config.LANG]
-        }
+           }
     }
 </script>
 <style scoped>

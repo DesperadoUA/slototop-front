@@ -15,7 +15,7 @@
     <app_payment_card :value="data.body" />
     <app_payment_detail :value="data.body" />
     <app_casino_loop_downloads :value="data.body.casino"
-                               :title="getPayment"
+                               :title="translates.GET_PAYMENTS[config.LANG]"
                                bg="--bg-gray"
                                v-if="data.body.casino.length !== 0"
     />
@@ -25,7 +25,6 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import TRANSLATE from '~/helpers/translate.json'
     import config from '~/config'
     import helper from '~/helpers/helpers'
     import app_content from '~/components/content/app-content'
@@ -42,11 +41,7 @@
         data: () => {
             return {
                 data: {},
-                getPayment: ''
             }
-        },
-        mounted(){
-            this.getPayment = TRANSLATE.GET_PAYMENTS[config.LANG]
         },
         components: {app_content, app_page_banner, app_casino_loop_downloads, app_breadcrumbs, app_payment_card, app_payment_detail, app_author_link},
         mixins: [head, translateMixin],

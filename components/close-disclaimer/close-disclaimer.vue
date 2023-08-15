@@ -1,15 +1,14 @@
 <template>
   <section class="disclaimer_close">
     <div class="container disclaimer_wrapper">
-      <div class="close_ttl">{{title}}</div>
-      <div class="close_text">{{msg}}</div>
+      <div class="close_ttl">{{translates.CLOSE[config.LANG]}}</div>
+      <div class="close_text">{{translates.CLOSE_MSG[this.config.LANG].replace('$value$', value)}}</div>
     </div>
   </section>
 </template>
 
 <script>
-import config from '~/config'
-import TRANSLATE from '~/helpers/translate.json'
+import translateMixin from '~/mixins/translate'
     export default {
         name: "close-disclaimer",
         props: {
@@ -17,14 +16,9 @@ import TRANSLATE from '~/helpers/translate.json'
                 type: String
             }
         },
+        mixins: [translateMixin],
         data: () => {
-            return {
-                title: TRANSLATE.CLOSE[config.LANG],
-                msg: TRANSLATE.CLOSE_MSG[config.LANG]
-            }
-        },
-        mounted() {
-          this.msg = this.msg.replace('$value$', this.value)
+            return {}
         }
     }
 </script>

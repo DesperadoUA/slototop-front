@@ -19,7 +19,7 @@
                      :key="index"
                      :alt="item.title"
                 >
-                <span class="casino-card__license-txt" v-if="value.licenses.length !== 0">{{$options.license}}</span>
+                <span class="casino-card__license-txt" v-if="value.licenses.length !== 0">{{translates.LICENSE[config.LANG]}}</span>
             </div>
 
             <!--<span class="casino-card__company">(Кинг, Слотокинг Украина)</span> -->
@@ -28,11 +28,11 @@
                     type="button"
                     class="casino-card__cta btn-primary"
                     @click="refActivate(value)"
-                >{{$options.goToCasino}}</button>
+                >{{translates.GO_TO_CASINO[config.LANG]}}</button>
                 <PromoBtn 
                     v-if="value.promocod"
                     :text="value.promocod"
-                    :subTitle="$options.promoTitle"
+                    :subTitle="translates.PROMO_TITLE[config.LANG]"
                 />
             </div>
         </div>
@@ -44,7 +44,7 @@
                     <path class="circle-rating__circle" :stroke-dasharray="value.rating + ', 100'" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
                 </svg>
                 <div class="circle-rating__percentage">{{value.rating}}</div>
-                <span class="circle-rating__txt">{{$options.rating}}</span>
+                <span class="circle-rating__txt">{{translates.RATING[config.LANG]}}</span>
             </div>
         </div>
     </div>
@@ -52,20 +52,16 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
     import PromoBtn from '~/components/casino_card/parts/PromoBtn'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-casino-card",
         props: ['value'],
         components: {PromoBtn},
+        mixins: [translateMixin],
         data(){
-            return {
-                license: '',
-                goToCasino: '',
-                rating: ''
-            }
+            return {}
         },
         methods: {
             refActivate(item) {
@@ -76,12 +72,6 @@
             classRating(item) {
                 return Helper.classRating(item)
             }
-        },
-         created() {
-            this.$options.license = TRANSLATE.LICENSE[config.LANG]
-            this.$options.goToCasino = TRANSLATE.GO_TO_CASINO[config.LANG]
-            this.$options.rating = TRANSLATE.RATING[config.LANG]
-            this.$options.promoTitle = TRANSLATE.PROMO_TITLE[config.LANG]
         }
     }
 </script>

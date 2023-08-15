@@ -23,7 +23,6 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import TRANSLATE from '~/helpers/translate.json'
     import config from '~/config'
     import helper from '~/helpers/helpers'
     import app_content from '~/components/content/app-content'

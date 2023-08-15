@@ -1,5 +1,4 @@
 <template>
-<!--    для работы мобильного меню нужно добавлять класс "is-menu-open" на div.main-nav при клике-->
     <div :class="stateMenu">
         <nav class="mobile-menu">
             <ul class="main-nav__list">

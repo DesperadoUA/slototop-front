@@ -4,7 +4,7 @@
         <table class="detail-table">
             <tbody>
             <tr class="detail-row" v-if="value.currency.length !== 0">
-                <td class="detail-row__heading">{{currency}}</td>
+                <td class="detail-row__heading">{{translates.CURRENCY[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -15,7 +15,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.payments.length !== 0">
-                <td class="detail-row__heading">{{paymentMethods}}</td>
+                <td class="detail-row__heading">{{translates.PAYMENT_METHODS[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -26,7 +26,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.country.length !== 0">
-                <th class="detail-row__heading">{{acceptPlayers}}</th>
+                <th class="detail-row__heading">{{translates.ACCEPTS_PLAYERS[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item --flag"
@@ -39,49 +39,49 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.min_payments !== ''">
-                <td class="detail-row__heading">{{minPayment}}</td>
+                <td class="detail-row__heading">{{translates.MIN_PAYMENT[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.min_payments}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.min_deposit !== ''">
-                <td class="detail-row__heading">{{minDeposit}}</td>
+                <td class="detail-row__heading">{{translates.MIN_DEPOSIT[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.min_deposit}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.chat !== ''">
-                <td class="detail-row__heading">{{chat}}</td>
+                <td class="detail-row__heading">{{translates.CHAT[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.chat}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.withdrawal !== ''">
-                <td class="detail-row__heading">{{withdrawal}}</td>
+                <td class="detail-row__heading">{{translates.WITHDRAWAL[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.withdrawal}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.year !== ''">
-                <td class="detail-row__heading">{{yearFoundation}}</td>
+                <td class="detail-row__heading">{{translates.YEAR_FOUNDATION[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.year}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.number_games !== ''">
-                <td class="detail-row__heading">{{numberGames}}</td>
+                <td class="detail-row__heading">{{translates.NUMBER_GAMES[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.number_games}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.licenses.length !== 0">
-                <td class="detail-row__heading">{{license}}</td>
+                <td class="detail-row__heading">{{translates.LICENSE[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -92,7 +92,7 @@
                 </td>
             </tr>
             <tr class="detail-row">
-                <td class="detail-row__heading">{{contacts}}</td>
+                <td class="detail-row__heading">{{translates.CONTACTS[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <span class="detail-item" v-if="value.phone !== ''">{{value.phone}}</span>
@@ -101,7 +101,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.vendors.length !== 0">
-                <td class="detail-row__heading">{{platforms}}</td>
+                <td class="detail-row__heading">{{translates.PLATFORMS[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -112,7 +112,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.technology.length !== 0">
-                <td class="detail-row__heading">{{technology}}</td>
+                <td class="detail-row__heading">{{translates.TECHNOLOGY[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -123,7 +123,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.language.length !== 0">
-                <td class="detail-row__heading">{{languages}}</td>
+                <td class="detail-row__heading">{{translates.LANGUAGES[config.LANG]}}</td>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -140,8 +140,7 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-casino-detail",
         props: {
@@ -150,39 +149,9 @@
                 default: {}
             }
         },
+        mixins: [translateMixin],
         data(){
-            return {
-                currency: '',
-                paymentMethods: '',
-                acceptPlayers: '',
-                minPayment: '',
-                minDeposit: '',
-                chat: '',
-                withdrawal: '',
-                yearFoundation: '',
-                numberGames: '',
-                license: '',
-                contacts: '',
-                platforms: '',
-                technology: '',
-                languages: ''
-            }
-        },
-        mounted() {
-            this.currency = TRANSLATE.CURRENCY[config.LANG]
-            this.paymentMethods = TRANSLATE.PAYMENT_METHODS[config.LANG]
-            this.acceptPlayers = TRANSLATE.ACCEPTS_PLAYERS[config.LANG]
-            this.minPayment = TRANSLATE.MIN_PAYMENT[config.LANG]
-            this.minDeposit = TRANSLATE.MIN_DEPOSIT[config.LANG]
-            this.chat = TRANSLATE.CHAT[config.LANG]
-            this.withdrawal = TRANSLATE.WITHDRAWAL[config.LANG]
-            this.yearFoundation = TRANSLATE.YEAR_FOUNDATION[config.LANG]
-            this.numberGames = TRANSLATE.NUMBER_GAMES[config.LANG]
-            this.license = TRANSLATE.LICENSE[config.LANG]
-            this.contacts = TRANSLATE.CONTACTS[config.LANG]
-            this.platforms = TRANSLATE.PLATFORMS[config.LANG]
-            this.technology = TRANSLATE.TECHNOLOGY[config.LANG]
-            this.languages = TRANSLATE.LANGUAGES[config.LANG]
+            return {}
         }
     }
 </script>

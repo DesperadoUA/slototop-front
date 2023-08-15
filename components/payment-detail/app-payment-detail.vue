@@ -3,28 +3,28 @@
     <div class="container">
         <table class="detail-table">
             <tr class="detail-row" v-if="value.commission !== ''">
-                <th class="detail-row__heading">{{commission}}</th>
+                <th class="detail-row__heading">{{translates.COMMISSION[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.commission}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.withdrawal_period !== ''">
-                <th class="detail-row__heading">{{withdrawal}}</th>
+                <th class="detail-row__heading">{{translates.WITHDRAWAL[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.withdrawal_period}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.withdrawal !== ''">
-                <th class="detail-row__heading">{{withdrawalPossibility}}</th>
+                <th class="detail-row__heading">{{translates.WITHDRAWAL_POSSIBILITY[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.withdrawal}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.currency.length !== 0">
-                <th class="detail-row__heading">{{currency}}</th>
+                <th class="detail-row__heading">{{translates.CURRENCY[config.LANG]}}</th>
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
                               v-for="(item, index) in value.currency"
@@ -34,13 +34,13 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.site !== ''">
-                <th class="detail-row__heading">{{site}}</th>
+                <th class="detail-row__heading">{{translates.SITE[config.LANG]}}</th>
                 <td class="detail-row__content">
                   <span class="detail-item">{{value.site}}</span>
                 </td>
           </tr>
             <tr class="detail-row" v-if="value.type_payment.length !== 0">
-                <th class="detail-row__heading">{{type}}</th>
+                <th class="detail-row__heading">{{translates.TYPE[config.LANG]}}</th>
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
                               v-for="(item, index) in value.type_payment"
@@ -55,8 +55,7 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-payment-detail",
         props: {
@@ -65,23 +64,9 @@
                 default: {}
             }
         },
+        mixins: [translateMixin],
         data(){
-            return {
-                withdrawal: '',
-                commission: '',
-                withdrawalPossibility: '',
-                currency: '',
-                site: '',
-                type: ''
-            }
-        },
-        mounted() {
-            this.withdrawal = TRANSLATE.WITHDRAWAL[config.LANG]
-            this.commission = TRANSLATE.COMMISSION[config.LANG]
-            this.withdrawalPossibility = TRANSLATE.WITHDRAWAL_POSSIBILITY[config.LANG]
-            this.currency = TRANSLATE.CURRENCY[config.LANG]
-            this.site = TRANSLATE.SITE[config.LANG]
-            this.type = TRANSLATE.TYPE[config.LANG]
+            return {}
         }
     }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <aside class="aside-casino">
         <div class="aside-casino_casino">
-           <div class="aside-casino_ttl border_green">{{ratingCasino}}</div>
+           <div class="aside-casino_ttl border_green">{{translates.RATING_CASINO[config.LANG]}}</div>
            <article class="aside-casino_item" v-for="(item, index) in value.casino" :key="index">
                <div class="aside-casino_wrapper">
                     <div class="aside-casino_thumbnail">
@@ -28,13 +28,13 @@
                     {{item.short_desc}}
                </div>
                <div class="aside-casino_action">
-                   <button class="slot-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
+                   <button class="slot-item__btn --blue" @click="refActivate(item)">{{translates.GO_TO[config.LANG]}}</button>
                </div>
            </article>
         </div>
         <div class="separator"></div>
         <div class="aside-casino_bonuses">
-            <div class="aside-casino_ttl border_fiolet">{{topBonuses}}</div>
+            <div class="aside-casino_ttl border_fiolet">{{translates.TOP_BONUSES[config.LANG]}}</div>
             <article class="aside-casino_item" v-for="(item, index) in value.bonuses" :key="index">
                 <div class="aside-casino_wrapper">
                     <div class="aside-casino_thumbnail">
@@ -52,13 +52,15 @@
                     </div>
                 </div>
                 <div class="aside-casino_action mt-15">
-                   <button class="slot-item__btn --blue" @click="refActivate(item)">{{getBonus}}</button>
+                   <button class="slot-item__btn --blue" @click="refActivate(item)">
+                      {{translates.GET_BONUS[config.LANG]}}
+                   </button>
                </div>
            </article>
         </div>
         <div class="separator"></div>
         <div class="aside-casino_games">
-            <div class="aside-casino_ttl border_red">{{ratingGames}}</div>
+            <div class="aside-casino_ttl border_red">{{translates.RATING_GAME[config.LANG]}}</div>
             <article class="aside-casino_item" v-for="(item, index) in value.games" :key="index">
                <div class="aside-casino_wrapper">
                     <div class="aside-casino_thumbnail">
@@ -85,7 +87,7 @@
                     </div>
                </div>
                <div class="aside-casino_action mt-15">
-                   <button class="slot-item__btn --blue" @click="refActivate(globalRef)">{{play}}</button>
+                   <button class="slot-item__btn --blue" @click="refActivate(globalRef)">{{translates.PLAY[config.LANG]}}</button>
                </div>
            </article>
         </div>
@@ -93,9 +95,8 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-aside-casino",
         props: {
@@ -104,15 +105,10 @@
                 default: {}
             }
         },
+        mixins: [translateMixin],
         data(){
             return {
                 globalRef: [],
-                ratingCasino: '',
-                ratingGames: '',
-                topBonuses: '',
-                goTo: '',
-                getBonus: '',
-                play: ''
             }
         },
         async mounted(){
@@ -120,12 +116,6 @@
             const options = this.$store.getters['options/getOptions']
             const ref = options.filter(item => item.key === 'global-ref')
             if(ref.length !== 0) this.globalRef.ref = ref[0].value
-            this.ratingCasino = TRANSLATE.RATING_CASINO[config.LANG]
-            this.ratingGames = TRANSLATE.RATING_GAME[config.LANG]
-            this.topBonuses = TRANSLATE.TOP_BONUSES[config.LANG]
-            this.goTo = TRANSLATE.GO_TO[config.LANG]
-            this.getBonus = TRANSLATE.GET_BONUS[config.LANG]
-            this.play = TRANSLATE.PLAY[config.LANG]
         },
         methods: {
             refActivate(item) {

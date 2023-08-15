@@ -1,7 +1,7 @@
 <template>
     <section class="casino-rating">
         <div class="container">
-        <h3 class="casino-rating_ttl">{{onlineCasinoRating}}{{title}}:{{playerRatings}}</h3>
+        <h3 class="casino-rating_ttl">{{translates.ONLINE_CASINO_RATING[config.LANG]}}{{title}}:{{translates.PLAYER_RATINGS[config.LANG]}}</h3>
         </div>
         <div class="container casino_rating_row">
             <div class="casino_rating_item" v-if="value.reliability">
@@ -14,7 +14,7 @@
                         <div class="circle-rating__percentage">{{value.reliability}}%</div>
                     </div>
                 </div>
-                <div class="casino-card_ttl">{{reliability}}</div>
+                <div class="casino-card_ttl">{{translates.RELIABILITY[config.LANG]}}</div>
             </div>
             <div class="casino_rating_item" v-if="value.conveniencePayments">
                 <div class="casino-card__rating">
@@ -26,7 +26,7 @@
                         <div class="circle-rating__percentage">{{value.conveniencePayments}}%</div>
                     </div>
                 </div>
-                <div class="casino-card_ttl">{{conveniencePayments}}</div>
+                <div class="casino-card_ttl">{{translates.CONVENIENCE_PAYMENTS[config.LANG]}}</div>
             </div>
             <div class="casino_rating_item" v-if="value.interface">
                 <div class="casino-card__rating">
@@ -38,7 +38,7 @@
                         <div class="circle-rating__percentage">{{value.interface}}%</div>
                     </div>
                 </div>
-                <div class="casino-card_ttl">{{interfaceApp}}</div>
+                <div class="casino-card_ttl">{{translates.INTERFACE[config.LANG]}}</div>
             </div>
             <div class="casino_rating_item" v-if="value.support">
                 <div class="casino-card__rating">
@@ -50,7 +50,7 @@
                         <div class="circle-rating__percentage">{{value.support}}%</div>
                     </div>
                 </div>
-                <div class="casino-card_ttl">{{support}}</div>
+                <div class="casino-card_ttl">{{translates.SUPPORT[config.LANG]}}</div>
             </div>
             <div class="casino_rating_item" v-if="value.popularity">
                 <div class="casino-card__rating">
@@ -62,7 +62,7 @@
                         <div class="circle-rating__percentage">{{value.popularity}}%</div>
                     </div>
                 </div>
-                <div class="casino-card_ttl">{{popularity}}</div>
+                <div class="casino-card_ttl">{{translates.POPULARITY[config.LANG]}}</div>
             </div>
             <div class="casino_rating_item" v-if="value.shares">
                 <div class="casino-card__rating">
@@ -74,16 +74,15 @@
                         <div class="circle-rating__percentage">{{value.shares}}%</div>
                     </div>
                 </div>
-                <div class="casino-card_ttl">{{shares}}</div>
+                <div class="casino-card_ttl">{{translates.SHARES[config.LANG]}}</div>
             </div>
         </div>
     </section>
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate.json'
     import Helper from '~/helpers/helpers.js'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-casino-rating",
         props: {
@@ -96,28 +95,11 @@
                 default: ''
             }
         },
+        mixins: [translateMixin],
         data(){
             return {
-                reliability: '',
-                conveniencePayments: '',
-                interfaceApp: '',
-                support: '',
-                popularity: '',
-                shares: '',
-                onlineCasinoRating: '',
-                playerRatings: '',
                 rating: 5
             }
-        },
-        mounted(){
-            this.reliability = TRANSLATE.RELIABILITY[config.LANG]
-            this.conveniencePayments = TRANSLATE.CONVENIENCE_PAYMENTS[config.LANG]
-            this.interfaceApp = TRANSLATE.INTERFACE[config.LANG]
-            this.support = TRANSLATE.SUPPORT[config.LANG]
-            this.popularity = TRANSLATE.POPULARITY[config.LANG]
-            this.shares = TRANSLATE.SHARES[config.LANG]
-            this.onlineCasinoRating = TRANSLATE.ONLINE_CASINO_RATING[config.LANG]
-            this.playerRatings = TRANSLATE.PLAYER_RATINGS[config.LANG]
         },
         filters: {
             classRating(item) {

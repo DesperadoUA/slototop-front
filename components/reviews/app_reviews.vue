@@ -31,7 +31,7 @@
 
             <div class="" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
                 <button type="button" class="reviews__show-more btn-secondary"  @click="postShowMore">
-                    {{showMore}}
+                    {{translates.SHOW_MORE[config.LANG]}}
                 </button>
             </div>
         </div>
@@ -39,16 +39,15 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate.json'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app_reviews",
         props: ['value', 'title'],
+        mixins: [translateMixin],
         data(){
             return {
                 numberPostOnQuery: 5,
-                postCurrentPage: 1,
-                showMore: ''
+                postCurrentPage: 1
             }
         },
         computed: {
@@ -60,9 +59,6 @@
             postShowMore(){
                 this.postCurrentPage += 1
             }
-        },
-        mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE[config.LANG]
         }
     }
 </script>

@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="slot-item__btns">
-                            <button class="slot-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
+                            <button class="slot-item__btn --blue" @click="refActivate(item)">{{translates.GO_TO[config.LANG]}}</button>
                         </div>
                     </div>
                 </div>
@@ -33,7 +33,7 @@
         <div class="items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
             <button class="btn-secondary"
                     @click="postShowMore"
-            >{{showMore}}</button>
+            >{{translates.SHOW_MORE[config.LANG]}}</button>
         </div>
     </div>
 </div>
@@ -41,8 +41,7 @@
 
 <script>
 import Helper from '~/helpers/helpers.js'
-import TRANSLATE from '~/helpers/translate.json'
-import config from '~/config'
+import translateMixin from '~/mixins/translate'
     export default {
         name: "app_poker_loop_downloads",
         props: {
@@ -59,16 +58,11 @@ import config from '~/config'
                 default: undefined
             }
         },
+        mixins: [translateMixin],
         data(){
             return {
                 numberPostOnQuery: 15,
                 postCurrentPage: 1,
-                showMore: '',
-                rating: '',
-                welcomeBonus: '',
-                freeSpins: '',
-                casinoReview: '',
-                goTo: ''
             }
         },
         computed: {
@@ -91,14 +85,6 @@ import config from '~/config'
             postShowMore(){
                 this.postCurrentPage += 1
             }
-        },
-        mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE[config.LANG]
-            this.rating = TRANSLATE.RATING[config.LANG]
-            this.welcomeBonus = TRANSLATE.WELCOME_BONUS[config.LANG]
-            this.freeSpins = TRANSLATE.FREE_SPINS[config.LANG]
-            this.casinoReview = TRANSLATE.CASINO_REVIEW[config.LANG]
-            this.goTo = TRANSLATE.GO_TO[config.LANG]
         }
     }
 </script>

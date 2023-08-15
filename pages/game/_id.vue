@@ -29,7 +29,6 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
     import helper from '~/helpers/helpers'
-    import TRANSLATE from '~/helpers/translate.json'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
     import app_game_card from '~/components/game_card/app-game-card'

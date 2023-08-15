@@ -1,43 +1,27 @@
 <template>
-<div class="casino-card">
-    <div class="container casino-card__container">
-        <div class="casino-card__logo">
-            <img :src="value.thumbnail" :alt="value.title">
-        </div>
-        <div class="casino-card__txt">
-            <div class="casino-card__name">
-                {{value.title}}
+    <div class="casino-card">
+        <div class="container casino-card__container">
+            <div class="casino-card__logo">
+                <img :src="value.thumbnail" :alt="value.title">
             </div>
-            <span class="casino-card__company" v-if="value.site">{{value.site}}</span>
+            <div class="casino-card__txt">
+                <div class="casino-card__name">
+                    {{value.title}}
+                </div>
+                <span class="casino-card__company" v-if="value.site">{{value.site}}</span>
+            </div>
         </div>
     </div>
-</div>
 </template>
-
 <script>
-    import TRANSLATE from '~/helpers/translate.json'
-    import Helper from '~/helpers/helpers.js'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-vendor-card",
         props: ['value'],
         data(){
-            return {
-                rating: ''
-            }
+            return {}
         },
-        methods: {
-
-        },
-        filters: {
-            classRating(item) {
-                return Helper.classRating(item)
-            }
-        },
-        mounted() {
-            this.rating = TRANSLATE.RATING[config.LANG]
-        }
-
+        mixins: [translateMixin]
     }
 </script>
 

@@ -20,8 +20,7 @@
                     <div class="game-item__hover">
                         <span class="game-item__name">{{item.title}}</span>
                         <span class="game-item__category">{{item.vendor.title}}</span>
-
-                        <NuxtLink class="btn-play" :to="item.permalink">{{play}}</NuxtLink>
+                        <NuxtLink class="btn-play" :to="item.permalink">{{translates.PLAY[config.LANG]}}</NuxtLink>
                     </div>
                 </NuxtLink>
             </div>
@@ -30,10 +29,10 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate.json'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app_slots",
+        mixins: [translateMixin],
         props: {
             value: {
                 type: Array,
@@ -55,16 +54,6 @@
                 type: String,
                 default: ''
             }
-        },
-        data() {
-            return {
-                play: '',
-                rating: ''
-            }
-        },
-        mounted() {
-            this.play = TRANSLATE.PLAY[config.LANG]
-            this.rating = TRANSLATE.RATING[config.LANG]
         }
     }
 </script>

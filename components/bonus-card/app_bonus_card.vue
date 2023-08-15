@@ -16,11 +16,11 @@
             <button type="button" class="casino-card__cta btn-primary"
             @click="refActivate(value)"
                     v-if="value.close === 0"
-            >{{getBonus}}</button>
+            >{{translates.GET_BONUS[config.LANG]}}</button>
             <button type="button" class="casino-card__cta fake-btn-secondary"
                     v-else
-            >{{bonusInvalid}}</button>
-            <NuxtLink :to="this.value.casino[0].permalink" class="casino-card__cta_permalink">{{casinoReview}}</NuxtLink>
+            >{{translates.BONUS_INVALID[config.LANG]}}</button>
+            <NuxtLink :to="this.value.casino[0].permalink" class="casino-card__cta_permalink">{{translates.CASINO_REVIEW[config.LANG]}}</NuxtLink>
         </div>
     </div>
 </div>
@@ -28,8 +28,7 @@
 
 <script>
 import Helper from '~/helpers/helpers.js'
-import TRANSLATE from '~/helpers/translate.json'
-import config from '~/config'
+import translateMixin from '~/mixins/translate'
     export default {
         name: "app_bonus_card",
         props: {
@@ -38,22 +37,14 @@ import config from '~/config'
                 default: {}
             }
         },
+        mixins: [translateMixin],
         data(){
-            return {
-                getBonus: '',
-                bonusInvalid: '',
-                casinoReview: ''
-            }
+            return {}
         },
         methods: {
             refActivate(item) {
                 Helper.refActivate(item)
             },
-        },
-        mounted() {
-            this.getBonus = TRANSLATE.GET_BONUS[config.LANG]
-            this.bonusInvalid = TRANSLATE.BONUS_INVALID[config.LANG]
-            this.casinoReview = TRANSLATE.CASINO_REVIEW[config.LANG]
         }
     }
 </script>

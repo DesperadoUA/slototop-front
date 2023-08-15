@@ -27,7 +27,6 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
     import helper from '~/helpers/helpers'
-    import TRANSLATE from '~/helpers/translate.json'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'

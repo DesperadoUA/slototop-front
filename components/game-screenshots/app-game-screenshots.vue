@@ -32,9 +32,6 @@
             return {
 
             }
-        },
-        mounted() {
-
         }
     }
 </script>

@@ -12,7 +12,7 @@
     import app_menu from './app-footer-menu'
     import app_footer_text from './app-footer-text'
     import app_partners_menu from './app-partners-menu'
-    import app_pop_up from './app_pop_up.vue'
+    import app_pop_up from './app_pop_up'
     export default {
         name: "app-footer",
         data(){

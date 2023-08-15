@@ -5,16 +5,14 @@
 </template>
 
 <script>
-    import config from '~/config'
-    import TRANSLATE from '~/helpers/translate.json'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-content",
         props: ['value'],
         data(){
-            return {
-
-            }
+            return {}
         },
+        mixins: [translateMixin],
         mounted(){
             const main = document.querySelector('.cms')
             const menu = main.querySelector('.nav')
@@ -40,7 +38,7 @@
                 h6.forEach(item => {
                     arrH.push(item)
                 })
-                let str = `<div class="article_menu_heading">${TRANSLATE.CONTENT[config.LANG]}</div>` +
+                let str = `<div class="article_menu_heading">${this.translates.CONTENT[this.config.LANG]}</div>` +
                           '<ol class="article_menu">'
                 if(arrH.length === 0) {
                     menu.remove()

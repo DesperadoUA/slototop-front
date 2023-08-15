@@ -30,9 +30,9 @@
                     </div>
 
                     <div class="slot-item__btns">
-                        <button class="slot-item__btn --blue" @click="refActivate(item)">{{goTo}}</button>
+                        <button class="slot-item__btn --blue" @click="refActivate(item)">{{translates.GO_TO[config.LANG]}}</button>
                     </div>
-                    <span class="ribbon-closed" v-if="item.close !== 0">{{close}}</span>
+                    <span class="ribbon-closed" v-if="item.close !== 0">{{translates.CLOSE[config.LANG]}}</span>
                 </article>
             </div>
         </div>
@@ -41,8 +41,7 @@
 
 <script>
 import Helper from '~/helpers/helpers.js'
-import TRANSLATE from '~/helpers/translate.json'
-import config from '~/config'
+import translateMixin from '~/mixins/translate'
     export default {
         name: "app_casino",
         props: {
@@ -67,12 +66,9 @@ import config from '~/config'
                 default: ''
             }
         },
+        mixins: [translateMixin],
         data() {
-            return {
-                goTo: '',
-                rating: '',
-                close: ''
-            }
+            return {}
         },
         filters: {
             widthRating(item){
@@ -83,11 +79,6 @@ import config from '~/config'
             refActivate(item) {
                 Helper.refActivate(item)
             }
-        },
-        mounted() {
-            this.goTo = TRANSLATE.GO_TO[config.LANG]
-            this.rating = TRANSLATE.RATING[config.LANG]
-            this.close = TRANSLATE.CLOSE[config.LANG]
         }
     }
 </script>

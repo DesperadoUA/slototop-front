@@ -3,7 +3,7 @@
     <div class="container">
         <table class="detail-table">
             <tr class="detail-row" v-if="value.country.length !== 0">
-                <th class="detail-row__heading">{{availablePlayers}}</th>
+                <th class="detail-row__heading">{{translates.AVAILABLE_PLAYERS[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item --flag"
@@ -16,7 +16,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.type_bonus.length !== 0">
-                <th class="detail-row__heading">{{typeBonus}}</th>
+                <th class="detail-row__heading">{{translates.TYPE_BONUS[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <NuxtLink class="detail-item"
@@ -27,21 +27,21 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.wager !== ''">
-                <th class="detail-row__heading">{{wager}}</th>
+                <th class="detail-row__heading">{{translates.WAGER[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.wager}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.number_use !== ''">
-                <th class="detail-row__heading">{{numberUse}}</th>
+                <th class="detail-row__heading">{{translates.NUMBER_USE[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.number_use}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.value_bonus !== ''">
-                <th class="detail-row__heading">{{valueBonus}}</th>
+                <th class="detail-row__heading">{{translates.VALUE_BONUS[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.value_bonus}}</span>
@@ -53,8 +53,7 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-bonus-detail",
         props: {
@@ -63,21 +62,9 @@
                 default: {}
             }
         },
+        mixins: [translateMixin],
         data(){
-            return {
-                typeBonus: '',
-                wager: '',
-                numberUse: '',
-                availablePlayers: '',
-                valueBonus: ''
-            }
-        },
-        mounted() {
-            this.typeBonus = TRANSLATE.TYPE_BONUS[config.LANG]
-            this.wager = TRANSLATE.WAGER[config.LANG]
-            this.numberUse = TRANSLATE.NUMBER_USE[config.LANG]
-            this.availablePlayers = TRANSLATE.AVAILABLE_PLAYERS[config.LANG]
-            this.valueBonus = TRANSLATE.VALUE_BONUS[config.LANG]
+            return {}
         }
     }
 </script>

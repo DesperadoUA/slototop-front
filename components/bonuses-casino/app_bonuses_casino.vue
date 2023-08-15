@@ -32,12 +32,14 @@
                     </div>
 
                     <div class="bonuses-item__btns">
-                        <NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
+                        <NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">
+                            {{translates.READ_MORE[config.LANG]}}
+                        </NuxtLink>
                         <button type="button" class="bonuses-item__btn btn-primary"
                                 @click="refActivate(item)"
                                 v-if="item.close === 0"
-                        >{{getBonus}}</button>
-                        <span class="bonuses-item__btn fake-btn-secondary" v-else>{{bonusInvalid}}</span>
+                        >{{translates.GET_BONUS[config.LANG]}}</button>
+                        <span class="bonuses-item__btn fake-btn-secondary" v-else>{{translates.BONUS_INVALID[config.LANG]}}</span>
                     </div>
                 </article>
             </div>
@@ -46,9 +48,8 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate.json'
-    import config from '~/config'
     import Helper from '~/helpers/helpers.js'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app_bonuses",
         props: {
@@ -73,17 +74,9 @@
                 default: true
             }
         },
+        mixins: [translateMixin],
         data() {
-            return {
-                readMore: '',
-                getBonus: '',
-                bonusInvalid: ''
-            }
-        },
-        mounted() {
-            this.readMore = TRANSLATE.READ_MORE[config.LANG]
-            this.getBonus = TRANSLATE.GET_BONUS[config.LANG]
-            this.bonusInvalid = TRANSLATE.BONUS_INVALID[config.LANG]
+            return {}
         },
         methods: {
             refActivate(item) {

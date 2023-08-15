@@ -26,12 +26,14 @@
                     </div>
 
                     <div class="bonuses-item__btns">
-                        <NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">{{readMore}}</NuxtLink>
+                        <NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">
+                            {{translates.READ_MORE[config.LANG]}}
+                        </NuxtLink>
                         <button type="button" class="bonuses-item__btn btn-primary"
                                 @click="refActivate(item)"
                                 v-if="item.close === 0"
-                        >{{getBonus}}</button>
-                        <span class="bonuses-item__btn fake-btn-secondary" v-else>{{bonusInvalid}}</span>
+                        >{{translates.GET_BONUS[config.LANG]}}</button>
+                        <span class="bonuses-item__btn fake-btn-secondary" v-else>{{translates.BONUS_INVALID[config.LANG]}}</span>
                     </div>
                 </article>
             </div>
@@ -40,7 +42,7 @@
             <button no-prefetch v-if="value.length > (numberPostOnQuery*postCurrentPage)"
                     class="btn-secondary"
                     @click="postShowMore"
-            >{{showMore}}
+            >{{translates.SHOW_MORE[config.LANG]}}
             </button>
         </div>
     </section>
@@ -49,8 +51,7 @@
 
 <script>
 import Helper from '~/helpers/helpers.js'
-import TRANSLATE from '~/helpers/translate.json'
-import config from '~/config'
+import translateMixin from '~/mixins/translate'
     export default {
         name: "app_bonuses",
         props: {
@@ -59,17 +60,11 @@ import config from '~/config'
                 default: []
             },
         },
+        mixins: [translateMixin],
         data(){
             return {
                 numberPostOnQuery: 10,
                 postCurrentPage: 1,
-                showMore: '',
-                rating: '',
-                play: '',
-                review: '',
-                readMore: '',
-                getBonus: '',
-                bonusInvalid: ''
             }
         },
         computed: {
@@ -84,12 +79,6 @@ import config from '~/config'
             postShowMore(){
                 this.postCurrentPage += 1
             }
-        },
-        mounted() {
-            this.showMore = TRANSLATE.SHOW_MORE[config.LANG]
-            this.readMore = TRANSLATE.READ_MORE[config.LANG]
-            this.getBonus = TRANSLATE.GET_BONUS[config.LANG]
-            this.bonusInvalid = TRANSLATE.BONUS_INVALID[config.LANG]
         }
     }
 </script>

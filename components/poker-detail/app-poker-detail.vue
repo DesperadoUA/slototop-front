@@ -3,7 +3,7 @@
     <div class="container">
         <table class="detail-table">
             <tr class="detail-row" v-if="value.currency.length !== 0">
-                <th class="detail-row__heading">{{currency}}</th>
+                <th class="detail-row__heading">{{translates.CURRENCY[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item"
@@ -13,7 +13,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.payments.length !== 0">
-                <th class="detail-row__heading">{{paymentMethods}}</th>
+                <th class="detail-row__heading">{{translates.PAYMENT_METHODS[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item"
@@ -23,7 +23,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.country.length !== 0">
-                <th class="detail-row__heading">{{acceptPlayers}}</th>
+                <th class="detail-row__heading">{{translates.ACCEPTS_PLAYERS[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item --flag"
@@ -34,35 +34,35 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.min_payments !== ''">
-                <th class="detail-row__heading">{{minPayment}}</th>
+                <th class="detail-row__heading">{{translates.MIN_PAYMENT[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.min_payments}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.min_deposit !== ''">
-                <th class="detail-row__heading">{{minDeposit}}</th>
+                <th class="detail-row__heading">{{translates.MIN_DEPOSIT[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.min_deposit}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.withdrawal !== ''">
-                <th class="detail-row__heading">{{withdrawal}}</th>
+                <th class="detail-row__heading">{{translates.WITHDRAWAL[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.withdrawal}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.year !== ''">
-                <th class="detail-row__heading">{{yearFoundation}}</th>
+                <th class="detail-row__heading">{{translates.YEAR_FOUNDATION[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item">{{value.year}}</span>
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.licenses.length !== 0">
-                <th class="detail-row__heading">{{license}}</th>
+                <th class="detail-row__heading">{{translates.LICENSE[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item"
@@ -72,7 +72,7 @@
                 </td>
             </tr>
             <tr class="detail-row">
-                <th class="detail-row__heading">{{contacts}}</th>
+                <th class="detail-row__heading">{{translates.CONTACTS[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item" v-if="value.phone !== ''">{{value.phone}}</span>
@@ -81,7 +81,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.technology.length !== 0">
-                <th class="detail-row__heading">{{technology}}</th>
+                <th class="detail-row__heading">{{translates.TECHNOLOGY[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item"
@@ -91,7 +91,7 @@
                 </td>
             </tr>
             <tr class="detail-row" v-if="value.language.length !== 0">
-                <th class="detail-row__heading">{{languages}}</th>
+                <th class="detail-row__heading">{{translates.LANGUAGES[config.LANG]}}</th>
 
                 <td class="detail-row__content">
                     <span class="detail-item"
@@ -106,8 +106,7 @@
 </template>
 
 <script>
-    import TRANSLATE from '~/helpers/translate'
-    import config from '~/config'
+    import translateMixin from '~/mixins/translate'
     export default {
         name: "app-casino-detail",
         props: {
@@ -116,37 +115,9 @@
                 default: {}
             }
         },
+        mixins: [translateMixin],
         data(){
-            return {
-                currency: '',
-                paymentMethods: '',
-                acceptPlayers: '',
-                minPayment: '',
-                minDeposit: '',
-                withdrawal: '',
-                yearFoundation: '',
-                numberGames: '',
-                license: '',
-                contacts: '',
-                platforms: '',
-                technology: '',
-                languages: ''
-            }
-        },
-        mounted() {
-            this.currency = TRANSLATE.CURRENCY[config.LANG]
-            this.paymentMethods = TRANSLATE.PAYMENT_METHODS[config.LANG]
-            this.acceptPlayers = TRANSLATE.ACCEPTS_PLAYERS[config.LANG]
-            this.minPayment = TRANSLATE.MIN_PAYMENT[config.LANG]
-            this.minDeposit = TRANSLATE.MIN_DEPOSIT[config.LANG]
-            this.withdrawal = TRANSLATE.WITHDRAWAL[config.LANG]
-            this.yearFoundation = TRANSLATE.YEAR_FOUNDATION[config.LANG]
-            this.numberGames = TRANSLATE.NUMBER_GAMES[config.LANG]
-            this.license = TRANSLATE.LICENSE[config.LANG]
-            this.contacts = TRANSLATE.CONTACTS[config.LANG]
-            this.platforms = TRANSLATE.PLATFORMS[config.LANG]
-            this.technology = TRANSLATE.TECHNOLOGY[config.LANG]
-            this.languages = TRANSLATE.LANGUAGES[config.LANG]
+            return {}
         }
     }
 </script>

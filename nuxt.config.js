@@ -14,8 +14,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'script', src: 'https://images.dmca.com/Badges/DMCABadgeHelper.min.js' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   serverMiddleware: [
@@ -39,7 +38,8 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/amp'
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -72,5 +72,8 @@ export default {
                                           .get()
       return data.body.posts
     }
-  }  
+  },
+  amp: {
+    css: '~/assets/amp-custom.css',
+  }
 }

@@ -1,4 +1,6 @@
 import config from  '~/config'
+import DAL_Options from '~/DAL/options'
+import DAL_Settings from '~/DAL/settings'
 export default class Helper {
     static refActivate(item){
         if(item.ref.length !== 0) {
@@ -6,6 +8,14 @@ export default class Helper {
             const max = item.ref.length - 1
             const random = Math.floor(Math.random() * (max - min + 1)) + min
             window.open(item.ref[random], '_blank')
+        }
+    }
+    static getRef(item){
+        if(item.ref.length !== 0) {
+            const min = 0
+            const max = item.ref.length - 1
+            const random = Math.floor(Math.random() * (max - min + 1)) + min
+            return item.ref[random]
         }
     }
     static classRating(item){
@@ -39,4 +49,22 @@ export default class Helper {
         data.body.headerLinks = this.hreflang(data.body.hreflang)
         return data;
     }
+    static optionsDataMixin(data, options) {
+        data.body.options = {}
+        options.forEach(el => data.body.options[el.key] = el.value)
+        return data
+    }
+    static settingsDataMixin(data, settings) {
+        data.body.settings = {}
+        settings.forEach(el => data.body.settings[el.key] = el.value)
+        return data
+    }
+    static async globalDataMixin(response, route) {
+        const responseOptions = await DAL_Options.getOptions()
+        const responseSettings = await DAL_Settings.getSettings()
+        let data = this.headDataMixin(response.data, route)
+        data = this.optionsDataMixin(data, responseOptions.data.body)
+        data = this.settingsDataMixin(data, responseSettings.data.body)
+        return data
+    } 
 }

@@ -37,7 +37,7 @@
             :linkText="translates.ALL_BONUSES[config.LANG]" 
         />
         <app_content :value="data.body.content" v-if="data.body.content !== ''"/>
-        <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
+        <app_faq :value="changeFaq" title="Faq" v-if="changeFaq.length !== 0"/>
     </div>
 </template>
 

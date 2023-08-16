@@ -15,10 +15,7 @@
         name: "app-header",
         components: {app_logo, app_menu, app_search},
         data(){
-            return {
-                options: {},
-                settings: {}
-            }
+            return {}
         }
     }
 </script>

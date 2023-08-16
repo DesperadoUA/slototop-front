@@ -43,7 +43,9 @@ export default class Helper {
         return newArr
     }
     static headDataMixin(data, route) {
-        data.body.currentUrl = config.BASE_URL + route.path
+        data.body.currentUrl = route.path.startsWith(config.AMP_PREFIX) 
+           ? config.BASE_URL[config.LANG] + route.path.replace(`${config.AMP_PREFIX}`, '') 
+           : config.BASE_URL[config.LANG] + route.path
         data.body.index_seo = Number(data.body.index_seo) ? 'index' : 'noindex'
         data.body.follow = Number(data.body.follow) ? 'follow' : 'nofollow'
         data.body.headerLinks = this.hreflang(data.body.hreflang)

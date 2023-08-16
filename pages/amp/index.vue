@@ -4,12 +4,12 @@
         <main class="main">
             <div class="container">
                 <div class="contentEnd">
-                <app_author_link_amp 
-                    :link="config.AUTHOR_PAGE_LINK"
-                    :text="translates.REVIEW_AUTHOR[config.LANG]"
-                    :dataTime="data.body.created_at.slice(0, 10)"
-                    :name="data.body.author_name"
-                />
+                    <app_author_link_amp 
+                        :link="config.AUTHOR_PAGE_LINK"
+                        :text="translates.REVIEW_AUTHOR[config.LANG]"
+                        :dataTime="data.body.created_at.slice(0, 10)"
+                        :name="data.body.author_name"
+                    />
                 </div>
             </div>
             <app_casino_amp :value="data.body.casino"

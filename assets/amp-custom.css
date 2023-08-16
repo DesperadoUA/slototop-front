@@ -2013,7 +2013,6 @@
   
   .games__container {
     display: flex;
-    justify-content: space-between;
     margin-left: calc(var(--games-gutter) / -2);
     margin-right: calc(var(--games-gutter) / -2);
   }
@@ -2735,3 +2734,38 @@
   }
   
   /* Page banner */
+  /* Breadcrumb */
+  .breadcrumbs {
+    background-color: var(--theme-bg-3);
+    padding-top: 25px;
+    padding-bottom: 20px;
+  }
+  @media (min-width: 992px) {
+    .breadcrumbs {
+      padding-top: 34px;
+    }
+  }
+  
+  .breadcrumb-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .breadcrumb-item {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin-right: 8px;
+    color: var(--theme-cr-txt-cms);
+  }
+  .breadcrumb-item a {
+    color: var(--btn-primary);
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  /* Breadcrumb */

@@ -4,26 +4,17 @@
     <main class="main">
         <app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
         <div class="container">
-        <div class="contentEnd">
-            <app_author_link_amp
+            <div class="contentEnd">
+                <app_author_link_amp 
                 :link="config.AUTHOR_PAGE_LINK"
                 :text="translates.REVIEW_AUTHOR[config.LANG]"
                 :dataTime="data.body.created_at.slice(0, 10)"
                 :name="data.body.author_name"
-            />
+                />
+            </div>
         </div>
-        </div>
-        <app_breadcrumbs_amp :value="data.body.breadcrumbs" />
-        <app_vendor_card_amp :value="data.body" />
-        <app_slot_loop_downloads_amp :value="data.body.games"
-                             v-if="data.body.games.length !== 0"
-                             :title="`${translates.GAME_FROM[config.LANG]} ${data.body.title}`"
-        />
-        <app_casino_loop_downloads_amp :value="data.body.casino"
-            v-if="data.body.casino.length !== 0"
-            bg="--bg-gray"
-            :title="`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`"
-        />
+        <app_slot_loop_downloads_amp :value="data.body.posts" v-if="data.body.posts.length !== 0" />
+        <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
     </main>
     <app_footer_amp 
         :footer_menu="data.body.settings.footer_menu"
@@ -35,34 +26,28 @@
 
 <script>
     import DAL_Builder from '~/DAL/builder'
-    import config from '~/config'
     import helper from '~/helpers/helpers'
+    import app_casino_loop_downloads_amp from '~/components/casino_loop_downloads/app_casino_loop_downloads_amp'
     import app_content from '~/components/content/app-content'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
+    import app_faq_amp from '~/components/faq/app_faq_amp'
+    import app_author_link_amp from '~/components/author/app-author-link_amp'
     import app_header_amp from '~/components/header/app-header_amp'
     import app_footer_amp from '~/components/footer/app-footer_amp'
-    import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
-    import app_vendor_card_amp from '~/components/vendor_card/app-vendor-card_amp'
-    import app_slot_loop_downloads_amp from '~/components/slot_loop_download/app_slot_loop_download_amp'
-    import app_casino_loop_downloads_amp from '~/components/casino_loop_downloads/app_casino_loop_downloads_amp'
-    import app_author_link_amp from '~/components/author/app-author-link_amp'
     import translateMixin from '~/mixins/translate'
     export default {
-        name: "single-vendor_amp",
+        name: "casino-category_amp",
+        data: () => {
+            return {}
+        },
+        components: {app_casino_loop_downloads_amp, app_content, app_page_banner_amp, app_faq_amp, app_author_link_amp, app_header_amp, app_footer_amp},
+        mixins: [translateMixin],
         amp: 'hybrid',
         ampLayout: 'default.amp',
-        data: () => {
-            return {
-                data: {},
-            }
-        },
-        components: {app_content, app_page_banner_amp, app_author_link_amp, app_header_amp, 
-        app_footer_amp, app_breadcrumbs_amp, app_vendor_card_amp, app_slot_loop_downloads_amp, app_casino_loop_downloads_amp},
-        mixins: [translateMixin],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
-                const response = await request.postType('vendor')
+                const response = await request.postType('casinos')
                     .url(route.params.id)
                     .get()
                 if(response.data.confirm === 'error') {
@@ -70,11 +55,6 @@
                 }
                 else {
                     const data = await helper.globalDataMixin(response, route)
-                    data.body.breadcrumbs = [
-                        {...config.BREADCRUMBS_ROOT[config.LANG]},
-                        {...config.BREADCRUMBS_VENDORS[config.LANG]},
-                        {title:data.body.title, permalink: ''},
-                    ]
                     return {data}
                 }
             }
@@ -96,6 +76,8 @@
                     { rel: 'canonical', href: this.data.body.currentUrl}
                 ]
             }
-        },
+        }
     }
 </script>
+
+<style lang="scss"></style>

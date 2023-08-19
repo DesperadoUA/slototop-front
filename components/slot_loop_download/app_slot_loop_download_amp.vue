@@ -25,9 +25,9 @@
         </div>
 
         <div class="games__more items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
-            <button no-prefetch
-                    class="btn-secondary"
-            >{{translates.SHOW_MORE[config.LANG]}}</button>
+            <button class="btn-secondary">
+                {{translates.SHOW_MORE[config.LANG]}}
+            </button>
         </div>
     </div>
 </template>

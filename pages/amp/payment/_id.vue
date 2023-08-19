@@ -34,28 +34,17 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
     import helper from '~/helpers/helpers'
-    import app_content from '~/components/content/app-content'
+    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
     import app_casino_loop_downloads_amp from '~/components/casino_loop_downloads/app_casino_loop_downloads_amp'
     import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
     import app_payment_card_amp from '~/components/payment_card/app-payment-card_amp'
     import app_payment_detail_amp from '~/components/payment-detail/app-payment-detail_amp'
-    import app_author_link_amp from '~/components/author/app-author-link_amp'
-    import app_header_amp from '~/components/header/app-header_amp'
-    import app_footer_amp from '~/components/footer/app-footer_amp'
-    import translateMixin from '~/mixins/translate'
     export default {
         name: "single-payment_amp",
-        data: () => {
-            return {
-                data: {},
-            }
-        },
-        amp: 'hybrid',
-        ampLayout: 'default.amp',
-        components: {app_content, app_page_banner_amp, app_casino_loop_downloads_amp, app_breadcrumbs_amp, 
-        app_payment_card_amp, app_payment_detail_amp, app_author_link_amp, app_header_amp, app_footer_amp},
-        mixins: [translateMixin],
+        components: {app_page_banner_amp, app_casino_loop_downloads_amp, app_breadcrumbs_amp, 
+        app_payment_card_amp, app_payment_detail_amp},
+        mixins: [pageTemplateAmp],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -78,25 +67,6 @@
             else {
                 error({ statusCode: 404, message: 'Post not found' })
             }
-        },
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.data.body.description
-                    }
-                ],
-                link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
-                ]
-            }
-        },
+        }
     }
 </script>
-
-<style scoped>
-
-</style>

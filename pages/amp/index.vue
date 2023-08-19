@@ -49,31 +49,17 @@
 
 <script>
    import DAL_Page from '~/DAL/static_pages'
-   import app_header_amp from '~/components/header/app-header_amp'
    import helper from '~/helpers/helpers'
+   import config from '~/config'
    import app_casino_amp from '~/components/casino/app_casino_amp'
    import app_slots_amp from '~/components/slots/app_slots_amp'
-   import app_content from '~/components/content/app-content'
    import app_bonuses_casino_amp from '~/components/bonuses-casino/app_bonuses_casino_amp'
    import app_faq_amp from '~/components/faq/app_faq_amp'
-   import app_author_link_amp from '~/components/author/app-author-link_amp'
-   import app_footer_amp from '~/components/footer/app-footer_amp'
-   import translateMixin from '~/mixins/translate'
-   import config from '~/config'
+   import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 export default {
     name: "main-page-amp",
-    amp: 'hybrid',
-    ampLayout: 'default.amp',
-    data: () => {
-        return {
-            defaultValue: [],
-            faq: [],
-            banner: [],
-            device: false
-        }
-    },
-    components: {app_content, app_casino_amp, app_slots_amp, app_bonuses_casino_amp, app_faq_amp, app_author_link_amp, app_header_amp, app_footer_amp},
-    mixins: [translateMixin],
+    components: {app_casino_amp, app_slots_amp, app_bonuses_casino_amp, app_faq_amp},
+    mixins: [pageTemplateAmp],
     async asyncData({store, route}) {
         const request = {
             url: 'main'
@@ -82,21 +68,6 @@ export default {
         const data = await helper.globalDataMixin(response, route)
         data.body.currentUrl = config.BASE_URL[config.LANG]
         return {data}
-    },
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: this.data.body.description
-                }
-            ],
-            link: [
-                { rel: 'canonical', href: this.data.body.currentUrl}
-            ]
-        }
-    },
+    }
 }
 </script>

@@ -13,7 +13,6 @@
                 />
             </div>
         </div>
-        <app_slot_loop_downloads_amp :value="data.body.posts" v-if="data.body.posts.length !== 0" />
         <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
     </main>
     <app_footer_amp 
@@ -27,23 +26,14 @@
 <script>
     import DAL_Builder from '~/DAL/builder'
     import helper from '~/helpers/helpers'
-    import app_casino_loop_downloads_amp from '~/components/casino_loop_downloads/app_casino_loop_downloads_amp'
-    import app_content from '~/components/content/app-content'
+    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
     import app_faq_amp from '~/components/faq/app_faq_amp'
-    import app_author_link_amp from '~/components/author/app-author-link_amp'
-    import app_header_amp from '~/components/header/app-header_amp'
-    import app_footer_amp from '~/components/footer/app-footer_amp'
-    import translateMixin from '~/mixins/translate'
+    
     export default {
         name: "casino-category_amp",
-        data: () => {
-            return {}
-        },
-        components: {app_casino_loop_downloads_amp, app_content, app_page_banner_amp, app_faq_amp, app_author_link_amp, app_header_amp, app_footer_amp},
-        mixins: [translateMixin],
-        amp: 'hybrid',
-        ampLayout: 'default.amp',
+        components: {app_page_banner_amp, app_faq_amp},
+        mixins: [pageTemplateAmp],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -61,23 +51,6 @@
             else {
                 error({ statusCode: 404, message: 'Post not found' })
             }
-        },
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.data.body.description
-                    }
-                ],
-                link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
-                ]
-            }
         }
     }
 </script>
-
-<style lang="scss"></style>

@@ -26,24 +26,13 @@
 <script>
     import DAL_Builder from '~/DAL/builder'
     import helper from '~/helpers/helpers'
-    import app_content from '~/components/content/app-content'
+    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
     import app_faq_amp from '~/components/faq/app_faq_amp'
-    import app_author_link_amp from '~/components/author/app-author-link_amp'
-    import app_header_amp from '~/components/header/app-header_amp'
-    import app_footer_amp from '~/components/footer/app-footer_amp'
-    import translateMixin from '~/mixins/translate'
     export default {
         name: "payment-category_amp",
-        components: {app_content, app_page_banner_amp, app_faq_amp, app_author_link_amp, app_header_amp, app_footer_amp},
-        mixins: [translateMixin],
-        data: () => {
-            return {
-                data: {},
-            }
-        },
-        amp: 'hybrid',
-        ampLayout: 'default.amp',
+        components: {app_page_banner_amp, app_faq_amp},
+        mixins: [pageTemplateAmp],
         async asyncData({route, error}) {
             const request = new DAL_Builder()
             const response = await request.postType('payments')
@@ -56,22 +45,7 @@
                 const data = await helper.globalDataMixin(response, route)
                 return {data}
             }
-        },
-        head() {
-          return {
-              title: this.data.body.meta_title,
-              meta: [
-                  {
-                      hid: 'description',
-                      name: 'description',
-                      content: this.data.body.description
-                  }
-              ],
-              link: [
-                  { rel: 'canonical', href: this.data.body.currentUrl}
-              ]
-          }
-      }
+        }
     }
 </script>
 

@@ -36,6 +36,7 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
     import helper from '~/helpers/helpers'
+    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
     import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
     import app_game_card_amp from '~/components/game_card/app-game-card_amp'
@@ -44,24 +45,11 @@
     import app_slots_amp from '~/components/slots/app_slots_amp'
     import app_game_screenshots_amp from '~/components/game-screenshots/app-game-screenshots_amp'
     import app_game_symbols_amp from '~/components/game-symbols/app-game-symbols_amp'
-    import app_content from '~/components/content/app-content'
-    import translateMixin from '~/mixins/translate'
-    import app_header_amp from '~/components/header/app-header_amp'
-    import app_footer_amp from '~/components/footer/app-footer_amp'
     export default {
         name: "single-game_amp",
-        data: () => {
-            return {
-                globalRef: {
-                    ref: []
-                }
-            }
-        },
-        amp: 'hybrid',
-        ampLayout: 'default.amp',
-        components: {app_content, app_page_banner_amp, app_breadcrumbs_amp, app_header_amp, app_footer_amp, app_game_card_amp, 
-        app_game_details_amp, app_casino_amp, app_slots_amp, app_game_screenshots_amp, app_game_symbols_amp},
-        mixins: [translateMixin],
+        components: {app_page_banner_amp, app_breadcrumbs_amp, app_game_card_amp, app_game_details_amp, app_casino_amp, app_slots_amp, 
+        app_game_screenshots_amp, app_game_symbols_amp},
+        mixins: [pageTemplateAmp],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder();
@@ -84,21 +72,6 @@
             }
             else {
                 error({ statusCode: 404, message: 'Post not found' })
-            }
-        },
-        head() {
-            return {
-                  title: this.data.body.meta_title,
-                  meta: [
-                      {
-                          hid: 'description',
-                          name: 'description',
-                          content: this.data.body.description
-                      }
-                  ],
-                  link: [
-                      { rel: 'canonical', href: this.data.body.currentUrl}
-                  ]
             }
         }
     }

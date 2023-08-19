@@ -52,7 +52,7 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
     import helper from '~/helpers/helpers'
-    import app_content from '~/components/content/app-content'
+    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_faq_amp from '~/components/faq/app_faq_amp'
     import app_bonuses_amp from '~/components/bonuses-casino/app_bonuses_casino_amp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
@@ -65,22 +65,12 @@
     import app_close_disclaimer_amp from '~/components/close-disclaimer/close-disclaimer_amp'
     import app_casino_amp from '~/components/casino/app_casino_amp'
     import app_casino_aside_amp from '~/components/casino-aside/app_casino_aside_amp'
-    import app_author_link_amp from '~/components/author/app-author-link_amp'
-    import app_header_amp from '~/components/header/app-header_amp'
-    import app_footer_amp from '~/components/footer/app-footer_amp'
-    import translateMixin from '~/mixins/translate'
 
     export default {
         name: "app_single_casino_amp",
-        components: {app_content, app_breadcrumbs_amp, app_faq_amp, app_bonuses_amp, app_page_banner_amp, app_reviews_amp, app_casino_aside_amp,
-        app_casino_amp, app_author_link_amp, app_casino_card_amp, app_close_disclaimer_amp, app_casino_detail_amp, 
-        app_header_amp, app_footer_amp, app_casino_rating_amp, app_slick_button_amp},
-        mixins: [translateMixin],
-        data: () => {
-            return {}
-        },
-        amp: 'hybrid',
-        ampLayout: 'default.amp',
+        components: {app_breadcrumbs_amp, app_faq_amp, app_bonuses_amp, app_page_banner_amp, app_reviews_amp, app_casino_aside_amp,
+        app_casino_amp, app_casino_card_amp, app_close_disclaimer_amp, app_casino_detail_amp, app_casino_rating_amp, app_slick_button_amp},
+        mixins: [pageTemplateAmp],
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder();
@@ -112,21 +102,6 @@
             else {
                 error({ statusCode: 404, message: 'Post not found' })
             }
-           },
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.data.body.description
-                    }
-                ],
-                link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
-                ]
-            }
-        }
+           }
     }
 </script>

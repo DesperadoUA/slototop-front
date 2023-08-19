@@ -24,17 +24,12 @@
 <script>
    import DAL_Page from '~/DAL/static_pages'
    import helper from '~/helpers/helpers'
-   import app_header_amp from '~/components/header/app-header_amp'
-   import app_content from '~/components/content/app-content'
    import app_author_top from '~/components/author/app-author-top'
-   import app_footer_amp from '~/components/footer/app-footer_amp'
-   import translateMixin from '~/mixins/translate'
+   import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 export default {
     name: "author-page_amp",
-    amp: 'hybrid',
-    ampLayout: 'default.amp',
-    components: {app_content, app_author_top, app_header_amp, app_footer_amp},
-    mixins: [translateMixin],
+    components: {app_author_top},
+    mixins: [pageTemplateAmp],
     async asyncData({store, route}) {
         const request = {
             url: 'author'
@@ -42,21 +37,6 @@ export default {
         const response = await DAL_Page.getData(request)
         const data = await helper.globalDataMixin(response, route)
         return {data}
-    },
-    head() {
-        return {
-            title: this.data.body.meta_title,
-            meta: [
-                {
-                    hid: 'description',
-                    name: 'description',
-                    content: this.data.body.description
-                }
-            ],
-            link: [
-                { rel: 'canonical', href: this.data.body.currentUrl}
-            ]
-        }
-    },
+    }
 }
 </script>

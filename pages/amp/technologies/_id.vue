@@ -25,23 +25,13 @@
 <script>
     import DAL_Builder from '~/DAL/builder'
     import helper from '~/helpers/helpers'
+    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
-    import app_author_link_amp from '~/components/author/app-author-link_amp'
-    import app_header_amp_amp from '~/components/header/app-header_amp'
-    import app_footer_amp from '~/components/footer/app-footer_amp'
-    import translateMixin from '~/mixins/translate'
 
     export default {
         name: "technologies-category",
-        components: {app_page_banner_amp, app_author_link_amp, app_header_amp_amp, app_footer_amp},
-        mixins: [translateMixin],
-        amp: 'hybrid',
-        ampLayout: 'default.amp',
-        data: () => {
-            return {
-                data: {},
-            }
-        },
+        components: {app_page_banner_amp},
+        mixins: [pageTemplateAmp],
         async asyncData({route, error}) {
             const request = new DAL_Builder()
             const response = await request.postType('technologies')
@@ -53,21 +43,6 @@
             else {
                 const data = await helper.globalDataMixin(response, route)
                 return {data}
-            }
-        },
-        head() {
-            return {
-                title: this.data.body.meta_title,
-                meta: [
-                    {
-                        hid: 'description',
-                        name: 'description',
-                        content: this.data.body.description
-                    }
-                ],
-                link: [
-                    { rel: 'canonical', href: this.data.body.currentUrl}
-                ]
             }
         }
     }

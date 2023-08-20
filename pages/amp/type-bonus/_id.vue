@@ -14,7 +14,12 @@
         </div>
       </div>
       <app_category_filter_amp :value="data.body.bonus_type" v-if="data.body.bonus_type.length !== 0" />
-      <app_bonuses_loop_downloads_amp :value="data.body.posts" v-if="data.body.posts.length !== 0" />
+      <app_bonuses_loop_downloads_amp 
+          :value="data.body.posts"
+          post_type="type-bonus" 
+          :post_url="$route.params.id"
+          v-if="data.body.posts.length !== 0" 
+      />
     </main>
     <app_footer_amp 
         :footer_menu="data.body.settings.footer_menu"

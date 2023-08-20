@@ -47,7 +47,7 @@ import translateMixin from '~/mixins/translate'
                type: String
             },
             post_url: {
-                default: 'vendors',
+                default: 'payments',
                 type: String
             }
         },

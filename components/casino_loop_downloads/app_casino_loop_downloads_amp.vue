@@ -1,49 +1,57 @@
 <template>
-<div :class="'casinos '+bg">
-        <div class="slots">
-            <div class="container">
-                <div class="slots__heading" v-if="title">
-                    <h2 class="slots__ttl">{{title}}</h2>
-                    <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${link}`" class="link-primary" v-if="linkText">{{linkText}}</NuxtLink>
-                </div>
-                <div class="slots__container items-wrap">
-                    <article class="slot-item"
-                            v-for="(item, index) in currentPosts"
-                            :key="index">
-                        <div class="slot-item__logo">
-                            <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`">
-                                <amp-img :src="item.thumbnail" width="214" height="138" alt="" />
-                            </NuxtLink>
-                        </div>
-                        <div class="slot-item__content">
-                            <div class="slot-item__name">
-                                <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`">
-                                    {{item.title}}
-                                </NuxtLink>
-                                <amp-img src="/img/check.svg" width="30" height="15" alt="" v-if="item.licenses.length !== 0" /></div>
-                            <div class="slot-item__stats">
-                                <div class="star-rating">
-                                    <span class="star-rating__val" :style="item | widthRating"></span>
-                                </div>
-                                <strong class="slot-item__stats-val">{{item.rating}}/100</strong>
-                            </div>
-                        </div>
+    <amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/js/amp-casino.js`" class="sample">
+        <div :class="'casinos '+bg">
+            <div class="slots">
+                <div class="container">
+                    <div class="slots__heading" v-if="title">
+                                <h2 class="slots__ttl">{{title}}</h2>
+                                <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${link}`" class="link-primary" v-if="linkText">{{linkText}}</NuxtLink>
+                    </div>
+                    <div class="slots__container items-wrap">
+                                <article class="slot-item"
+                                        v-for="(item, index) in currentPosts"
+                                        :key="index">
+                                    <div class="slot-item__logo">
+                                        <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`">
+                                            <amp-img :src="item.thumbnail" width="214" height="138" alt="" />
+                                        </NuxtLink>
+                                    </div>
+                                    <div class="slot-item__content">
+                                        <div class="slot-item__name">
+                                            <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`">
+                                                {{item.title}}
+                                            </NuxtLink>
+                                            <amp-img src="/img/check.svg" width="30" height="15" alt="" v-if="item.licenses.length !== 0" /></div>
+                                        <div class="slot-item__stats">
+                                            <div class="star-rating">
+                                                <span class="star-rating__val" :style="item | widthRating"></span>
+                                            </div>
+                                            <strong class="slot-item__stats-val">{{item.rating}}/100</strong>
+                                        </div>
+                                    </div>
 
-                        <div class="slot-item__btns">
-                            <a class="slot-item__btn --blue" :href="getRef(item)">{{translates.GO_TO[config.LANG]}}</a>
-                        </div>
+                                    <div class="slot-item__btns">
+                                        <a class="slot-item__btn --blue" :href="getRef(item)">{{translates.GO_TO[config.LANG]}}</a>
+                                    </div>
 
-                        <span class="ribbon-closed" v-if="item.close !== 0">{{translates.CLOSE[config.LANG]}}</span>
-                    </article>
+                                    <span class="ribbon-closed" v-if="item.close !== 0">{{translates.CLOSE[config.LANG]}}</span>
+                                </article>
+                    </div>
+                    <div class="loadContainer"></div>
                 </div>
+                <div class="items-more">
+                    <button v-if="value.length > (numberPostOnQuery*postCurrentPage)"
+                        class="btn-secondary loadMoreBtn"
+                        :data-apiUrl="config.API_URL[config.LANG]" 
+                        :data-postsOnQuery="numberPostOnQuery"
+                        :data-ampPrefix="config.AMP_PREFIX"
+                        :data-post-type="post_type"
+                        :data-post-url="post_url"
+                    >{{translates.SHOW_MORE[config.LANG]}}</button>
+                </div>
+            </div>
         </div>
-        <div class="items-more">
-            <button v-if="value.length > (numberPostOnQuery*postCurrentPage)"
-                    class="btn-secondary"
-            >{{translates.SHOW_MORE[config.LANG]}}</button>
-        </div>
-    </div>
-</div>
+    </amp-script>
 </template>
 
 <script>
@@ -71,6 +79,14 @@ import translateMixin from '~/mixins/translate'
             bg: {
                 type: String,
                 default: ''
+            },
+            post_type: {
+               default: 'page',
+               type: String
+            },
+            post_url: {
+                default: '/',
+                type: String
             }
         },
         mixins: [translateMixin],

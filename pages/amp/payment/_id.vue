@@ -19,6 +19,8 @@
         <app_casino_loop_downloads_amp :value="data.body.casino"
             :title="translates.GET_PAYMENTS[config.LANG]"
             bg="--bg-gray"
+            post_type="payment" 
+            :post_url="$route.params.id" 
             v-if="data.body.casino.length !== 0"
         />
     </main>

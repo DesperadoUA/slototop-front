@@ -11,9 +11,11 @@
         />
       </div>
     </div>
-    <app_casino_loop_downloads :value="data.body.casino"
-                               bg="--bg-gray"
-                               v-if="data.body.casino.length !== 0" />
+    <app_casino_loop_downloads 
+        :value="data.body.casino"
+        bg="--bg-gray"
+        v-if="data.body.casino.length !== 0" 
+    />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
   </div>
 </template>

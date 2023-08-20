@@ -13,9 +13,13 @@
           />
         </div>
       </div>
-      <app_casino_loop_downloads_amp :value="data.body.casino"
-                                bg="--bg-gray"
-                                v-if="data.body.casino.length !== 0" />
+      <app_casino_loop_downloads_amp 
+          :value="data.body.casino"
+          bg="--bg-gray"
+          post_type="technology" 
+          :post_url="$route.params.id" 
+          v-if="data.body.casino.length !== 0" 
+      />
     </main>
     <app_footer_amp 
       :footer_menu="data.body.settings.footer_menu"

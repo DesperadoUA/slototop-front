@@ -19,10 +19,13 @@
                              v-if="data.body.games.length !== 0"
                              :title="`${translates.GAME_FROM[config.LANG]} ${data.body.title}`"
         />
-        <app_casino_loop_downloads_amp :value="data.body.casino"
-            v-if="data.body.casino.length !== 0"
+        <app_casino_loop_downloads_amp 
+            :value="data.body.casino"
+            post_type="vendor" 
+            :post_url="$route.params.id"
             bg="--bg-gray"
             :title="`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`"
+            v-if="data.body.casino.length !== 0"
         />
     </main>
     <app_footer_amp 

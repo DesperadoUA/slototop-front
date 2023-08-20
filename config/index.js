@@ -4,7 +4,8 @@ export default {
         UA: 'https://api.slototop.ua/api/'
     },
     BASE_URL: {
-        RU: 'https://new.slototop.ua',
+        RU: 'http://127.0.0.1:3000',
+        //RU: 'https://new.slototop.ua',
         UA: 'https://slototop.ua/' 
     },
     AMP_PREFIX: '/amp',

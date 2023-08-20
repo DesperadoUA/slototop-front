@@ -13,9 +13,13 @@
             />
           </div>
         </div>
-        <app_casino_loop_downloads_amp :value="data.body.casino"
-                                  bg="--bg-gray"
-                                  v-if="data.body.casino.length !== 0" />
+        <app_casino_loop_downloads_amp 
+            :value="data.body.casino"
+            bg="--bg-gray"
+            post_type="license" 
+            :post_url="$route.params.id" 
+            v-if="data.body.casino.length !== 0" 
+        />
     </main>
     <app_footer_amp 
       :footer_menu="data.body.settings.footer_menu"
@@ -32,7 +36,7 @@
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
     import app_casino_loop_downloads_amp from '~/components/casino_loop_downloads/app_casino_loop_downloads_amp'
     export default {
-        name: "license-language_amp",
+        name: "license_amp",
         components: {app_page_banner_amp, app_casino_loop_downloads_amp},
         mixins: [pageTemplateAmp],
         async asyncData({route, error}) {

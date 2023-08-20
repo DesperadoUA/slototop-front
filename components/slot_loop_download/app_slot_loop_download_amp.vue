@@ -1,4 +1,5 @@
 <template>
+<amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/js/amp-game.js`" class="sample">
     <div :class="'games --alt-bg '+bg">
         <div class="container">
             <div class="slots__heading" v-if="title">
@@ -22,14 +23,22 @@
                     </div>
                 </div>
             </div>
+            <div class="loadContainer"></div>
         </div>
 
         <div class="games__more items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
-            <button class="btn-secondary">
+            <button class="btn-secondary loadMoreBtn"
+                :data-apiUrl="config.API_URL[config.LANG]" 
+                :data-postsOnQuery="numberPostOnQuery"
+                :data-ampPrefix="config.AMP_PREFIX"
+                :data-post-type="post_type"
+                :data-post-url="post_url"
+            >
                 {{translates.SHOW_MORE[config.LANG]}}
             </button>
         </div>
     </div>
+</amp-script>
 </template>
 <script>
 import translateMixin from '~/mixins/translate'
@@ -56,6 +65,14 @@ import translateMixin from '~/mixins/translate'
             bg: {
                 type: String,
                 default: ''
+            },
+             post_type: {
+               default: 'page',
+               type: String
+            },
+            post_url: {
+                default: 'games',
+                type: String
             }
         },
         data(){

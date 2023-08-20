@@ -15,9 +15,12 @@
         </div>
         <app_breadcrumbs_amp :value="data.body.breadcrumbs" />
         <app_vendor_card_amp :value="data.body" />
-        <app_slot_loop_downloads_amp :value="data.body.games"
-                             v-if="data.body.games.length !== 0"
-                             :title="`${translates.GAME_FROM[config.LANG]} ${data.body.title}`"
+        <app_slot_loop_downloads_amp 
+            :title="`${translates.GAME_FROM[config.LANG]} ${data.body.title}`"
+            :value="data.body.games"
+            post_type="vendor" 
+            :post_url="$route.params.id"
+            v-if="data.body.games.length !== 0"
         />
         <app_casino_loop_downloads_amp 
             :value="data.body.casino"

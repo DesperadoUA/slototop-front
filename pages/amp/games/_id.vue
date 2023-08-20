@@ -16,6 +16,8 @@
         <app_category_filter_amp :value="data.body.category" v-if="data.body.category.length !== 0" />
         <app_slot_loop_downloads_amp
                 :value="data.body.posts"
+                post_type="games" 
+                :post_url="$route.params.id"
                 bg="--bg-gray"
                 v-if="data.body.posts.length !== 0" />
         <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />

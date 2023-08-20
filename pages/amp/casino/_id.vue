@@ -37,7 +37,12 @@
     </div>
     <app_casino_rating_amp :value="data.body.casinoRating" :title="data.body.title" />
     <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
-    <app_reviews_amp :title="translates.REVIEWS[config.LANG]" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
+    <app_reviews_amp 
+        post_type="casino" 
+        :post_url="$route.params.id"
+        :title="translates.REVIEWS[config.LANG]" 
+        :value="data.body.reviews" 
+        v-if="data.body.reviews.length !== 0"/>
     <app_slick_button_amp :referal="data.body" />
     </main>
     <app_footer_amp 

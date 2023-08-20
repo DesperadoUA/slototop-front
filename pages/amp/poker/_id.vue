@@ -18,7 +18,12 @@
     <app_poker_detail_amp :value="data.body" />
     <app_poker_loop_downloads_amp :value="data.body.pokers" bg="--bg-gray" :title="translates.OTHER_POKER_ROOMS[config.LANG]"/>
     <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
-    <app_reviews_amp :title="config.REVIEWS[config.LANG]" :value="data.body.reviews" v-if="data.body.reviews.length !== 0"/>
+    <app_reviews_amp 
+        post_type="poker" 
+        :post_url="$route.params.id"
+        :title="config.REVIEWS[config.LANG]" 
+        :value="data.body.reviews" 
+        v-if="data.body.reviews.length !== 0"/>
     </main>
     <app_footer_amp 
         :footer_menu="data.body.settings.footer_menu"

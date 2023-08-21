@@ -30,15 +30,16 @@
                             </div>
                         </div>
                 </div>
-                <div class="loadContainer"></div>
+                <div class="loadContainer slots__container items-wrap"></div>
             </div>
             <div class="items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
                 <button 
-                    :data-apiUrl="config.API_URL[config.LANG]" 
+                    :data-apiUrl="`${config.API_URL[config.LANG]}poker/search`" 
                     :data-postsOnQuery="numberPostOnQuery"
                     :data-ampPrefix="config.AMP_PREFIX"
                     :data-post-type="post_type"
                     :data-post-url="post_url"
+                    :data-translate-go-to="translates.GO_TO[config.LANG]"
                     class="btn-secondary loadMoreBtn">
                     {{translates.SHOW_MORE[config.LANG]}}
                 </button>

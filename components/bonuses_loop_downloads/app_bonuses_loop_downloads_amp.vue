@@ -37,15 +37,18 @@
                         </div>
                     </article>
                 </div>
-                <div class="loadContainer"></div>
+                <div class="loadContainer bonuses__container"></div>
             </div>
             <div class="items-more">
                 <button 
-                    :data-apiUrl="config.API_URL[config.LANG]" 
+                    :data-apiUrl="`${config.API_URL[config.LANG]}bonus/search`" 
                     :data-postsOnQuery="numberPostOnQuery"
                     :data-ampPrefix="config.AMP_PREFIX"
                     :data-post-type="post_type"
                     :data-post-url="post_url"
+                    :data-translate-read-more="translates.READ_MORE[config.LANG]"
+                    :data-translate-get-bonus="translates.GET_BONUS[config.LANG]"
+                    :data-translate-bonus-invalid="translates.BONUS_INVALID[config.LANG]"
                     v-if="value.length > (numberPostOnQuery*postCurrentPage)"
                     class="btn-secondary loadMoreBtn"
                 >{{translates.SHOW_MORE[config.LANG]}}

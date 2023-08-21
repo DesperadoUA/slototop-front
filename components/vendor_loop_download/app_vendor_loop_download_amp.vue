@@ -12,12 +12,12 @@
                         </div>
                     </NuxtLink>
                 </div>
-                <div class="loadContainer"></div>
+                <div class="loadContainer games__container flex-wrap"></div>
             </div>
 
             <div class="items-more">
                 <button v-if="value.length > (numberPostOnQuery*postCurrentPage)"
-                    :data-apiUrl="config.API_URL[config.LANG]" 
+                    :data-apiUrl="`${config.API_URL[config.LANG]}vendor/search`" 
                     :data-postsOnQuery="numberPostOnQuery"
                     :data-ampPrefix="config.AMP_PREFIX"
                     :data-post-type="post_type"
@@ -47,7 +47,7 @@ import translateMixin from '~/mixins/translate'
                type: String
             },
             post_url: {
-                default: 'payments',
+                default: 'vendors',
                 type: String
             }
         },

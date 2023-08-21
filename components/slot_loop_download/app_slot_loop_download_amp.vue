@@ -23,16 +23,17 @@
                     </div>
                 </div>
             </div>
-            <div class="loadContainer"></div>
+            <div class="loadContainer games__container flex-wrap"></div>
         </div>
 
         <div class="games__more items-more" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
             <button class="btn-secondary loadMoreBtn"
-                :data-apiUrl="config.API_URL[config.LANG]" 
+                :data-apiUrl="`${config.API_URL[config.LANG]}game/search`" 
                 :data-postsOnQuery="numberPostOnQuery"
                 :data-ampPrefix="config.AMP_PREFIX"
                 :data-post-type="post_type"
                 :data-post-url="post_url"
+                :data-translate-play="translates.PLAY[config.LANG]"
             >
                 {{translates.SHOW_MORE[config.LANG]}}
             </button>

@@ -32,7 +32,7 @@
             <div class="loadContainer"></div>
             <div class="" v-if="value.length > (numberPostOnQuery*postCurrentPage)">
                 <button
-                    :data-apiUrl="config.API_URL[config.LANG]" 
+                    :data-apiUrl="`${config.API_URL[config.LANG]}${post_type}/review`" 
                     :data-postsOnQuery="numberPostOnQuery"
                     :data-ampPrefix="config.AMP_PREFIX"
                     :data-post-type="post_type"

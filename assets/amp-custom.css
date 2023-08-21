@@ -1435,16 +1435,10 @@
     }
   }
   @media (max-width: 767px) {
-    .slots__heading .link-primary {
-      display: none;
-    }
-    .casino_load_container {
-      justify-content: center;
-    }
+    .slots__heading .link-primary {display: none}
+    .casino_load_container {justify-content: center}
   }
-  .slots__ttl {
-    margin-bottom: 0;
-  }
+  .slots__ttl {margin-bottom: 0}
   .slots__container {
     padding-top: 50px;
     display: flex;
@@ -1452,37 +1446,25 @@
     margin-left: calc(var(--slots-gutter) / -2);
     margin-right: calc(var(--slots-gutter) / -2);
   }
-  .loadContainer.slots__container {
-    padding-top: 0px;
-  }
+  .loadContainer.slots__container {padding-top: 0px}
   @media (max-width: 1229px) {
     .slots__container {
       margin-right: calc(var(--side-gutters) * -1);
     }
   }
-  .slots__container.items-wrap {
-    flex-wrap: wrap;
-  }
+  .slots__container.items-wrap {flex-wrap: wrap}
   @media (max-width: 499px) {
-    .slots__container.items-wrap {
-      justify-content: center;
-    }
+    .slots__container.items-wrap {justify-content: center}
   }
-  .slots__container:not(.items-wrap) {
-    overflow-x: auto;
-  }
+  .slots__container:not(.items-wrap) {overflow-x: auto}
   @media (min-width: 1366px) {
-    .slots__container:not(.items-wrap) {
-      flex-wrap: wrap;
-    }
+    .slots__container:not(.items-wrap) {flex-wrap: wrap}
   }
   .slots__container:not(.items-wrap):after {
     content: "";
     flex: auto;
   }
-  .slots__heading + .slots__container {
-    padding-top: 6px;
-  }
+  .slots__heading + .slots__container {padding-top: 6px}
   .slots__container .slot-item {
     flex-shrink: 0;
     flex-basis: var(--slots-width);
@@ -1504,9 +1486,7 @@
     box-shadow: 0 8px 15px rgba(2, 19, 62, 0.2);
   }
   @media (min-width: 992px) {
-    .slot-item:hover {
-      box-shadow: none;
-    }
+    .slot-item:hover {box-shadow: none}
   }
   .slot-item__logo {
     overflow: hidden;
@@ -1550,9 +1530,7 @@
     text-decoration: none;
     color: var(--theme-cr-2);
   }
-  .slot-item__name img {
-    margin-left: 7px;
-  }
+  .slot-item__name img {margin-left: 7px}
   .slot-item__stats {
     display: flex;
     align-items: center;

@@ -37,6 +37,7 @@
                 link="bonuses" 
                 :linkText="translates.ALL_BONUSES[config.LANG]" 
             />
+            <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
             <app_faq_amp :value="data.body.settings.main_page_faq" title="Faq" />
         </main>
         <app_footer_amp 

@@ -16,6 +16,7 @@
             <app_poker_loop_downloads_amp :value="data.body.poker"
                                     bg="--bg-gray"
                                     v-if="data.body.poker.length !== 0"/>
+            <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
             <app_faq_amp :value="data.body.settings.poker_page_faq" title="Faq" v-if="data.body.settings.poker_page_faq.length !== 0"/>
         </main>
         <app_footer_amp 

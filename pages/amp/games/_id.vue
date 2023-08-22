@@ -20,6 +20,7 @@
                 :post_url="$route.params.id"
                 bg="--bg-gray"
                 v-if="data.body.posts.length !== 0" />
+        <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
     </main>
     <app_footer_amp 

@@ -75,4 +75,5 @@
  }
  /*
     pages: ['payments'] 
+    postTypes ['type-payment']
  */

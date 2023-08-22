@@ -17,6 +17,7 @@
                 bg="--bg-gray"
                 v-if="data.body.casino.length !== 0" 
             />
+            <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
             <app_faq_amp :value="data.body.settings.casino_page_faq" 
                 title="Faq" 
                 v-if="data.body.settings.casino_page_faq.length !== 0"

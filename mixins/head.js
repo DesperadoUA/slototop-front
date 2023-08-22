@@ -15,6 +15,7 @@ export default {
             ],
             link: [
                 { rel: 'canonical', href: this.data.body.currentUrl},
+                { rel: 'amphtml', href: this.data.body.ampUrl},
                     ...this.data.body.headerLinks
             ]
         }

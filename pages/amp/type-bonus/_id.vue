@@ -20,6 +20,7 @@
           :post_url="$route.params.id"
           v-if="data.body.posts.length !== 0" 
       />
+      <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
     </main>
     <app_footer_amp 
         :footer_menu="data.body.settings.footer_menu"

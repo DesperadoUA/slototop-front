@@ -12,8 +12,8 @@
       </div>
     </div>
     <app_payment_loop_download :value="data.body.posts"
-                               bg="--bg-gray"
-                               v-if="data.body.posts.length !== 0" />
+        bg="--bg-gray"
+        v-if="data.body.posts.length !== 0" />
     <app_content :value="data.body.content" v-if="data.body.content !== ''" />
   </div>
 </template>

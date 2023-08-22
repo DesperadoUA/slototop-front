@@ -23,6 +23,7 @@
             :title="`${translates.SLOT_MACHINE_SYMBOLS[config.LANG]} ${data.body.title}`"
             v-if="data.body.characters.length !== 0"
         />
+        <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
     </main>
     <app_footer_amp 
         :footer_menu="data.body.settings.footer_menu"

@@ -49,6 +49,7 @@ export default class Helper {
         data.body.index_seo = Number(data.body.index_seo) ? 'index' : 'noindex'
         data.body.follow = Number(data.body.follow) ? 'follow' : 'nofollow'
         data.body.headerLinks = this.hreflang(data.body.hreflang)
+        data.body.ampUrl = config.BASE_URL[config.LANG] + config.AMP_PREFIX + route.path
         return data;
     }
     static optionsDataMixin(data, options) {

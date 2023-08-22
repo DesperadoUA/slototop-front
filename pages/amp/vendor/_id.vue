@@ -30,6 +30,7 @@
             :title="`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`"
             v-if="data.body.casino.length !== 0"
         />
+        <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
     </main>
     <app_footer_amp 
         :footer_menu="data.body.settings.footer_menu"

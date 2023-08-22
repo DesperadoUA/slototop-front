@@ -19,13 +19,6 @@
          
          const dataSetPostUrl = btn.attributes.filter((item) => item.name === 'data-post-url')
          const postUrl = dataSetPostUrl.length ? dataSetPostUrl[0].value : '/'
-         /*
-         const dataSetGoTo = btn.attributes.filter((item) => item.name === 'data-translate-go-to')
-         const goTo = dataSetGoTo.length ? dataSetGoTo[0].value : ""
- 
-         const dataSetReview = btn.attributes.filter((item) => item.name === 'data-translate-review')
-         const review = dataSetReview.length ? dataSetReview[0].value : ""
-         */
      
          function renderTemplate(posts, counter) {
                  const length = ((counter+1) * postsOnQuery) > posts.length ? posts.length : (counter+1) * postsOnQuery

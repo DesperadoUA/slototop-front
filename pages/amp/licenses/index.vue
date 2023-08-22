@@ -13,7 +13,7 @@
                 />
                 </div>
             </div>
-            <app_content :value="data.body.content" v-if="data.body.content !== ''" />
+            <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         </main>
         <app_footer_amp 
             :footer_menu="data.body.settings.footer_menu"

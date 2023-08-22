@@ -14,8 +14,11 @@
               </div>
             </div>
             <app_payment_loop_download_amp :value="data.body.posts"
-                               bg="--bg-gray"
-                               v-if="data.body.posts.length !== 0" />
+                post_type="type-payment" 
+                :post_url="$route.params.id"
+                bg="--bg-gray"
+                v-if="data.body.posts.length !== 0" />
+            <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         </main>
         <app_footer_amp 
             :footer_menu="data.body.settings.footer_menu"

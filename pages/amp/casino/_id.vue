@@ -29,7 +29,7 @@
                  v-if="data.body.bonuses.length !== 0" />
     <div class="casino_content container">
         <div class="casino_content_left">
-          <!-- <app_content :value="data.body.content" v-if="data.body.content !== ''" /> -->
+            <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         </div>
         <div class="casino_content_right">
             <app_casino_aside_amp :value="data.body.sidebar" :globalRef="data.body.options['global-ref']" />

@@ -2,28 +2,29 @@
   <div>
     <app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
     <main class="main">
-    <app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
-    <div class="container">
-      <div class="contentEnd">
-        <app_author_link_amp 
-            :link="config.AUTHOR_PAGE_LINK"
-            :text="translates.REVIEW_AUTHOR[config.LANG]"
-            :dataTime="data.body.created_at.slice(0, 10)"
-            :name="data.body.author_name"
-        />
-      </div>
-    </div>
-    <app_breadcrumbs_amp :value="data.body.breadcrumbs" />
-    <app_poker_card_amp :value="data.body" />
-    <app_poker_detail_amp :value="data.body" />
-    <app_poker_loop_downloads_amp :value="data.body.pokers" bg="--bg-gray" :title="translates.OTHER_POKER_ROOMS[config.LANG]"/>
-    <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
-    <app_reviews_amp 
-        post_type="poker" 
-        :post_url="$route.params.id"
-        :title="config.REVIEWS[config.LANG]" 
-        :value="data.body.reviews" 
-        v-if="data.body.reviews.length !== 0"/>
+        <app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
+        <div class="container">
+        <div class="contentEnd">
+            <app_author_link_amp 
+                :link="config.AUTHOR_PAGE_LINK"
+                :text="translates.REVIEW_AUTHOR[config.LANG]"
+                :dataTime="data.body.created_at.slice(0, 10)"
+                :name="data.body.author_name"
+            />
+        </div>
+        </div>
+        <app_breadcrumbs_amp :value="data.body.breadcrumbs" />
+        <app_poker_card_amp :value="data.body" />
+        <app_poker_detail_amp :value="data.body" />
+        <app_poker_loop_downloads_amp :value="data.body.pokers" bg="--bg-gray" :title="translates.OTHER_POKER_ROOMS[config.LANG]"/>
+        <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
+        <app_reviews_amp 
+            post_type="poker" 
+            :post_url="$route.params.id"
+            :title="config.REVIEWS[config.LANG]" 
+            :value="data.body.reviews" 
+            v-if="data.body.reviews.length !== 0"/>
+        <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
     </main>
     <app_footer_amp 
         :footer_menu="data.body.settings.footer_menu"

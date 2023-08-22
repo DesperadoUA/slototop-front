@@ -14,6 +14,7 @@
           </div>
         </div>
         <app_bonus_card_amp :value="data.body.posts"  v-if="data.body.posts.length !== 0" />
+        <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
     </main>
     <app_footer_amp 

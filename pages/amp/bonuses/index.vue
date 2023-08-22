@@ -15,6 +15,7 @@
           </div>
           <app_category_filter_amp :value="data.body.bonus_type" v-if="data.body.bonus_type.length !== 0" />
           <app_bonuses_loop_downloads_amp :value="data.body.bonuses" v-if="data.body.bonuses.length !== 0" />
+          <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
           <app_faq_amp :value="data.body.settings.bonus_page_faq" title="Faq" v-if="data.body.settings.bonus_page_faq.length !== 0"/>
         </main>
         <app_footer_amp 

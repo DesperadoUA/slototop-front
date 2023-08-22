@@ -19,6 +19,7 @@
                 bg="--bg-gray"
                 v-if="data.body.vendors.length !== 0" 
             />
+            <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         </main>
         <app_footer_amp 
            :footer_menu="data.body.settings.footer_menu"

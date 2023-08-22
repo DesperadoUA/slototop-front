@@ -1,0 +1,29 @@
+[x] Проверить консистентность данных загрузки 
+   casino
+   [x] casino
+   [x] lang
+   [x] country
+   [x] license
+   [x] payment
+   [x] technology
+   [x] vendor
+   bonuses
+   [x] bonuses
+   [x] type-bonus
+   games
+   [x] games
+   [x] vendor
+   payment
+   [x] payments
+   [x] type-payment
+   poker
+   [x] poker
+   review
+   [x] poker
+   [x] casino
+   vendor
+   [x] vendors
+
+[x] Добавить поле amp_content
+[x] Добавить ссылки в хеде для амп и обычной версии
+[] Залить все изменения API для укр версии

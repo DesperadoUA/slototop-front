@@ -3144,6 +3144,10 @@
     max-width: 49%;
   }
 }
+tbody {
+  display: inline-block;
+  width: 100%;
+}
 table:not(.detail-table) {
   font-family: var(--base-font-family);
   line-height: 1.6;

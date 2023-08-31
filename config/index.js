@@ -1,13 +1,14 @@
 export default {
     API_URL: {
-        //RU: 'http://127.0.0.1:8000/api/',
+        //UA: 'http://127.0.0.1:8000/api/',
         RU: 'https://api-new.slototop.ua/api/',
         UA: 'https://api.slototop.ua/api/'
     },
     BASE_URL: {
-        RU: 'http://127.0.0.1:3000',
-        //RU: 'https://new.slototop.ua',
-        UA: 'https://slototop.ua/' 
+        //UA: 'http://127.0.0.1:3000',
+        UA: 'https://lenddev.com.ua',
+        RU: 'https://new.slototop.ua',
+        //UA: 'https://slototop.ua' 
     },
     AMP_PREFIX: '/amp',
     AUTHOR_PAGE_LINK: '/author',
@@ -15,7 +16,7 @@ export default {
         RU: 'ru',
         UA: 'uk'
     },
-    LANG: 'RU',
+    LANG: 'UA',
     DEFAULT_LANG: {
         RU: 'ru-UA',
         UA: 'ru-UA' 

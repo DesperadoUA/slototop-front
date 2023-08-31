@@ -13,15 +13,9 @@
                           v-for="(item, index) in value"
                           :key="index" >
                     <div class="game-item__logo">
-                        <a :href="`${config.AMP_PREFIX}/${item.permalink}`">
+                        <a :href="`${config.AMP_PREFIX}${item.permalink}`">
                             <amp-img :src="item.thumbnail" width="224" height="140" alt="" />
                         </a>
-                    </div>
-
-                    <div class="game-item__hover">
-                        <span class="game-item__name">{{item.title}}</span>
-                        <span class="game-item__category">{{item.vendor.title}}</span>
-                        <NuxtLink class="btn-play" :to="`${config.AMP_PREFIX}${item.permalink}`">{{translates.PLAY[config.LANG]}}</NuxtLink>
                     </div>
                 </div>
             </div>

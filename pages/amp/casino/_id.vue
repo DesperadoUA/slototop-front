@@ -46,16 +46,17 @@
     <app_slick_button_amp :referal="data.body" />
     </main>
     <app_footer_amp 
-            :footer_menu="data.body.settings.footer_menu"
-            :footer_text="data.body.settings.footer_text"
-            :partners_menu="data.body.settings.partners_menu" 
-        />
+        :footer_menu="data.body.settings.footer_menu"
+        :footer_text="data.body.settings.footer_text"
+        :partners_menu="data.body.settings.partners_menu" 
+    />
   </div>
 </template>
 
 <script>
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
+    import breadcrumbs from '~/config/breadcrumbs'
     import helper from '~/helpers/helpers'
     import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_faq_amp from '~/components/faq/app_faq_amp'
@@ -96,8 +97,8 @@
                         shares: data.body.shares,
                     }
                     data.body.breadcrumbs = [
-                        {...config.BREADCRUMBS_ROOT[config.LANG]},
-                        {...config.BREADCRUMBS_CASINOS[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_ROOT[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_CASINOS[config.LANG]},
                         {title:data.body.title, permalink: ''},
                     ]
                     data.body.options['global-ref'].ref = data.body.options['global-ref']

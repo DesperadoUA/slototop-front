@@ -43,6 +43,7 @@
 <script>
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
+    import breadcrumbs from '~/config/breadcrumbs'
     import helper from '~/helpers/helpers'
     import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
@@ -66,8 +67,8 @@
                 else {
                     const data = await helper.globalDataMixin(response, route)
                     data.body.breadcrumbs = [
-                        {...config.BREADCRUMBS_ROOT[config.LANG]},
-                        {...config.BREADCRUMBS_VENDORS[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_ROOT[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_VENDORS[config.LANG]},
                         {title:data.body.title, permalink: ''},
                     ]
                     return {data}

@@ -6,25 +6,22 @@
         <div class="container">
         <div class="contentEnd">
             <app_author_link_amp 
-                :link="config.AUTHOR_PAGE_LINK"
-                :text="translates.REVIEW_AUTHOR[config.LANG]"
-                :dataTime="data.body.created_at.slice(0, 10)"
-                :name="data.body.author_name"
+            :link="config.AUTHOR_PAGE_LINK"
+            :text="translates.REVIEW_AUTHOR[config.LANG]"
+            :dataTime="data.body.created_at.slice(0, 10)"
+            :name="data.body.author_name"
             />
         </div>
         </div>
         <app_breadcrumbs_amp :value="data.body.breadcrumbs" />
-        <app_poker_card_amp :value="data.body" />
-        <app_poker_detail_amp :value="data.body" />
-        <app_poker_loop_downloads_amp :value="data.body.pokers" bg="--bg-gray" :title="translates.OTHER_POKER_ROOMS[config.LANG]"/>
-        <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
-        <app_reviews_amp 
-            post_type="poker" 
-            :post_url="$route.params.id"
-            :title="config.REVIEWS[config.LANG]" 
-            :value="data.body.reviews" 
-            v-if="data.body.reviews.length !== 0"/>
-        <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
+        <app_bonus_card_amp  :value="data.body" />
+        <app_bonus_details_amp :value="data.body" />
+        <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
+        <app_bonuses_casino_amp v-if="data.body.bonuses.length !== 0"
+            :value="data.body.bonuses"
+            :title="`${translates.OTHER_BONUSES[config.LANG]} ${data.body.casino[0].title}`"
+            :topTextShow="false"
+        />
     </main>
     <app_footer_amp 
         :footer_menu="data.body.settings.footer_menu"
@@ -39,25 +36,25 @@
     import config from '~/config'
     import breadcrumbs from '~/config/breadcrumbs'
     import helper from '~/helpers/helpers'
-    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
+    import app_bonuses_casino_amp from '~/components/bonuses-casino/app_bonuses_casino_amp'
     import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
-    import app_poker_card_amp from '~/components/poker_card/app-poker-card_amp'
-    import app_poker_detail_amp from '~/components/poker-detail/app-poker-detail_amp'
-    import app_reviews_amp from '~/components/reviews/app_reviews_amp'
-    import app_poker_loop_downloads_amp from '~/components/poker_loop_downloads/app_poker_loop_downloads_amp'
-    import app_faq_amp from '~/components/faq/app_faq_amp'
+    import app_bonus_card_amp from '~/components/bonus-card/app_bonus_card_amp'
+    import app_bonus_details_amp from '~/components/bonus-detail/app-bonus-detail_amp'
+    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     export default {
-        name: "single-poker_amp",
-        components: {app_page_banner_amp, app_breadcrumbs_amp, app_poker_card_amp, app_poker_detail_amp,
-        app_poker_loop_downloads_amp, app_faq_amp, app_reviews_amp},
+        name: "single-bonus",
+        data: () => {
+            return {}
+        },
+        components: {app_page_banner_amp, app_bonuses_casino_amp, app_breadcrumbs_amp, app_bonus_details_amp, app_bonus_card_amp},
         mixins: [pageTemplateAmp],
         async asyncData({route, error}) {
             if(route.params.id) {
-                const request = new DAL_Builder()
-                const response = await request.postType('poker')
+                const request = new DAL_Builder();
+                const response = await request.postType('bonus')
                     .url(route.params.id)
-                    .get()
+                    .get();
                 if(response.data.confirm === 'error') {
                     error({ statusCode: 404, message: 'Post not found' })
                 }
@@ -65,9 +62,9 @@
                     const data = await helper.globalDataMixin(response, route)
                     data.body.breadcrumbs = [
                         {...breadcrumbs.BREADCRUMBS_ROOT[config.LANG]},
-                        {...breadcrumbs.BREADCRUMBS_POKER[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_BONUSES[config.LANG]},
                         {title:data.body.title, permalink: ''},
-                    ]
+                    ];
                     return {data}
                 }
             }
@@ -77,4 +74,3 @@
         }
     }
 </script>
-

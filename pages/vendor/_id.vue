@@ -31,6 +31,7 @@
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
     import helper from '~/helpers/helpers'
+    import breadcrumbs from '~/config/breadcrumbs'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
     import app_slot_loop_downloads from '~/components/slot_loop_download/'
@@ -61,8 +62,8 @@
                 else {
                     const data = helper.headDataMixin(response.data, route)
                     data.body.breadcrumbs = [
-                        {...config.BREADCRUMBS_ROOT[config.LANG]},
-                        {...config.BREADCRUMBS_VENDORS[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_ROOT[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_VENDORS[config.LANG]},
                         {title:data.body.title, permalink: ''},
                     ]
                     return {data}

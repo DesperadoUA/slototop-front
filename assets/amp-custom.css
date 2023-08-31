@@ -2834,43 +2834,43 @@
 }
   /* Casino rating */
   /* Slick button */
-  .slick_button_part_left {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top:0px;
-    left:0px;
-    z-index: 2;
+.slick_button_part_left {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top:0px;
+  left:0px;
+  z-index: 2;
 }
 .slick_button_part_right {
-    width: 50%;
-    height: 100%;
-    position: absolute;
-    top:0px;
-    right:0px;
-    z-index: 2;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  top:0px;
+  right:0px;
+  z-index: 2;
 }
-    .slick_button {
-        height: 70px;
-        z-index: 10;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(to right, var(--btn-primary) 50%, var(--theme-cr-5) 50%);
-        cursor: pointer;
-    }
-    .slick_button a, .slick_button {
-        color: var(--disabled-bg);
-        text-decoration: none;
-        font-family: var(--font);
-        font-weight: bold;
-    }
-    .slick_button_container {
-       display: flex;
-       align-items: center;
-       height: 100%;
-    }
+.slick_button {
+  height: 70px;
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, var(--btn-primary) 50%, var(--theme-cr-5) 50%);
+  cursor: pointer;
+}
+.slick_button a, .slick_button {
+  color: var(--disabled-bg);
+  text-decoration: none;
+  font-family: var(--font);
+  font-weight: bold;
+}
+.slick_button_container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
     .slick_button_left {
         width: 50%;
     }
@@ -2939,27 +2939,15 @@
   margin-bottom: 50px;
   color: var(--theme-cr-txt-cms);
   display: flow-root;
-  /*.games + &,
-  .slots + & {
-      padding-top: 0;
-  }*/
 }
-.game-screenshots + .cms {
-  padding-top: 20px;
-}
-.cms p:not(:last-child) {
-  margin-bottom: 25px;
-}
+.game-screenshots + .cms {padding-top: 20px;}
+.cms p:not(:last-child) {margin-bottom: 25px;}
 .cms .article_menu a {
   text-decoration: none;
   color: var(--theme-cr-txt-cms);
 }
-.cms .article_menu {
-  list-style-type: none;
-}
-.cms .article_menu li:before {
-  display: none;
-}
+.cms .article_menu {list-style-type: none;}
+.cms .article_menu li:before {display: none;}
 .cms h1 {
   font-size: 26px;
   line-height: 1.179;
@@ -3010,17 +2998,13 @@
     margin-bottom: 16px;
   }
 }
-.cms ul,
-.cms ol {
+.cms ul, .cms ol {
   line-height: 1.8;
   margin: 0 0 28px;
   padding: 0;
   list-style: none;
 }
-.cms ul:last-child,
-.cms ol:last-child {
-  margin-bottom: 0;
-}
+.cms ul:last-child, .cms ol:last-child {margin-bottom: 0;}
 .cms ul li {
   padding-left: 20px;
   position: relative;
@@ -3035,9 +3019,7 @@
   border-radius: 50%;
   background-color: currentColor;
 }
-.cms ol {
-  counter-reset: counter;
-}
+.cms ol {counter-reset: counter;}
 .cms ol li {
   padding-left: 25px;
   position: relative;
@@ -3080,9 +3062,7 @@
   left: 10px;
   top: 4px;
 }
-.cms blockquote p {
-  margin-bottom: 0;
-}
+.cms blockquote p {margin-bottom: 0;}
 .cms .nav {
   border-radius: 10px;
   padding: 15px 15px 15px 0px;
@@ -3101,9 +3081,7 @@
     margin-bottom: 50px;
   }
 }
-.cms-banner img {
-  border-radius: 15px;
-}
+.cms-banner img {border-radius: 15px;}
 .article_menu_heading {
   margin-left: 20px;
   font-size: 24px;
@@ -3124,9 +3102,7 @@
     font-size: 64px;
   }
 }
-.two-cols {
-  margin-bottom: 10px;
-}
+.two-cols {margin-bottom: 10px;}
 @media (min-width: 992px) {
   .two-cols {
     display: flex;
@@ -3135,9 +3111,7 @@
     margin-bottom: 25px;
   }
 }
-.two-cols__ttl {
-  width: 100%;
-}
+.two-cols__ttl {width: 100%;}
 @media (min-width: 992px) {
   .two-cols__col {
     flex: 0 0 49%;
@@ -3287,7 +3261,6 @@ table:not(.detail-table) .icon-check {
     border-top-right-radius: 6px;
   }
 }
-
 .pluses_right {
   border-right: 1px solid var(--btn-primary);
   border-bottom: 1px solid var(--btn-primary);

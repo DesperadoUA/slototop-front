@@ -26,6 +26,7 @@
 <script>
     import DAL_Builder from '~/DAL/builder'
     import config from '~/config'
+    import breadcrumbs from '~/config/breadcrumbs'
     import helper from '~/helpers/helpers'
     import app_content from '~/components/content/app-content'
     import app_page_banner from '~/components/page-banner/app_page_banner'
@@ -57,8 +58,8 @@
                 else {
                     const data = helper.headDataMixin(response.data, route)
                     data.body.breadcrumbs = [
-                        {...config.BREADCRUMBS_ROOT[config.LANG]},
-                        {...config.BREADCRUMBS_PAYMENTS[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_ROOT[config.LANG]},
+                        {...breadcrumbs.BREADCRUMBS_PAYMENTS[config.LANG]},
                         {title: data.body.title, permalink: ''},
                     ]
                     return {data}
@@ -70,7 +71,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

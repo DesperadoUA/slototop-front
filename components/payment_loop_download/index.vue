@@ -22,6 +22,7 @@
     </div>
 </template>
 <script>
+import { PAYMENT as NumberPostOnQuery }  from '~/config/postLoader'
 import translateMixin from '~/mixins/translate'
     export default {
         name: "app_payment_loop_downloads",
@@ -38,7 +39,7 @@ import translateMixin from '~/mixins/translate'
         mixins: [translateMixin],
         data(){
             return {
-                numberPostOnQuery: 15,
+                numberPostOnQuery: NumberPostOnQuery,
                 postCurrentPage: 1,
             }
         },

@@ -1,12 +1,11 @@
 <template>
-    <amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/js/amp-casino.js`" class="sample">
-        <div :class="'casinos '+bg">
-            <div class="slots">
-                <div class="container">
-                    <div class="slots__heading" v-if="title">
-                                <h2 class="slots__ttl">{{title}}</h2>
-                                <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${link}`" class="link-primary" v-if="linkText">{{linkText}}</NuxtLink>
-                    </div>
+    <div :class="'casinos '+bg">
+        <div class="slots">
+            <div class="container">
+                <div class="slots__heading" v-if="title">
+                    <h2 class="slots__ttl">{{title}}</h2>
+                    <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${link}`" class="link-primary" v-if="linkText">{{linkText}}</NuxtLink>
+                </div>
                     <div class="slots__container items-wrap">
                         <article class="slot-item"
                             v-for="(item, index) in currentPosts"
@@ -37,8 +36,8 @@
                         </article>
                     </div>
                     <div class="loadContainer slots__container items-wrap"></div>
-                </div>
-                <div class="items-more">
+            </div>
+            <div class="items-more">
                     <button v-if="value.length > (numberPostOnQuery*postCurrentPage)"
                         class="btn-secondary loadMoreBtn"
                         :data-apiUrl="`${config.API_URL[config.LANG]}casino/search`" 
@@ -49,14 +48,14 @@
                         :data-translate-go-to="translates.GO_TO[config.LANG]"
                         :data-translate-close="translates.CLOSE[config.LANG]"
                     >{{translates.SHOW_MORE[config.LANG]}}</button>
-                </div>
             </div>
         </div>
-    </amp-script>
+    </div>
 </template>
 
 <script>
 import Helper from '~/helpers/helpers.js'
+import { CASINO as NumberPostOnQuery }  from '~/config/postLoader'
 import translateMixin from '~/mixins/translate'
     export default {
         name: "app_casino_loop_downloads_amp",
@@ -93,7 +92,7 @@ import translateMixin from '~/mixins/translate'
         mixins: [translateMixin],
         data(){
             return {
-                numberPostOnQuery: 15,
+                numberPostOnQuery: NumberPostOnQuery,
                 postCurrentPage: 1,
             }
         },

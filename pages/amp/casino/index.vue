@@ -13,9 +13,15 @@
                 />
                 </div>
             </div>
+            <script_amp 
+                :src="CasinoPathScript" 
+                v-if="CasinoNumberPostOnQuery < data.body.casino.length"
+            >
+                <app_casino_loop_downloads_amp :value="data.body.casino" bg="--bg-gray"/>
+            </script_amp>
             <app_casino_loop_downloads_amp :value="data.body.casino"
                 bg="--bg-gray"
-                v-if="data.body.casino.length !== 0" 
+                v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery > data.body.casino.length" 
             />
             <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
             <app_faq_amp :value="data.body.settings.casino_page_faq" 
@@ -38,11 +44,21 @@
    import app_casino_loop_downloads_amp from '~/components/casino_loop_downloads/app_casino_loop_downloads_amp'
    import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
    import app_faq_amp from '~/components/faq/app_faq_amp'
+   import script_amp from '~/components/script_amp'
+   import { CASINO as CasinoNumberPostOnQuery }  from '~/config/postLoader'
+   import { CASINO as CasinoPathScript }  from '~/config/ampPathScript'
+   
 
 export default {
     name: "casino-page_amp",
-    components: {app_casino_loop_downloads_amp, app_page_banner_amp, app_faq_amp},
+    components: {app_casino_loop_downloads_amp, app_page_banner_amp, app_faq_amp, script_amp},
     mixins: [pageTemplateAmp],
+    data(){
+        return {
+           CasinoNumberPostOnQuery,
+           CasinoPathScript
+        }
+    },
     async asyncData({route, error}) {
         const request = {
             url: 'casino'

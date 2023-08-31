@@ -5,8 +5,8 @@ export default {
         UA: 'https://api.slototop.ua/api/'
     },
     BASE_URL: {
-        //UA: 'http://127.0.0.1:3000',
-        UA: 'https://lenddev.com.ua',
+        UA: 'http://127.0.0.1:3000',
+        //UA: 'https://lenddev.com.ua',
         RU: 'https://new.slototop.ua',
         //UA: 'https://slototop.ua' 
     },

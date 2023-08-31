@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import { POKER as NumberPostOnQuery }  from '~/config/postLoader'
 import Helper from '~/helpers/helpers.js'
 import translateMixin from '~/mixins/translate'
     export default {
@@ -61,7 +62,7 @@ import translateMixin from '~/mixins/translate'
         mixins: [translateMixin],
         data(){
             return {
-                numberPostOnQuery: 15,
+                numberPostOnQuery: NumberPostOnQuery,
                 postCurrentPage: 1,
             }
         },

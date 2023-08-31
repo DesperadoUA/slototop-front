@@ -52,6 +52,7 @@
 <script>
 import Helper from '~/helpers/helpers.js'
 import translateMixin from '~/mixins/translate'
+import { POKER as NumberPostOnQuery }  from '~/config/postLoader'
     export default {
         name: "app_poker_loop_downloads_amp",
         props: {
@@ -79,7 +80,7 @@ import translateMixin from '~/mixins/translate'
         mixins: [translateMixin],
         data(){
             return {
-                numberPostOnQuery: 15,
+                numberPostOnQuery: NumberPostOnQuery,
                 postCurrentPage: 1,
             }
         },

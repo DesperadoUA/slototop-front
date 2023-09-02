@@ -14,11 +14,21 @@
         </div>
       </div>
       <app_category_filter_amp :value="data.body.bonus_type" v-if="data.body.bonus_type.length !== 0" />
+      <script_amp 
+          :src="BonusPathScript" 
+          v-if="BonusNumberPostOnQuery < data.body.posts.length"
+      >
+        <app_bonuses_loop_downloads_amp 
+            :value="data.body.posts"
+            post_type="type-bonus" 
+            :post_url="$route.params.id"
+        />
+      </script_amp>
       <app_bonuses_loop_downloads_amp 
           :value="data.body.posts"
           post_type="type-bonus" 
-          :post_url="$route.params.id"
-          v-if="data.body.posts.length !== 0" 
+          :post_url="$route.params.id" 
+          v-if="data.body.posts.length !== 0 && BonusNumberPostOnQuery > data.body.posts.length"  
       />
       <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
     </main>
@@ -37,10 +47,20 @@
     import app_bonuses_loop_downloads_amp from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads_amp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
     import app_category_filter_amp from '~/components/category_filter/app_category_filter_amp'
+    import script_amp from '~/components/script_amp'
+    import { BONUS as BonusNumberPostOnQuery }  from '~/config/postLoader'
+    import { BONUS as BonusPathScript }  from '~/config/ampPathScript'
+    
     export default {
         name: "single-type-bonus_amp",
-        components: {app_bonuses_loop_downloads_amp, app_page_banner_amp, app_category_filter_amp},
+        components: {app_bonuses_loop_downloads_amp, app_page_banner_amp, app_category_filter_amp, script_amp},
         mixins: [pageTemplateAmp],
+        data(){
+          return {
+              BonusNumberPostOnQuery,
+              BonusPathScript
+          }
+        },
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()
@@ -61,7 +81,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>

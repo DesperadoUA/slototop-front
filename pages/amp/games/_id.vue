@@ -14,12 +14,24 @@
           </div>
         </div>
         <app_category_filter_amp :value="data.body.category" v-if="data.body.category.length !== 0" />
-        <app_slot_loop_downloads_amp
+        <script_amp 
+            :src="GamePathScript" 
+            v-if="GameNumberPostOnQuery < data.body.posts.length"
+        >
+            <app_slot_loop_downloads_amp
                 :value="data.body.posts"
                 post_type="games" 
                 :post_url="$route.params.id"
                 bg="--bg-gray"
-                v-if="data.body.posts.length !== 0" />
+            />
+        </script_amp>
+        <app_slot_loop_downloads_amp
+            :value="data.body.posts"
+            post_type="games" 
+            :post_url="$route.params.id"
+            bg="--bg-gray"
+            v-if="data.body.posts.length !== 0 && GameNumberPostOnQuery > data.body.posts.length" 
+        />
         <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
     </main>
@@ -39,10 +51,20 @@
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
     import app_category_filter_amp from '~/components/category_filter/app_category_filter_amp'
     import app_faq_amp from '~/components/faq/app_faq_amp'
+    import script_amp from '~/components/script_amp'
+    import { GAME as GameNumberPostOnQuery }  from '~/config/postLoader'
+    import { GAME as GamePathScript }  from '~/config/ampPathScript'
+
     export default {
         name: "game-category",
-        components: {app_slot_loop_downloads_amp, app_page_banner_amp, app_category_filter_amp, app_faq_amp},
+        components: {app_slot_loop_downloads_amp, app_page_banner_amp, app_category_filter_amp, app_faq_amp, script_amp},
         mixins: [pageTemplateAmp],
+        data(){
+            return {
+                GameNumberPostOnQuery,
+                GamePathScript
+            }
+        },
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()

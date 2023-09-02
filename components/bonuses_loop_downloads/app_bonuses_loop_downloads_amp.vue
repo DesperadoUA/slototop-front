@@ -1,8 +1,7 @@
 <template>
-    <amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/js/amp-bonus.js`" class="sample">
-        <section class="bonuses-casino">
-            <div class="container">
-                <div class="bonuses__container">
+    <section class="bonuses-casino">
+        <div class="container">
+            <div class="bonuses__container">
                     <article class="bonuses-item"
                         v-for="(item, index) in currentPosts"
                         :key="index"
@@ -25,7 +24,6 @@
                                 :to="`${config.AMP_PREFIX}${item_cat.permalink}`"
                             >{{item_cat.title}}</NuxtLink>
                         </div>
-
                         <div class="bonuses-item__btns">
                             <NuxtLink no-prefetch :to="`${config.AMP_PREFIX}${item.permalink}`" class="hidden-sm bonuses-item__btn btn-secondary">
                                 {{translates.READ_MORE[config.LANG]}}
@@ -36,26 +34,25 @@
                             <span class="bonuses-item__btn fake-btn-secondary" v-else>{{translates.BONUS_INVALID[config.LANG]}}</span>
                         </div>
                     </article>
-                </div>
-                <div class="loadContainer bonuses__container"></div>
             </div>
-            <div class="items-more">
-                <button 
-                    :data-apiUrl="`${config.API_URL[config.LANG]}bonus/search`" 
-                    :data-postsOnQuery="numberPostOnQuery"
-                    :data-ampPrefix="config.AMP_PREFIX"
-                    :data-post-type="post_type"
-                    :data-post-url="post_url"
-                    :data-translate-read-more="translates.READ_MORE[config.LANG]"
-                    :data-translate-get-bonus="translates.GET_BONUS[config.LANG]"
-                    :data-translate-bonus-invalid="translates.BONUS_INVALID[config.LANG]"
-                    v-if="value.length > (numberPostOnQuery*postCurrentPage)"
-                    class="btn-secondary loadMoreBtn"
-                >{{translates.SHOW_MORE[config.LANG]}}
-                </button>
-            </div>
-        </section>
-    </amp-script>
+            <div class="loadContainer bonuses__container"></div>
+        </div>
+        <div class="items-more">
+            <button 
+                :data-apiUrl="`${config.API_URL[config.LANG]}bonus/search`" 
+                :data-postsOnQuery="numberPostOnQuery"
+                :data-ampPrefix="config.AMP_PREFIX"
+                :data-post-type="post_type"
+                :data-post-url="post_url"
+                :data-translate-read-more="translates.READ_MORE[config.LANG]"
+                :data-translate-get-bonus="translates.GET_BONUS[config.LANG]"
+                :data-translate-bonus-invalid="translates.BONUS_INVALID[config.LANG]"
+                v-if="value.length > (numberPostOnQuery*postCurrentPage)"
+                class="btn-secondary loadMoreBtn"
+            >{{translates.SHOW_MORE[config.LANG]}}
+            </button>
+        </div>
+    </section>
 </template>
 
 <script>

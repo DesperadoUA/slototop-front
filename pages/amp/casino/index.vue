@@ -47,7 +47,6 @@
    import script_amp from '~/components/script_amp'
    import { CASINO as CasinoNumberPostOnQuery }  from '~/config/postLoader'
    import { CASINO as CasinoPathScript }  from '~/config/ampPathScript'
-   
 
 export default {
     name: "casino-page_amp",

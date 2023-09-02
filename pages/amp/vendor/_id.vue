@@ -15,20 +15,43 @@
         </div>
         <app_breadcrumbs_amp :value="data.body.breadcrumbs" />
         <app_vendor_card_amp :value="data.body" />
+        <script_amp 
+            :src="GamePathScript" 
+            v-if="GameNumberPostOnQuery < data.body.games.length"
+        >
+            <app_slot_loop_downloads_amp 
+                :title="`${translates.GAME_FROM[config.LANG]} ${data.body.title}`"
+                :value="data.body.games"
+                post_type="vendor" 
+                :post_url="$route.params.id"
+            />
+        </script_amp>
         <app_slot_loop_downloads_amp 
             :title="`${translates.GAME_FROM[config.LANG]} ${data.body.title}`"
             :value="data.body.games"
             post_type="vendor" 
             :post_url="$route.params.id"
-            v-if="data.body.games.length !== 0"
+            v-if="data.body.games.length !== 0 && GameNumberPostOnQuery > data.body.games.length"
         />
+        <script_amp 
+                :src="CasinoPathScript" 
+                v-if="CasinoNumberPostOnQuery < data.body.casino.length"
+        >
+            <app_casino_loop_downloads_amp 
+                :value="data.body.casino"
+                post_type="vendor" 
+                :post_url="$route.params.id"
+                bg="--bg-gray"
+                :title="`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`"
+            />
+        </script_amp>
         <app_casino_loop_downloads_amp 
             :value="data.body.casino"
             post_type="vendor" 
             :post_url="$route.params.id"
             bg="--bg-gray"
             :title="`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`"
-            v-if="data.body.casino.length !== 0"
+            v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery > data.body.casino.length"
         />
         <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
     </main>
@@ -51,10 +74,24 @@
     import app_vendor_card_amp from '~/components/vendor_card/app-vendor-card_amp'
     import app_slot_loop_downloads_amp from '~/components/slot_loop_download/app_slot_loop_download_amp'
     import app_casino_loop_downloads_amp from '~/components/casino_loop_downloads/app_casino_loop_downloads_amp'
+    import script_amp from '~/components/script_amp'
+    import { CASINO as CasinoNumberPostOnQuery }  from '~/config/postLoader'
+    import { CASINO as CasinoPathScript }  from '~/config/ampPathScript'
+    import { GAME as GameNumberPostOnQuery }  from '~/config/postLoader'
+    import { GAME as GamePathScript }  from '~/config/ampPathScript'
+
     export default {
         name: "single-vendor_amp",
-        components: {app_page_banner_amp, app_breadcrumbs_amp, app_vendor_card_amp, app_slot_loop_downloads_amp, app_casino_loop_downloads_amp},
+        components: {app_page_banner_amp, app_breadcrumbs_amp, app_vendor_card_amp, app_slot_loop_downloads_amp, app_casino_loop_downloads_amp, script_amp},
         mixins: [pageTemplateAmp],
+        data(){
+            return {
+                CasinoNumberPostOnQuery,
+                CasinoPathScript,
+                GameNumberPostOnQuery,
+                GamePathScript
+            }
+        },
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()

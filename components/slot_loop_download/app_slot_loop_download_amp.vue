@@ -1,5 +1,4 @@
 <template>
-<amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/js/amp-game.js`" class="sample">
     <div :class="'games --alt-bg '+bg">
         <div class="container">
             <div class="slots__heading" v-if="title">
@@ -10,11 +9,11 @@
             </div>
             <div class="games__container flex-wrap">
                 <div class="game-item"
-                          v-for="(item, index) in currentPosts"
-                          :key="index" >
+                    v-for="(item, index) in currentPosts"
+                    :key="index" >
                     <div class="game-item__logo">
                         <NuxtLink class="btn-play" :to="`${config.AMP_PREFIX}${item.permalink}`">
-                        <amp-img :src="item.thumbnail" alt="" width='224' height='140' />
+                            <amp-img :src="item.thumbnail" alt="" width='224' height='140' />
                         </NuxtLink>
                     </div>
                 </div>
@@ -30,12 +29,10 @@
                 :data-post-type="post_type"
                 :data-post-url="post_url"
                 :data-translate-play="translates.PLAY[config.LANG]"
-            >
-                {{translates.SHOW_MORE[config.LANG]}}
+            >{{translates.SHOW_MORE[config.LANG]}}
             </button>
         </div>
     </div>
-</amp-script>
 </template>
 <script>
 import translateMixin from '~/mixins/translate'

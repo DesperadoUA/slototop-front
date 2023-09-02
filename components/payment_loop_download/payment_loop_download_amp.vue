@@ -1,5 +1,4 @@
 <template>
-<amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/js/amp-payment.js`" class="sample">
     <div :class="'games '+bg">
         <div class="container">
             <div class="games__container flex-wrap">
@@ -26,7 +25,6 @@
             >{{translates.SHOW_MORE[config.LANG]}}</button>
         </div>
     </div>
-</amp-script>
 </template>
 <script>
 import { PAYMENT as NumberPostOnQuery }  from '~/config/postLoader'

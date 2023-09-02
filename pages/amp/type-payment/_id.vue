@@ -13,11 +13,24 @@
                   />
               </div>
             </div>
-            <app_payment_loop_download_amp :value="data.body.posts"
+            <script_amp 
+                :src="PaymentPathScript" 
+                v-if="PaymentNumberPostOnQuery < data.body.posts.length"
+            >
+                <app_payment_loop_download_amp
+                    post_type="type-payment" 
+                    :post_url="$route.params.id"
+                    :value="data.body.posts"
+                    bg="--bg-gray"
+                />
+            </script_amp>
+            <app_payment_loop_download_amp
                 post_type="type-payment" 
                 :post_url="$route.params.id"
+                :value="data.body.posts"
                 bg="--bg-gray"
-                v-if="data.body.posts.length !== 0" />
+                v-if="data.body.posts.length !== 0 && PaymentNumberPostOnQuery > data.body.posts.length"
+            />
             <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         </main>
         <app_footer_amp 
@@ -34,10 +47,20 @@
     import pageTemplateAmp from '~/mixins/pageTemplateAmp'
     import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
     import app_payment_loop_download_amp from '~/components/payment_loop_download/payment_loop_download_amp'
+    import script_amp from '~/components/script_amp'
+    import { PAYMENT as PaymentNumberPostOnQuery }  from '~/config/postLoader'
+    import { PAYMENT as PaymentPathScript }  from '~/config/ampPathScript'
+    
     export default {
         name: "single-type-payment_amp",
-        components: {app_page_banner_amp, app_payment_loop_download_amp},
+        components: {app_page_banner_amp, app_payment_loop_download_amp, script_amp},
         mixins: [pageTemplateAmp],
+        data(){
+            return {
+                PaymentNumberPostOnQuery,
+                PaymentPathScript
+            }
+        },
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder()

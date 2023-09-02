@@ -55,7 +55,7 @@
                      'Content-Type': 'application/json'
                      },
                      method: "POST",
-                     body: JSON.stringify({type: "casino_ajax", postType, postUrl})
+                     body: JSON.stringify({postType, postUrl})
                  })
                  .then(response => response.json())
                  .then(data => {

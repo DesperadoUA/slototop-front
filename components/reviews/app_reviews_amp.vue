@@ -1,5 +1,4 @@
 <template>
-<amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/js/amp-review.js`" class="sample">
     <section class="reviews"
              itemprop="review"
              itemscope itemtype="http://schema.org/Review">
@@ -44,7 +43,6 @@
             </div>
         </div>
     </section>
-</amp-script>
 </template>
 
 <script>

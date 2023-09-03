@@ -37,12 +37,24 @@
     </div>
     <app_casino_rating_amp :value="data.body.casinoRating" :title="data.body.title" />
     <app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
+    <script_amp 
+                :src="ReviewPathScript" 
+                v-if="ReviewNumberPostOnQuery < data.body.reviews.length"
+    >
+        <app_reviews_amp 
+            post_type="casino" 
+            :post_url="$route.params.id"
+            :title="translates.REVIEWS[config.LANG]" 
+            :value="data.body.reviews" 
+        />
+    </script_amp>
     <app_reviews_amp 
         post_type="casino" 
         :post_url="$route.params.id"
         :title="translates.REVIEWS[config.LANG]" 
         :value="data.body.reviews" 
-        v-if="data.body.reviews.length !== 0"/>
+        v-if="data.body.reviews.length !== 0 && ReviewNumberPostOnQuery > data.body.reviews.length" 
+    />
     <app_slick_button_amp :referal="data.body" />
     </main>
     <app_footer_amp 
@@ -71,12 +83,21 @@
     import app_close_disclaimer_amp from '~/components/close-disclaimer/close-disclaimer_amp'
     import app_casino_amp from '~/components/casino/app_casino_amp'
     import app_casino_aside_amp from '~/components/casino-aside/app_casino_aside_amp'
+    import script_amp from '~/components/script_amp'
+    import { REVIEW as ReviewNumberPostOnQuery }  from '~/config/postLoader'
+    import { REVIEW as ReviewPathScript }  from '~/config/ampPathScript'
 
     export default {
         name: "app_single_casino_amp",
         components: {app_breadcrumbs_amp, app_faq_amp, app_bonuses_amp, app_page_banner_amp, app_reviews_amp, app_casino_aside_amp,
-        app_casino_amp, app_casino_card_amp, app_close_disclaimer_amp, app_casino_detail_amp, app_casino_rating_amp, app_slick_button_amp},
+        app_casino_amp, app_casino_card_amp, app_close_disclaimer_amp, app_casino_detail_amp, app_casino_rating_amp, app_slick_button_amp, script_amp},
         mixins: [pageTemplateAmp],
+        data(){
+            return {
+                ReviewNumberPostOnQuery,
+                ReviewPathScript
+            }
+        },
         async asyncData({route, error}) {
             if(route.params.id) {
                 const request = new DAL_Builder();

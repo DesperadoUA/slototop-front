@@ -13,10 +13,19 @@
                     />
                 </div>
             </div>
+            <script_amp 
+                :src="VendorPathScript" 
+                v-if="VendorNumberPostOnQuery < data.body.vendors.length"
+            >
+                <app_vendor_loop_download_amp
+                    :value="data.body.vendors"
+                    bg="--bg-gray"
+                />
+            </script_amp>
             <app_vendor_loop_download_amp
                 :value="data.body.vendors"
                 bg="--bg-gray"
-                v-if="data.body.vendors.length !== 0" 
+                v-if="data.body.vendors.length !== 0 && VendorNumberPostOnQuery > data.body.vendors.length" 
             />
             <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''"/>
         </main>
@@ -34,10 +43,20 @@
    import pageTemplateAmp from '~/mixins/pageTemplateAmp'
    import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
    import app_vendor_loop_download_amp from '~/components/vendor_loop_download/app_vendor_loop_download_amp'
+   import script_amp from '~/components/script_amp'
+   import { VENDOR as VendorNumberPostOnQuery }  from '~/config/postLoader'
+   import { VENDOR as VendorPathScript }  from '~/config/ampPathScript'
+
 export default {
     name: "vendors-page_amp",
-    components: {app_page_banner_amp, app_vendor_loop_download_amp},
+    components: {app_page_banner_amp, app_vendor_loop_download_amp, script_amp},
     mixins: [pageTemplateAmp],
+    data: () => {
+        return {
+            VendorNumberPostOnQuery,
+            VendorPathScript
+        }
+    },
     async asyncData({route, error}) {
         const request = {
             url: 'vendors'

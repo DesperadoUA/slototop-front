@@ -1,5 +1,4 @@
 <template>
-<amp-script layout="container" :src="`${config.BASE_URL[config.LANG]}/js/amp-poker.js`" class="sample">
     <div :class="'casinos '+bg">
         <div class="slots">
             <div class="container">
@@ -46,7 +45,6 @@
             </div>
         </div>
     </div>
-</amp-script>
 </template>
 
 <script>

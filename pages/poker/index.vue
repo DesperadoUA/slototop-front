@@ -11,9 +11,19 @@
                />
             </div>
         </div>
+        <script_amp 
+            :src="PokerPathScript" 
+            v-if="PokerNumberPostOnQuery < data.body.poker.length"
+        >
+            <app_poker_loop_downloads 
+                :value="data.body.poker"
+                bg="--bg-gray"
+            />
+        </script_amp>
         <app_poker_loop_downloads :value="data.body.poker"
-                                  bg="--bg-gray"
-                                  v-if="data.body.poker.length !== 0"/>
+            bg="--bg-gray"
+            v-if="data.body.poker.length !== 0 && PokerNumberPostOnQuery > data.body.poker.length"
+        />
         <app_content :value="data.body.content" v-if="data.body.content !== ''"/>
         <app_faq :value="changeFaq" :title="'Faq'" v-if="changeFaq.length !== 0"/>
       </div>
@@ -29,14 +39,20 @@
    import app_author_link from '~/components/author/app-author-link'
    import head from '~/mixins/head'
    import translateMixin from '~/mixins/translate'
+   import script_amp from '~/components/script_amp'
+   import { POKER as PokerNumberPostOnQuery }  from '~/config/postLoader'
+   import { POKER as PokerPathScript }  from '~/config/ampPathScript'
+
 export default {
     name: "poker-page",
     data: () => {
         return {
-            faq: []
+            faq: [],
+            PokerNumberPostOnQuery,
+            PokerPathScript
         }
     },
-    components: {app_poker_loop_downloads, app_content, app_page_banner, app_faq, app_author_link},
+    components: {app_poker_loop_downloads, app_content, app_page_banner, app_faq, app_author_link, script_amp},
     mixins: [head, translateMixin],
     async asyncData({route, error}) {
         const request = {
@@ -62,5 +78,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss"></style>

@@ -25,7 +25,9 @@ export default class Helper {
 	}
 	static hreflang(arr) {
 		let newArr = []
-		const defaultItem = arr.filter(item => item.lang === config.DEFAULT_LANG)
+		const defaultItem = arr.filter(
+			item => item.lang === config.DEFAULT_LANG[config.LANG]
+		)
 		if (defaultItem.length !== 0) {
 			newArr = arr
 				.map(item => {

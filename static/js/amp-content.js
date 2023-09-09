@@ -49,6 +49,7 @@
 					item.setAttribute('id', `heading_${index}`)
 				})
 			}
+			menu.classList.add('fadeIn')
 		}
 	})
 }

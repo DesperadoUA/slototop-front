@@ -1,94 +1,94 @@
 <template>
-    <div class="main-banner">
-        <div class="main-banner__wrapper">
-            <div class="main-banner__container" :style="moveSlider">
-                <div class="banner-item" v-for="(item, index) in value" :key="index">
-                    <!--<div class="banner-item__elements">
+	<div class="main-banner">
+		<div class="main-banner__wrapper">
+			<div class="main-banner__container" :style="moveSlider">
+				<div class="banner-item" v-for="(item, index) in value" :key="index">
+					<!--<div class="banner-item__elements">
                         <img class="banner-item__logo" src="/img/logo-reel-emperor.svg" alt="">
                         <div class="banner-item__ttl">Приветственный пакет </div>
                         <div class="banner-item__bonus">400 EUR + 250 FS</div>
                         <a href="" class="btn-tertiary &#45;&#45;reel">ПОЛУЧИТЬ БОНУС</a>
                     </div>-->
-                    <a :href="item.value_1" >
-                        <img :src="item.src" alt="">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+					<a :href="item.value_1">
+						<img :src="item.src" alt="" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
 export default {
-    name: "main_banner",
-    props: {
-        value: {
-            type: Array,
-            default: []
-        }
-    },
-    data() {
-        return {
-            currentSlide: 0,
-            currentDelta: 0,
-            interval: 5000,
-            timer: {},
-            delta: {
-                DC: 1240
-            }
-        }
-    },
-    computed: {
-        moveSlider(){
-            return 'margin-left:'+this.currentDelta+'px'
-        }
-    },
-    beforeDestroy(){
-        clearInterval(this.timer)
-    },
-    mounted() {
-        if(this.value.length > 1) {
-             this.timer = setInterval(() => {
-                this.currentSlide++
-                if(this.currentSlide === this.value.length) this.currentSlide = 0
-                this.currentDelta = -this.currentSlide*this.delta.DC
-            }, this.interval);
-        }
-    }
+	name: 'main_banner',
+	props: {
+		value: {
+			type: Array,
+			default: []
+		}
+	},
+	data() {
+		return {
+			currentSlide: 0,
+			currentDelta: 0,
+			interval: 5000,
+			timer: {},
+			delta: {
+				DC: 1240
+			}
+		}
+	},
+	computed: {
+		moveSlider() {
+			return 'margin-left:' + this.currentDelta + 'px'
+		}
+	},
+	beforeDestroy() {
+		clearInterval(this.timer)
+	},
+	mounted() {
+		if (this.value.length > 1) {
+			this.timer = setInterval(() => {
+				this.currentSlide++
+				if (this.currentSlide === this.value.length) this.currentSlide = 0
+				this.currentDelta = -this.currentSlide * this.delta.DC
+			}, this.interval)
+		}
+	}
 }
 </script>
 
 <style lang="scss" scoped>
 .main-banner {
-    --banner-width: 1200px;
-    --banner-gutter: 40px;
-    padding-bottom: 38px;
+	--banner-width: 1200px;
+	--banner-gutter: 40px;
+	padding-bottom: 38px;
 
-    @media (min-width: 992px) {
-        padding-bottom: 50px;
-    }
+	@media (min-width: 992px) {
+		padding-bottom: 50px;
+	}
 }
 
 .main-banner__container {
-    display: flex;
-    margin: 0 auto;
-    transition: 0.7s;
+	display: flex;
+	margin: 0 auto;
+	transition: 0.7s;
 }
 
 .banner-item {
-    flex-shrink: 0;
-    flex-basis: var(--banner-width);
-    width: var(--banner-width);
-    position: relative;
-    margin-left: calc(var(--banner-gutter) / 2);
-    margin-right: calc(var(--banner-gutter) / 2);
+	flex-shrink: 0;
+	flex-basis: var(--banner-width);
+	width: var(--banner-width);
+	position: relative;
+	margin-left: calc(var(--banner-gutter) / 2);
+	margin-right: calc(var(--banner-gutter) / 2);
 }
 .banner-item img {
-    border-radius: 10px;
+	border-radius: 10px;
 }
 .main-banner__wrapper {
-    margin: 0 auto;
-    width: 1240px;
+	margin: 0 auto;
+	width: 1240px;
 }
 /*.banner-item__elements {
     position: absolute;

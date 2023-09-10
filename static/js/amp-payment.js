@@ -92,5 +92,5 @@
 }
 /*
     pages: ['payments'] 
-    postTypes ['type-payment']
+    postTypes ['type-payment', 'currency']
  */

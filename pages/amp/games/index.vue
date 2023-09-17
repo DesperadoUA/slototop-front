@@ -2,7 +2,7 @@
 	<div>
 		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
+			<PageBannerAmp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -42,7 +42,6 @@ import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import app_slot_loop_downloads_amp from '~/components/slot_loop/app_slot_loop_download_amp'
-import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
 import app_category_filter_amp from '~/components/category_filter/app_category_filter_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
 import script_amp from '~/components/script_amp'
@@ -52,7 +51,6 @@ export default {
 	name: 'game-page_amp',
 	components: {
 		app_slot_loop_downloads_amp,
-		app_page_banner_amp,
 		app_category_filter_amp,
 		app_faq_amp,
 		script_amp

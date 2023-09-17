@@ -21,7 +21,7 @@
 <script>
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
-import app_page_banner from '~/components/page_banner/app_page_banner'
+import app_page_banner from '~/components/page_banner'
 import app_bonuses_loop_downloads from '~/components/bonus_loop/app_bonuses_loop_downloads'
 import app_content from '~/components/content/app-content'
 import app_faq from '~/components/faq/app_faq'

@@ -2,7 +2,7 @@
 	<div>
 		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
+			<PageBannerAmp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -41,7 +41,6 @@ import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import app_casino_loop_downloads_amp from '~/components/casino_loop/app_casino_loop_downloads_amp'
-import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
 import script_amp from '~/components/script_amp'
 import { CASINO as CasinoNumberPostOnQuery } from '~/config/postLoader'
@@ -51,7 +50,6 @@ export default {
 	name: 'casino-page_amp',
 	components: {
 		app_casino_loop_downloads_amp,
-		app_page_banner_amp,
 		app_faq_amp,
 		script_amp
 	},

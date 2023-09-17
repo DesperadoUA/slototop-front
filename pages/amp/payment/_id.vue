@@ -2,7 +2,7 @@
 	<div>
 		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
+			<PageBannerAmp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -49,7 +49,6 @@ import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
-import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
 import app_casino_loop_downloads_amp from '~/components/casino_loop/app_casino_loop_downloads_amp'
 import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
 import app_payment_card_amp from '~/components/payment_card/app-payment-card_amp'
@@ -61,7 +60,6 @@ import { CASINO as CasinoPathScript } from '~/config/ampPathScript'
 export default {
 	name: 'single-payment_amp',
 	components: {
-		app_page_banner_amp,
 		app_casino_loop_downloads_amp,
 		app_breadcrumbs_amp,
 		app_payment_card_amp,

@@ -2,7 +2,7 @@
 	<div>
 		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
+			<PageBannerAmp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -74,7 +74,6 @@ import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
 import app_bonuses_amp from '~/components/bonus_casino/app_bonuses_casino_amp'
-import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
 import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
 import app_casino_card_amp from '~/components/casino_card/app-casino-card_amp'
 import app_casino_detail_amp from '~/components/casino_detail/app-casino-detail_amp'
@@ -94,7 +93,6 @@ export default {
 		app_breadcrumbs_amp,
 		app_faq_amp,
 		app_bonuses_amp,
-		app_page_banner_amp,
 		app_reviews_amp,
 		app_casino_aside_amp,
 		app_casino_amp,

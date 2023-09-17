@@ -2,7 +2,7 @@
 	<div>
 		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
+			<PageBannerAmp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -45,7 +45,6 @@ import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
-import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
 import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
 import app_poker_card_amp from '~/components/poker_card/app-poker-card_amp'
 import app_poker_detail_amp from '~/components/poker_detail/app-poker-detail_amp'
@@ -55,7 +54,6 @@ import app_faq_amp from '~/components/faq/app_faq_amp'
 export default {
 	name: 'single-poker_amp',
 	components: {
-		app_page_banner_amp,
 		app_breadcrumbs_amp,
 		app_poker_card_amp,
 		app_poker_detail_amp,

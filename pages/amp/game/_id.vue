@@ -2,7 +2,7 @@
 	<div>
 		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
+			<PageBannerAmp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<app_breadcrumbs_amp :value="data.body.breadcrumbs" />
 			<app_game_card_amp :value="data.body" :globalRef="data.body.options['global-ref']" />
 			<app_game_details_amp :value="data.body.details" />
@@ -46,7 +46,6 @@ import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
-import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
 import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
 import app_game_card_amp from '~/components/slot_card/app-game-card_amp'
 import app_game_details_amp from '~/components/slot_detail/app-game-details_amp'
@@ -57,7 +56,6 @@ import app_game_symbols_amp from '~/components/slot_symbols/app-game-symbols_amp
 export default {
 	name: 'single-game_amp',
 	components: {
-		app_page_banner_amp,
 		app_breadcrumbs_amp,
 		app_game_card_amp,
 		app_game_details_amp,

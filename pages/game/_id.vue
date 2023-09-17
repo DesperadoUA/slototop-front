@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+		<PageBanner :title="data.body.h1" :shortDesc="data.body.short_desc" />
 		<app_breadcrumbs :value="data.body.breadcrumbs" />
 		<app_game_card :value="data.body" :globalRef="globalRef" />
 		<app_game_details :value="data.body.details" />
@@ -37,7 +37,6 @@ import DAL_Builder from '~/DAL/builder'
 import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
-import app_page_banner from '~/components/page_banner'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_game_card from '~/components/slot_card/app-game-card'
 import app_game_details from '~/components/slot_detail/app-game-details'
@@ -47,7 +46,7 @@ import app_game_screenshots from '~/components/slot_screenshots/app-game-screens
 import app_game_symbols from '~/components/slot_symbols/app-game-symbols'
 import app_content from '~/components/content/app-content'
 import head from '~/mixins/head'
-import translateMixin from '~/mixins/translate'
+import pageTemplate from '~/mixins/pageTemplate'
 export default {
 	name: 'single-game',
 	data: () => {
@@ -59,7 +58,6 @@ export default {
 	},
 	components: {
 		app_content,
-		app_page_banner,
 		app_breadcrumbs,
 		app_game_card,
 		app_casino,
@@ -68,7 +66,7 @@ export default {
 		app_game_screenshots,
 		app_game_symbols
 	},
-	mixins: [head, translateMixin],
+	mixins: [head, pageTemplate],
 	async asyncData({ route, error }) {
 		if (route.params.id) {
 			const request = new DAL_Builder()

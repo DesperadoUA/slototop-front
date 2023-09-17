@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+		<PageBanner :title="data.body.h1" :shortDesc="data.body.short_desc" />
 		<div class="container">
 			<div class="contentEnd">
 				<app_author_link
@@ -19,17 +19,16 @@
 import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
-import app_page_banner from '~/components/page_banner'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
-import translateMixin from '~/mixins/translate'
+import pageTemplate from '~/mixins/pageTemplate'
 export default {
 	name: 'currency-page',
 	data: () => {
 		return {}
 	},
-	components: { app_content, app_page_banner, app_author_link },
-	mixins: [head, translateMixin],
+	components: { app_content, app_author_link },
+	mixins: [head, pageTemplate],
 	async asyncData({ route, error }) {
 		const request = {
 			url: 'currencies'

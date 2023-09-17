@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+		<PageBanner :title="data.body.h1" :shortDesc="data.body.short_desc" />
 		<div class="container">
 			<div class="contentEnd">
 				<app_author_link
@@ -56,7 +56,6 @@ import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
 import app_faq from '~/components/faq/app_faq'
 import app_bonuses from '~/components/bonus_casino/app_bonuses_casino'
-import app_page_banner from '~/components/page_banner'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_casino_card from '~/components/casino_card/app-casino-card'
 import app_casino_detail from '~/components/casino_detail/app-casino-detail'
@@ -68,7 +67,7 @@ import app_casino from '~/components/casino/app_casino'
 import app_casino_aside from '~/components/casino_sidebar/app_casino_aside'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
-import translateMixin from '~/mixins/translate'
+import pageTemplate from '~/mixins/pageTemplate'
 
 export default {
 	name: 'app_single_casino',
@@ -79,7 +78,6 @@ export default {
 		app_casino_detail,
 		app_faq,
 		app_bonuses,
-		app_page_banner,
 		app_reviews,
 		app_slick_button,
 		app_casino_rating,
@@ -88,7 +86,7 @@ export default {
 		app_casino_aside,
 		app_author_link
 	},
-	mixins: [head, translateMixin],
+	mixins: [head, pageTemplate],
 	data: () => {
 		return {}
 	},

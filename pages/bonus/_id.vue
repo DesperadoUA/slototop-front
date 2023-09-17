@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<app_page_banner :title="data.body.h1" :shortDesc="data.body.short_desc" />
+		<PageBanner :title="data.body.h1" :shortDesc="data.body.short_desc" />
 		<div class="container">
 			<div class="contentEnd">
 				<app_author_link
@@ -30,14 +30,13 @@ import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
-import app_page_banner from '~/components/page_banner'
 import app_bonuses_casino from '~/components/bonus_casino/app_bonuses_casino'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_bonus_card from '~/components/bonus_card/app_bonus_card'
 import app_bonus_details from '~/components/bonus_detail/app-bonus-detail'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
-import translateMixin from '~/mixins/translate'
+import pageTemplate from '~/mixins/pageTemplate'
 export default {
 	name: 'single-bonus',
 	data: () => {
@@ -45,14 +44,13 @@ export default {
 	},
 	components: {
 		app_content,
-		app_page_banner,
 		app_bonuses_casino,
 		app_breadcrumbs,
 		app_bonus_details,
 		app_bonus_card,
 		app_author_link
 	},
-	mixins: [head, translateMixin],
+	mixins: [head, pageTemplate],
 	async asyncData({ route, error }) {
 		if (route.params.id) {
 			const request = new DAL_Builder()

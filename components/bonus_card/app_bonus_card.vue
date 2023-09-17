@@ -7,32 +7,19 @@
 
 			<div class="casino-card__txt">
 				<div class="casino-card__name">{{ value.title }}</div>
-				<strong class="casino-card__bonus" v-if="value.value_bonus !== ''">
-					{{ value.value_bonus }}
-				</strong>
+				<strong class="casino-card__bonus" v-if="value.value_bonus !== ''"> {{ value.value_bonus }} </strong>
 			</div>
 
 			<div class="casino-card__cta">
-				<button
-					type="button"
-					class="casino-card__cta btn-primary"
-					@click="refActivate(value)"
-					v-if="value.close === 0"
-				>
+				<button type="button" class="casino-card__cta btn-primary" @click="refActivate(value)" v-if="value.close === 0">
 					{{ translates.GET_BONUS[config.LANG] }}
 				</button>
-				<button
-					type="button"
-					class="casino-card__cta fake-btn-secondary"
-					v-else
-				>
+				<button type="button" class="casino-card__cta fake-btn-secondary" v-else>
 					{{ translates.BONUS_INVALID[config.LANG] }}
 				</button>
-				<NuxtLink
-					:to="this.value.casino[0].permalink"
-					class="casino-card__cta_permalink"
-					>{{ translates.CASINO_REVIEW[config.LANG] }}</NuxtLink
-				>
+				<NuxtLink :to="this.value.casino[0].permalink" class="casino-card__cta_permalink">{{
+					translates.CASINO_REVIEW[config.LANG]
+				}}</NuxtLink>
 			</div>
 		</div>
 	</div>

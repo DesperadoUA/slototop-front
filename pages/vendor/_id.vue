@@ -34,9 +34,9 @@ import config from '~/config'
 import helper from '~/helpers/helpers'
 import breadcrumbs from '~/config/breadcrumbs'
 import app_content from '~/components/content/app-content'
-import app_page_banner from '~/components/page-banner/app_page_banner'
-import app_slot_loop_downloads from '~/components/slot_loop_download/'
-import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
+import app_page_banner from '~/components/page_banner/app_page_banner'
+import app_slot_loop_downloads from '~/components/slot_loop'
+import app_casino_loop_downloads from '~/components/casino_loop/app_casino_loop_downloads'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_vendor_card from '~/components/vendor_card/app-vendor-card'
 import app_author_link from '~/components/author/app-author-link'
@@ -83,5 +83,3 @@ export default {
 	}
 }
 </script>
-
-<style scoped></style>

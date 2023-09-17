@@ -1,14 +1,8 @@
 <template>
 	<div>
-		<app_header_amp
-			:logo="data.body.options.logo"
-			:menu_links="data.body.settings.header_menu"
-		/>
+		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp
-				:title="data.body.h1"
-				:shortDesc="data.body.short_desc"
-			/>
+			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -19,27 +13,15 @@
 					/>
 				</div>
 			</div>
-			<app_category_filter_amp
-				:value="data.body.bonus_type"
-				v-if="data.body.bonus_type.length !== 0"
-			/>
-			<script_amp
-				:src="BonusPathScript"
-				v-if="BonusNumberPostOnQuery < data.body.bonuses.length"
-			>
+			<app_category_filter_amp :value="data.body.bonus_type" v-if="data.body.bonus_type.length !== 0" />
+			<script_amp :src="BonusPathScript" v-if="BonusNumberPostOnQuery < data.body.bonuses.length">
 				<app_bonuses_loop_downloads_amp :value="data.body.bonuses" />
 			</script_amp>
 			<app_bonuses_loop_downloads_amp
 				:value="data.body.bonuses"
-				v-if="
-					data.body.bonuses.length !== 0 &&
-						BonusNumberPostOnQuery > data.body.bonuses.length
-				"
+				v-if="data.body.bonuses.length !== 0 && BonusNumberPostOnQuery > data.body.bonuses.length"
 			/>
-			<app_content_amp
-				:value="data.body.amp_content"
-				v-if="data.body.amp_content !== ''"
-			/>
+			<app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 			<app_faq_amp
 				:value="data.body.settings.bonus_page_faq"
 				title="Faq"
@@ -58,8 +40,8 @@
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
-import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
-import app_bonuses_loop_downloads_amp from '~/components/bonuses_loop_downloads/app_bonuses_loop_downloads_amp'
+import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
+import app_bonuses_loop_downloads_amp from '~/components/bonus_loop/app_bonuses_loop_downloads_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
 import app_category_filter_amp from '~/components/category_filter/app_category_filter_amp'
 import script_amp from '~/components/script_amp'

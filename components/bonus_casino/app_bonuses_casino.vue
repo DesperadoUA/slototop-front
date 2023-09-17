@@ -4,17 +4,11 @@
 			<div class="bonuses-casino__heading">
 				<span class="badge-top" v-if="topTextShow">Топ 10</span>
 				<h2 class="bonuses-casino__ttl" v-if="title">{{ title }}</h2>
-				<NuxtLink no-prefetch :to="link" class="link-primary" v-if="linkText">{{
-					linkText
-				}}</NuxtLink>
+				<NuxtLink no-prefetch :to="link" class="link-primary" v-if="linkText">{{ linkText }}</NuxtLink>
 			</div>
 
 			<div class="bonuses__container">
-				<article
-					class="bonuses-item"
-					v-for="(item, index) in value"
-					:key="index"
-				>
+				<article class="bonuses-item" v-for="(item, index) in value" :key="index">
 					<div class="bonuses-item__logo">
 						<NuxtLink no-prefetch :to="item.permalink">
 							<img :src="item.casino.thumbnail" :alt="item.title" />
@@ -37,11 +31,7 @@
 					</div>
 
 					<div class="bonuses-item__btns">
-						<NuxtLink
-							no-prefetch
-							:to="item.permalink"
-							class="hidden-sm bonuses-item__btn btn-secondary"
-						>
+						<NuxtLink no-prefetch :to="item.permalink" class="hidden-sm bonuses-item__btn btn-secondary">
 							{{ translates.READ_MORE[config.LANG] }}
 						</NuxtLink>
 						<button
@@ -52,9 +42,7 @@
 						>
 							{{ translates.GET_BONUS[config.LANG] }}
 						</button>
-						<span class="bonuses-item__btn fake-btn-secondary" v-else>{{
-							translates.BONUS_INVALID[config.LANG]
-						}}</span>
+						<span class="bonuses-item__btn fake-btn-secondary" v-else>{{ translates.BONUS_INVALID[config.LANG] }}</span>
 					</div>
 				</article>
 			</div>
@@ -100,5 +88,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss"></style>

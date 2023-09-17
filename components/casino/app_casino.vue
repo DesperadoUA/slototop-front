@@ -3,9 +3,7 @@
 		<div class="container">
 			<div class="slots__heading">
 				<h2 class="slots__ttl">{{ title }}</h2>
-				<NuxtLink no-prefetch :to="link" class="link-primary" v-if="linkText">{{
-					linkText
-				}}</NuxtLink>
+				<NuxtLink no-prefetch :to="link" class="link-primary" v-if="linkText">{{ linkText }}</NuxtLink>
 			</div>
 
 			<div class="slots__container">
@@ -20,34 +18,22 @@
 							<NuxtLink no-prefetch :to="item.permalink">
 								{{ item.title }}
 							</NuxtLink>
-							<img
-								src="/img/check.svg"
-								alt=""
-								v-if="item.licenses.length !== 0"
-							/>
+							<img src="/img/check.svg" alt="" v-if="item.licenses.length !== 0" />
 						</div>
 
 						<div class="slot-item__stats">
 							<div class="star-rating">
-								<span
-									class="star-rating__val"
-									:style="item | widthRating"
-								></span>
+								<span class="star-rating__val" :style="item | widthRating"></span>
 							</div>
-							<strong class="slot-item__stats-val"
-								>{{ item.rating }}/100</strong
-							>
+							<strong class="slot-item__stats-val">{{ item.rating }}/100</strong>
 						</div>
 					</div>
-
 					<div class="slot-item__btns">
 						<button class="slot-item__btn --blue" @click="refActivate(item)">
 							{{ translates.GO_TO[config.LANG] }}
 						</button>
 					</div>
-					<span class="ribbon-closed" v-if="item.close !== 0">{{
-						translates.CLOSE[config.LANG]
-					}}</span>
+					<span class="ribbon-closed" v-if="item.close !== 0">{{ translates.CLOSE[config.LANG] }}</span>
 				</article>
 			</div>
 		</div>

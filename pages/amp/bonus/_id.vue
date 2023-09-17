@@ -1,14 +1,8 @@
 <template>
 	<div>
-		<app_header_amp
-			:logo="data.body.options.logo"
-			:menu_links="data.body.settings.header_menu"
-		/>
+		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp
-				:title="data.body.h1"
-				:shortDesc="data.body.short_desc"
-			/>
+			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -22,18 +16,11 @@
 			<app_breadcrumbs_amp :value="data.body.breadcrumbs" />
 			<app_bonus_card_amp :value="data.body" />
 			<app_bonus_details_amp :value="data.body" />
-			<app_content_amp
-				:value="data.body.amp_content"
-				v-if="data.body.amp_content !== ''"
-			/>
+			<app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 			<app_bonuses_casino_amp
 				v-if="data.body.bonuses.length !== 0"
 				:value="data.body.bonuses"
-				:title="
-					`${translates.OTHER_BONUSES[config.LANG]} ${
-						data.body.casino[0].title
-					}`
-				"
+				:title="`${translates.OTHER_BONUSES[config.LANG]} ${data.body.casino[0].title}`"
 				:topTextShow="false"
 			/>
 		</main>
@@ -50,11 +37,11 @@ import DAL_Builder from '~/DAL/builder'
 import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
-import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
-import app_bonuses_casino_amp from '~/components/bonuses-casino/app_bonuses_casino_amp'
+import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
+import app_bonuses_casino_amp from '~/components/bonus_casino/app_bonuses_casino_amp'
 import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
-import app_bonus_card_amp from '~/components/bonus-card/app_bonus_card_amp'
-import app_bonus_details_amp from '~/components/bonus-detail/app-bonus-detail_amp'
+import app_bonus_card_amp from '~/components/bonus_card/app_bonus_card_amp'
+import app_bonus_details_amp from '~/components/bonus_detail/app-bonus-detail_amp'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 export default {
 	name: 'single-bonus',

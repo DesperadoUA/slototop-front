@@ -25,9 +25,7 @@
 		/>
 		<app_game_symbols
 			:value="data.body.characters"
-			:title="
-				`${translates.SLOT_MACHINE_SYMBOLS[config.LANG]} ${data.body.title}`
-			"
+			:title="`${translates.SLOT_MACHINE_SYMBOLS[config.LANG]} ${data.body.title}`"
 			v-if="data.body.characters.length !== 0"
 		/>
 		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
@@ -39,14 +37,14 @@ import DAL_Builder from '~/DAL/builder'
 import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
-import app_page_banner from '~/components/page-banner/app_page_banner'
+import app_page_banner from '~/components/page_banner/app_page_banner'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
-import app_game_card from '~/components/game_card/app-game-card'
-import app_game_details from '~/components/game-details/app-game-details'
+import app_game_card from '~/components/slot_card/app-game-card'
+import app_game_details from '~/components/slot_detail/app-game-details'
 import app_casino from '~/components/casino/app_casino'
 import app_slots from '~/components/slots/app_slots'
-import app_game_screenshots from '~/components/game-screenshots/app-game-screenshots'
-import app_game_symbols from '~/components/game-symbols/app-game-symbols'
+import app_game_screenshots from '~/components/slot_screenshots/app-game-screenshots'
+import app_game_symbols from '~/components/slot_symbols/app-game-symbols'
 import app_content from '~/components/content/app-content'
 import head from '~/mixins/head'
 import translateMixin from '~/mixins/translate'

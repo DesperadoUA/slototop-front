@@ -18,9 +18,7 @@
 		<app_bonuses_casino
 			v-if="data.body.bonuses.length !== 0"
 			:value="data.body.bonuses"
-			:title="
-				`${translates.OTHER_BONUSES[config.LANG]} ${data.body.casino[0].title}`
-			"
+			:title="`${translates.OTHER_BONUSES[config.LANG]} ${data.body.casino[0].title}`"
 			:topTextShow="false"
 		/>
 	</div>
@@ -32,11 +30,11 @@ import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
-import app_page_banner from '~/components/page-banner/app_page_banner'
-import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
+import app_page_banner from '~/components/page_banner/app_page_banner'
+import app_bonuses_casino from '~/components/bonus_casino/app_bonuses_casino'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
-import app_bonus_card from '~/components/bonus-card/app_bonus_card'
-import app_bonus_details from '~/components/bonus-detail/app-bonus-detail'
+import app_bonus_card from '~/components/bonus_card/app_bonus_card'
+import app_bonus_details from '~/components/bonus_detail/app-bonus-detail'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import translateMixin from '~/mixins/translate'

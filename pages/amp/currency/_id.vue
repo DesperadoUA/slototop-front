@@ -1,14 +1,8 @@
 <template>
 	<div>
-		<app_header_amp
-			:logo="data.body.options.logo"
-			:menu_links="data.body.settings.header_menu"
-		/>
+		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp
-				:title="data.body.h1"
-				:shortDesc="data.body.short_desc"
-			/>
+			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -19,10 +13,7 @@
 					/>
 				</div>
 			</div>
-			<script_amp
-				:src="PaymentPathScript"
-				v-if="PaymentNumberPostOnQuery < data.body.posts.length"
-			>
+			<script_amp :src="PaymentPathScript" v-if="PaymentNumberPostOnQuery < data.body.posts.length">
 				<app_payment_loop_downloads_amp
 					post_type="currency"
 					:post_url="$route.params.id"
@@ -35,15 +26,9 @@
 				:post_url="$route.params.id"
 				:value="data.body.posts"
 				bg="--bg-gray"
-				v-if="
-					data.body.posts.length !== 0 &&
-						PaymentNumberPostOnQuery > data.body.posts.length
-				"
+				v-if="data.body.posts.length !== 0 && PaymentNumberPostOnQuery > data.body.posts.length"
 			/>
-			<app_content_amp
-				:value="data.body.amp_content"
-				v-if="data.body.amp_content !== ''"
-			/>
+			<app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 		</main>
 		<app_footer_amp
 			:footer_menu="data.body.settings.footer_menu"
@@ -57,8 +42,8 @@
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
-import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
-import app_payment_loop_downloads_amp from '~/components/payment_loop_download/payment_loop_download_amp'
+import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
+import app_payment_loop_downloads_amp from '~/components/payment_loop/payment_loop_download_amp'
 import script_amp from '~/components/script_amp'
 import { PAYMENT as PaymentNumberPostOnQuery } from '~/config/postLoader'
 import { PAYMENT as PaymentPathScript } from '~/config/ampPathScript'

@@ -1,9 +1,6 @@
 <template>
 	<div>
-		<app_banner
-			:value="changeBanner"
-			v-if="changeBanner.length !== 0 && device"
-		/>
+		<app_banner :value="changeBanner" v-if="changeBanner.length !== 0 && device" />
 		<div class="container">
 			<div class="contentEnd">
 				<app_author_link
@@ -21,11 +18,7 @@
 			:linkText="translates.ALL_CASINO[config.LANG]"
 			bg="--bg-gray"
 		/>
-		<app_casino
-			:value="data.body.new_casino"
-			:title="translates.NEW_CASINO[config.LANG]"
-			bg="--bg-gray"
-		/>
+		<app_casino :value="data.body.new_casino" :title="translates.NEW_CASINO[config.LANG]" bg="--bg-gray" />
 		<app_slots
 			:value="data.body.top_game"
 			:title="translates.GAMES[config.LANG]"
@@ -55,8 +48,8 @@ import helper from '~/helpers/helpers'
 import app_casino from '~/components/casino/app_casino'
 import app_slots from '~/components/slots/app_slots'
 import app_content from '~/components/content/app-content'
-import app_bonuses_casino from '~/components/bonuses-casino/app_bonuses_casino'
-import app_banner from '~/components/main-banner/app_main_banner'
+import app_bonuses_casino from '~/components/bonus_casino/app_bonuses_casino'
+import app_banner from '~/components/main_banner/app_main_banner'
 import app_faq from '~/components/faq/app_faq'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
@@ -96,9 +89,7 @@ export default {
 		changeFaq() {
 			const settings = this.$store.getters['settings/getSettings']
 			if (settings) {
-				this.faq = settings.filter(
-					item => item.key === 'main_page_faq'
-				)[0].value
+				this.faq = settings.filter(item => item.key === 'main_page_faq')[0].value
 			}
 			return this.faq
 		},

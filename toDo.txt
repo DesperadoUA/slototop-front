@@ -1,3 +1,8 @@
 [] Добавить темплейт с хедером и футером принимающим в качестве слота компоненты темплейта
 [] Сделать ренейм названий файлов
 [] Внедрить функцию getTranslate
+[] Fix status code
+[] Bonus Loop and Bonus Casino combine
+[] Casino Loop Casino combine
+[] Add page banner for AMP template
+[] Poker template fix translate 

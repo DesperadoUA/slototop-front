@@ -11,11 +11,7 @@
 				/>
 			</div>
 		</div>
-		<app_payment_loop_download
-			:value="data.body.posts"
-			bg="--bg-gray"
-			v-if="data.body.posts.length !== 0"
-		/>
+		<app_payment_loop_download :value="data.body.posts" bg="--bg-gray" v-if="data.body.posts.length !== 0" />
 		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
 	</div>
 </template>
@@ -24,8 +20,8 @@
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
-import app_page_banner from '~/components/page-banner/app_page_banner'
-import app_payment_loop_download from '~/components/payment_loop_download'
+import app_page_banner from '~/components/page_banner/app_page_banner'
+import app_payment_loop_download from '~/components/payment_loop'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import translateMixin from '~/mixins/translate'

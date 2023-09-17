@@ -1,9 +1,6 @@
 <template>
 	<div>
-		<app_header_amp
-			:logo="data.body.options.logo"
-			:menu_links="data.body.settings.header_menu"
-		/>
+		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
 			<div class="container">
 				<div class="contentEnd">
@@ -22,11 +19,7 @@
 				:linkText="translates.ALL_CASINO[config.LANG]"
 				bg="--bg-gray"
 			/>
-			<app_casino_amp
-				:value="data.body.new_casino"
-				:title="translates.NEW_CASINO[config.LANG]"
-				bg="--bg-gray"
-			/>
+			<app_casino_amp :value="data.body.new_casino" :title="translates.NEW_CASINO[config.LANG]" bg="--bg-gray" />
 			<app_slots_amp
 				:value="data.body.top_game"
 				:title="translates.GAMES[config.LANG]"
@@ -45,10 +38,7 @@
 				link="bonuses"
 				:linkText="translates.ALL_BONUSES[config.LANG]"
 			/>
-			<app_content_amp
-				:value="data.body.amp_content"
-				v-if="data.body.amp_content !== ''"
-			/>
+			<app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 			<app_faq_amp :value="data.body.settings.main_page_faq" title="Faq" />
 		</main>
 		<app_footer_amp
@@ -65,7 +55,7 @@ import helper from '~/helpers/helpers'
 import config from '~/config'
 import app_casino_amp from '~/components/casino/app_casino_amp'
 import app_slots_amp from '~/components/slots/app_slots_amp'
-import app_bonuses_casino_amp from '~/components/bonuses-casino/app_bonuses_casino_amp'
+import app_bonuses_casino_amp from '~/components/bonus_casino/app_bonuses_casino_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 export default {

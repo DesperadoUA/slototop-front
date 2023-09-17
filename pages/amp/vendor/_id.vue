@@ -1,14 +1,8 @@
 <template>
 	<div>
-		<app_header_amp
-			:logo="data.body.options.logo"
-			:menu_links="data.body.settings.header_menu"
-		/>
+		<app_header_amp :logo="data.body.options.logo" :menu_links="data.body.settings.header_menu" />
 		<main class="main">
-			<app_page_banner_amp
-				:title="data.body.h1"
-				:shortDesc="data.body.short_desc"
-			/>
+			<app_page_banner_amp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
 					<app_author_link_amp
@@ -21,10 +15,7 @@
 			</div>
 			<app_breadcrumbs_amp :value="data.body.breadcrumbs" />
 			<app_vendor_card_amp :value="data.body" />
-			<script_amp
-				:src="GamePathScript"
-				v-if="GameNumberPostOnQuery < data.body.games.length"
-			>
+			<script_amp :src="GamePathScript" v-if="GameNumberPostOnQuery < data.body.games.length">
 				<app_slot_loop_downloads_amp
 					:title="`${translates.GAME_FROM[config.LANG]} ${data.body.title}`"
 					:value="data.body.games"
@@ -37,23 +28,15 @@
 				:value="data.body.games"
 				post_type="vendor"
 				:post_url="$route.params.id"
-				v-if="
-					data.body.games.length !== 0 &&
-						GameNumberPostOnQuery > data.body.games.length
-				"
+				v-if="data.body.games.length !== 0 && GameNumberPostOnQuery > data.body.games.length"
 			/>
-			<script_amp
-				:src="CasinoPathScript"
-				v-if="CasinoNumberPostOnQuery < data.body.casino.length"
-			>
+			<script_amp :src="CasinoPathScript" v-if="CasinoNumberPostOnQuery < data.body.casino.length">
 				<app_casino_loop_downloads_amp
 					:value="data.body.casino"
 					post_type="vendor"
 					:post_url="$route.params.id"
 					bg="--bg-gray"
-					:title="
-						`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`
-					"
+					:title="`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`"
 				/>
 			</script_amp>
 			<app_casino_loop_downloads_amp
@@ -61,18 +44,10 @@
 				post_type="vendor"
 				:post_url="$route.params.id"
 				bg="--bg-gray"
-				:title="
-					`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`
-				"
-				v-if="
-					data.body.casino.length !== 0 &&
-						CasinoNumberPostOnQuery > data.body.casino.length
-				"
+				:title="`${translates.CASINO_WORK_WITH[config.LANG]}  ${data.body.title}`"
+				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery > data.body.casino.length"
 			/>
-			<app_content_amp
-				:value="data.body.amp_content"
-				v-if="data.body.amp_content !== ''"
-			/>
+			<app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 		</main>
 		<app_footer_amp
 			:footer_menu="data.body.settings.footer_menu"
@@ -88,11 +63,11 @@ import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
-import app_page_banner_amp from '~/components/page-banner/app_page_banner_amp'
+import app_page_banner_amp from '~/components/page_banner/app_page_banner_amp'
 import app_breadcrumbs_amp from '~/components/breadcrumbs/app_breadcrumbs_amp'
 import app_vendor_card_amp from '~/components/vendor_card/app-vendor-card_amp'
-import app_slot_loop_downloads_amp from '~/components/slot_loop_download/app_slot_loop_download_amp'
-import app_casino_loop_downloads_amp from '~/components/casino_loop_downloads/app_casino_loop_downloads_amp'
+import app_slot_loop_downloads_amp from '~/components/slot_loop/app_slot_loop_download_amp'
+import app_casino_loop_downloads_amp from '~/components/casino_loop/app_casino_loop_downloads_amp'
 import script_amp from '~/components/script_amp'
 import { CASINO as CasinoNumberPostOnQuery } from '~/config/postLoader'
 import { CASINO as CasinoPathScript } from '~/config/ampPathScript'

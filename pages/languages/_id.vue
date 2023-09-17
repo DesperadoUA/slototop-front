@@ -11,10 +11,7 @@
 				/>
 			</div>
 		</div>
-		<app_content
-			:value="data.body.content"
-			v-if="data.body.content.length !== ''"
-		/>
+		<app_content :value="data.body.content" v-if="data.body.content.length !== ''" />
 		<app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
 	</div>
 </template>
@@ -23,7 +20,7 @@
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
-import app_page_banner from '~/components/page-banner/app_page_banner'
+import app_page_banner from '~/components/page_banner/app_page_banner'
 import app_faq from '~/components/faq/app_faq'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'

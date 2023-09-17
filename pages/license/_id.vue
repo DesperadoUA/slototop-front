@@ -11,11 +11,7 @@
 				/>
 			</div>
 		</div>
-		<app_casino_loop_downloads
-			:value="data.body.casino"
-			bg="--bg-gray"
-			v-if="data.body.casino.length !== 0"
-		/>
+		<app_casino_loop_downloads :value="data.body.casino" bg="--bg-gray" v-if="data.body.casino.length !== 0" />
 		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
 	</div>
 </template>
@@ -24,8 +20,8 @@
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
-import app_page_banner from '~/components/page-banner/app_page_banner'
-import app_casino_loop_downloads from '~/components/casino_loop_downloads/app_casino_loop_downloads'
+import app_page_banner from '~/components/page_banner/app_page_banner'
+import app_casino_loop_downloads from '~/components/casino_loop/app_casino_loop_downloads'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import translateMixin from '~/mixins/translate'

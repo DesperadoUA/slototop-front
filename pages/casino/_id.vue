@@ -13,10 +13,7 @@
 		</div>
 		<app_breadcrumbs :value="data.body.breadcrumbs" />
 		<app_casino_card :value="data.body" />
-		<app_close_disclaimer
-			v-if="data.body.close === 1"
-			:value="data.body.title"
-		/>
+		<app_close_disclaimer v-if="data.body.close === 1" :value="data.body.title" />
 		<app_casino
 			v-if="data.body.close === 1"
 			:value="data.body.casino"
@@ -34,19 +31,13 @@
 		/>
 		<div class="casino_content container">
 			<div class="casino_content_left">
-				<app_content
-					:value="data.body.content"
-					v-if="data.body.content !== ''"
-				/>
+				<app_content :value="data.body.content" v-if="data.body.content !== ''" />
 			</div>
 			<div class="casino_content_right">
 				<app_casino_aside :value="data.body.sidebar" />
 			</div>
 		</div>
-		<app_casino_rating
-			:value="data.body.casinoRating"
-			:title="data.body.title"
-		/>
+		<app_casino_rating :value="data.body.casinoRating" :title="data.body.title" />
 		<app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
 		<app_reviews
 			:title="translates.REVIEWS[config.LANG]"
@@ -64,17 +55,17 @@ import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
 import app_faq from '~/components/faq/app_faq'
-import app_bonuses from '~/components/bonuses-casino/app_bonuses_casino'
-import app_page_banner from '~/components/page-banner/app_page_banner'
+import app_bonuses from '~/components/bonus_casino/app_bonuses_casino'
+import app_page_banner from '~/components/page_banner/app_page_banner'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_casino_card from '~/components/casino_card/app-casino-card'
-import app_casino_detail from '~/components/casino-detail/app-casino-detail'
+import app_casino_detail from '~/components/casino_detail/app-casino-detail'
 import app_reviews from '~/components/reviews/app_reviews'
 import app_slick_button from '~/components/slick_button/app_slick_button'
 import app_casino_rating from '~/components/casino_rating/app-casino-rating'
-import app_close_disclaimer from '~/components/close-disclaimer/close-disclaimer'
+import app_close_disclaimer from '~/components/close_disclaimer/close-disclaimer'
 import app_casino from '~/components/casino/app_casino'
-import app_casino_aside from '~/components/casino-aside/app_casino_aside'
+import app_casino_aside from '~/components/casino_sidebar/app_casino_aside'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import translateMixin from '~/mixins/translate'

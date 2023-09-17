@@ -21,11 +21,7 @@
 		/>
 		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
 		<app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
-		<app_reviews
-			:title="'Отзывы'"
-			:value="data.body.reviews"
-			v-if="data.body.reviews.length !== 0"
-		/>
+		<app_reviews :title="'Отзывы'" :value="data.body.reviews" v-if="data.body.reviews.length !== 0" />
 	</div>
 </template>
 
@@ -35,12 +31,12 @@ import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
 import app_content from '~/components/content/app-content'
-import app_page_banner from '~/components/page-banner/app_page_banner'
+import app_page_banner from '~/components/page_banner/app_page_banner'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_poker_card from '~/components/poker_card/app-poker-card'
-import app_poker_detail from '~/components/poker-detail/app-poker-detail'
+import app_poker_detail from '~/components/poker_detail/app-poker-detail'
 import app_reviews from '~/components/reviews/app_reviews'
-import app_poker_loop_downloads from '~/components/poker_loop_downloads/app_poker_loop_downloads'
+import app_poker_loop_downloads from '~/components/poker_loop/app_poker_loop_downloads'
 import app_faq from '~/components/faq/app_faq'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'

@@ -5,7 +5,7 @@
 			<PageBannerAmp :title="data.body.h1" :shortDesc="data.body.short_desc" />
 			<div class="container">
 				<div class="contentEnd">
-					<app_author_link
+					<app_author_link_amp
 						:link="config.AUTHOR_PAGE_LINK"
 						:text="translates.REVIEW_AUTHOR[config.LANG]"
 						:dataTime="data.body.created_at.slice(0, 10)"

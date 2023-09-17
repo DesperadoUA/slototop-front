@@ -3,7 +3,7 @@
 		<PageBanner :title="data.body.h1" :shortDesc="data.body.short_desc" />
 		<div class="container">
 			<div class="contentEnd">
-				<app_author_link
+				<AuthorLink
 					:link="config.AUTHOR_PAGE_LINK"
 					:text="translates.REVIEW_AUTHOR[config.LANG]"
 					:dataTime="data.body.created_at.slice(0, 10)"
@@ -20,7 +20,6 @@
 import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import app_vendor_loop_download from '~/components/vendor_loop'
-import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import pageTemplate from '~/mixins/pageTemplate'
 
@@ -30,8 +29,7 @@ export default {
 		return {}
 	},
 	components: {
-		app_vendor_loop_download,
-		app_author_link
+		app_vendor_loop_download
 	},
 	mixins: [head, pageTemplate],
 	async asyncData({ route, error }) {

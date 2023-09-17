@@ -3,7 +3,7 @@
 		<PageBanner :title="data.body.h1" :shortDesc="data.body.short_desc" />
 		<div class="container">
 			<div class="contentEnd">
-				<app_author_link
+				<AuthorLink
 					:link="config.AUTHOR_PAGE_LINK"
 					:text="translates.REVIEW_AUTHOR[config.LANG]"
 					:dataTime="data.body.created_at.slice(0, 10)"
@@ -64,7 +64,6 @@ import app_casino_rating from '~/components/casino_rating/app-casino-rating'
 import app_close_disclaimer from '~/components/close_disclaimer/close-disclaimer'
 import app_casino from '~/components/casino/app_casino'
 import app_casino_aside from '~/components/casino_sidebar/app_casino_aside'
-import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import pageTemplate from '~/mixins/pageTemplate'
 
@@ -81,8 +80,7 @@ export default {
 		app_casino_rating,
 		app_close_disclaimer,
 		app_casino,
-		app_casino_aside,
-		app_author_link
+		app_casino_aside
 	},
 	mixins: [head, pageTemplate],
 	data: () => {

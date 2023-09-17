@@ -3,7 +3,7 @@
 		<PageBanner :title="data.body.h1" :shortDesc="data.body.short_desc" />
 		<div class="container">
 			<div class="contentEnd">
-				<app_author_link
+				<AuthorLink
 					:link="config.AUTHOR_PAGE_LINK"
 					:text="translates.REVIEW_AUTHOR[config.LANG]"
 					:dataTime="data.body.created_at.slice(0, 10)"
@@ -24,7 +24,6 @@ import helper from '~/helpers/helpers'
 import app_slot_loop_downloads from '~/components/slot_loop'
 import app_category_filter from '~/components/category_filter/app_category_filter'
 import app_faq from '~/components/faq/app_faq'
-import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import pageTemplate from '~/mixins/pageTemplate'
 export default {
@@ -35,8 +34,7 @@ export default {
 	components: {
 		app_slot_loop_downloads,
 		app_category_filter,
-		app_faq,
-		app_author_link
+		app_faq
 	},
 	mixins: [head, pageTemplate],
 	async asyncData({ route, error }) {

@@ -28,7 +28,7 @@
 			:title="`${translates.SLOT_MACHINE_SYMBOLS[config.LANG]} ${data.body.title}`"
 			v-if="data.body.characters.length !== 0"
 		/>
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 	</div>
 </template>
 
@@ -44,7 +44,6 @@ import app_casino from '~/components/casino/app_casino'
 import app_slots from '~/components/slots/app_slots'
 import app_game_screenshots from '~/components/slot_screenshots/app-game-screenshots'
 import app_game_symbols from '~/components/slot_symbols/app-game-symbols'
-import app_content from '~/components/content/app-content'
 import head from '~/mixins/head'
 import pageTemplate from '~/mixins/pageTemplate'
 export default {
@@ -57,7 +56,6 @@ export default {
 		}
 	},
 	components: {
-		app_content,
 		app_breadcrumbs,
 		app_game_card,
 		app_casino,

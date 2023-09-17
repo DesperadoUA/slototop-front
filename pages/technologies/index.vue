@@ -11,14 +11,13 @@
 				/>
 			</div>
 		</div>
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 	</div>
 </template>
 
 <script>
 import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
-import app_content from '~/components/content/app-content'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import pageTemplate from '~/mixins/pageTemplate'
@@ -28,7 +27,7 @@ export default {
 	data: () => {
 		return {}
 	},
-	components: { app_content, app_author_link },
+	components: { app_author_link },
 	mixins: [head, pageTemplate],
 	async asyncData({ route, error }) {
 		const request = {

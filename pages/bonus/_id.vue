@@ -14,7 +14,7 @@
 		<app_breadcrumbs :value="data.body.breadcrumbs" />
 		<app_bonus_card :value="data.body" />
 		<app_bonus_details :value="data.body" />
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 		<app_bonuses_casino
 			v-if="data.body.bonuses.length !== 0"
 			:value="data.body.bonuses"
@@ -29,7 +29,6 @@ import DAL_Builder from '~/DAL/builder'
 import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
-import app_content from '~/components/content/app-content'
 import app_bonuses_casino from '~/components/bonus_casino/app_bonuses_casino'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_bonus_card from '~/components/bonus_card/app_bonus_card'
@@ -43,7 +42,6 @@ export default {
 		return {}
 	},
 	components: {
-		app_content,
 		app_bonuses_casino,
 		app_breadcrumbs,
 		app_bonus_details,

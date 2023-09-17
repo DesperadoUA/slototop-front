@@ -1,6 +1,6 @@
 import translateMixin from '~/mixins/translate'
-import Content from '~/components/content/app-content'
 import PageBanner from '~/components/page_banner'
+import Content from '~/components/content'
 export default {
 	mixins: [translateMixin],
 	components: {

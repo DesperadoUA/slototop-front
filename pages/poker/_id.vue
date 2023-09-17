@@ -19,7 +19,7 @@
 			bg="--bg-gray"
 			:title="translates.OTHER_POKER_ROOMS[config.LANG]"
 		/>
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 		<app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
 		<app_reviews :title="'Отзывы'" :value="data.body.reviews" v-if="data.body.reviews.length !== 0" />
 	</div>
@@ -30,7 +30,6 @@ import DAL_Builder from '~/DAL/builder'
 import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
-import app_content from '~/components/content/app-content'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_poker_card from '~/components/poker_card/app-poker-card'
 import app_poker_detail from '~/components/poker_detail/app-poker-detail'
@@ -46,7 +45,6 @@ export default {
 		return {}
 	},
 	components: {
-		app_content,
 		app_breadcrumbs,
 		app_poker_card,
 		app_poker_detail,

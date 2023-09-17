@@ -37,7 +37,7 @@
 			link="bonuses"
 			:linkText="translates.ALL_BONUSES[config.LANG]"
 		/>
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 		<app_faq :value="changeFaq" title="Faq" v-if="changeFaq.length !== 0" />
 	</div>
 </template>
@@ -47,13 +47,12 @@ import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import app_casino from '~/components/casino/app_casino'
 import app_slots from '~/components/slots/app_slots'
-import app_content from '~/components/content/app-content'
 import app_bonuses_casino from '~/components/bonus_casino/app_bonuses_casino'
 import app_banner from '~/components/main_banner/app_main_banner'
 import app_faq from '~/components/faq/app_faq'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
-import translateMixin from '~/mixins/translate'
+import pageTemplate from '~/mixins/pageTemplate'
 export default {
 	name: 'main-page',
 	data: () => {
@@ -65,7 +64,6 @@ export default {
 		}
 	},
 	components: {
-		app_content,
 		app_casino,
 		app_slots,
 		app_bonuses_casino,
@@ -73,7 +71,7 @@ export default {
 		app_faq,
 		app_author_link
 	},
-	mixins: [head, translateMixin],
+	mixins: [head, pageTemplate],
 	async asyncData({ store, route }) {
 		const request = {
 			url: 'main'

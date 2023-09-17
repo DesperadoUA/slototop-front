@@ -20,7 +20,7 @@
 			bg="--bg-gray"
 			v-if="data.body.casino.length !== 0"
 		/>
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 	</div>
 </template>
 
@@ -29,7 +29,6 @@ import DAL_Builder from '~/DAL/builder'
 import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
-import app_content from '~/components/content/app-content'
 import app_casino_loop_downloads from '~/components/casino_loop/app_casino_loop_downloads'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
 import app_payment_card from '~/components/payment_card/app-payment-card'
@@ -45,7 +44,6 @@ export default {
 		}
 	},
 	components: {
-		app_content,
 		app_casino_loop_downloads,
 		app_breadcrumbs,
 		app_payment_card,

@@ -31,7 +31,7 @@
 		/>
 		<div class="casino_content container">
 			<div class="casino_content_left">
-				<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+				<Content :value="data.body.content" v-if="data.body.content !== ''" />
 			</div>
 			<div class="casino_content_right">
 				<app_casino_aside :value="data.body.sidebar" />
@@ -53,7 +53,6 @@ import DAL_Builder from '~/DAL/builder'
 import config from '~/config'
 import breadcrumbs from '~/config/breadcrumbs'
 import helper from '~/helpers/helpers'
-import app_content from '~/components/content/app-content'
 import app_faq from '~/components/faq/app_faq'
 import app_bonuses from '~/components/bonus_casino/app_bonuses_casino'
 import app_breadcrumbs from '~/components/breadcrumbs/app_breadcrumbs'
@@ -72,7 +71,6 @@ import pageTemplate from '~/mixins/pageTemplate'
 export default {
 	name: 'app_single_casino',
 	components: {
-		app_content,
 		app_breadcrumbs,
 		app_casino_card,
 		app_casino_detail,

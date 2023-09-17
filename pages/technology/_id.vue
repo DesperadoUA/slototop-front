@@ -12,14 +12,13 @@
 			</div>
 		</div>
 		<app_casino_loop_downloads :value="data.body.casino" bg="--bg-gray" v-if="data.body.casino.length !== 0" />
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 	</div>
 </template>
 
 <script>
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
-import app_content from '~/components/content/app-content'
 import app_casino_loop_downloads from '~/components/casino_loop/app_casino_loop_downloads'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
@@ -33,7 +32,6 @@ export default {
 		}
 	},
 	components: {
-		app_content,
 		app_casino_loop_downloads,
 		app_author_link
 	},

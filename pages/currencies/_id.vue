@@ -11,7 +11,7 @@
 				/>
 			</div>
 		</div>
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 		<app_faq :value="data.body.faq" v-if="data.body.faq.length !== 0" />
 	</div>
 </template>
@@ -19,14 +19,13 @@
 <script>
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
-import app_content from '~/components/content/app-content'
 import app_faq from '~/components/faq/app_faq'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
 import pageTemplate from '~/mixins/pageTemplate'
 export default {
 	name: 'currency-category',
-	components: { app_content, app_faq, app_author_link },
+	components: { app_faq, app_author_link },
 	mixins: [head, pageTemplate],
 	data: () => {
 		return {

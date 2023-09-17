@@ -12,14 +12,13 @@
 			</div>
 		</div>
 		<app_payment_loop_download :value="data.body.posts" bg="--bg-gray" v-if="data.body.posts.length !== 0" />
-		<app_content :value="data.body.content" v-if="data.body.content !== ''" />
+		<Content :value="data.body.content" v-if="data.body.content !== ''" />
 	</div>
 </template>
 
 <script>
 import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
-import app_content from '~/components/content/app-content'
 import app_payment_loop_download from '~/components/payment_loop'
 import app_author_link from '~/components/author/app-author-link'
 import head from '~/mixins/head'
@@ -32,7 +31,6 @@ export default {
 		}
 	},
 	components: {
-		app_content,
 		app_payment_loop_download,
 		app_author_link
 	},

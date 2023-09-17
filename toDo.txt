@@ -6,3 +6,4 @@
 [] Casino Loop Casino combine
 [] Add page banner for AMP template
 [] Poker template fix translate 
+[] Add in pageTemplate content and author link

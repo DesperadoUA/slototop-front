@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import config from '~/config'
 import app_casino_amp from '~/components/casino/app_casino_amp'
@@ -58,6 +57,7 @@ import app_slots_amp from '~/components/slots/app_slots_amp'
 import app_bonuses_casino_amp from '~/components/bonus_casino/app_bonuses_casino_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
+import DAL_Builder from "~/DAL/builder";
 export default {
 	name: 'main-page-amp',
 	components: {
@@ -68,10 +68,11 @@ export default {
 	},
 	mixins: [pageTemplateAmp],
 	async asyncData({ store, route }) {
-		const request = {
-			url: 'main'
-		}
-		const response = await DAL_Page.getData(request)
+        const request = new DAL_Builder()
+        const response = await request
+            .postType('pages')
+            .url('main')
+            .get()
 		const data = await helper.globalDataMixin(response, route)
 		data.body.currentUrl = config.BASE_URL[config.LANG]
 		return { data }

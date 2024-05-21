@@ -32,13 +32,13 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import app_payment_loop_download_amp from '~/components/payment_loop/payment_loop_download_amp'
 import script_amp from '~/components/script_amp'
 import { PAYMENT as PaymentNumberPostOnQuery } from '~/config/postLoader'
 import { PAYMENT as PaymentPathScript } from '~/config/ampPathScript'
+import DAL_Builder from "~/DAL/builder";
 
 export default {
 	name: 'payments-page_amp',
@@ -54,10 +54,11 @@ export default {
 		}
 	},
 	async asyncData({ route, error }) {
-		const request = {
-			url: 'payments'
-		}
-		const response = await DAL_Page.getData(request)
+        const request = new DAL_Builder()
+        const response = await request
+            .postType('pages')
+            .url('payments')
+            .get()
 		if (response.data.confirm === 'error') {
 			error({ statusCode: 404, message: 'Post not found' })
 		} else {

@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import app_vendor_loop_download from '~/components/vendor_loop'
 import head from '~/mixins/head'
 import pageTemplate from '~/mixins/pageTemplate'
+import DAL_Builder from "~/DAL/builder";
 
 export default {
 	name: 'vendors-page',
@@ -33,10 +33,11 @@ export default {
 	},
 	mixins: [head, pageTemplate],
 	async asyncData({ route, error }) {
-		const request = {
-			url: 'vendors'
-		}
-		const response = await DAL_Page.getData(request)
+        const request = new DAL_Builder()
+        const response = await request
+            .postType('pages')
+            .url('vendors')
+            .get()
 		if (response.data.confirm === 'error') {
 			error({ statusCode: 404, message: 'Post not found' })
 		} else {

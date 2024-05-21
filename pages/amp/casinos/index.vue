@@ -30,7 +30,6 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import app_casino_loop_downloads_amp from '~/components/casino_loop/app_casino_loop_downloads_amp'

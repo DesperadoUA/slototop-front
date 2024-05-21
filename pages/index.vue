@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
+import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
 import app_casino from '~/components/casino/app_casino'
 import app_slots from '~/components/slots/app_slots'
@@ -71,10 +71,11 @@ export default {
 	},
 	mixins: [head, pageTemplate],
 	async asyncData({ store, route }) {
-		const request = {
-			url: 'main'
-		}
-		const response = await DAL_Page.getData(request)
+		const request = new DAL_Builder()
+		const response = await request
+			.postType('pages')
+			.url('main')
+			.get()
 		const data = helper.headDataMixin(response.data, route)
 		return { data }
 	},

@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import app_poker_loop_downloads_amp from '~/components/poker_loop/app_poker_loop_downloads_amp'

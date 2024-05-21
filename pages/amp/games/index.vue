@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import app_slot_loop_downloads_amp from '~/components/slot_loop/app_slot_loop_download_amp'
@@ -47,6 +46,7 @@ import app_faq_amp from '~/components/faq/app_faq_amp'
 import script_amp from '~/components/script_amp'
 import { GAME as GameNumberPostOnQuery } from '~/config/postLoader'
 import { GAME as GamePathScript } from '~/config/ampPathScript'
+import DAL_Builder from "~/DAL/builder";
 export default {
 	name: 'game-page_amp',
 	components: {
@@ -63,10 +63,11 @@ export default {
 		}
 	},
 	async asyncData({ route, error }) {
-		const request = {
-			url: 'games'
-		}
-		const response = await DAL_Page.getData(request)
+        const request = new DAL_Builder()
+        const response = await request
+            .postType('pages')
+            .url('games')
+            .get()
 		if (response.data.confirm === 'error') {
 			error({ statusCode: 404, message: 'Post not found' })
 		} else {

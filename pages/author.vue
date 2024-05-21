@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
+import DAL_Builder from '~/DAL/builder'
 import helper from '~/helpers/helpers'
 import app_author_top from '~/components/author/app-author-top'
 import head from '~/mixins/head'
@@ -23,10 +23,11 @@ export default {
 	components: { app_author_top },
 	mixins: [head, pageTemplate],
 	async asyncData({ store, route }) {
-		const request = {
-			url: 'author'
-		}
-		const response = await DAL_Page.getData(request)
+		const request = new DAL_Builder()
+		const response = await request
+			.postType('pages')
+			.url('author')
+			.get()
 		const data = helper.headDataMixin(response.data, route)
 		return { data }
 	},

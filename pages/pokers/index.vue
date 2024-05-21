@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import DAL_Page from '~/DAL/static_pages'
 import helper from '~/helpers/helpers'
 import app_poker_loop_downloads from '~/components/poker_loop/app_poker_loop_downloads'
 import app_faq from '~/components/faq/app_faq'

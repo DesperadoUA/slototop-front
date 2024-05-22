@@ -37,8 +37,7 @@ export default {
 		}
 	},
 	async mounted() {
-		const data = { lang: 1 }
-		await this.$store.dispatch('settings/setSettings', data)
+		await this.$store.dispatch('settings/setSettings')
 		const settings = this.$store.getters['settings/getSettings']
 		if (settings.length !== 0) {
 			this.settings = settings.filter(

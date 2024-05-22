@@ -32,7 +32,8 @@ export default class JsonRequest {
 					search_word: this.#options.SEARCH_WORD
 				}
 			})
-		} else {
+		}
+        else {
 			return axios.get(
 				this.#options.URL_API +
 					this.#options.POST_TYPE +
@@ -41,4 +42,10 @@ export default class JsonRequest {
 			)
 		}
 	}
+    static getOptions() {
+        return axios.get(config.API_URL[config.LANG] + 'options')
+    }
+    static getSettings() {
+        return axios.get(config.API_URL[config.LANG] + 'settings')
+    }
 }

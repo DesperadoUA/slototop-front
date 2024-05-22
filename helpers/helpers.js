@@ -1,6 +1,5 @@
 import config from '~/config'
-import DAL_Options from '~/DAL/options'
-import DAL_Settings from '~/DAL/settings'
+import DAL_Builder from '~/DAL/builder'
 export default class Helper {
 	static refActivate(item) {
 		if (item.ref.length !== 0) {
@@ -70,8 +69,8 @@ export default class Helper {
 		return data
 	}
 	static async globalDataMixin(response, route) {
-		const responseOptions = await DAL_Options.getOptions()
-		const responseSettings = await DAL_Settings.getSettings()
+		const responseOptions = await DAL_Builder.getOptions()
+		const responseSettings = await DAL_Builder.getSettings()
 		let data = this.headDataMixin(response.data, route)
 		data = this.optionsDataMixin(data, responseOptions.data.body)
 		data = this.settingsDataMixin(data, responseSettings.data.body)

@@ -2,7 +2,7 @@ export default {
 	API_URL: {
 		//UA: 'http://127.0.0.1:8000/api/',
 		RU: 'https://api-new.slototop.ua/api/',
-		UA: 'https://api.slototop.ua/api/'
+		UA: 'https://slototop-api.lenddev.com.ua/wp-content/themes/api/app/'
 	},
 	BASE_URL: {
 		//UA: 'http://127.0.0.1:3000',
@@ -16,9 +16,10 @@ export default {
 		RU: 'ru',
 		UA: 'uk'
 	},
-	LANG: 'RU',
+	LANG: 'UA',
 	DEFAULT_LANG: {
 		RU: 'ru-UA',
 		UA: 'ru-UA'
-	}
+	},
+    API_TRANSPORT: 'wp'
 }

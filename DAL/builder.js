@@ -1,6 +1,6 @@
 import axios from 'axios'
 import config from '../config'
-
+import transport from './transport'
 export default class JsonRequest {
 	#options = {
 		URL_API: config.API_URL[config.LANG],
@@ -9,6 +9,7 @@ export default class JsonRequest {
 		IS_SEARCH: false,
 		SEARCH_WORD: ''
 	}
+    transport = new transport[config.API_TRANSPORT]
 	postType(postType) {
 		this.#options.POST_TYPE = postType
 		return this
@@ -25,27 +26,21 @@ export default class JsonRequest {
 		this.#options.URL = data
 		return this
 	}
-	get() {
+	async get() {
 		if (this.#options.IS_SEARCH) {
-			return axios.get(this.#options.URL_API + this.#options.URL, {
-				params: {
-					search_word: this.#options.SEARCH_WORD
-				}
-			})
+			return transport[config.API_TRANSPORT].search(this.#options.SEARCH_WORD)
 		}
         else {
-			return axios.get(
-				this.#options.URL_API +
-					this.#options.POST_TYPE +
-					'/' +
-					this.#options.URL
-			)
+            return this.transport
+                .postType(this.#options.POST_TYPE)
+                .url(this.#options.URL)
+                .get()
 		}
 	}
     static getOptions() {
-        return axios.get(config.API_URL[config.LANG] + 'options')
+        return transport[config.API_TRANSPORT].getOptions()
     }
     static getSettings() {
-        return axios.get(config.API_URL[config.LANG] + 'settings')
+        return transport[config.API_TRANSPORT].getSettings()
     }
 }

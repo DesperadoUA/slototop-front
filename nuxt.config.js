@@ -48,15 +48,6 @@ export default {
 		}
 	},
 	sitemap: {
-		exclude: [
-			'/countries',
-			'/currencies',
-			'/languages',
-			'/licenses',
-			'/technologies',
-			'/type-bonuses',
-			'/type-payments'
-		],
 		routes: async () => {
 			const request = new DAL_Builder()
 			const { data } = await request

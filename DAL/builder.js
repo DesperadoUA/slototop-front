@@ -1,4 +1,3 @@
-import axios from 'axios'
 import config from '../config'
 import transport from './transport'
 export default class JsonRequest {

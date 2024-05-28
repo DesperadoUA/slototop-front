@@ -49,9 +49,7 @@
 				html += `<div class="slot-item">
                                 <div class="slot-item__logo">
                                     <a href="${ampPrefix}${posts[i].permalink}">
-                                        <amp-img src="${
-																					posts[i].thumbnail
-																				}" alt="" width="214" height="136" />
+                                        <amp-img src="${posts[i].thumbnail}" alt="" width="214" height="136" />
                                     </a>
                                 </div>
                                 <div class="slot-item__content">
@@ -101,7 +99,7 @@
 						'Content-Type': 'application/json'
 					},
 					method: 'POST',
-					body: JSON.stringify({ postType, postUrl })
+					body: JSON.stringify({ type: 'loading', postType, url: postUrl })
 				})
 					.then(response => response.json())
 					.then(data => {

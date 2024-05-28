@@ -7,10 +7,10 @@ export default {
         //UA: "https://api.slototop.ua/api/"
 	},
 	BASE_URL: {
-		//UA: 'http://127.0.0.1:3000',
+		UA: 'http://localhost:3000',
 		//RU: 'https://lenddev.com.ua',
 		RU: 'https://new.slototop.ua',
-		UA: 'https://lenddev.com.ua/'
+		//UA: 'https://lenddev.com.ua/'
 	},
 	AMP_PREFIX: '/amp',
 	AUTHOR_PAGE_LINK: '/author',

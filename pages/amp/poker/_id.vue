@@ -21,6 +21,7 @@
 				bg="--bg-gray"
 				:title="translates.OTHER_POKER_ROOMS[config.LANG]"
 			/>
+            <app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 			<app_faq_amp :value="data.body.faq" v-if="data.body.faq.length !== 0" />
 			<app_reviews_amp
 				post_type="poker"
@@ -29,7 +30,6 @@
 				:value="data.body.reviews"
 				v-if="data.body.reviews.length !== 0"
 			/>
-			<app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 		</main>
 		<app_footer_amp
 			:footer_menu="data.body.settings.footer_menu"

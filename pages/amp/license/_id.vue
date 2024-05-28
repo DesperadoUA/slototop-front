@@ -26,7 +26,7 @@
 				bg="--bg-gray"
 				post_type="license"
 				:post_url="$route.params.id"
-				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery > data.body.casino.length"
+				v-if="data.body.casino.length !== 0 && CasinoNumberPostOnQuery >= data.body.casino.length"
 			/>
 			<app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 		</main>

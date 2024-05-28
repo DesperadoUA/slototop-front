@@ -117,7 +117,7 @@
 						'Content-Type': 'application/json'
 					},
 					method: 'POST',
-					body: JSON.stringify({ postType, postUrl })
+					body: JSON.stringify({ type: 'loading', postType, url: postUrl })
 				})
 					.then(response => response.json())
 					.then(data => {

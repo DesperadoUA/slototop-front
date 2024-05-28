@@ -13,7 +13,12 @@
 					/>
 				</div>
 			</div>
-			<app_poker_loop_downloads_amp :value="data.body.poker" bg="--bg-gray" v-if="data.body.poker.length !== 0" />
+            <script_amp :src="PokerPathScript" v-if="PokerNumberPostOnQuery < data.body.poker.length">
+                <app_poker_loop_downloads_amp :value="data.body.poker" bg="--bg-gray" v-if="data.body.poker.length !== 0" />
+            </script_amp>
+			<app_poker_loop_downloads_amp :value="data.body.poker" bg="--bg-gray"
+                                          v-if="data.body.poker.length !== 0 && PokerNumberPostOnQuery > data.body.poker.length"
+            />
 			<app_content_amp :value="data.body.amp_content" v-if="data.body.amp_content !== ''" />
 			<app_faq_amp
 				:value="data.body.settings.poker_page_faq"
@@ -35,12 +40,22 @@ import helper from '~/helpers/helpers'
 import pageTemplateAmp from '~/mixins/pageTemplateAmp'
 import app_poker_loop_downloads_amp from '~/components/poker_loop/app_poker_loop_downloads_amp'
 import app_faq_amp from '~/components/faq/app_faq_amp'
+import script_amp from '~/components/script_amp'
+import { POKER as PokerNumberPostOnQuery } from '~/config/postLoader'
+import { POKER as PokerPathScript } from '~/config/ampPathScript'
 export default {
 	name: 'poker-page_amp',
 	components: {
 		app_poker_loop_downloads_amp,
-		app_faq_amp
+		app_faq_amp,
+        script_amp
 	},
+    data() {
+        return {
+            PokerNumberPostOnQuery,
+            PokerPathScript
+        }
+    },
 	mixins: [pageTemplateAmp],
 	async asyncData({ route, error }) {
         const request = new DAL_Builder()

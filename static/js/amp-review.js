@@ -4,36 +4,30 @@
 		let posts = []
 		let counter = 0
 		const loadContainer = document.querySelector('.loadContainer')
-
 		const dataSetApiUrl = btn.attributes.filter(
 			item => item.name === 'data-apiurl'
 		)
 		const apiUrl = dataSetApiUrl.length ? dataSetApiUrl[0].value : ''
-
 		const dataSetPostsOnQuery = btn.attributes.filter(
 			item => item.name === 'data-postsonquery'
 		)
 		const postsOnQuery = dataSetPostsOnQuery.length
 			? dataSetPostsOnQuery[0].value
 			: 20
-
 		const dataSetAmpPrefix = btn.attributes.filter(
 			item => item.name === 'data-ampprefix'
 		)
 		const ampPrefix = dataSetAmpPrefix.length
 			? dataSetAmpPrefix[0].value
 			: '/amp'
-
 		const dataSetPostType = btn.attributes.filter(
 			item => item.name === 'data-post-type'
 		)
 		const postType = dataSetPostType.length ? dataSetPostType[0].value : 'page'
-
 		const dataSetPostUrl = btn.attributes.filter(
 			item => item.name === 'data-post-url'
 		)
 		const postUrl = dataSetPostUrl.length ? dataSetPostUrl[0].value : '/'
-
 		function renderTemplate(posts, counter) {
 			const length =
 				(counter + 1) * postsOnQuery > posts.length
@@ -76,7 +70,7 @@
 						'Content-Type': 'application/json'
 					},
 					method: 'POST',
-					body: JSON.stringify({ postType, postUrl })
+					body: JSON.stringify({ type: 'loading', postType, url: postUrl })
 				})
 					.then(response => response.json())
 					.then(data => {
@@ -95,5 +89,5 @@
 	}
 }
 /*
-    postTypes: ['casino', 'poker'] 
+    postTypes: ['casino', 'poker']
  */

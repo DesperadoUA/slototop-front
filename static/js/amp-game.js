@@ -84,7 +84,7 @@
 						'Content-Type': 'application/json'
 					},
 					method: 'POST',
-					body: JSON.stringify({ postType, postUrl })
+					body: JSON.stringify({ type: 'loading', postType, url: postUrl, card: 'slot' })
 				})
 					.then(response => response.json())
 					.then(data => {
@@ -104,5 +104,5 @@
 }
 /*
     pages: ['games']
-    postTypes: ['vendor'] 
+    postTypes: ['vendor']
  */

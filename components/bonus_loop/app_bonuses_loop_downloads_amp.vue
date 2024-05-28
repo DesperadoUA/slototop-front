@@ -56,7 +56,7 @@
 		</div>
 		<div class="items-more">
 			<button
-				:data-apiUrl="`${config.API_URL[config.LANG]}bonus/search`"
+				:data-apiUrl="config.API_URL[config.LANG]"
 				:data-postsOnQuery="numberPostOnQuery"
 				:data-ampPrefix="config.AMP_PREFIX"
 				:data-post-type="post_type"

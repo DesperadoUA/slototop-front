@@ -6,7 +6,7 @@ module.exports = {
 			args: 'start',
 			env: {
 				HOST: 'localhost',
-				PORT: '8000'
+				PORT: '6000'
 			}
 		}
 	]

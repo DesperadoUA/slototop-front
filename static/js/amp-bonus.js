@@ -137,5 +137,5 @@
 }
 /*
     pages: ['bonuses']
-    postTypes: ['type-bonus'] 
+    postTypes: ['type-bonus']
  */

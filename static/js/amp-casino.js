@@ -129,5 +129,5 @@
 }
 /*
     pages: ['casino']
-    postTypes: ['lang', 'country', 'license', 'payment', 'technology', 'vendor'] 
+    postTypes: ['lang', 'country', 'license', 'payment', 'technology', 'vendor']
  */

@@ -5,4 +5,12 @@
 [] Bonus Loop and Bonus Casino combine
 [] Casino Loop Casino combine
 [] Add page banner for AMP template
-[] Poker template fix translate 
+[] Poker template fix translate
+
+[x] Bonuses
+[x] Casino
+[x] Game
+[x] Payment
+[x] Poker
+[x] Review
+[x] Vendor

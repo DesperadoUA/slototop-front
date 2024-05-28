@@ -37,7 +37,7 @@
 		>
 			<button
 				class="btn-secondary loadMoreBtn"
-				:data-apiUrl="`${config.API_URL[config.LANG]}game/search`"
+				:data-apiUrl="config.API_URL[config.LANG]"
 				:data-postsOnQuery="numberPostOnQuery"
 				:data-ampPrefix="config.AMP_PREFIX"
 				:data-post-type="post_type"

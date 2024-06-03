@@ -17,7 +17,8 @@ export default {
 	},
 	serverMiddleware: [
 		'~/serverMiddleware/redirects',
-		'~/serverMiddleware/error'
+		'~/serverMiddleware/error',
+        '~/serverMiddleware/trailingSlash'
 	],
 	// Global CSS: https://go.nuxtjs.dev/config-css
 	css: [],
@@ -59,5 +60,5 @@ export default {
 	},
 	amp: {
 		css: '~/assets/amp-custom.css'
-	}
+	},
 }

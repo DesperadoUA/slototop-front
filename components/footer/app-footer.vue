@@ -5,6 +5,7 @@
 		<app_footer_text :value="changeText" />
 		<a href="#top" class="go_top">▲</a>
 		<app-pop-up />
+        <GuardPopUp v-if="showGuardModal" />
 	</footer>
 </template>
 
@@ -13,6 +14,8 @@ import app_menu from './app-footer-menu'
 import app_footer_text from './app-footer-text'
 import app_partners_menu from './app-partners-menu'
 import app_pop_up from './app_pop_up'
+import GuardPopUp from '~/components/guard_pop_up'
+import { GUARD_MODAL_KEY, GUARD_COOKIE_STORAGE_KEY } from '@/constants.js'
 export default {
 	name: 'app-footer',
 	data() {
@@ -22,7 +25,7 @@ export default {
 			partners_menu: null
 		}
 	},
-	components: { app_menu, app_footer_text, app_partners_menu, app_pop_up },
+	components: { app_menu, app_footer_text, app_partners_menu, app_pop_up, GuardPopUp },
 	computed: {
 		changeText() {
 			const settings = this.$store.getters['settings/getSettings']
@@ -50,8 +53,19 @@ export default {
 				)[0].value
 			}
 			return this.partners_menu
-		}
-	}
+		},
+        showGuardModal() {
+            return this.$store.getters['modal/getModals'][GUARD_MODAL_KEY]
+        }
+	},
+    mounted() {
+        const headers = this.$store.getters['common/getHeaders']
+        const cookie = headers.cookie || ''
+        const guardHide = !cookie.includes(GUARD_COOKIE_STORAGE_KEY) ? false : true
+        if(!guardHide) {
+            this.$store.dispatch('modal/setStateModal', { key: GUARD_MODAL_KEY, status: true })
+        }
+    }
 }
 </script>
 
